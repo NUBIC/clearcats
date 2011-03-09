@@ -54,14 +54,16 @@
         = f.check_box :invalid_for_ctsa_reporting
     .span-24
       .span-5
-        = f.label :services_service_line_id_equals, "Service Line"
+        = f.label :service_line_equals, "Service Line"
       .span-17.last
-        = f.select(:services_service_line_id_equals, ServiceLine.all.collect { |a| [ "#{a.organizational_unit.to_s} - #{a.to_s}", a.id ] }.sort!, { :include_blank => "-- Select Service Line --" })
+        - service_lines = [["-- Select Service Line --",  ""]] + ServiceLine.all.collect { |a| [ "#{a.organizational_unit.to_s} - #{a.to_s}", a.id ] }.sort!
+        = select_tag("search[service_line_equals]", options_for_select(service_lines, params[:search][:service_line_equals].to_i))
     .span-24
       .span-5
-        = f.label :organizational_units_organizational_unit_id_equals, "Organizational Unit"
+        = f.label :organizational_unit_equals, "Organizational Unit"
       .span-17.last
-        = f.select(:organizational_units_organizational_unit_id_equals, OrganizationalUnit.all.collect { |a| [ a.to_s, a.id.to_s ] }, { :include_blank => "-- Select Organizational Unit --" })
+        - org_units = [["-- Select Organizational Unit --",  ""]] + OrganizationalUnit.all.collect { |a| [ a.to_s, a.id ] }.sort!
+        = f.select(:organizational_unit_equals, options_for_select(org_units, params[:search][:organizational_unit_equals].to_i))
         
     .buttons
       = f.submit "Search", :disable_with => 'Searching...'

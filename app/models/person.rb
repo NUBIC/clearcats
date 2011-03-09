@@ -152,11 +152,11 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :publications, :allow_destroy => true
   accepts_nested_attributes_for :approvals,    :allow_destroy => true
   
-  named_scope :awards_phs_organization_id_equals,     lambda { |id|  {:joins => :awards, :conditions => ["awards.organization_id  = :id and awards.organization_type = 'PhsOrganization'",    {:id => id} ]} }
-  named_scope :awards_activity_code_id_equals,        lambda { |id|  {:joins => :awards, :conditions => ["awards.activity_code_id = :id",       {:id => id} ]} }
-  named_scope :awards_non_phs_organization_id_equals, lambda { |id|  {:joins => :awards, :conditions => ["awards.organization_id  = :id and awards.organization_type = 'NonPhsOrganization'", {:id => id} ]} }
-  
-  named_scope :organizational_units_organizational_unit_id_equals, lambda { |id| {:joins => :organizational_units, :conditions => ["organizational_units.id = :id", {:id => id} ]} }
+  named_scope :awards_phs_organization_id_equals,     lambda { |id| {:joins => :awards,   :conditions => ["awards.organization_id  = :id and awards.organization_type = 'PhsOrganization'",    {:id => id} ]} }
+  named_scope :awards_activity_code_id_equals,        lambda { |id| {:joins => :awards,   :conditions => ["awards.activity_code_id = :id", {:id => id} ]} }
+  named_scope :awards_non_phs_organization_id_equals, lambda { |id| {:joins => :awards,   :conditions => ["awards.organization_id  = :id and awards.organization_type = 'NonPhsOrganization'", {:id => id} ]} }
+  named_scope :service_line_equals,                   lambda { |id| {:joins => :services, :conditions => ["services.service_line_id = :id", {:id => id} ]} }
+  named_scope :organizational_unit_equals,            lambda { |id| {:joins => "INNER JOIN organizational_units_people ON organizational_units_people.person_id = people.id", :conditions => ["organizational_units_people.organizational_unit_id = ?", id]} }
   
   named_scope :all_investigators, :conditions => "((training_type IS NULL) AND (trainee_status IS NULL))"
   named_scope :all_trainees,      :conditions => "((training_type IS NOT NULL OR training_type = '') AND (trainee_status IS NOT NULL OR trainee_status = ''))"
@@ -168,6 +168,7 @@ class Person < ActiveRecord::Base
   named_scope :trainees,      :conditions => { :training_type => TRAINEE, :trainee_status => APPOINTED }
   
   named_scope :invalid_for_ctsa_reporting, :conditions => "(people.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(SYSTEM_CONFIG['current_ctsa_reporting_year'].to_i)} > 0) AND (era_commons_username IS NULL OR specialty_id IS NULL)"
+  
   
   # attributes from faculty_web_service that are not persisted
   attr_accessor :interests, :campus, :descriptions, :dv_abbr
