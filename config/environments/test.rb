@@ -39,3 +39,6 @@ config.after_initialize do
 
   PaperTrail.enabled = false
 end
+
+ENV['AUTOFEATURE'] = "true"
+ENV['RSPEC'] = "true"

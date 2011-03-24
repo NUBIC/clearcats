@@ -22,6 +22,8 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     autotest-growl (0.2.9)
+    autotest-rails (4.1.0)
+      ZenTest
     bcaudit (0.0.3)
       activerecord (~> 2.3.2)
       rack (~> 1.1)
@@ -138,6 +140,7 @@ GEM
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
+    notifier (0.1.2)
     paperclip (2.3.8)
       activerecord
       activesupport
@@ -199,6 +202,8 @@ GEM
       fastercsv
       haml
     term-ansicolor (1.0.5)
+    test_notifier (0.3.6)
+      notifier
     timecop (0.3.5)
     trollop (1.16.2)
     turbulence (0.0.9)
@@ -217,9 +222,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest
   activerecord-oracle_enhanced-adapter (= 1.2.3)
   autotest
   autotest-growl
+  autotest-rails
   bcdatabase
   bcsec (~> 2.0.6)
   bcsec-rails
@@ -253,6 +260,7 @@ DEPENDENCIES
   state_machine
   surveyor (>= 0.16.1)
   term-ansicolor
+  test_notifier
   timecop
   trollop
   turbulence

@@ -37,7 +37,10 @@ group :test do
 
   # autotest
   gem "autotest"
+  gem "autotest-rails"
   gem "autotest-growl"
+  gem 'ZenTest'
+  gem 'test_notifier'
 
   # rspec
   gem "rspec", "~> 1.3"
