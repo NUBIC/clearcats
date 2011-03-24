@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101216175350
+# Schema version: 20110324204242
 #
 # Table name: people
 #
@@ -174,6 +174,7 @@ describe Person do
   
   it { should have_and_belong_to_many(:institution_positions) }
   it { should have_and_belong_to_many(:organizational_units) }
+  it { should have_and_belong_to_many(:time_entries) }
   
   it { should have_many(:awards) }
   it { should have_many(:publications) }

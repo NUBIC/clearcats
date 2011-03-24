@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101216175350
+# Schema version: 20110324204242
 #
 # Table name: people
 #
@@ -123,6 +123,8 @@ class Person < ActiveRecord::Base
   has_many :approvals
   has_and_belongs_to_many :institution_positions
   has_and_belongs_to_many :organizational_units
+  
+  has_and_belongs_to_many :time_entries
     
   belongs_to :country
   belongs_to :degree_type_one

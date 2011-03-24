@@ -239,3 +239,36 @@ Factory.define :contact_list do |c|
   c.name "contact_list"
   c.organizational_unit { |a| a.association(:organizational_unit) }
 end
+
+####
+
+Factory.define :project do |p|
+  p.name "project name"
+  p.organizational_unit { |a| a.association(:organizational_unit) }
+end
+
+Factory.define :activity do |a|
+  a.name "activity name"
+  a.project { |a| a.association(:project) }
+  a.activity_type { |a| a.association(:activity_type) }
+end
+
+Factory.define :role do |r|
+  r.name "project name"
+end
+
+Factory.define :activity_actor do |a|
+  a.project { |a| a.association(:project) }
+  a.activity { |a| a.association(:activity) }
+  a.role { |a| a.association(:role) }
+  a.person { |a| a.association(:person) }
+end
+
+Factory.define :time_entry do |t|
+  t.activity { |a| a.association(:activity) }
+  t.start_at 1.hour.ago
+  t.end_at Time.now
+end
+
+
+

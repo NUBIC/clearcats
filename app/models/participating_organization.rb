@@ -1,16 +1,17 @@
 # == Schema Information
-# Schema version: 20101216175350
+# Schema version: 20110324204242
 #
 # Table name: participating_organizations
 #
-#  id             :integer         not null, primary key
-#  name           :string(255)
-#  city           :string(255)
-#  country_id     :integer
-#  us_state_id    :integer
-#  reporting_year :integer
-#  created_at     :datetime
-#  updated_at     :datetime
+#  id                        :integer         not null, primary key
+#  name                      :string(255)
+#  city                      :string(255)
+#  country_id                :integer
+#  us_state_id               :integer
+#  reporting_year            :integer
+#  created_at                :datetime
+#  updated_at                :datetime
+#  ctsa_reporting_years_mask :integer
 #
 
 require 'comma'

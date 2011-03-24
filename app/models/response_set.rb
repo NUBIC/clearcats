@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20101216175350
+# Schema version: 20110324204242
 #
 # Table name: response_sets
 #
 #  id           :integer         not null, primary key
-#  user_id      :integer
-#  survey_id    :integer
+#  user_id      :integer(8)
+#  survey_id    :integer(8)
 #  access_code  :string(255)
 #  started_at   :datetime
 #  completed_at :datetime

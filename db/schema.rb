@@ -9,7 +9,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208160117) do
+ActiveRecord::Schema.define(:version => 20110324204242) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "name"
+    t.integer  "project_id"
+    t.integer  "activity_type_id"
+    t.datetime "due_at"
+    t.text     "deliverable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "activity_actors", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "activity_id"
+    t.integer  "role_id"
+    t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "activity_codes", :force => true do |t|
     t.string   "code"
@@ -398,6 +417,18 @@ ActiveRecord::Schema.define(:version => 20110208160117) do
   add_index "people", ["race_type_id"], :name => "index_people_on_race_type_id"
   add_index "people", ["specialty_id"], :name => "index_people_on_specialty_id"
 
+  create_table "people_time_entries", :force => true do |t|
+    t.integer "person_id"
+    t.integer "time_entry_id"
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.integer  "organizational_unit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "publications", :force => true do |t|
     t.string   "pmcid"
     t.string   "pmid"
@@ -507,6 +538,12 @@ ActiveRecord::Schema.define(:version => 20110208160117) do
 
   add_index "responses", ["survey_section_id"], :name => "index_responses_on_survey_section_id"
 
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "service_lines", :force => true do |t|
     t.string   "name"
     t.integer  "organizational_unit_id"
@@ -594,6 +631,14 @@ ActiveRecord::Schema.define(:version => 20110208160117) do
   end
 
   add_index "surveys", ["access_code"], :name => "surveys_ac_idx", :unique => true
+
+  create_table "time_entries", :force => true do |t|
+    t.integer  "activity_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "us_states", :force => true do |t|
     t.string   "name"

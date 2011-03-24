@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101216175350
+# Schema version: 20110324204242
 #
 # Table name: publications
 #
@@ -20,6 +20,8 @@
 #  ctsa_reporting_years_mask :integer
 #  created_by                :string(255)
 #  updated_by                :string(255)
+#  journal                   :string(255)
+#  citation_cnt              :integer
 #
 
 require 'spec_helper'

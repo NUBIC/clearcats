@@ -1,21 +1,20 @@
 # == Schema Information
 # Schema version: 20110324204242
 #
-# Table name: institution_positions
+# Table name: roles
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
-#  created_by :string(255)
-#  updated_by :string(255)
 #
 
-class InstitutionPosition < ActiveRecord::Base
+class Role < ActiveRecord::Base
   
-  has_and_belongs_to_many :people
+  validates_presence_of :name
   
   def to_s
     name
   end
+
 end
