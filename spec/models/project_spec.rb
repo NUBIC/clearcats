@@ -23,4 +23,6 @@ describe Project do
   it { should validate_presence_of(:organizational_unit) }
   it { should belong_to(:organizational_unit) }
   it { should have_many(:activities) }
+  
+  # it { should have_many(:notes) }
 end

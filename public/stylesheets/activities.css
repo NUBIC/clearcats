@@ -1,0 +1,9 @@
+
+table.notes tr td {
+  vertical-align: top;
+}
+
+table.notes tr td textarea {
+  height: 4em !important;
+  width: 90%;
+}

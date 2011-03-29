@@ -13,6 +13,7 @@
 class Project < ActiveRecord::Base
   belongs_to :organizational_unit
   has_many :activities
+  has_many :notes, :as => :notable
   
   validates_presence_of :organizational_unit
   validates_presence_of :name

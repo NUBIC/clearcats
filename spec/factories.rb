@@ -270,5 +270,6 @@ Factory.define :time_entry do |t|
   t.end_at Time.now
 end
 
-
-
+Factory.define :note do |note|
+  note.text "This is the note"
+end

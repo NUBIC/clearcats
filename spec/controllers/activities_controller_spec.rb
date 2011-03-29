@@ -11,6 +11,14 @@ describe ActivitiesController do
       login(user_login)
     end
     
+    describe "GET index" do
+      it "assigns all activities as @activities" do
+        Activity.stub(:search).and_return([mock_activity])
+        get :index
+        assigns[:activities].should == [mock_activity]
+      end
+    end
+    
     describe "GET new" do
       it "assigns a new activity as @activity" do
         Activity.stub(:new).and_return(mock_activity)
@@ -31,7 +39,7 @@ describe ActivitiesController do
         it "redirects to the created activity" do
           Activity.stub(:new).and_return(mock_activity(:save => true))
           post :create, :activity => {}
-          response.should redirect_to(activity_url(mock_activity))
+          response.should redirect_to(activities_url)
         end
       end
 

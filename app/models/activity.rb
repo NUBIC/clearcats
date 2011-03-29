@@ -21,10 +21,20 @@ class Activity < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :activity_type
 
-  has_many :attachments, :as => :attachable
+
+  has_many :notes, :class_name => "Note", :as => :notable, :dependent => :destroy
+  accepts_nested_attributes_for :notes, :allow_destroy => true
+  
+  has_many :attachments, :as => :attachable, :dependent => :destroy
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
   has_many :activity_actors
+
+  named_scope :for_organizational_units, 
+    lambda { |org_units| 
+      { :joins => "INNER JOIN activity_types ON activity_types.id = activities.activity_type_id INNER JOIN service_lines ON service_lines.id = activity_types.service_line_id", 
+        :conditions => ["service_lines.organizational_unit_id IN (:ids)", {:ids => org_units.map(&:id)} ]}
+    }
 
   def to_s
     name

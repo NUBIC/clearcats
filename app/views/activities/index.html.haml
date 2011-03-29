@@ -1,0 +1,28 @@
+- title "My Activities"
+
+.page_section
+  - if @activities.blank?
+    .no_records No activities were found.
+  - else
+    .records_header
+      .page_entries_info
+        = page_entries_info @activities
+      = will_paginate @activities
+
+      %table{ :class => "records" }
+        %tr
+          %th.select_record
+            Select
+          %th
+            Name
+        - @activities.each do |a|
+          %tr{ :class => cycle('even_record', 'odd_record') }
+            %td.select_record
+              = link_to 'Edit', edit_activity_path(a), :class => "edit_link icon_link"
+            %td
+              = h a.to_s
+
+  = will_paginate @activities
+
+.links
+  = link_to 'New Activity', new_activity_path, :class => "add_link icon_link"

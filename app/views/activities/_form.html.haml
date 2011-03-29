@@ -14,5 +14,21 @@
     = f.label :activity_actor_ids, "Add People"
     %br
     = f.hidden_field :activity_actor_ids
+    TODO: add people here !!
+    
+  %table{ :class => "records notes" }
+    %thead
+      %tr
+        %th
+          Notes
+        %th{ :colspan => '2' }
+    %tbody{ :class => "nested_records" }
+      - f.fields_for :notes do |note_form|
+        = render 'note_fields', :f => note_form
+    %tfoot
+      %tr
+        %td{ :colspan => '3' }
+          = link_to_add_fields "Add Note", f, :notes
+  
   %p
     = f.submit "Save", :disable_with => 'Saving...'

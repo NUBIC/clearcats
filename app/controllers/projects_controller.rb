@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     respond_to do |format|
-      format.html # new.html.haml
+      format.html # edit.html.haml
       format.xml  { render :xml => @project }
     end
   end

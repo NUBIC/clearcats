@@ -32,6 +32,7 @@ describe Activity do
   it { should have_many(:attachments) }
   it { should have_many(:activity_actors) }
   
+  # it { should have_many(:notes) }
   # it { should have_many(:time_entries) }
   
   describe "associating an activity type by name" do
@@ -60,4 +61,25 @@ describe Activity do
     end
     
   end
+  
+  describe "associating activities with an organizationl unit" do
+    
+    before(:each) do
+      @org_unit_one  = Factory(:organizational_unit, :name => "ONE", :abbreviation => "1")
+      @org_unit_two  = Factory(:organizational_unit, :name => "TWO", :abbreviation => "2")
+      
+      @service_line  = Factory(:service_line, :organizational_unit => @org_unit_one)
+      @activity_type = Factory(:activity_type, :service_line => @service_line)
+    end
+    
+    it "should find all activities for an org unit" do
+      act = Factory(:activity, :activity_type => @activity_type)
+      
+      Activity.for_organizational_units([@org_unit_one]).should == [act]
+      Activity.for_organizational_units([@org_unit_two]).should == []
+      Activity.for_organizational_units([@org_unit_one, @org_unit_two]).should == [act]
+    end
+    
+  end
+  
 end
