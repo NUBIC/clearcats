@@ -1,0 +1,28 @@
+- title "My Projects"
+
+.page_section
+  - if @projects.blank?
+    .no_records No projects were found.
+  - else
+    .records_header
+      .page_entries_info
+        = page_entries_info @projects
+      = will_paginate @projects
+
+      %table{ :class => "records" }
+        %tr
+          %th.select_record
+            Select
+          %th
+            Name
+        - @projects.each do |proj|
+          %tr{ :class => cycle('even_record', 'odd_record') }
+            %td.select_record
+              = link_to 'Edit', edit_project_path(proj), :class => "edit_link icon_link"
+            %td
+              = h proj.to_s
+
+  = will_paginate @projects
+
+.links
+  = link_to 'New Project', new_project_path, :class => "add_link icon_link"

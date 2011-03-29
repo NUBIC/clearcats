@@ -1,5 +1,12 @@
+require "rubygems"
+# begin
+#   gem 'i18n', "~> 0.4.0"
+# rescue LoadError
+#   # TODO: remove when updating Rails
+#   # optional - to fix issue with 0.5.0 
+# end
+
 begin
-  require "rubygems"
   require "bundler"
 rescue LoadError
   raise "Could not load the bundler gem. Install it with `gem install bundler`."
@@ -18,3 +25,4 @@ rescue Bundler::GemNotFound
   raise RuntimeError, "Bundler couldn't find some gems." +
     "Did you run `bundle install`?"
 end
+

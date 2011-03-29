@@ -25,7 +25,7 @@ require 'capybara/session'
 Capybara.default_selector = :css
 
 Capybara.run_server = true               # Whether start server when testing
-Capybara.default_wait_time = 30          # When we testing AJAX, we can set a default wait time
+Capybara.default_wait_time = 2           # When we testing AJAX, we can set a default wait time
 Capybara.ignore_hidden_elements = false  # Ignore hidden elements when testing, make helpful when you hide or show elements using javascript
 # Capybara.javascript_driver = :culerity # default driver when you using @javascript tag
 

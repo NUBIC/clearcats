@@ -7,4 +7,12 @@ Feature: Logging into the application
     Then I should see "Add Investigator"
     And I should see "Create Service Line"
     And I should see "Manage Investigators"
-    
+  
+  @javascript
+  Scenario: Logging in as a user
+    Given an authenticated user
+    When I am on the home page
+    Then I should see "Add Investigator"
+    And I should see "Add Activity/Event"
+
+  

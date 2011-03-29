@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   ExceptionNotifier.sender_address = %("ClearCATS Application Error" <clearcats@northwestern.edu>)
   ExceptionNotifier.email_prefix = "[ClearCATS-#{Rails.env}]"
   
-  helper_method :current_ctsa_reporting_year, :get_current_user, :faculty_member?
+  helper_method :current_ctsa_reporting_year, :get_current_user, :faculty_member?, :determine_org_units_for_user
   
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details

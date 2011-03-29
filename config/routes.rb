@@ -17,6 +17,9 @@ ActionController::Routing::Routes.draw do |map|
   map.schools     '/people/schools',     :controller => "people", :action => "schools"
 
   map.resources :activity_types
+  map.resources :activities
+  map.resources :projects
+
   map.resources :awards, :except => [ :destroy ],
     :member => { :versions => :get, :revert => :post, :details => :get },
     :collection => { :incomplete => :get, :update_ctsa_reporting_year => :post, :search => :get }

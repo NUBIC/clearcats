@@ -2,7 +2,7 @@ source "http://rubygems.org"
 source 'http://download.bioinformatics.northwestern.edu/gems'
 source 'http://gems.github.com'
 
-gem "rails", "2.3.8", :require => nil
+gem "rails", "2.3.11", :require => nil
 
 gem "activerecord-oracle_enhanced-adapter", "1.2.3"
 gem "bcdatabase"
@@ -59,6 +59,12 @@ group :test do
   gem "cucumber-rails"
   gem "database_cleaner"
   gem "gherkin"
+  gem "shoulda"
+  gem 'rcov'
+  gem 'pickle'
+  gem 'fakeweb'
+  gem "treetop"
+  gem "launchy", '~> 0.4'
   gem "term-ansicolor"
   gem "trollop"
   

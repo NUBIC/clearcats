@@ -1,0 +1,18 @@
+- form_for(@activity) do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %span.required *
+    %br
+    = f.text_field :name
+  %p
+    = f.label :activity_type_name, "Activity Type"
+    %span.required *
+    %br
+    = f.text_field :activity_type_name, :class => 'activity_type_autocompleter'
+  %p
+    = f.label :activity_actor_ids, "Add People"
+    %br
+    = f.hidden_field :activity_actor_ids
+  %p
+    = f.submit "Save", :disable_with => 'Saving...'

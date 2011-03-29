@@ -300,6 +300,11 @@ table.records th {
   background-color: lightgray;
 }
 
+table.records th.select_record,
+table.records td.select_record {
+  width: 5em;
+}
+
 table.records tr {
   border: 1px solid lightgray;
 }
@@ -371,6 +376,7 @@ table.nested {
 .page_entries_info {
   float: right;
   padding-top: 0.25em;
+  padding-right: 0.5em;
 }
 
 .records_header {

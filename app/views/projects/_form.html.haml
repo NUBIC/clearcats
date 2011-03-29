@@ -1,0 +1,18 @@
+- form_for(@project) do |f|
+  = f.error_messages
+  %p
+    = f.label :name
+    %span.required *
+    %br
+    = f.text_field :name
+  
+  - if @user_organizational_units.size > 1
+    %p
+      = f.label "organizational_unit_id", "Organizational Unit"
+      %br
+      = f.select(:organizational_unit_id, @user_organizational_units.sort_by{|e| e.name}.map{|u| [u.to_s, u.id]}, { :include_blank => "-- Select Organizational Unit --" })
+  - else
+    = f.hidden_field :organizational_unit_id
+  
+  %p
+    = f.submit "Save", :disable_with => 'Saving...'

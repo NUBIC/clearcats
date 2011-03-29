@@ -22,6 +22,8 @@ class ServiceLine < ActiveRecord::Base
   
   accepts_nested_attributes_for :activity_types, :allow_destroy => true
   
+  named_scope :for_organizational_units, lambda { |ids| {:conditions => ["organizational_unit_id in (?)", ids]} } 
+  
   def to_s
     name
   end

@@ -19,14 +19,27 @@ class Activity < ActiveRecord::Base
   belongs_to :activity_type
   
   validates_presence_of :name
-  validates_presence_of :project
   validates_presence_of :activity_type
 
   has_many :attachments, :as => :attachable
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
+  has_many :activity_actors
+
   def to_s
     name
+  end
+  
+  def activity_type_name=(name)
+    at = ActivityType.find_by_name(name)
+    if at.nil?
+      at = ActivityType.create(:name => name)
+    end
+    self.activity_type = at
+  end
+
+  def activity_type_name
+    activity_type.nil? ? "" : activity_type.to_s
   end
 
 end

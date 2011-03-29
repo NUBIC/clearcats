@@ -67,6 +67,18 @@ module NavigationHelpers
     
     when /the person versions page for "(.*)"/
       versions_person_path(Person.find_by_netid($1))
+
+
+    ### ACTIVITIES ###
+    
+    when /the new activity page/
+      new_activity_path 
+      
+    ### PROJECTS ###
+    
+    when /the edit project page/
+      edit_project_path(Project.last)
+  
     
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

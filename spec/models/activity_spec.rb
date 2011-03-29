@@ -24,13 +24,40 @@ describe Activity do
   
   it { should validate_presence_of(:name) }
   
-  it { should validate_presence_of(:project) }
   it { should belong_to(:project) }
   
   it { should validate_presence_of(:activity_type) }
   it { should belong_to(:activity_type) }
   
   it { should have_many(:attachments) }
+  it { should have_many(:activity_actors) }
   
   # it { should have_many(:time_entries) }
+  
+  describe "associating an activity type by name" do
+    
+    it "should find and associate an activity type by name" do
+      act = Factory.build(:activity, :activity_type => nil)
+      act.activity_type.should be_nil
+      
+      at = Factory(:activity_type, :name => "asdf")
+      act.activity_type_name = at.name
+      
+      act.activity_type.should_not be_nil
+      act.activity_type.should == at
+    end
+    
+    it "should find and associate an activity type by name" do
+      act = Factory.build(:activity, :activity_type => nil)
+      act.activity_type.should be_nil
+      
+      ActivityType.find_by_name("qwer").should be_nil
+      act.activity_type_name = "qwer"
+      
+      act.activity_type.should_not be_nil
+      act.activity_type.name.should.eql?("qwer")
+      ActivityType.find_by_name("qwer").should_not be_nil
+    end
+    
+  end
 end

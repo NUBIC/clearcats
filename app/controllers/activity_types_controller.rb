@@ -8,7 +8,11 @@ class ActivityTypesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @activity_types }
+      format.json do 
+        activity_types = ActivityType.all(:include => :service_line, :conditions => ["service_lines.organizational_unit_id IN (?) AND activity_types.name like ?", determine_org_units_for_user.map(&:id), "#{params[:term]}%"])
+        render :text => activity_types.map { |at| { :id => at[:name], :label => at[:name], :value => at[:name] } }.to_json 
+      end
+      format.xml { render :xml => @activity_types }
     end
   end
 

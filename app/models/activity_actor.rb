@@ -14,7 +14,6 @@
 
 class ActivityActor < ActiveRecord::Base
 
-  
   belongs_to :project
   belongs_to :activity
   belongs_to :role
