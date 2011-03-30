@@ -23,10 +23,10 @@
           = link_to "Add Investigator", {:controller => "welcome", :action => "add_investigator"}
       .front_page_section
         %h3.add_event
-          = link_to "Add Activity/Event", {:controller => "activities", :action => "new"}
+          = link_to "My Projects", projects_path
       .front_page_section
         %h3.add_event
-          = link_to "Create Project", {:controller => "projects", :action => "new"}
+          = link_to "Add Activity/Event", new_activity_path
     - if current_user.permit?(:Admin)
       .front_page_section
         %h3.create_service_line 

@@ -1,5 +1,12 @@
+- stylesheet "projects"
+- javascript "projects_ui"
 - title "Create Project"
 
 .page_section
   = render 'form'
+
+:javascript
+  $(function () {
+    projectsUI = new Clearcats.ProjectsUI({});
+  });
 

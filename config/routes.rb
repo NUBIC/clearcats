@@ -19,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :activity_types
   map.resources :activities
   map.resources :projects
+  map.resources :key_metrics
+  map.resources :metric_items
 
   map.resources :awards, :except => [ :destroy ],
     :member => { :versions => :get, :revert => :post, :details => :get },

@@ -15,6 +15,9 @@ class ServiceLinesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { 
+        render :text => @service_lines.sort_by { |sl| sl.name }.map { |sl| { :id => sl[:id], :label => sl[:name], :value => sl[:id] } }.to_json
+      }
       format.xml  { render :xml => @service_lines }
     end
   end

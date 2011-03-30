@@ -1,8 +1,15 @@
 require 'yaml'
 
-ENUMS = [:institution_positions]
+ENUMS = [:institution_positions, :metric_items]
 
 namespace :setup do
+  
+  desc 'Load the database with values from yml files in lib/setup/data'
+  task(:enums => :environment) do
+    ENUMS.each do |enum|
+      setup_enum(enum)
+    end
+  end
   
   ENUMS.each do |enum|
     desc "Load the database with #{enum} values"
@@ -21,7 +28,9 @@ namespace :setup do
         puts "#{v['name']} in #{enum.to_s} already exists"
       else
         puts "Creating #{v['name']} for #{enum.to_s} "
-        enum_model.create!(:name => v['name'])
+        attrs = {}
+        v.each { |n| attrs[n[0].to_sym] = v[n[0]] }
+        enum_model.create!(attrs)
       end
     end
   end

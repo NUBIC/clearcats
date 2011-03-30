@@ -273,3 +273,8 @@ end
 Factory.define :note do |note|
   note.text "This is the note"
 end
+
+Factory.define :metric_item do |item|
+  item.name "Grants"
+  item.datatype "Amount"
+end

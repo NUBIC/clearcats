@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110329183255) do
+ActiveRecord::Schema.define(:version => 20110330192542) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -311,6 +311,26 @@ ActiveRecord::Schema.define(:version => 20110329183255) do
 
   add_index "institution_positions_people", ["institution_position_id", "person_id"], :name => "institution_positions_people_idx"
 
+  create_table "key_metrics", :force => true do |t|
+    t.string   "name"
+    t.text     "target"
+    t.integer  "metric_item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "key_metrics_projects", :id => false, :force => true do |t|
+    t.integer "key_metric_id"
+    t.integer "project_id"
+  end
+
+  create_table "metric_items", :force => true do |t|
+    t.string   "name"
+    t.string   "datatype"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notes", :force => true do |t|
     t.text     "text"
     t.integer  "notable_id"
@@ -427,7 +447,7 @@ ActiveRecord::Schema.define(:version => 20110329183255) do
   add_index "people", ["race_type_id"], :name => "index_people_on_race_type_id"
   add_index "people", ["specialty_id"], :name => "index_people_on_specialty_id"
 
-  create_table "people_time_entries", :force => true do |t|
+  create_table "people_time_entries", :id => false, :force => true do |t|
     t.integer "person_id"
     t.integer "time_entry_id"
   end
@@ -435,6 +455,7 @@ ActiveRecord::Schema.define(:version => 20110329183255) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.integer  "organizational_unit_id"
+    t.integer  "service_line_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

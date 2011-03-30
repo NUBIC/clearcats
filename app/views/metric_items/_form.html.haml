@@ -1,0 +1,13 @@
+- form_for(@metric_item) do |f|
+  = f.error_messages
+
+  %p
+    = f.select(:datatype, MetricItem::DATATYPES.collect { |a| [ a, a ] }, { :include_blank => "-- Select Datatype --" })
+    of
+
+  %p
+    = f.label :name
+    = f.text_field :name 
+
+  %p
+    = f.submit 'Save' 

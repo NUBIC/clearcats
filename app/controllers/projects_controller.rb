@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   permit :Admin, :User
-  before_filter :set_organizational_units_for_user
+  before_filter :set_organizational_units_for_user, :set_service_lines_for_user
 
   def index
     params[:page] ||= 1
@@ -66,6 +66,10 @@ class ProjectsController < ApplicationController
   
     def set_organizational_units_for_user
       @user_organizational_units = determine_organizational_units_for_user
+    end
+    
+    def set_service_lines_for_user
+      @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
     end
 
 end

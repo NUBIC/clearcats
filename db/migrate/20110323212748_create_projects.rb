@@ -3,6 +3,7 @@ class CreateProjects < ActiveRecord::Migration
     create_table :projects do |t|
       t.string :name
       t.integer :organizational_unit_id
+      t.integer :service_line_id
 
       t.timestamps
     end

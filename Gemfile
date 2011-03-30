@@ -17,8 +17,6 @@ gem "nokogiri"
 gem "paperclip"
 gem "pg"
 
-# gem "rack-pagespeed"
-
 gem "ruby-oci8"
 gem "searchlogic"
 gem "state_machine"

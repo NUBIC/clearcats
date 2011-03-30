@@ -8,7 +8,7 @@ class CreateTimeEntries < ActiveRecord::Migration
       t.timestamps
     end
     
-    create_table :people_time_entries do |t|
+    create_table :people_time_entries, :id => false do |t|
       t.integer :person_id
       t.integer :time_entry_id
     end
@@ -17,5 +17,6 @@ class CreateTimeEntries < ActiveRecord::Migration
 
   def self.down
     drop_table :time_entries
+    drop_table :people_time_entries
   end
 end

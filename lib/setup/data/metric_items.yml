@@ -1,0 +1,35 @@
+number_of_proposals:
+  datatype: Number
+  name: Proposals
+  
+number_of_awards:
+  datatype: Number
+  name: Awards
+
+number_of_publications:
+  datatype: Number
+  name: Publications
+  
+number_of_resources:
+  datatype: Number
+  name: Resources
+
+number_of_people:
+  datatype: Number
+  name: People
+
+number_of_investigators:
+  datatype: Number
+  name: Investigators
+
+number_of_trainees:
+  datatype: Number
+  name: Trainees
+  
+number_of_events:
+  datatype: Number
+  name: Events
+
+amount_of_awards:
+  datatype: Amount
+  name: Awards

@@ -8,10 +8,14 @@ Feature: Creating a new project
   Scenario: Starting a brand new project
     Given an authenticated user
     When I am on the home page
-    Then I should see "Create Project"
-    When I follow "Create Project"
+    Then I should see "My Projects"
+    When I follow "My Projects"
+    Then I should be on "the projects page"
+    And I should see "New Project"
+    When I follow "New Project"
     Then I should be on "the new project page"
     And I should see "Name"
+    And I should see "Service Line (optional)"
     When I fill in "Name" with "My New Project"
     When I press "Save"
     And I wait 2 seconds
