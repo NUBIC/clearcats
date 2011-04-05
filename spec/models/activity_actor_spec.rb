@@ -1,10 +1,9 @@
 # == Schema Information
-# Schema version: 20110329183255
+# Schema version: 20110331204648
 #
-# Table name: activity_actors
+# Table name: activities_people
 #
 #  id          :integer         not null, primary key
-#  project_id  :integer
 #  activity_id :integer
 #  role_id     :integer
 #  person_id   :integer
@@ -22,9 +21,6 @@ describe ActivityActor do
   
   it { should validate_presence_of(:activity) }
   it { should belong_to(:activity) }
-
-  it { should validate_presence_of(:project) }
-  it { should belong_to(:project) }
 
   it { should validate_presence_of(:role) }
   it { should belong_to(:role) }

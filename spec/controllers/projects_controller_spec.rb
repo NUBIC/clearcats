@@ -31,7 +31,7 @@ describe ProjectsController do
 
       describe "with valid params" do
         it "assigns a newly created project as @project" do
-          Project.stub(:new).with({'these' => 'params'}).and_return(mock_project(:save => true))
+          Project.stub(:new).and_return(mock_project(:save => true))
           post :create, :project => {:these => 'params'}
           assigns[:project].should equal(mock_project)
         end
@@ -45,7 +45,7 @@ describe ProjectsController do
 
       describe "with invalid params" do
         it "assigns a newly created but unsaved project as @project" do
-          Project.stub(:new).with({'these' => 'params'}).and_return(mock_project(:save => false))
+          Project.stub(:new).and_return(mock_project(:save => false))
           post :create, :project => {:these => 'params'}
           assigns[:project].should equal(mock_project)
         end
@@ -110,6 +110,20 @@ describe ProjectsController do
         end
       end
 
+    end
+    
+    describe "DELETE destroy" do
+      it "destroys the requested project" do
+        Project.should_receive(:find).with("37").and_return(mock_project)
+        mock_project.should_receive(:destroy)
+        delete :destroy, :id => "37"
+      end
+
+      it "redirects to the projects list" do
+        Project.stub(:find).and_return(mock_project(:destroy => true))
+        delete :destroy, :id => "1"
+        response.should redirect_to(projects_url)
+      end
     end
     
   end

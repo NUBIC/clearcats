@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   permit :Admin, :User
-  before_filter :set_organizational_units_for_user, :set_service_lines_for_user
+  before_filter :limit_records_on_organizational_units
 
   def index
     params[:page] ||= 1
@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    handle_habtm_association
     @project = Project.new(params[:project])
 
     respond_to do |format|
@@ -50,6 +51,8 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
+    handle_habtm_association
+    
     respond_to do |format|
       if @project.update_attributes(params[:project])
         flash[:notice] = 'Project was successfully updated.'
@@ -62,14 +65,41 @@ class ProjectsController < ApplicationController
     end
   end  
   
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(projects_path) }
+      format.xml  { head :ok }
+    end
+  end
+  
   private
   
-    def set_organizational_units_for_user
+    def limit_records_on_organizational_units
       @user_organizational_units = determine_organizational_units_for_user
+      @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
+      @key_metrics = KeyMetric.for_organizational_units(@user_organizational_units)
     end
     
-    def set_service_lines_for_user
-      @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
+    def handle_habtm_association
+      if params[:project] && params[:project][:key_metrics_attributes]
+
+        km_ids = []
+
+        key_metrics_attributes = params[:project].delete("key_metrics_attributes")
+
+        if key_metrics_attributes
+          key_metrics_attributes.each do |k, v|
+            km_ids << v["id"] unless v["_destroy"] == "1"
+          end
+        end
+
+        Rails.logger.info("~~~ adding #{km_ids.join(',')} to project")
+
+        params[:project][:key_metric_ids] = km_ids
+      end
     end
 
 end

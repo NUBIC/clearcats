@@ -2,8 +2,11 @@ class CreateKeyMetrics < ActiveRecord::Migration
   def self.up
     create_table :key_metrics do |t|
       t.string :name
-      t.text :target
-      t.integer :metric_item_id
+      t.integer :organizational_unit_id
+      t.integer :target_metric_id
+      
+      t.string :datatype
+      t.text :note
 
       t.timestamps
     end

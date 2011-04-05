@@ -2,7 +2,7 @@
 
 .page_section
   - if @key_metrics.blank?
-    .no_records No key metrics were found.
+    .no_records No metrics were found.
   - else
     .records_header
       .page_entries_info
@@ -14,14 +14,22 @@
           %th.select_record
             Select
           %th
-            Name
+            = order @search, :by => :name, :as => "Name"
+          %th
+            = order @search, :by => :datatype, :as => "Datatype"
+          - if @user_organizational_units.size > 1
+            %th
+              = order @search, :by => :organizational_unit_id, :as => "Organizational Unit"
         - @key_metrics.each do |m|
           %tr{ :class => cycle('even_record', 'odd_record') }
             %td.select_record
               = link_to 'Edit', edit_key_metric_path(m), :class => "edit_link icon_link"
             %td
               = h m.to_s
-
+            %td
+              = h m.datatype
+            %td
+              = h m.organizational_unit
   = will_paginate @key_metrics
 
 .links

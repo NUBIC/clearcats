@@ -15,12 +15,15 @@
             Select
           %th
             Name
+          %th
         - @projects.each do |proj|
           %tr{ :class => cycle('even_record', 'odd_record') }
             %td.select_record
               = link_to 'Edit', edit_project_path(proj), :class => "edit_link icon_link"
             %td
               = h proj.to_s
+            %td
+              = link_to 'Delete', proj, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
 
   = will_paginate @projects
 

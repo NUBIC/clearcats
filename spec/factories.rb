@@ -258,7 +258,6 @@ Factory.define :role do |r|
 end
 
 Factory.define :activity_actor do |a|
-  a.project { |a| a.association(:project) }
   a.activity { |a| a.association(:activity) }
   a.role { |a| a.association(:role) }
   a.person { |a| a.association(:person) }
@@ -274,7 +273,13 @@ Factory.define :note do |note|
   note.text "This is the note"
 end
 
-Factory.define :metric_item do |item|
-  item.name "Grants"
-  item.datatype "Amount"
+Factory.define :key_metric do |km|
+  km.name "Grants"
+  km.datatype "Amount"
+end
+
+Factory.define :target_metric do |tm|
+  tm.name "Grants"
+  tm.number 20
+  tm.datatype "Percentage"
 end

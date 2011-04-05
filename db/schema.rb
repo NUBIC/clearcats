@@ -9,20 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330192542) do
+ActiveRecord::Schema.define(:version => 20110331204648) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
+    t.text     "description"
     t.integer  "project_id"
     t.integer  "activity_type_id"
-    t.datetime "due_at"
+    t.datetime "event_date"
     t.text     "deliverable"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "activity_actors", :force => true do |t|
-    t.integer  "project_id"
+  create_table "activities_people", :force => true do |t|
     t.integer  "activity_id"
     t.integer  "role_id"
     t.integer  "person_id"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110330192542) do
     t.datetime "updated_at"
   end
 
-  add_index "activity_actors", ["project_id", "activity_id", "role_id", "person_id"], :name => "project_activity_role_person_uniq_idx", :unique => true
+  add_index "activities_people", ["activity_id", "role_id", "person_id"], :name => "activity_role_person_uniq_idx", :unique => true
 
   create_table "activity_codes", :force => true do |t|
     t.string   "code"
@@ -228,6 +228,18 @@ ActiveRecord::Schema.define(:version => 20110330192542) do
     t.string   "updated_by"
   end
 
+  create_table "data_definitions", :force => true do |t|
+    t.string   "name"
+    t.text     "definition"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "data_definitions_key_metrics", :id => false, :force => true do |t|
+    t.integer "key_metric_id"
+    t.integer "data_definition_id"
+  end
+
   create_table "degree_types", :force => true do |t|
     t.string   "type"
     t.string   "name"
@@ -313,8 +325,10 @@ ActiveRecord::Schema.define(:version => 20110330192542) do
 
   create_table "key_metrics", :force => true do |t|
     t.string   "name"
-    t.text     "target"
-    t.integer  "metric_item_id"
+    t.integer  "organizational_unit_id"
+    t.integer  "target_metric_id"
+    t.string   "datatype"
+    t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -322,13 +336,6 @@ ActiveRecord::Schema.define(:version => 20110330192542) do
   create_table "key_metrics_projects", :id => false, :force => true do |t|
     t.integer "key_metric_id"
     t.integer "project_id"
-  end
-
-  create_table "metric_items", :force => true do |t|
-    t.string   "name"
-    t.string   "datatype"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "notes", :force => true do |t|
@@ -375,6 +382,15 @@ ActiveRecord::Schema.define(:version => 20110330192542) do
   add_index "organizations", ["code"], :name => "index_organizations_on_code"
   add_index "organizations", ["name"], :name => "index_organizations_on_name"
   add_index "organizations", ["type"], :name => "index_organizations_on_type"
+
+  create_table "outcome_metrics", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "amount"
+    t.string   "name"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "participating_organizations", :force => true do |t|
     t.string   "name"
@@ -456,6 +472,8 @@ ActiveRecord::Schema.define(:version => 20110330192542) do
     t.string   "name"
     t.integer  "organizational_unit_id"
     t.integer  "service_line_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -662,6 +680,15 @@ ActiveRecord::Schema.define(:version => 20110330192542) do
   end
 
   add_index "surveys", ["access_code"], :name => "surveys_ac_idx", :unique => true
+
+  create_table "target_metrics", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "datatype"
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "time_entries", :force => true do |t|
     t.integer  "activity_id"

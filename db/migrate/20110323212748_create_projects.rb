@@ -4,6 +4,8 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name
       t.integer :organizational_unit_id
       t.integer :service_line_id
+      t.datetime :start_at
+      t.datetime :end_at
 
       t.timestamps
     end

@@ -60,6 +60,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :specialties, :only => [ :index ]
 
   map.resources :users, :except => [ :destroy, :show ]
+  map.resources :roles, :except => [ :destroy, :show ]
 
   map.connect 'reports/:action', :controller => "reports"
   # Sample resource route with options:

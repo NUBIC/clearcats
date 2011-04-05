@@ -1,44 +1,57 @@
 - form_for(@project) do |f|
   = f.error_messages
-  
-  - if @user_organizational_units.size > 1
-    %p
-      = f.label "organizational_unit_id", "Organizational Unit"
-      %br
-      = f.select(:organizational_unit_id, @user_organizational_units.sort_by{|e| e.name}.map{|u| [u.to_s, u.id]}, { :include_blank => "-- Select Organizational Unit --" })
-  - else
-    = f.hidden_field :organizational_unit_id
-  
-  %p
-    = f.label :name
-    %span.required *
-    %br
-    = f.text_field :name
-  
-  %p
-    = f.label "service_line_id", "Service Line (optional)"
-    = link_to "Manage Service Lines", service_lines_path
-    %br
-    = f.select(:service_line_id, @service_lines.sort_by{|e| e.name}.map{|u| [u.to_s, u.id]}, { :include_blank => "-- Select Service Line --" })
-  
-  %h5
-    Addresses Metric
-  %p
-    TODO: add metrics here
+
+  .page_section
+    = render "shared/organizational_unit_select", :f => f
     
-  %table{ :class => "records notes" }
-    %thead
-      %tr
-        %th
-          Notes
-        %th{ :colspan => '2' }
-    %tbody{ :class => "nested_records" }
-      - f.fields_for :notes do |note_form|
-        = render 'note_fields', :f => note_form
-    %tfoot
-      %tr
-        %td{ :colspan => '3' }
-          = link_to_add_fields "Add Note", f, :notes
+    %p
+      = f.label :name
+      %span.required *
+      = f.text_field :name
   
+    %p
+      = f.label "service_line_id", "Service Line (optional)"
+      = link_to "Manage Service Lines", service_lines_path
+      %br
+      = f.select(:service_line_id, @service_lines.sort_by{|e| e.name}.map{|u| [u.to_s, u.id]}, { :include_blank => "-- Select Service Line --" })
+
+  .page_section
+    #key_metrics
+      %p
+        %b
+          Key Metrics Addressed 
+        %span
+          = link_to "Manage Key Metrics", key_metrics_path
+      %table{ :class => "records key_metrics" }
+        %thead
+          %tr
+            %th
+              Metric
+            %th
+        %tbody{ :class => "nested_records" }
+          - f.fields_for :key_metrics do |key_metric_form|
+            = render 'key_metric_fields', :f => key_metric_form
+        %tfoot
+          %tr
+            %td{ :colspan => '2' }
+              = link_to_add_fields "Add Key Metric", f, :key_metrics
+
+
+  .page_section
+    #notes
+      %table{ :class => "records notes" }
+        %thead
+          %tr
+            %th
+              Notes
+            %th{ :colspan => '2' }
+        %tbody{ :class => "nested_records" }
+          - f.fields_for :notes do |note_form|
+            = render 'note_fields', :f => note_form
+        %tfoot
+          %tr
+            %td{ :colspan => '3' }
+              = link_to_add_fields "Add Note", f, :notes
+
   %p
     = f.submit "Save", :disable_with => 'Saving...'

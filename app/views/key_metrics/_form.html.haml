@@ -1,18 +1,23 @@
 - form_for(@key_metric) do |f|
   = f.error_messages
 
+  = render "shared/organizational_unit_select", :f => f
+
   %p
     = f.label :name
     = f.text_field :name 
 
   %p
-    = f.label :metric_item_id, "Metric"
-    = f.select(:metric_item_id, MetricItem.all.sort_by{ |m| m.to_s }.collect { |a| [ a.to_s, a.id ] }, { :include_blank => "-- Select Metric --" }) 
+    = f.label :datatype
+    = f.select(:datatype, KeyMetric::DATATYPES.collect { |a| [ a, a ] }, { :include_blank => "-- Select Datatype --" })
   
   %p
-    = f.label :target
+    = f.label :note
     %br
-    = f.text_area :target 
+    = f.text_area :note 
+
+  %p
+    TODO: associate target metric
 
   %p
     = f.submit 'Save' 

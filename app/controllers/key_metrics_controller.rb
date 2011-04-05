@@ -1,4 +1,7 @@
 class KeyMetricsController < ApplicationController
+  permit :Admin, :User
+  before_filter :limit_records_on_organizational_units
+  
   # GET /key_metrics
   # GET /key_metrics.xml
   def index
@@ -46,7 +49,7 @@ class KeyMetricsController < ApplicationController
 
     respond_to do |format|
       if @key_metric.save
-        format.html { redirect_to(@key_metric, :notice => 'Key Metric was successfully created.') }
+        format.html { redirect_to(key_metrics_path, :notice => 'Key Metric was successfully created.') }
         format.xml  { render :xml => @key_metric, :status => :created, :location => @key_metric }
       else
         format.html { render :action => "new" }
@@ -62,7 +65,7 @@ class KeyMetricsController < ApplicationController
 
     respond_to do |format|
       if @key_metric.update_attributes(params[:key_metric])
-        format.html { redirect_to(@key_metric, :notice => 'Key Metric was successfully updated.') }
+        format.html { redirect_to(key_metrics_path, :notice => 'Key Metric was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,4 +85,12 @@ class KeyMetricsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+    def limit_records_on_organizational_units
+      @user_organizational_units = determine_organizational_units_for_user
+      @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
+      @key_metrics = KeyMetric.for_organizational_units(@user_organizational_units)
+    end
 end

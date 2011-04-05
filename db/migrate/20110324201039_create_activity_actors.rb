@@ -1,7 +1,6 @@
 class CreateActivityActors < ActiveRecord::Migration
   def self.up
-    create_table :activity_actors do |t|
-      t.integer :project_id
+    create_table :activities_people do |t|
       t.integer :activity_id
       t.integer :role_id
       t.integer :person_id
@@ -11,6 +10,6 @@ class CreateActivityActors < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :activity_actors
+    drop_table :activities_people
   end
 end

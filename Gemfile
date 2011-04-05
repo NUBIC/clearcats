@@ -9,6 +9,7 @@ gem "bcdatabase"
 gem "bcsec", "~> 2.0.6"
 gem "bcsec-rails"
 gem "bundler", "~> 1.0.0"
+
 gem "chronic"
 gem "facets"
 gem "fastercsv"

@@ -79,7 +79,11 @@ module NavigationHelpers
     when /the edit project page/
       edit_project_path(Project.last)
   
-    
+    ### KEY METRICS ###
+
+    when /the edit key metric page/
+      edit_key_metric_path(KeyMetric.last)
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

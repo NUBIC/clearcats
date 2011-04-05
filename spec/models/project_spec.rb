@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110329183255
+# Schema version: 20110331204648
 #
 # Table name: projects
 #
@@ -7,6 +7,8 @@
 #  name                   :string(255)
 #  organizational_unit_id :integer
 #  service_line_id        :integer
+#  start_at               :datetime
+#  end_at                 :datetime
 #  created_at             :datetime
 #  updated_at             :datetime
 #

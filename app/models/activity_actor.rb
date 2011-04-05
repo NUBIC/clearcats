@@ -1,10 +1,9 @@
 # == Schema Information
-# Schema version: 20110329183255
+# Schema version: 20110331204648
 #
-# Table name: activity_actors
+# Table name: activities_people
 #
 #  id          :integer         not null, primary key
-#  project_id  :integer
 #  activity_id :integer
 #  role_id     :integer
 #  person_id   :integer
@@ -14,12 +13,12 @@
 
 class ActivityActor < ActiveRecord::Base
 
-  belongs_to :project
+  set_table_name "activities_people"
+
   belongs_to :activity
   belongs_to :role
   belongs_to :person
 
-  validates_presence_of :project
   validates_presence_of :activity
   validates_presence_of :role
   validates_presence_of :person
