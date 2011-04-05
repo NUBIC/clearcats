@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110331204648) do
+ActiveRecord::Schema.define(:version => 20110405182402) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -603,6 +603,18 @@ ActiveRecord::Schema.define(:version => 20110331204648) do
   end
 
   add_index "service_lines", ["name"], :name => "index_service_lines_on_name"
+
+  create_table "service_requests", :force => true do |t|
+    t.integer  "service_line_id"
+    t.integer  "organizational_unit_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "project"
+    t.text     "abstract"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "services", :force => true do |t|
     t.integer  "service_line_id"

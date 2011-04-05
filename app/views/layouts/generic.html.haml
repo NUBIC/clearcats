@@ -2,7 +2,7 @@
 
 %html{ :xmlns =>"http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en" }
   = render 'shared/layout_head'
-
+  
   %body
     .container
       #home
@@ -10,19 +10,11 @@
       
       #menu
         
-      = render 'shared/layout_header', :menus => "shared/menus", :show_logout => true
+      = render 'shared/layout_header', :menus => "shared/generic_menus", :show_logout => false
       .clear
 
       #main
-        - flash.each do |message_type, message|
-          %div{ :class => "message", :id => message_type }
-            - if message_type == :link_notice or message_type == :link_warning
-              = message
-            - else
-              = h(message)
-      
         = yield
 
       .clear
       = render 'shared/layout_footer'
-

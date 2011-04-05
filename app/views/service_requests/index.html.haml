@@ -1,0 +1,29 @@
+<h1>Listing service_requests</h1>
+
+- title "Service Requests"
+- if @service_requests.blank?
+  %p.no_records
+    No service requests were found.
+- else
+  %table.records
+    %tr
+      %th Name
+      %th Service Line
+      %th Organizational Unit
+      %th First Name
+      %th Last Name
+      %th Email
+      %th Project
+      %th{:colspan => "2"}
+    - @service_requests.each do |service_request|
+      %tr
+        %td= h service_request.name
+        %td= h service_request.service_line
+        %td= h service_request.first_name
+        %td= h service_request.last_name
+        %td= h service_request.name
+        %td= h service_request.email
+        %td= h service_request.project
+        %td= link_to 'Edit', edit_service_request_path(service_request), :class => "edit_link icon_link"
+        %td= link_to 'Delete', service_request, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
+

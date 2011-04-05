@@ -1,0 +1,15 @@
+#header
+  #banner
+    = image_tag("banner_right.jpg", :class => "banner_right") 
+    #fl
+      = image_tag("banner_edge.jpg")
+      = render menus
+      = image_tag("banner_edge.jpg")
+    - if show_logout
+      #menu2
+        %span{:id => "logout_link"}
+          = link_to "logout", "#{cc_prefix_path}/logout", :class => "menu_nav"
+        = session[:name] || session_username
+  #title
+    - if show_title?
+      %span= h(yield(:title))

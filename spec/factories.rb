@@ -283,3 +283,13 @@ Factory.define :target_metric do |tm|
   tm.number 20
   tm.datatype "Percentage"
 end
+
+Factory.define :service_request do |req|
+  req.first_name          "First Name"
+  req.last_name           "Last Name"
+  req.email               "email@dev.null"
+  req.service_line        { |a| a.association(:service_line) }
+  req.organizational_unit { |a| a.association(:organizational_unit) }
+  req.project             "Project"
+  req.abstract            "Abstract"
+end
