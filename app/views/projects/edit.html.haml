@@ -1,5 +1,12 @@
 - stylesheet "projects"
-- javascript "projects_ui"
+- javascript "projects_ui", "jquery.blockUI", "modal_form"
 - title "Edit Project"
 
 = render 'form'
+
+:javascript
+  $(function () {
+    projectsUI = new Clearcats.ProjectsUI({});
+  });
+
+#modal_window

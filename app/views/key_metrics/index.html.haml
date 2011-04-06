@@ -17,9 +17,10 @@
             = order @search, :by => :name, :as => "Name"
           %th
             = order @search, :by => :datatype, :as => "Datatype"
-          - if @user_organizational_units.size > 1
-            %th
+          %th
+            - if @user_organizational_units.size > 1
               = order @search, :by => :organizational_unit_id, :as => "Organizational Unit"
+          
         - @key_metrics.each do |m|
           %tr{ :class => cycle('even_record', 'odd_record') }
             %td.select_record

@@ -8,3 +8,8 @@ table.key_metrics tr td textarea {
   height: 2em !important;
   width: 90%;
 }
+
+#modal_window {
+  display: none;
+  font-size: 1.125em;
+}

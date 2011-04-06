@@ -5,7 +5,13 @@ class KeyMetricsController < ApplicationController
   # GET /key_metrics
   # GET /key_metrics.xml
   def index
+    
+    @user_organizational_units = determine_org_units_for_user
+
     params[:search] ||= {}
+    usr_org_units = @user_organizational_units.blank? ? [] : @user_organizational_units.collect(&:id)
+    params[:search][:organizational_unit_id_eq_any] ||= usr_org_units
+
     @search = KeyMetric.search(params[:search])
     @key_metrics = @search.paginate(:page => params[:page], :per_page => 20)
 
@@ -29,8 +35,13 @@ class KeyMetricsController < ApplicationController
   # GET /key_metrics/new
   # GET /key_metrics/new.xml
   def new
+    
+    @user_organizational_units = determine_org_units_for_user
     @key_metric = KeyMetric.new
-
+    if @user_organizational_units.size == 1
+      @key_metric.organizational_unit = @user_organizational_units.first
+    end
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @key_metric }

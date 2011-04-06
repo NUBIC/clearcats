@@ -1,0 +1,3 @@
+#service_lines_select
+  - arr = service_lines.sort_by{|e| e.name}.map{|u| [u.to_s, u.id]}
+  = select_tag("project[service_line_id]", options_for_select([["-- Select Service Line --", ""]] + arr, selected))
