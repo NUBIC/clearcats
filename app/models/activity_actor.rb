@@ -23,4 +23,6 @@ class ActivityActor < ActiveRecord::Base
   validates_presence_of :role
   validates_presence_of :person
 
+  attr_accessor :person_select
+
 end

@@ -15,6 +15,12 @@ class PeopleController < ApplicationController
     end
   end
   
+  def select
+    respond_to do |format|
+      format.json { render :text => Person.find_all_like_term(params[:term]).map { |pers| { :id => pers[:id], :label => "#{pers.to_s} #{pers.netid}", :value => "#{pers.to_s} #{pers.netid}"} }.to_json }
+    end
+  end
+  
   def incomplete
     params[:search] ||= Hash.new
     case params[:criteria]

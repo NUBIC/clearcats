@@ -29,6 +29,7 @@ class Activity < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
   has_many :activity_actors
+  accepts_nested_attributes_for :activity_actors, :allow_destroy => true
 
   named_scope :for_organizational_units, 
     lambda { |org_units| 

@@ -1,0 +1,8 @@
+%tr.activity_actor.fields
+  %td
+    = f.text_field :person_select, :class => 'person_select_autocompleter'
+    = f.hidden_field :person_id
+  %td
+    = f.select :role, Role.all.sort_by{ |r| r.name }.map{ |u| [u.to_s, u.id] }, { :include_blank => "-- Select Role --" }
+  %td
+    = link_to_remove_nested_attribute_fields 'Remove', f, :activity_actors

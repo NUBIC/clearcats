@@ -45,7 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :people, :only => [:index, :edit, :update, :new, :create], 
     :member     => { :versions => :get, :revert => :post, :version => :get, :merge => [:get, :post] },
-    :collection => { :upload => [:get, :post], :search => [:get,:post], :search_results => [:get,:post], 
+    :collection => { :upload => [:get, :post], :search => [:get,:post], :search_results => [:get,:post], :select => [:get, :post], 
                      :directory => [:get, :post], :incomplete => :get, :update_ctsa_reporting_year => :post,
                      :era_commons_username_search => [:get, :post] } do |people|
       people.resources :awards

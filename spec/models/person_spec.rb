@@ -314,4 +314,33 @@ describe Person do
     
   end
   
+  context "search criteria of a partial term" do
+    
+    before(:each) do
+      @person = Factory(:person, :netid => "abc123", :email => "pers@dev.null")
+    end
+    
+    it "should find all people with a similar netid" do
+      people = Person.find_all_like_term("abc")
+      people.size.should == 1
+      people.first.should == @person
+    end
+    
+    it "should find all people with a similar email address" do
+      people = Person.find_all_like_term("pers")
+      people.size.should == 1
+      people.first.should == @person
+    end
+    
+    it "should not return duplicates" do
+      person = Factory(:person, :netid => "zzz999", :email => "zzz@dev.null")
+      people = Person.find_all_like_term("zzz")
+      people.size.should == 1
+      people.first.should == person
+    end
+    
+    it "should find all people with a similar last name starting with that term"
+    
+  end
+  
 end

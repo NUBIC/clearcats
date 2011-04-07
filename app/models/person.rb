@@ -372,6 +372,10 @@ class Person < ActiveRecord::Base
   end
 
 
+  def self.find_all_like_term(term)
+    Person.netid_or_email_like(term)
+  end
+
   ###
   #    Parsing data from CSV
   ###

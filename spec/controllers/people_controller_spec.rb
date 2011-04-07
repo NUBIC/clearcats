@@ -311,6 +311,27 @@ describe PeopleController do
         response.should redirect_to :controller => "welcome", :action => "index"
       end 
     end
+    
+    describe "GET select" do
+      
+      describe "with matching criteria" do
+        it "should return the proper json result" do
+          pers = Factory(:person, :netid => "asdf")
+          get :select, :term => "asd"
+          response.body.should == [{ :id => pers.id, :label => "#{pers.to_s} #{pers.netid}", :value => "#{pers.to_s} #{pers.netid}"}].to_json
+        end
+      end
+      
+      describe "without matching criteria" do
+        it "should return an empty collection" do
+          pers = Factory(:person, :netid => "asdf")
+          get :select, :term => "zzz"
+          response.body.should == [].to_json
+        end
+      end
+      
+    end
+    
   end
   
 end

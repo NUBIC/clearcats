@@ -1,12 +1,7 @@
 - stylesheet "activities"
-- javascript 'activities_ui'
+- javascript 'nested_attributes', 'activities_ui'
 - title "Create Activity"
 
 .page_section
   = render 'form'
-    
-:javascript
-  $(function () {
-    activitiesUI = new Clearcats.ActivitiesUI({ activityTypesUrl: '#{activity_types_path(:format => :json)}' });
-  });
 
