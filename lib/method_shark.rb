@@ -43,7 +43,7 @@ class MethodShark
     # Bin-ing all commits on a date as we're just looking at trend
     complexities = {}
     sha1s_of_commits.each do |sha1|
-      complexities[commit_date_of(sha1)] = complexity_of(sha1)
+      complexities[commit_date_of(sha1)] = [sha1, complexity_of(sha1)]
     end
     complexities
   end
@@ -83,4 +83,4 @@ end
 
 # fn = "lib/cos_scraper.rb"
 # mn = "CosScraper#import_opportunities"
-# MethodShark.trail_for(fn,mn).each { |dt,c| puts "#{dt.strftime('%D')}, #{c}" }
+# MethodShark.trail_for(fn,mn).each { |dt,c| puts "#{dt.strftime('%D')}, #{c[0]}, #{c[1]}" }
