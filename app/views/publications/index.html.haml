@@ -1,5 +1,5 @@
 - stylesheet "people", "publications", "services"
-- javascript "jquery.blockUI", "modal_form"
+- javascript "jquery.blockUI", "modal_form", "publications_ui"
 - title_text = params[:view_all].blank? ? "Publications since #{SYSTEM_CONFIG['ctsa_base_line_year']} for #{@person}" : "All Publications for #{@person}"
 - title title_text
 
@@ -7,7 +7,10 @@
   $(function () { $(".datepicker").live('mouseover', function() { $(this).datepicker(); }); });
   $(function () { $("form").dirty_form(); });
   $(function () { $("a.menu_nav").dirty_stopper(); });
-  
+  $(function () {
+    var sortByUrlMap = #{publications_sort_by_url_map(@search).to_json};
+    var ui = new Clearcats.PublicationsUI({ sortByUrlMap: sortByUrlMap });
+  });
 = render "/people/client_menu"
 
 .page_section

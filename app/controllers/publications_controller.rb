@@ -19,10 +19,14 @@ class PublicationsController < ApplicationController
 
       @search = Publication.search(@search_params)
       @publications = @search.all
+      respond_to do |format|
+        format.html { request.xhr? ?  (render :partial => 'publications/list', :locals => {:publications => @publications, :person => @person, :search => @search_params, :service => nil}) : (render 'index') }
+      end
     else
       flash[:notice] = "Publications can be viewed only in the context of a person."
       redirect_to people_path
     end
+    
   end
   
   def search

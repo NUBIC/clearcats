@@ -8,6 +8,18 @@
   - form_tag(update_ctsa_reporting_year_publications_path) do
     = hidden_field_tag "person_id", @person.id
     - current_year = current_ctsa_reporting_year
+    
+    - @publications.each do |pub|
+      .page_section
+        = link_to "Select", { :controller => "/publications", :action => "edit", :id => pub, :search => params[:search] }.merge(pub_association), { :class => "edit_modal_form_link edit_link icon_link", :onclick => "return edit_modal_form(this)" }
+        %br
+        = pub.formatted_publication_date
+        = pub.journal
+        %br
+        = pub.title
+        %br
+        = pub.abstract
+    
     %table.records
       %tr
         - unless @service
