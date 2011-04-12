@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
   permit :Admin, :User
+  layout :choose_layout
 
   def index
     @user_organizational_units = determine_org_units_for_user
@@ -33,6 +34,18 @@ class ServicesController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @service }
+    end
+  end
+  
+  require 'ostruct'
+  def chart
+    svcs_2008 = OpenStruct.new(:year => 2008, :count => 0)
+    svcs_2009 = OpenStruct.new(:year => 2009, :count => 0)
+    svcs_2010 = OpenStruct.new(:year => 2010, :count => 0)
+    @services_by_year = [svcs_2008, svcs_2009, svcs_2010]
+    @services = Service.all.select {|svc| !svc.person.nil? }
+    @services.each do |svc|
+      @services_by_year.each { |svc4yr| svc4yr.count += 1 if svc.ctsa_reporting_years.include?(svc4yr.year) }
     end
   end
 
@@ -245,6 +258,14 @@ class ServicesController < ApplicationController
       else
         flash[:notice] = "#{@service.service_line} for #{@service.person} is complete" if @service.state == "completed"
         redirect_to :controller => "services", :action => @service.state, :id => @service
+      end
+    end
+  
+    def choose_layout    
+      if [ 'chart' ].include? action_name
+        'chart'
+      else
+        'application'
       end
     end
   

@@ -1,0 +1,43 @@
+!!!
+
+%html{ :xmlns =>"http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en" }
+  %head
+    %meta{ "http-equiv" => "content-type", :content => "text/html;charset=UTF-8" }
+    %title= "clearcats :: " + h(yield(:title) || "Northwestern University")
+    = stylesheet_link_tag('blueprint/screen')
+    = stylesheet_link_tag('blueprint/print', :media => "print")
+    = stylesheet_link_tag('application', :media => "all")
+    = stylesheet_link_tag('jquery-ui-1.8.6.custom', 'facebox')
+    = stylesheet_link_tag('ddsmoothmenu', 'ddsmoothmenu-v')
+    = stylesheet_link_tag('ddsmoothmenu-images') if has_sub_uri?
+    = yield :stylesheet
+    = javascript_include_tag("application", "ddsmoothmenu", "jquery-1.4.2.min", "jquery-ui-1.8.6.custom.min", "jrails", "jquery.livequery", "jquery.tooltip.min", "jquery.dirtyform", "facebox")
+    = yield :javascript
+    = surveyor_includes if controller_name == "surveyor"
+    = yield(:head)
+    = render "shared/menu_init_script"
+    = Seer.init_visualization
+
+  %body
+    .container
+      #home
+        = link_to("clearcats", "#{cc_prefix_path}/", :class => "no_link menu_nav")
+      
+      #menu
+        
+      = render 'shared/layout_header', :menus => "shared/menus", :show_logout => true
+      .clear
+
+      #main
+        - flash.each do |message_type, message|
+          %div{ :class => "message", :id => message_type }
+            - if message_type == :link_notice or message_type == :link_warning
+              = message
+            - else
+              = h(message)
+      
+        = yield
+
+      .clear
+      = render 'shared/layout_footer'
+

@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
                      :continue => [:get, :put], :identified => [:get, :put], :surveyable => :get, :survey => :post,
                      :create_service_for_person => :post,
                      :choose_awards => :get, :choose_organizational_units => :get, :choose_publications => :get, :choose_approvals => :get }, 
-    :collection => { :choose_service_line => :get, :choose_person => :get, :my_services => :get }
+    :collection => { :choose_service_line => :get, :choose_person => :get, :my_services => :get, :chart => :get }
   
   map.resources :people, :only => [:index, :edit, :update, :new, :create], 
     :member     => { :versions => :get, :revert => :post, :version => :get, :merge => [:get, :post] },

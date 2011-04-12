@@ -21,6 +21,7 @@ class Service < ActiveRecord::Base
   belongs_to :person
   
   delegate :organizational_unit, :to => :service_line
+  delegate :ctsa_reporting_years, :to => :person
   
   before_save :add_organizational_unit_to_person
   before_destroy :remove_organizational_unit_from_person

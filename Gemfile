@@ -20,6 +20,7 @@ gem "pg"
 
 gem "ruby-oci8"
 gem "searchlogic"
+gem "seer"
 gem "state_machine"
 gem "surveyor", ">= 0.16.1"
 gem "will_paginate"
@@ -33,6 +34,7 @@ group :development do
   gem "roodi"
   gem "ruby-prof"
   gem 'turbulence'
+
 end
 
 group :test do

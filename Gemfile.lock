@@ -187,7 +187,7 @@ GEM
     ruby2ruby (1.2.5)
       ruby_parser (~> 2.0)
       sexp_processor (~> 3.0)
-    ruby_parser (2.0.5)
+    ruby_parser (2.0.6)
       sexp_processor (~> 3.0)
     rubycas-client (2.1.0)
       activesupport
@@ -197,6 +197,7 @@ GEM
       activerecord (>= 2.3)
     searchlogic (2.4.27)
       activerecord (>= 2.0.0)
+    seer (0.9.1)
     selenium-webdriver (0.1.2)
       childprocess (~> 0.1.5)
       ffi (~> 0.6.3)
@@ -270,6 +271,7 @@ DEPENDENCIES
   ruby-oci8
   ruby-prof
   searchlogic
+  seer
   shoulda
   state_machine
   surveyor (>= 0.16.1)
