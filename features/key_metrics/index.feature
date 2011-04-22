@@ -8,7 +8,6 @@ Feature: Viewing all key metrics
     And I should see "No metrics were found."
     And I should see "New Key Metric"
 
-  @javascript
   Scenario: Viewing all key metrics
     Given an authenticated admin user
     And a key metric already exists with name: "My Key Metric"

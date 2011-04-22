@@ -4,7 +4,6 @@ Feature: Creating a new project
   Background:
     Given a service line already exists with name: "My Service Line"
   
-  @javascript
   Scenario: Starting a brand new project
     Given an authenticated user
     When I am on the home page

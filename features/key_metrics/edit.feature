@@ -3,7 +3,6 @@ Feature: Editing an existing metric
   Background:
     Given a key metric already exists with name: "My New Metric"
   
-  @javascript
   Scenario: Editing the key metric
     Given an authenticated admin user
     When I am on the key metrics page

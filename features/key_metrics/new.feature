@@ -1,7 +1,6 @@
 Feature: Creating a new key metric
   A user is expected to name the key metric and datatype
   
-  @javascript
   Scenario: Creating a brand new key metric
     Given an authenticated user
     When I am on "the key_metrics page"

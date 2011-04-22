@@ -8,7 +8,6 @@ Feature: Viewing all activities
     And I should see "No activities were found."
     And I should see "New Activity"
 
-  @javascript
   Scenario: Viewing all activities
     Given an authenticated admin user
     And an activity already exists with name: "My Fine Activity"

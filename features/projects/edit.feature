@@ -3,7 +3,6 @@ Feature: Editing an existing project
   Background:
     Given a project already exists with name: "My New Project"
   
-  @javascript
   Scenario: Editing the project
     Given an authenticated admin user
     When I am on the projects page
