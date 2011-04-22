@@ -1,4 +1,4 @@
-- form_for @search, :url => {:controller => "services", :action => "index", :method => :get}, :html => {:class => "services_search_form"} do |f|
+= form_for @search, :url => {:controller => "services", :action => "index", :method => :get}, :html => {:class => "services_search_form"} do |f|
   .span-10
     %p
       = f.label "organizational_unit_id_equals", "Organizational Unit"

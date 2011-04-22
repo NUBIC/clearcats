@@ -6,7 +6,7 @@ Clearcats.ActivitiesUI = function (config) {
         source: config.activityTypesUrl,
         minLength: 3,
         select: function(event, ui) { 
-          $('.department_autocomplete').val(ui.item.label);
+          $('.activity_type_autocompleter').val(ui.item.label);
         }
       });
     },
@@ -26,7 +26,13 @@ Clearcats.ActivitiesUI = function (config) {
                                                               association: 'activity_actors', 
                                                               content: config.activityActorsTemplate, 
                                                               addHandler: ui.setupSelectPersonAutocompleter, 
+                                                              caller: this }),
+  notesNestedAttributesForm = new NestedAttributes({ container: $('.notes'), 
+                                                              association: 'notes', 
+                                                              content: config.notesTemplate, 
+                                                              addHandler: null,
                                                               caller: this });
+
 
   ui.setupActivityTypeAutocompleter();
   ui.setupSelectPersonAutocompleter();

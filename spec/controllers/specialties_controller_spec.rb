@@ -15,11 +15,11 @@ describe SpecialtiesController do
       end
 
       it "assigns all specialties as @specialties" do
-        s = mock_model(Specialty, :to_s => "q")
+        s = Factory(:specialty, :name => "q", :code => "c")
         specialties = [s]
-        Specialty.should_receive(:find).with(:all, {:conditions=>["lower(name) like ? or code like ?", "%q%", "%q%"]}).and_return(specialties)
-        get :index, :term => "q"
-        assigns[:specialties].should == [{:value=>"q", :label=>"q", :id=>s.id}]
+        Specialty.should_receive(:all).and_return(specialties)
+        get :index, :term => "q", :format => :json
+        assigns[:specialties].should == [{"id"=>s.id, "label"=>"c q", "value"=>"c q"}]
       end
     end
   end  

@@ -18,7 +18,7 @@ describe ContactListsController do
       end
   
       it "assigns all contact_lists as @contact_lists" do
-        ContactList.should_receive(:find).with(:all).and_return([mock_contact_list])
+        ContactList.stub_chain(:search, :all).and_return([mock_contact_list])
         get :index
         assigns[:contact_lists].should == [mock_contact_list]
       end

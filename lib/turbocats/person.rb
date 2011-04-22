@@ -1,10 +1,18 @@
 
-require 'activesupport'
+require 'active_support'
 class Turbocats::Person < Turbocats::Base
   set_table_name 'people'
   set_primary_key 'id'
   
   acts_as_importable
+  
+  class << self
+    def instance_method_already_implemented?(method_name)
+      return true if method_name == 'invalid?'
+      super
+    end
+  end
+  
   
   def to_s
     "[#{self.id}] #{self.last_name}, #{self.first_name}"

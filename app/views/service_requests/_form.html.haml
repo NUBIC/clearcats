@@ -1,5 +1,5 @@
-- form_for(@service_request) do |f|
-  = f.error_messages
+= form_for(@service_request) do |f|
+  = render "shared/error_messages", :object => f.object
   %p
     = f.label :organizational_unit_id, "NUCATS Center/Program"
     %br

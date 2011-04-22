@@ -6,7 +6,7 @@ module ClearCats
       attr_accessor :path
       
       def initialize(service, identifier)
-        services = YAML.load_file(SERVICES_CONFIG_FILE)[ENV['RAILS_ENV']]
+        services = YAML.load_file(SERVICES_CONFIG_FILE)[Rails.env]
         host = services[service][:host]
         path = services[service][:path][identifier]
         path = "/" if path.blank?

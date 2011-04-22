@@ -1,5 +1,5 @@
-- form_for(@key_metric) do |f|
-  = f.error_messages
+= form_for(@key_metric) do |f|
+  = render "shared/error_messages", :object => f.object
 
   = render "shared/organizational_unit_select", :f => f
 

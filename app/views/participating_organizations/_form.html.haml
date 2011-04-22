@@ -1,7 +1,7 @@
 
 .page_section
-  - form_for(@participating_organization) do |f| 
-    = f.error_messages
+  = form_for(@participating_organization) do |f| 
+    = render "shared/error_messages", :object => f.object
 
     %p
       = f.label :name

@@ -11,9 +11,9 @@
 
 = render "menu"
 
-- form_for @service.person, :url => { :controller => "services", :action => "update_approvals", :id => @service.id } do |f|
+= form_for @service.person, :url => { :controller => "services", :action => "update_approvals", :id => @service.id } do |f|
   .page_section
-    = f.error_messages
+    = render "shared/error_messages", :object => f.object
 
     = hidden_field_tag "service[state]", "completed"
 
@@ -35,7 +35,7 @@
             CTSA Reportable
           %th
       %tbody{ :class => "nested_records" }
-        - f.fields_for :approvals do |approval_form|
+        = f.fields_for :approvals do |approval_form|
           = render '/approvals/approval_fields', :f => approval_form
       %tfoot
         %tr

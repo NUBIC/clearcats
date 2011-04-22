@@ -1,35 +1,43 @@
-# IMPORTANT: Setting config.cache_classes to false is known to
-# break Cucumber's use_transactional_fixtures method.
-# For more information see https://rspec.lighthouseapp.com/projects/16211/tickets/165
-config.cache_classes = true
+Clearcats::Application.configure do
+  # IMPORTANT: Setting config.cache_classes to false is known to
+  # break Cucumber's use_transactional_fixtures method.
+  # For more information see https://rspec.lighthouseapp.com/projects/16211/tickets/165
+  config.cache_classes = true
 
-# Log error messages when you accidentally call methods on nil.
-config.whiny_nils = true
+  # Log error messages when you accidentally call methods on nil.
+  config.whiny_nils = true
 
-# Show full error reports and disable caching
-config.action_controller.consider_all_requests_local = true
-config.action_controller.perform_caching             = false
+  # Show full error reports and disable caching
+  config.consider_all_requests_local       = true
+  config.action_controller.perform_caching = false
 
-# Disable request forgery protection in test environment
-config.action_controller.allow_forgery_protection    = false
+  # Raise exceptions instead of rendering exception templates
+  config.action_dispatch.show_exceptions = false
 
-# Tell Action Mailer not to deliver emails to the real world.
-# The :test delivery method accumulates sent emails in the
-# ActionMailer::Base.deliveries array.
-config.action_mailer.delivery_method = :test
+  # Disable request forgery protection in test environment
+  config.action_controller.allow_forgery_protection    = false
 
-config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.2' unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber-rails'))
-config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
-config.gem 'capybara',         :lib => false, :version => '>=0.3.5' unless File.directory?(File.join(Rails.root, 'vendor/plugins/capybara'))
+  # Tell Action Mailer not to deliver emails to the real world.
+  # The :test delivery method accumulates sent emails in the
+  # ActionMailer::Base.deliveries array.
+  config.action_mailer.delivery_method = :test
 
-config.after_initialize do
+  # Print deprecation notices to the Rails logger
+  config.active_support.deprecation = :log
+
+  # config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.2' unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber-rails'))
+  # config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
+  # config.gem 'capybara',         :lib => false, :version => '>=0.3.5' unless File.directory?(File.join(Rails.root, 'vendor/plugins/capybara'))
+
+  config.after_initialize do
   
-  # look at db/user-setup.sql for user and group security settings when developing in a local environment
-  Bcsec.configure do
-    ui_mode :form
-    login_config = File.join(RAILS_ROOT, %w(config logins development.yml))
-    authorities Bcsec::Authorities::Static.from_file(login_config)
+    # look at db/user-setup.sql for user and group security settings when developing in a local environment
+    Bcsec.configure do
+      ui_mode :form
+      login_config = File.join(Rails.root, %w(config logins development.yml))
+      authorities Bcsec::Authorities::Static.from_file(login_config)
+    end
+  
+    PaperTrail.enabled = true
   end
-  
-  PaperTrail.enabled = true
 end

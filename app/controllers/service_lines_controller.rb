@@ -62,7 +62,7 @@ class ServiceLinesController < ApplicationController
       if @service_line.save
         format.html do 
           flash[:notice] = 'Service Line was successfully created.'
-          redirect_to(service_lines_url(:search => { :order => "descend_by_created_at" }))
+          redirect_to(service_lines_url(:search => { :meta_sort => "descend_by_created_at" }))
         end
         format.js do
           set_service_lines
@@ -87,7 +87,7 @@ class ServiceLinesController < ApplicationController
     respond_to do |format|
       if @service_line.update_attributes(params[:service_line])
         flash[:notice] = 'Service Line was successfully updated.'
-        format.html { redirect_to(service_lines_url(:search => { :order => "descend_by_created_at" })) }
+        format.html { redirect_to(service_lines_url(:search => { :meta_sort => "descend_by_created_at" })) }
         format.xml  { head :ok }
       else
         @user_organizational_units = determine_org_units_for_user

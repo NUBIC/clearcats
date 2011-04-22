@@ -2,9 +2,11 @@
   .no-records
     No awards found.
 - else
+  #search_results
+    Results
   .records_header
     .page_entries_info
-      = page_entries_info @awards, :entry_name => "record"
+      = raw page_entries_info @awards, :entry_name => "record"
     = will_paginate @awards
 
   - current_year = current_ctsa_reporting_year
@@ -13,15 +15,15 @@
       %th Select
       %th Reporting Years
       %th
-        = order @search, :by => :person_last_name, :as => "Person"
+        = sort_link @search, :person_last_name, "Person"
       %th
-        = order @search, :by => :sponsor_name, :as => "Sponsor"
+        = sort_link @search, :sponsor_name, "Sponsor"
       %th
-        = order @search, :by => :sponsor_award_number, :as => "Sponsor Award Number"
+        = sort_link @search, :sponsor_award_number, "Sponsor Award Number"
       %th
-        = order @search, :by => :grant_title, :as => "Grant Title"
+        = sort_link @search, :grant_title, "Grant Title"
       %th
-        = order @search, :by => :budget_identifier, :as => "Budget Number"
+        = sort_link @search, :budget_identifier, "Budget Number"
     - @awards.each do |award|
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td

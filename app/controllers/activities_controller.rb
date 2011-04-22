@@ -4,7 +4,10 @@ class ActivitiesController < ApplicationController
   def index
     @user_organizational_units = determine_organizational_units_for_user
     params[:page] ||= 1
-    @search = Activity.search(:for_organizational_units => @user_organizational_units)
+    
+    Rails.logger.info("~~~ @user_organizational_units = #{@user_organizational_units.map(&:id)}")
+    
+    @search = Activity.search(:for_organizational_units => @user_organizational_units.map(&:id))
     @activities = @search.paginate(:select => "DISTINCT activities.*", :page => params[:page], :per_page => 20)
     
     respond_to do |format|

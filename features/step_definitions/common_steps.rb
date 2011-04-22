@@ -7,3 +7,9 @@ When /^I click on the "([^"]*)" autocomplete option$/ do |link_text|
   # page.evaluate_script %Q{ $('.ui-menu-item a:contains("#{link_text}")').trigger("mouseenter").click(); }
   page.driver.browser.execute_script %Q{ $('.ui-menu-item a:contains("#{link_text}")').trigger("mouseenter").click(); }
 end
+
+Given /^the following (.+) records:$/ do |factory, table|
+  table.hashes.each do |hash|
+    Factory(factory.to_sym, hash)
+  end
+end

@@ -1,5 +1,5 @@
-- form_for(@organizational_unit) do |f|
-  = f.error_messages
+= form_for(@organizational_unit) do |f|
+  = render "shared/error_messages", :object => f.object
   %p
     = f.label :name
     %br

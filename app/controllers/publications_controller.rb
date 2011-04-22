@@ -5,14 +5,13 @@ class PublicationsController < ApplicationController
 
   def index
     if params[:person_id]
-      params[:search]           ||= Hash.new
-      params[:search][:person_id] = params[:person_id]
-      params[:search][:order]   ||= "descend_by_publication_date"
-      
-      params[:view_all] = true  if faculty_member?
-      
+      params[:search] ||= Hash.new
+      params[:search][:person_id_equals] = params[:person_id]
+      params[:search][:meta_sort] ||= "publication_date.desc"
+
+      params[:view_all] = true if faculty_member?      
       year = params[:view_all].blank? ? SYSTEM_CONFIG["ctsa_base_line_year"].to_i : 1900
-      params[:search][:publication_date_after] = Date.new(year,1,1)
+      params[:search][:publication_date_greater_than] = Date.new(year,1,1)
       
       populate_service_and_person  
       LatticeGridWebService.investigator_publications_search(@person.netid) unless @person.netid.blank?
@@ -30,14 +29,13 @@ class PublicationsController < ApplicationController
   end
   
   def search
-    params[:search]           ||= Hash.new
-    params[:search][:order]   ||= "descend_by_publication_date"
-
-    @search = Publication.search(params[:search])
-    @publications = @search.paginate(:page => params[:page], :per_page => 20)
-    
+    params[:search] ||= Hash.new    
     params[:search].delete(:invalid_for_ctsa) unless params[:search][:invalid_for_ctsa].to_i == 1
     purge_search_params
+    
+    @search = Publication.search(params[:search])
+    @search.meta_sort ||= "publication_date.desc"
+    @publications = @search.paginate(:page => params[:page], :per_page => 20)
         
     respond_to do |format|
       format.html 
@@ -113,17 +111,21 @@ class PublicationsController < ApplicationController
           flash[:notice] = "Publication was successfully updated"
           redirect_to edit_publication_path(@publication)
         end
-        format.js do
-          @search = Publication.search(params[:search])
-          @publications = @search.all
-          render :update do |page|
-            page.replace "publications", :partial => "/publications/list", :locals => { :search => params[:search], :service => @service, :person => @person, :publications => @publications }
-          end
+        format.json do
+          Rails.logger.error("~~~ PublicationsController#update for #{@publication.id}")
+          person_id = @person.nil? ? @publication.person_id : @person.id
+          render :json => { :id => @publication.id, :person_id => person_id, :search_params => params[:search], :errors => [] }, :status => :ok
         end
+
       else
         format.html { render :action => "edit" }
       end
     end
+  end
+  
+  def row
+    populate_service_and_person
+    @publication = Publication.find(params[:id])
   end
   
   # POST /update_ctsa_reporting_year
@@ -174,13 +176,13 @@ class PublicationsController < ApplicationController
   private
   
     def populate_service_and_person
-      @show_header    = request.xhr?
-      @search_params  = params[:search]
+      @show_header   = request.xhr?
+      @search_params = params[:search]
       if params[:service_id]
         @service = Service.find(params[:service_id])
         @person  = @service.person
       elsif params[:person_id]
-        determine_person(:person_id)
+        determine_person(:person_id, false)
       end
     end
   

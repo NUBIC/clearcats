@@ -13,7 +13,7 @@ describe RolesController do
     
     describe "GET index" do
       it "assigns all roles as @roles" do
-        Role.stub(:find).with(:all).and_return([mock_role])
+        Role.stub(:all).and_return([mock_role])
         get :index
         assigns[:roles].should == [mock_role]
       end

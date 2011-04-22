@@ -47,9 +47,13 @@ class Publication < ActiveRecord::Base
   
   belongs_to :person
   
-  named_scope :nucats_assisted_eq, lambda { |flag| {:conditions => "publications.nucats_assisted IS TRUE"} if flag == "1" || flag.to_i == 1 || flag == true}
-  named_scope :all_for_reporting_year, lambda { |yr| {:conditions => "publications.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(yr.to_i)} > 0 "} }
-  named_scope :invalid_for_ctsa, :conditions => "(publications.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(SYSTEM_CONFIG['current_ctsa_reporting_year'].to_i)} > 0) AND (pmid IS NULL OR pmid = '')"
+  scope :nucats_assisted_eq, lambda { |flag| {:conditions => "publications.nucats_assisted IS TRUE"} if flag == "1" || flag.to_i == 1 || flag == true}
+  scope :all_for_reporting_year, lambda { |yr| {:conditions => "publications.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(yr.to_i)} > 0 "} }
+  scope :invalid_for_ctsa, :conditions => "(publications.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(SYSTEM_CONFIG['current_ctsa_reporting_year'].to_i)} > 0) AND (pmid IS NULL OR pmid = '')"
+
+  search_methods :nucats_assisted_eq
+  search_methods :all_for_reporting_year
+  search_methods :invalid_for_ctsa
 
   # Attributes from LatticeGrid/PubMed
   attr_accessor :endnote_citation, :authors, :full_authors, :is_first_author_investigator, :is_last_author_investigator

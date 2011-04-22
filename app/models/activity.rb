@@ -31,11 +31,13 @@ class Activity < ActiveRecord::Base
   has_many :activity_actors
   accepts_nested_attributes_for :activity_actors, :allow_destroy => true
 
-  named_scope :for_organizational_units, 
-    lambda { |org_units| 
-      { :joins => "INNER JOIN activity_types ON activity_types.id = activities.activity_type_id INNER JOIN service_lines ON service_lines.id = activity_types.service_line_id", 
-        :conditions => ["service_lines.organizational_unit_id IN (:ids)", {:ids => org_units.map(&:id)} ]}
+  scope :for_organizational_units, 
+    lambda { |org_unit_ids| 
+      joins("INNER JOIN activity_types ON activity_types.id = activities.activity_type_id INNER JOIN service_lines ON service_lines.id = activity_types.service_line_id").
+      where("service_lines.organizational_unit_id IN (?)", org_unit_ids )
     }
+
+  search_methods :for_organizational_units
 
   def to_s
     name

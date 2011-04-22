@@ -3,7 +3,7 @@ class ParticipatingOrganizationsController < ApplicationController
   # GET /participating_organizations.xml
   def index
     params[:search]         ||= Hash.new
-    params[:search][:order] ||= "ascend_by_name"
+    params[:search][:meta_sort] ||= "ascend_by_name"
     @search = ParticipatingOrganization.search(params[:search])
     @participating_organizations = @search.paginate(:page => params[:page], :per_page => 20)
 
@@ -13,17 +13,6 @@ class ParticipatingOrganizationsController < ApplicationController
       format.csv { render :csv => @search.all }
     end
 
-  end
-
-  # GET /participating_organizations/1
-  # GET /participating_organizations/1.xml
-  def show
-    @participating_organization = ParticipatingOrganization.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @participating_organization }
-    end
   end
 
   # GET /participating_organizations/new
@@ -49,7 +38,7 @@ class ParticipatingOrganizationsController < ApplicationController
 
     respond_to do |format|
       if @participating_organization.save
-        format.html { redirect_to(edit_participating_organization_path(@participating_organization), :notice => 'Participating Organization was successfully created.') }
+        format.html { redirect_to(participating_organizations_path, :notice => 'Participating Organization was successfully created.') }
         format.xml  { render :xml => @participating_organization, :status => :created, :location => @participating_organization }
       else
         format.html { render :action => "new" }
@@ -65,7 +54,7 @@ class ParticipatingOrganizationsController < ApplicationController
 
     respond_to do |format|
       if @participating_organization.update_attributes(params[:participating_organization])
-        format.html { redirect_to(edit_participating_organization_path(@participating_organization), :notice => 'Participating Organization was successfully updated.') }
+        format.html { redirect_to(participating_organizations_path, :notice => 'Participating Organization was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

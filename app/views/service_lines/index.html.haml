@@ -13,7 +13,7 @@
 
 - if @user_organizational_units.size > 1
   .page_section
-    - form_for @search, :url => {:controller => "service_lines", :action => "index", :method => :get}, :html => {:class => "service_line_search_form"} do |f|
+    = form_for @search, :url => {:controller => "service_lines", :action => "index", :method => :get}, :html => {:class => "service_line_search_form"} do |f|
       %p
         = f.label "organizational_unit_id_equals", "Organizational Unit"
         - opts = [["-- Select Organizational Unit --",  ""]] + @user_organizational_units.sort_by{|e| e.name}.map{|u| [u.to_s, u.id]}
@@ -26,8 +26,8 @@
 - else
   %table.records
     %tr
-      %th= order @search, :by => :name, :as => "Name"
-      %th= order @search, :by => :organizational_unit_name, :as => "Organizational Unit"
+      %th= sort_link @search, :name, "Name"
+      %th= sort_link @search, :organizational_unit_name, "Organizational Unit"
       %th{ :colspan => '2' }
     - @service_lines.each do |service_line|
       - cls = cycle('even_record', 'odd_record')

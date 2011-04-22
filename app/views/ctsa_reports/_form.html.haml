@@ -1,6 +1,6 @@
 - stylesheet "ctsa_reports"
 
-- form_for @ctsa_report, :html => { :multipart => true, :class => "ctsa_report_form" } do |f|
+= form_for @ctsa_report, :html => { :multipart => true, :class => "ctsa_report_form" } do |f|
   
   .span-24
     .span-8
@@ -36,7 +36,7 @@
           File Upload
         %th
     %tbody{ :class => "nested_records" }
-      - f.fields_for :attachments do |attachment_form|
+      = f.fields_for :attachments do |attachment_form|
         = render 'attachment_fields', :f => attachment_form
     %tfoot
       %tr

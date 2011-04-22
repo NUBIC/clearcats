@@ -7,8 +7,8 @@
 - else
   %table.records
     %tr
-      %th= order @search, :by => :abbreviation, :as => "Abbreviation", :params => {:page => params[:page]}
-      %th= order @search, :by => :name, :as => "Name", :params => {:page => params[:page]}
+      %th= sort_link @search, :abbreviation, "Abbreviation", :params => {:page => params[:page]}
+      %th= sort_link @search, :name, "Name", :params => {:page => params[:page]}
     - @ctsa_data.each do |item|
       %tr{:class => cycle('even_record', 'odd_record')}
         %td= h item.abbreviation

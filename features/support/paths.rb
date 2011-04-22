@@ -10,7 +10,7 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-      
+
     when /login/
       '/login'
 
@@ -68,6 +68,19 @@ module NavigationHelpers
     when /the person versions page for "(.*)"/
       versions_person_path(Person.find_by_netid($1))
 
+    when /the person search page/
+      people_path
+      
+    ### SERVICE LINES ###
+
+    when /the service lines page/
+      service_lines_path
+    
+    when /the new service lines page/
+      new_service_line_path
+      
+    when /the service lines edit page/
+      edit_service_line_path(ServiceLine.first(:order => "updated_at desc"))
 
     ### ACTIVITIES ###
     
@@ -84,11 +97,41 @@ module NavigationHelpers
     when /the edit key metric page/
       edit_key_metric_path(KeyMetric.last)
       
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
+    ### CTSA REPORTS ###
+
+    when /the ctsa reports page/
+      ctsa_reports_path
+      
+    ### ADMIN/CTSA DATA ###
+    
+    when /the activity codes page/
+      "/admin/activity_codes"
+      
+    when /the countries page/
+      "/admin/countries"
+
+    when /the non-phs organizations page/
+      "/admin/non_phs_organizations"
+      
+    when /the phs organizations page/
+      "/admin/phs_organizations"
+      
+    when /the specialties page/
+      "/admin/specialties"
+      
+    when /the upload ctsa data page/
+      "/admin/upload_ctsa_data"
+
+    ### PARTICIPATING ORGANIZATIONS ###
+
+    when /the participating organizations page/
+      participating_organizations_path
+
+    when /the new participating organizations page/
+      new_participating_organization_path
+
+    when /the participating organizations edit page/
+      edit_participating_organization_path(ParticipatingOrganization.first(:order => "updated_at desc"))
 
     else
       begin

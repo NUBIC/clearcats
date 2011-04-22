@@ -5,20 +5,9 @@
   .no-records
     No publications found for #{@person}.
 - else
-  - form_tag(update_ctsa_reporting_year_publications_path) do
+  = form_tag(update_ctsa_reporting_year_publications_path) do
     = hidden_field_tag "person_id", @person.id
     - current_year = current_ctsa_reporting_year
-    
-    - @publications.each do |pub|
-      .page_section
-        = link_to "Select", { :controller => "/publications", :action => "edit", :id => pub, :search => params[:search] }.merge(pub_association), { :class => "edit_modal_form_link edit_link icon_link", :onclick => "return edit_modal_form(this)" }
-        %br
-        = pub.formatted_publication_date
-        = pub.journal
-        %br
-        = pub.title
-        %br
-        = pub.abstract
     
     %table.records
       %tr
@@ -28,24 +17,24 @@
         %th Select
         %th Reporting Years
         %th
-          = order @search, :by => :pmcid, :as => "PMCID"
+          = sort_link @search, :pmcid, "PMCID"
         %th
-          = order @search, :by => :pmid, :as => "PMID"
+          = sort_link @search, :pmid, "PMID"
         %th
-          = order @search, :by => :nihms_number, :as => "NIHMS Number"
+          = sort_link @search, :nihms_number, "NIHMS Number"
         %th
-          = order @search, :by => :publication_date, :as => "Publication Date"
+          = sort_link @search, :publication_date, "Publication Date"
         %th
-          = order @search, :by => :title, :as => "Title"
+          = sort_link @search, :title, "Title"
         %th 
           = "History" if sysadmin
       - @publications.each do |pub|
-        %tr{ :class => cycle('even_record', 'odd_record') }
+        %tr{ :id => "publication_#{pub.id}", :class => cycle('even_record', 'odd_record') }
           - unless @service
             %td
               = check_box_tag "publication_ids[]", pub.id, pub.ctsa_reporting_years.include?(current_year), { :disabled => pub.previously_reported?(current_year) }
           %td
-            = link_to "Select", { :controller => "/publications", :action => "edit", :id => pub, :search => params[:search] }.merge(pub_association), { :class => "edit_modal_form_link edit_link icon_link", :onclick => "return edit_modal_form(this)" }
+            = link_to "Select", { :controller => "/publications", :action => "edit", :id => pub, :search => params[:search] }.merge(pub_association), { :title => "Edit Publication", :class => "edit_modal_form_link edit_link icon_link" }
           %td= h pub.ctsa_reporting_years.blank? ? "n/a" : pub.ctsa_reporting_years.join(",")
           %td= h pub.pmcid
           %td= h pub.pmid
@@ -57,3 +46,14 @@
       .buttons
         - lbl = faculty_member? ? "Save and Continue" : "Save"
         = submit_tag lbl
+        
+    / - @publications.each do |pub|
+    /   .page_section
+    /     = link_to "Select", { :controller => "/publications", :action => "edit", :id => pub, :search => params[:search] }.merge(pub_association), { :class => "edit_modal_form_link edit_link icon_link" }
+    /     %br
+    /     = pub.formatted_publication_date
+    /     = pub.journal
+    /     %br
+    /     = pub.title
+    /     %br
+    /     = pub.abstract

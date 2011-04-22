@@ -25,7 +25,7 @@ class Contact < ActiveRecord::Base
 
 	before_save :associate_person
 	
-	named_scope :autocomplete_email, lambda { |email| { :conditions => ["contacts.email LIKE ?", "%#{email}%"]} }
+	scope :autocomplete_email, lambda { |email| { :conditions => ["contacts.email LIKE ?", "%#{email}%"]} }
 	
 	attr_accessor :email_display
 	

@@ -29,3 +29,9 @@
 #award_details table {
   margin-top: 1em;
 }
+
+#award_phs_organization_id,
+#award_activity_code_id,
+#award_non_phs_organization_id {
+  width: 25em;
+}

@@ -3,8 +3,8 @@ class ApprovalsController < ApplicationController
 
   def index
     if params[:person_id]
-      params[:search]           ||= Hash.new
-      params[:search][:person_id] = params[:person_id]
+      params[:search] ||= Hash.new
+      params[:search][:person_id_equals] = params[:person_id]
       
       populate_service_and_person
       

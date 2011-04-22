@@ -2,11 +2,12 @@
 
 .page_section
   - if @key_metrics.blank?
-    .no_records No metrics were found.
+    .no_records 
+      No metrics were found.
   - else
     .records_header
       .page_entries_info
-        = page_entries_info @key_metrics
+        = raw page_entries_info @key_metrics
       = will_paginate @key_metrics
 
       %table{ :class => "records" }
@@ -14,12 +15,12 @@
           %th.select_record
             Select
           %th
-            = order @search, :by => :name, :as => "Name"
+            = sort_link @search, :name, "Name"
           %th
-            = order @search, :by => :datatype, :as => "Datatype"
+            = sort_link @search, :datatype, "Datatype"
           %th
             - if @user_organizational_units.size > 1
-              = order @search, :by => :organizational_unit_id, :as => "Organizational Unit"
+              = sort_link @search, :organizational_unit_id, "Organizational Unit"
           
         - @key_metrics.each do |m|
           %tr{ :class => cycle('even_record', 'odd_record') }

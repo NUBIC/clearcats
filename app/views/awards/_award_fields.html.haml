@@ -1,28 +1,8 @@
-
-:javascript
-  function phs_organization_changed(el) {
-    if(el.selectedIndex > 0) {
-      $('#award_activity_code_id').attr('disabled', '');
-      $('#award_non_phs_organization_id').attr('disabled', 'disabled');
-    } else {
-      $('#award_activity_code_id').val('');
-      $('#award_activity_code_id').attr('disabled', 'disabled');
-      $('#award_non_phs_organization_id').attr('disabled', '');
-    }
-  }
-  
-  function non_phs_organization_changed(el) {
-    if(el.selectedIndex > 0) {
-      $('#award_activity_code_id').val('');
-      $('#award_activity_code_id').attr('disabled', 'disabled');
-      $('#award_phs_organization_id').attr('disabled', 'disabled');
-    } else {
-      $('#award_activity_code_id').attr('disabled', '');
-      $('#award_phs_organization_id').attr('disabled', '');
-    }
-  }
   
 .span-9
+  = f.hidden_field :person_id
+  = hidden_field_tag :service_id, @service.id if @service
+  
   .award_section
     %p
       %b CTSA Award Information
@@ -44,7 +24,7 @@
     %p
       = f.label :phs_organization_id, "PHS Organization"
       %br
-      = f.select(:phs_organization_id, @phs_orgs.collect { |a| [ a.to_s, a.id ] }, { :include_blank => "-- Select Federal PHS Award Organizational Code --" } , { :disabled => @non_phs_orgs.map(&:id).include?(f.object.organization_id), :onchange => "phs_organization_changed(this);" }) 
+      = f.select(:phs_organization_id, @phs_orgs.collect { |a| [ a.to_s, a.id ] }, { :include_blank => "-- Select Federal PHS Award Organizational Code --" } , { :disabled => @non_phs_orgs.map(&:id).include?(f.object.organization_id) }) 
     %p
       = f.label :activity_code_id, "Activity Code"
       %br
@@ -52,7 +32,7 @@
     %p
       = f.label :non_phs_organization_id, "Non PHS Organization"
       %br
-      = f.select(:non_phs_organization_id, @non_phs_orgs.collect { |a| [ a.to_s, a.id ] }, { :include_blank => "-- Select Federal Non-PHS Award --" }, { :disabled =>  @phs_orgs.map(&:id).include?(f.object.organization_id), :onchange => "non_phs_organization_changed(this);" }) 
+      = f.select(:non_phs_organization_id, @non_phs_orgs.collect { |a| [ a.to_s, a.id ] }, { :include_blank => "-- Select Federal Non-PHS Award --" }, { :disabled =>  @phs_orgs.map(&:id).include?(f.object.organization_id) }) 
 
   .award_section
     %p
@@ -119,8 +99,3 @@
       = f.label :award_status, "Award Status"
       %br
       = f.text_field :award_status
-
-.buttons
-  = hidden_field_tag :service_id, @service.id if @service
-  = f.hidden_field :person_id
-  = f.submit "Save", :class => "close"

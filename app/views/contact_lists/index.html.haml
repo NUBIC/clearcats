@@ -3,7 +3,7 @@
 
 - if @user_organizational_units.size > 1
   .page_section
-    - form_for @search, :url => {:controller => "contact_lists", :action => "index", :method => :get}, :html => {:class => "contact_list_search_form"} do |f|
+    = form_for @search, :url => {:controller => "contact_lists", :action => "index", :method => :get}, :html => {:class => "contact_list_search_form"} do |f|
       %p
         = f.label "organizational_unit_id_eq", "Organizational Unit"
         %br
@@ -18,8 +18,8 @@
 - else
   %table.records
     %tr
-      %th= order @search, :by => :name, :as => "Name"
-      %th= order @search, :by => :organizational_unit_name, :as => "Org Unit"
+      %th= sort_link @search, :name, "Name"
+      %th= sort_link @search, :organizational_unit_name, "Org Unit"
       %th
         Number of Contacts
       %th{:colspan => "3"}

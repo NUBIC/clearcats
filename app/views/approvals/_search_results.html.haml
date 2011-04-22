@@ -4,7 +4,7 @@
 - else
   .records_header
     .page_entries_info
-      = page_entries_info @approvals, :entry_name => "record"
+      = raw page_entries_info @approvals, :entry_name => "record"
     = will_paginate @approvals
 
   - current_year = current_ctsa_reporting_year
@@ -14,13 +14,13 @@
       %th Type
       %th Reporting Years
       %th
-        = order @search, :by => :person_last_name, :as => "Person"
+        = sort_link @search, :person_last_name, "Person"
       %th
-        = order @search, :by => :tracking_number, :as => "Tracking Number"
+        = sort_link @search, :tracking_number, "Tracking Number"
       %th
-        = order @search, :by => :institution, :as => "Institution"
+        = sort_link @search, :institution, "Institution"
       %th
-        = order @search, :by => :project_title, :as => "Project Title"
+        = sort_link @search, :project_title, "Project Title"
       %th Approval Date
     - @approvals.each do |approval|
       %tr{ :class => cycle('even_record', 'odd_record') }

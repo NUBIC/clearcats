@@ -6,7 +6,7 @@
   - else
     .records_header
       .page_entries_info
-        = page_entries_info @activities
+        = raw page_entries_info @activities
       = will_paginate @activities
 
       %table{ :class => "records" }

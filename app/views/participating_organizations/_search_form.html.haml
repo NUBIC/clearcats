@@ -1,5 +1,5 @@
 .page_section
-  - form_for @search, participating_organizations_path do |f|
+  = form_for @search, participating_organizations_path do |f|
     .span-24
       .span-4
         = f.label :name_like, "Name"
@@ -19,7 +19,7 @@
         = f.label :country_id_eq, "Country"
       .span-7
         - usa = Country.find_by_name("UNITED STATES")
-        - f.object.country_id = usa.id if f.object.country_id.blank? and !usa.blank?
+        - f.object.country_id_eq = usa.id if f.object.country_id_eq.blank? and !usa.blank?
         = f.select(:country_id_eq, Country.all(:order => :name).collect { |a| [ a.name, a.id ] }, { :include_blank => "-- Select Country --" })
       
     .span-24

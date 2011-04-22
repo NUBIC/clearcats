@@ -1,30 +1,36 @@
-function edit_modal_form(link) {
-  var link = jQuery(link);
-  var parent_div_of_item = link.parent();
-  var url = link.attr('href');
-  new jQuery.get(url, function(data) {
-      // displays modal window - note css centering
-      jQuery.blockUI( { message: jQuery("#modal_window").html(data), 
-        css: { width:"500px", margin:"-200px 0 0 -200px", left:"50%", padding: "4px 4px 4px 15px", textAlign: "left", cursor: "default" },
-        overlayCSS: { cursor: "default" }
-      } );
-  });
-  return false;
-}
+$('.edit_modal_form_link').live('click', function() {
+	$('<div id="dialog"/>').appendTo('body').load($(this).attr('href') + ' form').dialog({
+	  title: $(this).attr('title'),
+    // autoOpen: false,
+    height: 650,
+    width: 800,
+    modal: true,
+    buttons: {
+      Save: function() {
+        url  = $("#modal_edit_form").attr('action');
+        data = $("#modal_edit_form").serializeArray();
+        var dlg = $(this);
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: data,
+          dataType: 'json',
+          success: function(data) {
+            alert(data.id)
+            console.log(data);
+            
+            dlg.dialog('close');
+          }
+        });
+      },
+      Cancel: function() {
+        $(this).dialog('close')
+      }
+    },
+    close: function() {
 
-// close modal window
-jQuery("#modal_window .close").live('click', function() {
-  jQuery.unblockUI();
-});
-
-var parent_div_of_form;
-jQuery('#modal_edit_form').live('submit', function() {
-  
-  // add javascript request type
-  jQuery.ajaxSetup({
-    'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
-  });
-  
-  jQuery.unblockUI();
-  return false;
+    }
+	
+	});
+	return false;
 });

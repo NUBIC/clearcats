@@ -6,17 +6,17 @@ class AwardsController < ApplicationController
   def index
     if params[:person_id]
       @show_header = true
-      params[:search]           ||= Hash.new
-      params[:search][:person_id] = params[:person_id]
-      params[:search][:order]   ||= "descend_by_project_period_start_date"
+      params[:search] ||= Hash.new
+      params[:search][:person_id_equals] = params[:person_id]
       
-      params[:view_all] = true  if faculty_member?
+      params[:view_all] = true if faculty_member?
       
-      params[:search][:project_period_end_date_after] = Date.new(SYSTEM_CONFIG["ctsa_base_line_year"].to_i,1,1) if params[:view_all].blank?
+      params[:search][:project_period_end_date_greater_than] = Date.new(SYSTEM_CONFIG["ctsa_base_line_year"].to_i,1,1) if params[:view_all].blank?
       
       populate_service_and_person
       FacultyWebService.awards_for_employee({:employeeid => @person.employeeid}) unless @person.employeeid.blank?
       @search = Award.search(@search_params)
+      @search.meta_sort ||= "descend_by_project_period_start_date"
       @awards = @search.all
     else
       flash[:notice] = "Awards can be viewed only in the context of a person."
@@ -91,17 +91,20 @@ class AwardsController < ApplicationController
           redirect_to edit_award_url(@award)
           return
         end
-        format.js do
-          @search = Award.search(params[:search])
-          @awards = @search.all
-          render :update do |page|
-            page.replace "awards", :partial => "/awards/list", :locals => { :search => params[:search] }
-          end
-        end        
+        format.json do          
+          Rails.logger.error("~~~ AwardsController#update for #{@award.id}")
+          person_id = @person.nil? ? @award.person_id : @person.id
+          render :json => { :id => @award.id, :person_id => person_id, :search_params => params[:search], :errors => [] }, :status => :ok
+        end
       else
         format.html { render :action => "edit" }
       end
     end
+  end
+  
+  def row
+    populate_service_and_person
+    @award = Award.find(params[:id])
   end
   
   # POST /update_ctsa_reporting_year

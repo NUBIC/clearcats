@@ -1,5 +1,5 @@
 - stylesheet "services"
-- javascript "jquery.blockUI", "modal_form"
+- javascript "modal_form"
 - title "New Service - Choose Publications"
 
 = render "menu"
@@ -10,7 +10,7 @@
 
   = render '/publications/list', :service => @service, :publications => @publications, :search => @search, :person => @service.person, :search => @search_params
 
-  - form_for @service do |f|
+  = form_for @service do |f|
     = hidden_field_tag "service[state]", "choose_approvals"
     .buttons
       = f.submit "Continue"

@@ -1,7 +1,7 @@
 begin
   require 'cucumber/rake/task'
-  require 'spec/rake/spectask'
-
+  require 'rspec/core/rake_task'
+  
   require 'ci/reporter/rake/rspec'
 
   namespace :ci do
@@ -11,21 +11,26 @@ begin
       t.rcov_opts = %w{--rails --exclude osx\/objc,gems\/,spec\/,features\/ --aggregate coverage.data}
       t.rcov_opts << %[-o "coverage"]
     end
-  
-    Spec::Rake::SpecTask.new(:rspec_run) do |t|
-      t.spec_opts = ['--options', "\"#{RAILS_ROOT}/spec/spec.opts\""]
-      t.spec_files = FileList['spec/**/*_spec.rb'].exclude('spec/lib/turbocats/*')
+    
+    RSpec::Core::RakeTask.new(:rspec_run) do |t|
+      t.pattern = FileList['spec/**/*_spec.rb']
       t.rcov = true
-      t.rcov_opts = lambda do
-        IO.readlines("#{RAILS_ROOT}/spec/rcov.opts").map {|l| l.chomp.split " "}.flatten
-      end
+      t.rcov_opts = %w{--rails --exclude osx\/objc,gems\/,spec\/}
+    end
+
+    desc "Run both specs and features to generate aggregated coverage"
+    task :all do |t|
+      Rake::Task["db:migrate"].invoke
+      Rake::Task["rcov:clean"].invoke
+      Rake::Task["ci:cucumber_run"].invoke
+      Rake::Task["ci:rspec_run"].invoke
     end
   
-    desc "Run both specs and features to generate aggregated coverage"
-    task :all => ["db:migrate", "rcov:clean", "ci:cucumber_run", "ci:rspec"]
-  
     ENV["CI_REPORTS"] = "reports/spec-xml"
-    task :rspec => ["ci:setup:rspec", 'ci:rspec_run']
+    task :rspec do |t|
+      Rake::Task["ci:setup:rspec"].invoke
+      Rake::Task["ci:rspec_run"].invoke
+    end
 
 
   end

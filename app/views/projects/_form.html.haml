@@ -1,5 +1,5 @@
-- form_for(@project) do |f|
-  = f.error_messages
+= form_for(@project) do |f|
+  = render "shared/error_messages", :object => f.object
 
   .page_section
     = render "shared/organizational_unit_select", :f => f
@@ -12,7 +12,7 @@
     %p
       = f.label "service_line_id", "Service Line (optional)"
       = link_to "Manage Service Lines", service_lines_path
-      = link_to "Add Service Line", { :controller => "/service_lines", :action => "new"}, { :class => "edit_modal_form_link add_link icon_link", :onclick => "return edit_modal_form(this)" }
+      = link_to "Add Service Line", { :controller => "/service_lines", :action => "new"}, { :class => "edit_modal_form_link add_link icon_link" }
       %br
       = render "service_lines/select", :service_lines => @service_lines, :selected => @project.service_line_id
 
@@ -30,7 +30,7 @@
               Metric
             %th
         %tbody{ :class => "nested_records" }
-          - f.fields_for :key_metrics do |key_metric_form|
+          = f.fields_for :key_metrics do |key_metric_form|
             = render 'key_metric_fields', :f => key_metric_form
         %tfoot
           %tr
@@ -47,7 +47,7 @@
               Notes
             %th{ :colspan => '2' }
         %tbody{ :class => "nested_records" }
-          - f.fields_for :notes do |note_form|
+          = f.fields_for :notes do |note_form|
             = render 'note_fields', :f => note_form
         %tfoot
           %tr

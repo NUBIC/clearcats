@@ -1,5 +1,7 @@
+#search_by
+  Search By
 #award_search_form
-  - form_for @search, :method => :get do |f|
+  = form_for @search, :url => { :controller => :awards, :action => :search }, :method => :get do |f|
     .span-24
       .span-5
         = f.label :person_first_name_like, "First Name"
@@ -26,9 +28,9 @@
       .span-7
         = f.select(:non_phs_organization_id_equals, @non_phs_orgs.collect { |a| [ a.to_s, a.id.to_s ] }, { :include_blank => "-- Select Non-PHS Award --" }) 
       .span-6
-        = f.label :nucats_assisted, "NUCATS Assisted"
+        = f.label :nucats_assisted_equals, "NUCATS Assisted"
       .span-6.last
-        = f.check_box :nucats_assisted
+        = f.check_box :nucats_assisted_equals
         
     .span-24
       .span-5

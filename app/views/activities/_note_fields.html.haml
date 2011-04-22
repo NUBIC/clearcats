@@ -1,1 +1,7 @@
-= render '/shared/note_fields', :f => f
+%tr.note.fields
+  %td
+    = f.label :text, "Note"
+  %td
+    = f.text_area :text, :rows => 2, :cols => 45
+  %td
+    = link_to_remove_nested_attribute_fields 'Remove', f, :notes

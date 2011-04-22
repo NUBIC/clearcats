@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
     @user_organizational_units = determine_org_units_for_user
     params[:search] ||= Hash.new
     params[:search][:service_line_organizational_unit_id_eq_any] = @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
-    params[:search][:person_id] = params[:person_id] if params[:person_id]
+    params[:search][:person_id_equals] = params[:person_id] if params[:person_id]
     
     @search = Service.search(params[:search])
     @services = @search.paginate(:page => params[:page], :per_page => 20)
@@ -20,7 +20,6 @@ class ServicesController < ApplicationController
     else
       params[:search][:service_line_organizational_unit_id_eq_any] = @user_organizational_units.collect(&:id) 
     end
-    params[:search][:order] ||= "descend_by_updated_at"
 
     if params[:completed]
       params[:search][:state_equals] ||= "completed"
@@ -29,23 +28,12 @@ class ServicesController < ApplicationController
     end
     
     @search = Service.search(params[:search])
+    @search.meta_sort ||= "descend_by_updated_at"
     @services = @search.paginate(:page => params[:page], :per_page => 20)
     
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @service }
-    end
-  end
-  
-  require 'ostruct'
-  def chart
-    svcs_2008 = OpenStruct.new(:year => 2008, :count => 0)
-    svcs_2009 = OpenStruct.new(:year => 2009, :count => 0)
-    svcs_2010 = OpenStruct.new(:year => 2010, :count => 0)
-    @services_by_year = [svcs_2008, svcs_2009, svcs_2010]
-    @services = Service.all.select {|svc| !svc.person.nil? }
-    @services.each do |svc|
-      @services_by_year.each { |svc4yr| svc4yr.count += 1 if svc.ctsa_reporting_years.include?(svc4yr.year) }
     end
   end
 
@@ -62,8 +50,8 @@ class ServicesController < ApplicationController
   
   def choose_person
     if !params[:search].blank?
-      people  = Person.search(params[:search]).all
-      faculty = FacultyWebService.locate(params[:search])
+      people  = Person.search(meta_search(params[:search])).all
+      faculty = FacultyWebService.locate(faculty_web_service_search(params[:search]))
       @people = (faculty + people).uniq
     end
     get_service
@@ -149,8 +137,8 @@ class ServicesController < ApplicationController
     LatticeGridWebService.investigator_publications_search(@service.person.netid)
     
     params[:search] ||= Hash.new
-    params[:search][:person_id] = @service.person.id
-    params[:search][:order] ||= "ascend_by_publication_date"
+    params[:search][:person_id_equals] = @service.person.id
+    params[:search][:meta_sort] ||= "publication_date.asc"
     @search_params = params[:search]
     @search = Publication.search(@search_params)
     @publications = @search.all
@@ -160,8 +148,8 @@ class ServicesController < ApplicationController
     get_service
     FacultyWebService.awards_for_employee({:employeeid => @service.person.employeeid})
     params[:search] ||= Hash.new
-    params[:search][:person_id] = @service.person.id
-    params[:search][:order] ||= "ascend_by_project_period_start_date"
+    params[:search][:person_id_equals] = @service.person.id
+    params[:search][:meta_sort] ||= "project_period_start_date.asc"
     @search_params = params[:search]
     @search = Award.search(@search_params)
     @awards = @search.all
@@ -267,6 +255,20 @@ class ServicesController < ApplicationController
       else
         'application'
       end
+    end
+  
+    def meta_search(params)
+      search = {}
+      search[:netid_like]     = params[:netid_like]     unless params[:netid_like].blank?
+      search[:last_name_like] = params[:last_name_like] unless params[:last_name_like].blank?
+      search
+    end
+  
+    def faculty_web_service_search(params)
+      search = {}
+      search[:netid]     = params[:netid_like]     unless params[:netid_like].blank?
+      search[:last_name] = params[:last_name_like] unless params[:last_name_like].blank?
+      search
     end
   
 end

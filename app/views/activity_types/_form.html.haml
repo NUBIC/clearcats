@@ -1,5 +1,5 @@
-- form_for(@activity_type) do |f|
-  = f.error_messages
+= form_for(@activity_type) do |f|
+  = render "shared/error_messages", :object => f.object
   %p
     = f.label :name
     %br

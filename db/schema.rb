@@ -1,10 +1,11 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
@@ -30,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.datetime "updated_at"
   end
 
-  add_index "activities_people", ["activity_id", "role_id", "person_id"], :name => "activity_role_person_uniq_idx", :unique => true
+  # unrecognized index "activity_role_person_uniq_idx" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "activity_codes", :force => true do |t|
     t.string   "code"
@@ -41,8 +42,8 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "activity_codes", ["code"], :name => "index_activity_codes_on_code"
-  add_index "activity_codes", ["name"], :name => "index_activity_codes_on_name"
+  # unrecognized index "index_activity_codes_on_code" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_activity_codes_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "activity_types", :force => true do |t|
     t.string   "name"
@@ -53,8 +54,8 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "activity_types", ["name"], :name => "index_activity_types_on_name"
-  add_index "activity_types", ["service_line_id"], :name => "index_activity_types_on_service_line_id"
+  # unrecognized index "index_activity_types_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_activity_types_on_service_line_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "answers", :force => true do |t|
     t.integer  "question_id"
@@ -93,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.integer  "ctsa_reporting_years_mask"
   end
 
-  add_index "approvals", ["person_id"], :name => "index_approvals_on_person_id"
+  # unrecognized index "index_approvals_on_person_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "attachments", :force => true do |t|
     t.string   "name"
@@ -127,7 +128,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "award_details", ["budget_number"], :name => "index_award_details_on_budget_number"
+  # unrecognized index "index_award_details_on_budget_number" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "awards", :force => true do |t|
     t.string   "grant_number"
@@ -162,13 +163,13 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "awards", ["activity_code_id"], :name => "index_awards_on_activity_code_id"
-  add_index "awards", ["budget_identifier"], :name => "index_awards_on_budget_identifier"
-  add_index "awards", ["investigator_id"], :name => "index_awards_on_investigator_id"
-  add_index "awards", ["organization_type", "organization_id"], :name => "index_awards_on_organization_type_and_organization_id"
-  add_index "awards", ["originating_sponsor_id"], :name => "index_awards_on_originating_sponsor_id"
-  add_index "awards", ["person_id"], :name => "index_awards_on_person_id"
-  add_index "awards", ["sponsor_id"], :name => "index_awards_on_sponsor_id"
+  # unrecognized index "index_awards_on_activity_code_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_awards_on_budget_identifier" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_awards_on_investigator_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_awards_on_organization_type_and_organization_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_awards_on_originating_sponsor_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_awards_on_person_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_awards_on_sponsor_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "contact_lists", :force => true do |t|
     t.string   "name"
@@ -184,7 +185,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.integer "contact_list_id"
   end
 
-  add_index "contact_lists_contacts", ["contact_list_id", "contact_id"], :name => "contact_lists_contacts_idx"
+  # unrecognized index "contact_lists_contacts_idx" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "contacts", :force => true do |t|
     t.string   "email"
@@ -198,14 +199,14 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "contacts", ["email"], :name => "index_contacts_on_email"
+  # unrecognized index "index_contacts_on_email" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "contacts_organizational_units", :id => false, :force => true do |t|
     t.integer "organizational_unit_id"
     t.integer "contact_id"
   end
 
-  add_index "contacts_organizational_units", ["contact_id", "organizational_unit_id"], :name => "contacts_organizational_units_idx"
+  # unrecognized index "contacts_organizational_units_idx" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "countries", :force => true do |t|
     t.string   "name"
@@ -215,7 +216,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "countries", ["name"], :name => "index_countries_on_name"
+  # unrecognized index "index_countries_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "ctsa_reports", :force => true do |t|
     t.boolean  "finalized"
@@ -250,8 +251,8 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "degree_types", ["name"], :name => "index_degree_types_on_name"
-  add_index "degree_types", ["type"], :name => "index_degree_types_on_type"
+  # unrecognized index "index_degree_types_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_degree_types_on_type" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "departments", :force => true do |t|
     t.string   "name"
@@ -264,8 +265,8 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "departments", ["externalid"], :name => "index_departments_on_externalid"
-  add_index "departments", ["name"], :name => "index_departments_on_name"
+  # unrecognized index "index_departments_on_externalid" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_departments_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "dependencies", :force => true do |t|
     t.integer  "question_id"
@@ -304,7 +305,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "ethnic_types", ["name"], :name => "index_ethnic_types_on_name"
+  # unrecognized index "index_ethnic_types_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "institution_positions", :force => true do |t|
     t.string   "name"
@@ -314,14 +315,14 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "institution_positions", ["name"], :name => "index_institution_positions_on_name"
+  # unrecognized index "index_institution_positions_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "institution_positions_people", :id => false, :force => true do |t|
     t.integer "institution_position_id"
     t.integer "person_id"
   end
 
-  add_index "institution_positions_people", ["institution_position_id", "person_id"], :name => "institution_positions_people_idx"
+  # unrecognized index "institution_positions_people_idx" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "key_metrics", :force => true do |t|
     t.string   "name"
@@ -359,15 +360,15 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "organizational_units", ["name"], :name => "index_organizational_units_on_name"
-  add_index "organizational_units", ["parent_id"], :name => "index_organizational_units_on_parent_id"
+  # unrecognized index "index_organizational_units_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_organizational_units_on_parent_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "organizational_units_people", :id => false, :force => true do |t|
     t.integer "organizational_unit_id"
     t.integer "person_id"
   end
 
-  add_index "organizational_units_people", ["organizational_unit_id", "person_id"], :name => "organizational_units_people_idx"
+  # unrecognized index "organizational_units_people_idx" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "organizations", :force => true do |t|
     t.string   "type"
@@ -379,9 +380,9 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "organizations", ["code"], :name => "index_organizations_on_code"
-  add_index "organizations", ["name"], :name => "index_organizations_on_name"
-  add_index "organizations", ["type"], :name => "index_organizations_on_type"
+  # unrecognized index "index_organizations_on_code" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_organizations_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_organizations_on_type" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "outcome_metrics", :force => true do |t|
     t.integer  "activity_id"
@@ -452,16 +453,16 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.date     "end_date"
   end
 
-  add_index "people", ["country_id"], :name => "index_people_on_country_id"
-  add_index "people", ["degree_type_one_id"], :name => "index_people_on_degree_type_one_id"
-  add_index "people", ["degree_type_two_id"], :name => "index_people_on_degree_type_two_id"
-  add_index "people", ["department_id"], :name => "index_people_on_department_id"
-  add_index "people", ["employeeid"], :name => "index_people_on_employeeid"
-  add_index "people", ["era_commons_username"], :name => "index_people_on_era_commons_username"
-  add_index "people", ["ethnic_type_id"], :name => "index_people_on_ethnic_type_id"
-  add_index "people", ["organizational_unit_id"], :name => "index_people_on_organizational_unit_id"
-  add_index "people", ["race_type_id"], :name => "index_people_on_race_type_id"
-  add_index "people", ["specialty_id"], :name => "index_people_on_specialty_id"
+  # unrecognized index "index_people_on_country_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_degree_type_one_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_degree_type_two_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_department_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_employeeid" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_era_commons_username" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_ethnic_type_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_organizational_unit_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_race_type_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_people_on_specialty_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "people_time_entries", :id => false, :force => true do |t|
     t.integer "person_id"
@@ -499,7 +500,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.integer  "citation_cnt"
   end
 
-  add_index "publications", ["person_id"], :name => "index_publications_on_person_id"
+  # unrecognized index "index_publications_on_person_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "question_groups", :force => true do |t|
     t.text     "text"
@@ -549,7 +550,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "race_types", ["name"], :name => "index_race_types_on_name"
+  # unrecognized index "index_race_types_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "response_sets", :force => true do |t|
     t.integer  "user_id",      :limit => 8
@@ -564,7 +565,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "response_sets", ["access_code"], :name => "response_sets_ac_idx", :unique => true
+  # unrecognized index "response_sets_ac_idx" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "responses", :force => true do |t|
     t.integer  "response_set_id"
@@ -585,7 +586,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "responses", ["survey_section_id"], :name => "index_responses_on_survey_section_id"
+  # unrecognized index "index_responses_on_survey_section_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -602,7 +603,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "service_lines", ["name"], :name => "index_service_lines_on_name"
+  # unrecognized index "index_service_lines_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "service_requests", :force => true do |t|
     t.integer  "service_line_id"
@@ -627,8 +628,8 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "services", ["person_id"], :name => "index_services_on_person_id"
-  add_index "services", ["service_line_id"], :name => "index_services_on_service_line_id"
+  # unrecognized index "index_services_on_person_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_services_on_service_line_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "specialties", :force => true do |t|
     t.string   "code"
@@ -639,8 +640,8 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "specialties", ["code"], :name => "index_specialties_on_code"
-  add_index "specialties", ["name"], :name => "index_specialties_on_name"
+  # unrecognized index "index_specialties_on_code" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_specialties_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "sponsors", :force => true do |t|
     t.string   "name"
@@ -653,8 +654,8 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "sponsors", ["code"], :name => "index_sponsors_on_code"
-  add_index "sponsors", ["name"], :name => "index_sponsors_on_name"
+  # unrecognized index "index_sponsors_on_code" with type ActiveRecord::ConnectionAdapters::IndexDefinition
+  # unrecognized index "index_sponsors_on_name" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "survey_sections", :force => true do |t|
     t.integer  "survey_id"
@@ -691,7 +692,7 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.string   "updated_by"
   end
 
-  add_index "surveys", ["access_code"], :name => "surveys_ac_idx", :unique => true
+  # unrecognized index "surveys_ac_idx" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
   create_table "target_metrics", :force => true do |t|
     t.string   "name"
@@ -758,6 +759,6 @@ ActiveRecord::Schema.define(:version => 20110405182402) do
     t.datetime "created_at"
   end
 
-  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+  # unrecognized index "index_versions_on_item_type_and_item_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
 
 end

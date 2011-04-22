@@ -2,11 +2,11 @@
 
 - if @show_header == true
   .header_option
-    = link_to("Close", "javascript: jQuery.unblockUI();", :class => "delete_link icon_link")
+    = link_to("Close", :class => "close_form delete_link icon_link")
 
   .page_section
-    - remote_form_for(@service_line, :html => { :id => "modal_edit_form"}) do |f|
-      = f.error_messages
+    = form_for(@service_line, :remote => true, :html => { :id => "modal_edit_form"}) do |f|
+      = render "shared/error_messages", :object => f.object
 
       %p
         = f.label :name, "Service Line Name"
@@ -27,8 +27,8 @@
 - else
 
   .page_section
-    - form_for(@service_line) do |f|
-      = f.error_messages
+    = form_for(@service_line) do |f|
+      = render "shared/error_messages", :object => f.object
 
       %p
         = f.label :name, "Service Line Name"
@@ -54,7 +54,7 @@
               Activity Types (optional)
             %th
         %tbody{ :class => "nested_records" }
-          - f.fields_for :activity_types do |activity_type_form|
+          = f.fields_for :activity_types do |activity_type_form|
             = render 'activity_type_fields', :f => activity_type_form
         %tfoot
           %tr

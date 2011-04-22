@@ -15,7 +15,7 @@
     Please upload the CTSA XML Schema Data Definition file to update the CTSA data values to be used in reporting.
     
 .page_section    
-  - form_for(@attachment, :url => { :action => "process_ctsa_upload" }, :html => { :multipart => true }) do |f|
+  = form_for(@attachment, :url => { :action => "process_ctsa_upload" }, :html => { :multipart => true }) do |f|
     %b
       = f.label :data, "CTSA schema"
     %br

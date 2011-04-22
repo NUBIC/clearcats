@@ -43,20 +43,26 @@ class Award < ActiveRecord::Base
   
   has_paper_trail :ignore => [:ctsa_reporting_years_mask]
   
-  named_scope :nucats_assisted_eq, lambda { |flag| {:conditions => "awards.nucats_assisted IS TRUE"} if (flag == "1" || flag.to_i == 1 || flag == true)}
-  named_scope :all_for_reporting_year, lambda { |yr| {:conditions => "awards.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(yr.to_i)} > 0 "} }
-  named_scope :invalid_for_ctsa, :joins => "LEFT OUTER JOIN organizations ON organizations.id = awards.organization_id", 
-    :conditions => "(awards.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(SYSTEM_CONFIG['current_ctsa_reporting_year'].to_i)} > 0) AND " +
+  scope :nucats_assisted_eq, lambda { |flag| where("awards.nucats_assisted IS TRUE") if (flag == "1" || flag.to_i == 1 || flag == true) }
+  scope :all_for_reporting_year, lambda { |yr| where("awards.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(yr.to_i)} > 0 ") }
+  scope :invalid_for_ctsa, joins("LEFT OUTER JOIN organizations ON organizations.id = awards.organization_id"). 
+    where("(awards.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(SYSTEM_CONFIG['current_ctsa_reporting_year'].to_i)} > 0) AND " +
     "(" +
     "  (organization_id IS NULL) " +
     "  OR " +
     "  (organization_id IS NOT NULL and organizations.type = 'PhsOrganization' and activity_code_id IS NULL)" +
     "  OR " +
     "  (organization_id IS NOT NULL and organizations.type = 'PhsOrganization' and (grant_number IS NULL OR grant_number = ''))" +
-    ")"
+    ")")
   
-  named_scope :phs_organization_id_equals, lambda { |id| {:conditions => "organization_id = #{id.to_i}"} }
-  named_scope :non_phs_organization_id_equals, lambda { |id| {:conditions => "organization_id = #{id.to_i}"} }
+  scope :phs_organization_id_equals, lambda { |id| where("organization_id = ?", id ) }
+  scope :non_phs_organization_id_equals, lambda { |id| where("organization_id = ?", id ) }
+  
+  search_methods :nucats_assisted_eq
+  search_methods :all_for_reporting_year
+  search_methods :invalid_for_ctsa
+  search_methods :phs_organization_id_equals
+  search_methods :non_phs_organization_id_equals
   
   belongs_to :person
   belongs_to :organization

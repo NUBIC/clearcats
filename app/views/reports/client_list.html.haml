@@ -1,7 +1,7 @@
 - title "Investigator List"
 
 .page_section
-  - form_for @search, :url => {:controller => "reports", :action => "client_list", :method => :get}, :html => {:class => "client_list_search_form"} do |f|
+  = form_for @search, :url => {:controller => "reports", :action => "client_list", :method => :get}, :html => {:class => "client_list_search_form"} do |f|
     .span-10
       %p
         = f.label "organizational_units_id_equals", "Organizational Unit"
@@ -29,7 +29,7 @@
 - else
   %table{ :class => "records" }
     %tr
-      %th= order @search, :by => :last_name, :as => "Investigator", :params => {:page => params[:page]}
+      %th= sort_link @search, :last_name, "Investigator", :params => {:page => params[:page]}
     - @clients.each do |client|
       %tr{:class => cycle('even_record', 'odd_record')}
         %td= client.to_s

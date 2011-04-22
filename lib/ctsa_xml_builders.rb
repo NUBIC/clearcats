@@ -186,10 +186,7 @@ end
 class TraineeBuilder < REXML::Element
   
   def initialize(trainee)
-    type = ""
-    trainee.training_type.each("_") do |sec|
-      type += sec.capitalize
-    end
+    type = trainee.training_type.to_s.capitalize
     
     super "sis:" + type
     add_element("sis:Commons_Username").add_text(trainee.commons_username.upcase.strip)

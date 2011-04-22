@@ -23,7 +23,9 @@ class KeyMetric < ActiveRecord::Base
   validates_presence_of :datatype
   validates_inclusion_of :datatype, :in => DATATYPES
   
-  named_scope :for_organizational_units, lambda { |ids| {:conditions => ["organizational_unit_id in (?)", ids]} } 
+  scope :for_organizational_units, lambda { |ids| where("organizational_unit_id in (?)", ids) } 
+  
+  search_methods :for_organizational_units
   
   def to_s
     name

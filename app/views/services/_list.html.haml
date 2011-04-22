@@ -4,14 +4,14 @@
 - else
   .records_header
     .page_entries_info
-      = page_entries_info services
+      = raw page_entries_info services
     = will_paginate services
   %table{ :class => "records pending_services" }
     %tr
       %th Select
-      %th= order @search, :by => :person_last_name, :as => "Investigator", :params => {:page => params[:page], :completed => params[:completed]}
-      %th= order @search, :by => :service_line_name, :as => "Service Line", :params => {:page => params[:page], :completed => params[:completed]}
-      %th= order @search, :by => :service_line_organizational_unit_name, :as => "Organizational Unit", :params => {:page => params[:page], :completed => params[:completed]}
+      %th= sort_link @search, :person_last_name, "Investigator", :params => {:page => params[:page], :completed => params[:completed]}
+      %th= sort_link @search, :service_line_name, "Service Line", :params => {:page => params[:page], :completed => params[:completed]}
+      %th= sort_link @search, :service_line_organizational_unit_name, "Organizational Unit", :params => {:page => params[:page], :completed => params[:completed]}
       %th
     - services.each do |svc|
       %tr{ :class => cycle('even_record', 'odd_record') }

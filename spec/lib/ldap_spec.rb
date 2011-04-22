@@ -14,19 +14,19 @@ describe Ldap do
   end
 
   def assert_entry(entry)
-    entry["title"].to_s.should == "Systems Analyst/Programmer Senior"
-    entry.uid.to_s.should   == "pfr957"
-    entry.ou.to_s.should_not be_blank
-    entry.dn.to_s.should_not be_blank
-    entry.cn.to_s.should_not be_blank
-    entry.givenname.to_s.should_not be_blank
-    entry.displayname.to_s.should_not be_blank
-    entry.mail.to_s.should_not be_blank
-    entry.sn.to_s.should_not be_blank
-    entry.postaladdress.to_s.should_not be_blank
+    entry["title"].first.to_s.should == "Systems Analyst/Programmer Senior"
+    entry.uid.first.to_s.should == "pfr957"
+    entry.ou.first.to_s.should_not be_blank
+    entry.dn.first.to_s.should_not be_blank
+    entry.cn.first.to_s.should_not be_blank
+    entry.givenname.first.to_s.should_not be_blank
+    entry.displayname.first.to_s.should_not be_blank
+    entry.mail.first.to_s.should_not be_blank
+    entry.sn.first.to_s.should_not be_blank
+    entry.postaladdress.first.to_s.should_not be_blank
     # ensure values are nil instead of throwing an error (method missing)
-    entry.telephonenumber.to_s.should be_blank
-    entry.facsimiletelephonenumber.to_s.should be_blank
+    entry.telephonenumber.first.to_s.should be_blank
+    entry.facsimiletelephonenumber.first.to_s.should be_blank
   end
 
 end

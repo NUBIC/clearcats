@@ -76,5 +76,5 @@ end
 
 
 def create_response(body)
-  mock_model(Net::HTTPOK, :body => body)
+  mock(Net::HTTPOK, :body => body)
 end

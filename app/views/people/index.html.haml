@@ -12,12 +12,8 @@
     #upload_error_log
       = link_to "View Upload Errors", {:controller => "welcome", :action => "upload_error_log"}, { :class => "show_link icon_link" }
 
-#search_by
-  Search By
 .page_section 
   = render 'search_form'
 
-#search_results
-  Results
 .page_section
   = render 'search_results'

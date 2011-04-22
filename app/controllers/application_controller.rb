@@ -1,23 +1,13 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
   include Bcsec::Rails::SecuredController
-
-  # Exception Notifier
-  include ExceptionNotifiable
-  ExceptionNotifier.exception_recipients = %w(clearcats-tech-support@northwestern.edu)
-  ExceptionNotifier.sender_address = %("ClearCATS Application Error" <clearcats@northwestern.edu>)
-  ExceptionNotifier.email_prefix = "[ClearCATS-#{Rails.env}]"
   
   helper_method :current_ctsa_reporting_year, :get_current_user, :faculty_member?, :determine_org_units_for_user
   
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
   
+  before_filter :log_additional_exception_data
+
   # Only save the current_user [Bcsec::User] username for auditing
   def user_for_paper_trail
     current_user ? current_user.username : 'n/a'
@@ -33,7 +23,9 @@ class ApplicationController < ActionController::Base
       false
     end
 
-    exception_data :additional_data
+    def log_additional_exception_data
+      request.env["exception_notifier.exception_data"] = additional_data
+    end
 
     def additional_data
       current_user ? { :current_user => current_user.username } : {}
@@ -69,13 +61,13 @@ class ApplicationController < ActionController::Base
       end
     end
     
-    def determine_person(param_key = :id)
+    def determine_person(param_key = :id, should_update_person_data = true)
       if current_user.permit?(:Admin, :User) or param_key == :id
         @person = Person.find(params[param_key])
       else        
         @person = find_person_by_current_user
       end
-      update_person_data(@person)
+      update_person_data(@person) if should_update_person_data
     end
 
     def determine_org_units_for_user
@@ -111,6 +103,7 @@ class ApplicationController < ActionController::Base
       end
     end
     
+    # remove search parameters which are blank or have a value of 0
     def purge_search_params
       params[:search].keys.each do |k| 
         if params[:search][k].blank?
@@ -121,4 +114,6 @@ class ApplicationController < ActionController::Base
       end      
     end
 
+  
+  
 end

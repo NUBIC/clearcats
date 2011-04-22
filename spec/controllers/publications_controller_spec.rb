@@ -20,10 +20,9 @@ describe PublicationsController do
       
       it "assigns all publications for the requested person as @publications" do
         person = mock_model(Person, :employeeid => "", :imported => true, :netid => "wakibbe")
-        arr = mock_model(Array, :all => [mock_publication])
-        Publication.should_receive(:search).with("person_id" => person.id.to_s, "order" => "descend_by_publication_date", "publication_date_after" => Date.new(2008,1,1)).and_return(arr)
+        Publication.stub_chain(:search, :all).and_return([mock_publication])
         LatticeGridWebService.stub!(:make_request).and_return(publications_response)
-        Person.should_receive(:find).with(person.id.to_s).and_return(person)
+        Person.should_receive(:find).with(person.id.to_i).and_return(person)
         get :index, :person_id => person.id
         assigns[:publications].should_not be_empty
       end
@@ -157,8 +156,8 @@ describe PublicationsController do
 
     describe "GET incomplete" do
       it "should return all publications that are incomplete" do
-        good = Factory(:publication, :pmid => "pmid", :ctsa_reporting_years_mask => 1024)
-        bad  = Factory(:publication, :pmid => nil, :ctsa_reporting_years_mask => 1024)
+        good = Factory(:publication, :pmid => "pmid", :ctsa_reporting_years_mask => 2048)
+        bad  = Factory(:publication, :pmid => nil, :ctsa_reporting_years_mask => 2048)
         get :incomplete
         assigns[:publications].first.id.should equal(bad.id)
       end
@@ -174,5 +173,5 @@ end
 
 
 def create_response(body)
-  mock_model(Net::HTTPOK, :body => body)
+  mock(Net::HTTPOK, :body => body)
 end

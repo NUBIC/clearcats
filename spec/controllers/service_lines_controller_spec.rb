@@ -13,7 +13,7 @@ describe ServiceLinesController do
 
     describe "GET index" do
       it "assigns all service_lines as @service_lines" do
-        ServiceLine.stub(:find).with(:all).and_return([mock_service_line])
+        ServiceLine.stub_chain(:search, :all).and_return([mock_service_line])
         get :index
         assigns[:service_lines].should == [mock_service_line]
       end
@@ -29,7 +29,7 @@ describe ServiceLinesController do
 
     describe "GET new" do
       it "assigns a new service_line as @service_line" do
-        ServiceLine.stub(:new).and_return(mock_service_line(:organizational_services => mock_model(Array, :build => [])))
+        ServiceLine.stub(:new).and_return(mock_service_line(:organizational_services => []))
         get :new
         assigns[:service_line].should equal(mock_service_line)
       end
@@ -55,7 +55,7 @@ describe ServiceLinesController do
         it "redirects to the created service_lines list with the most recent first" do
           ServiceLine.stub(:new).and_return(mock_service_line(:save => true))
           post :create, :service_line => {}
-          response.should redirect_to(service_lines_url(:search => {:order => "descend_by_created_at"}))
+          response.should redirect_to(service_lines_url(:search => {:meta_sort => "descend_by_created_at"}))
         end
       end
 
@@ -93,7 +93,7 @@ describe ServiceLinesController do
         it "redirects to the service_lines list with the most added first" do
           ServiceLine.stub(:find).and_return(mock_service_line(:update_attributes => true))
           put :update, :id => "1"
-          response.should redirect_to(service_lines_url(:search => {:order => "descend_by_created_at"}))
+          response.should redirect_to(service_lines_url(:search => {:meta_sort => "descend_by_created_at"}))
         end
       end
 

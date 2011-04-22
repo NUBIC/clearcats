@@ -24,9 +24,9 @@ describe ApprovalsController do
       
       it "assigns all approvals for the requested person as @approvals" do
         person = mock_model(Person, :employeeid => "100176", :imported => false, :netid => "")
-        Person.should_receive(:find).with(person.id.to_s).and_return(person)
+        Person.should_receive(:find).with(person.id.to_i).and_return(person)
         EnotisWebService.stub!(:approvals).and_return([])
-        Approval.stub(:search).and_return(mock_model(Array, :all => [mock_approval]))
+        Approval.stub_chain(:search, :all).and_return([mock_approval])
         get :index, :person_id => person.id
         assigns[:approvals].should_not be_empty
       end
@@ -35,7 +35,7 @@ describe ApprovalsController do
     
     describe "GET search" do
       it "assigns all approvals for the sent criteria as @approvals" do
-        Approval.stub(:search).and_return(mock_model(Array, :paginate => [mock_approval]))
+        Approval.stub(:search).and_return([mock_approval])
         get :search
         assigns[:approvals].should_not be_empty
       end

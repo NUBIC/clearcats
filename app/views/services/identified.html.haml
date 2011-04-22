@@ -4,7 +4,7 @@
 = render "menu"
 
 .page_section
-  - form_for @service, :url => { :action => "identified" } do |f|
+  = form_for @service, :url => { :action => "identified" } do |f|
 
     .service_question
       Did this service result in any awards, publications, presentations, honors, or studies for the investigator?

@@ -26,7 +26,9 @@ class Service < ActiveRecord::Base
   before_save :add_organizational_unit_to_person
   before_destroy :remove_organizational_unit_from_person
   
-  named_scope :organizational_unit_id_equals, lambda { |id|  {:joins => :service_line, :conditions => ["service_lines.organizational_unit_id = :id", {:id => id} ]} }
+  scope :organizational_unit_id_equals, lambda { |id| joins(:service_line).where("service_lines.organizational_unit_id = ?", id) }
+  
+  search_methods :organizational_unit_id_equals
   
   state_machine :state, :initial => :new do
     
@@ -81,7 +83,7 @@ class Service < ActiveRecord::Base
   
   def person_id=(person_id)
     if person_id
-      self.write_attribute(:person_id, person_id)
+      self[:person_id] = person_id
       update_state
     end    
   end
@@ -92,7 +94,7 @@ class Service < ActiveRecord::Base
   
   def service_line_id=(service_line_id)
     if service_line_id
-      self.write_attribute(:service_line_id, service_line_id)
+      self[:service_line_id] = service_line_id
       update_state
     end
   end

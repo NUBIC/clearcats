@@ -19,7 +19,7 @@
       - if version.object
         - attrs = YAML::load version.object
         %tr{ :class => cycle('even_record', 'odd_record') }
-          %td= link_to 'Revert', revert_publication_path(@publication, :version_id => version.id), :class => "edit_link icon_link", :method => :post
+          %td= button_to 'Revert', revert_publication_path(@publication, :version_id => version.id), :method => :post
           %td= version.created_at.to_s(:db)
           %td= version.whodunnit
           %td= attrs["pmcid"]

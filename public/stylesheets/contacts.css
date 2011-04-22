@@ -51,9 +51,6 @@
 .data_container {
   background-color: white;
   border-radius: .5em;
-  -o-border-radius: .5em;
-  -icab-border-radius: .5em;
-  -khtml-border-radius: .5em;
   -moz-border-radius: .5em;
   -webkit-border-radius: .5em;
 }
@@ -71,5 +68,4 @@
 
 .ldap_schema_link {
   float: right;
-}
 }

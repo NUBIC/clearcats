@@ -19,14 +19,6 @@ describe KeyMetricsController do
       end
     end
 
-    describe "GET show" do
-      it "assigns the requested key_metric as @key_metric" do
-        KeyMetric.stub(:find).with("37").and_return(mock_key_metric)
-        get :show, :id => "37"
-        assigns[:key_metric].should equal(mock_key_metric)
-      end
-    end
-
     describe "GET new" do
       it "assigns a new key_metric as @key_metric" do
         KeyMetric.stub(:new).and_return(mock_key_metric)

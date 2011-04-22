@@ -1,5 +1,5 @@
-- form_for(@activity) do |f|
-  = f.error_messages
+= form_for(@activity) do |f|
+  = render "shared/error_messages", :object => f.object
   %p
     = f.label :name
     %span.required *
@@ -11,9 +11,8 @@
     %br
     = f.text_field :activity_type_name, :class => 'activity_type_autocompleter'
   %p
-    = f.label :activity_actor_ids, "Add People"
-    %br
-    = f.hidden_field :activity_actor_ids
+    %b
+      Add People
 
   %table{ :class => "records activity_actors" }
     %thead
@@ -24,7 +23,7 @@
           Role
         %th{ :colspan => '2' }
     %tbody{ :class => "nested_records nested_records_activity_actors" }
-      - f.fields_for :activity_actors do |activity_actor_form|
+      = f.fields_for :activity_actors do |activity_actor_form|
         = render 'activity_actor_fields', :f => activity_actor_form
     %tfoot
       %tr
@@ -38,13 +37,14 @@
         %th
           Notes
         %th{ :colspan => '2' }
-    %tbody{ :class => "nested_records" }
-      - f.fields_for :notes do |note_form|
+    %tbody{ :class => "nested_records nested_records_notes" }
+      = f.fields_for :notes do |note_form|
         = render 'note_fields', :f => note_form
     %tfoot
       %tr
         %td{ :colspan => '3' }
-          = link_to_add_fields "Add Note", f, :notes
+          = link_to_add_nested_attribute_fields "Add Note", :notes
+    - @notesTemplate = generate_nested_attributes_template(f, :notes, 'note')
   
   %p
     = f.submit "Save", :disable_with => 'Saving...'
@@ -52,9 +52,11 @@
 :javascript
   $(function () {
     var activityActorsTemplate = '#{@activityActorsTemplate}';
+    var notesTemplate = '#{@notesTemplate}';
 
     activitiesUI = new Clearcats.ActivitiesUI({ activityTypesUrl: '#{activity_types_path(:format => :json)}',
                                                 selectPeopleUrl: '#{select_people_path(:format => :json)}',
-                                                activityActorsTemplate: activityActorsTemplate });
+                                                activityActorsTemplate: activityActorsTemplate,
+                                                notesTemplate: notesTemplate });
                                            
   });

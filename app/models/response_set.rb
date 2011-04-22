@@ -18,7 +18,7 @@
 
 class ResponseSet < ActiveRecord::Base
   unloadable
-  include Surveyor::Models::ResponseSetMethods
+  # include Surveyor::Models::ResponseSetMethods
   
   belongs_to :service
   

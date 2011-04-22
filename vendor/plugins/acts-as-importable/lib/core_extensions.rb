@@ -1,17 +1,7 @@
 # See http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/212639
 # And http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/210633 for alternative [:id] notation
 class ActiveRecord::Base
-  alias_method :id__, :id
-end
-
-class Object
-  ##
-  #   @person ? @person.name : nil
-  # vs
-  #   @person.try(:name)
-  def try(method)
-    send method if respond_to? method
-  end
+  alias_method :id__, :id if method_defined? :id
 end
 
 # From http://weblog.jamisbuck.org/2007/4/6/faking-cursors-in-activerecord

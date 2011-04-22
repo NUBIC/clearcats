@@ -5,12 +5,12 @@
 - else
   %table.records
     %tr
-      %th= order @search, :by => :last_name, :as => "Last Name", :params => {:page => params[:page]}
-      %th= order @search, :by => :first_name, :as => "First Name", :params => {:page => params[:page]}
-      %th= order @search, :by => :username, :as => "Username", :params => {:page => params[:page]}
-      %th= order @search, :by => :title, :as => "Title", :params => {:page => params[:page]}
-      %th= order @search, :by => :email, :as => "Email", :params => {:page => params[:page]}
-      %th= order @search, :by => :organizational_unit_name, :as => "Org Unit", :params => {:page => params[:page]}
+      %th= sort_link @search, :last_name, "Last Name", :params => {:page => params[:page]}
+      %th= sort_link @search, :first_name, "First Name", :params => {:page => params[:page]}
+      %th= sort_link @search, :username, "Username", :params => {:page => params[:page]}
+      %th= sort_link @search, :title, "Title", :params => {:page => params[:page]}
+      %th= sort_link @search, :email, "Email", :params => {:page => params[:page]}
+      %th= sort_link @search, :organizational_unit_name, "Org Unit", :params => {:page => params[:page]}
       %th &nbsp;
     - @users.each do |user|
       %tr

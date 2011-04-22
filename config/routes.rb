@@ -1,96 +1,136 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resources :service_requests
+Clearcats::Application.routes.draw do
 
+  match 'reports' => 'reports'
+  match '/people/departments' => 'people#departments', :as => :departments
+  match '/people/schools' => 'people#schools', :as => :schools
+
+  resources :activity_types
+  resources :activities
+  resources :projects
+  resources :key_metrics
+  resources :metric_items
   
-  # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  map.departments '/people/departments', :controller => "people", :action => "departments"
-  map.schools     '/people/schools',     :controller => "people", :action => "schools"
-
-  map.resources :activity_types
-  map.resources :activities
-  map.resources :projects
-  map.resources :key_metrics
-  map.resources :metric_items
-
-  map.resources :awards, :except => [ :destroy ],
-    :member => { :versions => :get, :revert => :post, :details => :get },
-    :collection => { :incomplete => :get, :update_ctsa_reporting_year => :post, :search => :get }
-  map.resources :ctsa_reports, :except => [ :show ],
-    :member => { :download => :get, :irb_iacuc_report => :get, :technology_transfer_report => :get }
-  map.resources :publications, :only => [ :edit, :update, :new, :create ],
-    :member => { :versions => :get, :revert => :post },
-    :collection => { :incomplete => :get, :update_ctsa_reporting_year => :post, :search => :get }
-  map.resources :approvals, :only => [ :index ],
-    :collection => { :update_approvals => :post, :search => :get }
-  map.resources :organizational_units
-  
-  map.resources :services, 
-    :member     => { :choose_service_line => :get, :choose_person => :get, :update_person => :put, :update_approvals => :put, 
-                     :continue => [:get, :put], :identified => [:get, :put], :surveyable => :get, :survey => :post,
-                     :create_service_for_person => :post,
-                     :choose_awards => :get, :choose_organizational_units => :get, :choose_publications => :get, :choose_approvals => :get }, 
-    :collection => { :choose_service_line => :get, :choose_person => :get, :my_services => :get, :chart => :get }
-  
-  map.resources :people, :only => [:index, :edit, :update, :new, :create], 
-    :member     => { :versions => :get, :revert => :post, :version => :get, :merge => [:get, :post] },
-    :collection => { :upload => [:get, :post], :search => [:get,:post], :search_results => [:get,:post], :select => [:get, :post], 
-                     :directory => [:get, :post], :incomplete => :get, :update_ctsa_reporting_year => :post,
-                     :era_commons_username_search => [:get, :post] } do |people|
-      people.resources :awards
-      people.resources :publications
-      people.resources :approvals
-      people.resources :services
+  resources :awards, :except => [:destroy] do
+    collection do
+      post :update_ctsa_reporting_year
+      get :search
+      get :incomplete
+    end
+    member do
+      get :versions
+      get :details
+      post :revert
+      get :row
+    end
   end
-  map.resources :clients, :controller => "people"
-  map.resources :contacts, :collection => { :upload => [:get, :post], :email_search => [:get], :load_contact => [:get], :sample_upload_file => :get }
-  map.resources :contact_lists
+
+  resources :ctsa_reports, :except => [:show] do  
+    member do
+      get :download
+      get :irb_iacuc_report
+      get :technology_transfer_report
+    end
+  end
+
+  resources :publications, :only => [:edit, :update, :new, :create] do
+    collection do
+      post :update_ctsa_reporting_year
+      get :search
+      get :incomplete
+    end
+    member do
+      get :versions
+      post :revert
+      get :row
+    end
+  end
+
+  resources :approvals, :only => [:index] do
+    collection do
+      post :update_approvals
+      get :search
+    end
+  end
+
+  resources :organizational_units
+  resources :service_requests
+  resources :services do
+    collection do
+      get :chart
+      get :choose_person
+      get :my_services
+      get :choose_service_line
+    end
+    member do
+      post :create_service_for_person
+      get :choose_person
+      get :choose_awards
+      put :update_approvals
+      put :update_person
+      get :choose_organizational_units
+      get :identified
+      put :identified
+      get :continue
+      put :continue
+      get :choose_publications
+      get :surveyable
+      get :choose_approvals
+      post :survey
+      get :choose_service_line
+    end
+  end
+
+  resources :people do
+    member do
+      get :versions
+      get :version
+      post :revert
+      get :merge
+      post :merge
+    end
+    collection do
+      get :upload
+      post :upload
+      get :search
+      post :search
+      get :search_results
+      post :search_results
+      get :select
+      post :select
+      get :directory
+      post :directory
+      get :incomplete
+      post :update_ctsa_reporting_year
+      get :era_commons_username_search
+      post :directory
+    end
+    resources :awards
+    resources :publications
+    resources :approvals
+    resources :services
+  end
+
+  resources :clients, :controller => "people"
+  resources :contacts do
+    collection do
+      get :email_search
+      get :load_contact
+      get :sample_upload_file
+      get :upload
+      post :upload
+    end
+  end
+
+  resources :contact_lists
+  resources :participating_organizations
+  resources :service_lines
+  resources :specialties, :only => [:index]
+  resources :users, :except => [:destroy, :show]
+  resources :roles, :except => [:destroy, :show]
+  root :to => "welcome#index"
   
-  map.resources :participating_organizations
-  map.resources :service_lines
-  map.resources :specialties, :only => [ :index ]
-
-  map.resources :users, :except => [ :destroy, :show ]
-  map.resources :roles, :except => [ :destroy, :show ]
-
-  map.connect 'reports/:action', :controller => "reports"
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
+  match 'reports/:action' => 'reports#index'
   
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
-
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "welcome"
-
-  # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  match '/' => 'welcome#index'
+  match '/:controller(/:action(/:id))'
 end

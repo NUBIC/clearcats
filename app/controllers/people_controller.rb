@@ -3,12 +3,13 @@ class PeopleController < ApplicationController
   before_filter :permit_admin, :only => [:upload, :revert, :merge]
 
   def index
-    params[:search]         ||= Hash.new
-    params[:search][:order] ||= "ascend_by_last_name"
+    params[:page] ||= 1
+    params[:search] ||= Hash.new
+    params[:search][:meta_sort] ||= "last_name.asc"
     purge_search_params
 
     @search = Client.search(params[:search])
-    @people = @search.paginate(:select => "distinct people.*", :page => params[:page], :per_page => 20)
+    @people = @search.paginate(:page => params[:page], :per_page => 20)
     respond_to do |format|
       format.html # index.html.erb
       format.csv { render :csv => @search.all }
@@ -25,13 +26,13 @@ class PeopleController < ApplicationController
     params[:search] ||= Hash.new
     case params[:criteria]
     when "netid"
-      params[:search][:netid_equals] = nil
+      params[:search][:netid_is_blank] = true
     when "employeeid"
-      params[:search][:employeeid_equals] = nil
+      params[:search][:employeeid_is_blank] = true
     when "era_commons_username"
-      params[:search][:era_commons_username_equals] = nil
+      params[:search][:era_commons_username_is_blank] = true
     when "specialty"
-      params[:search][:specialty_id_equals] = nil
+      params[:search][:specialty_id_is_blank] = true
     else
       params[:search][:invalid_for_ctsa_reporting] = true
     end

@@ -18,7 +18,9 @@ require 'comma'
 class ParticipatingOrganization < ActiveRecord::Base
   include CtsaReportable
   
-  named_scope :all_for_reporting_year, lambda { |yr| {:conditions => "ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(yr.to_i)} > 0 "} }
+  scope :all_for_reporting_year, lambda { |yr| {:conditions => "ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(yr.to_i)} > 0 "} }
+  
+  search_methods :all_for_reporting_year
   
   has_paper_trail :ignore => [:ctsa_reporting_years_mask]
   

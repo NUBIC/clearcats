@@ -27,7 +27,7 @@
   = render "service_header"
 
 .page_section
-  - form_for @service.person, :url => { :controller => "services", :action => "update_person", :id => @service.id } do |f|
+  = form_for @service.person, :url => { :controller => "services", :action => "update_person", :id => @service.id } do |f|
 
     = hidden_field_tag "service[state]", "identified" if @service.initiated?
 

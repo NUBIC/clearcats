@@ -154,22 +154,31 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :publications, :allow_destroy => true
   accepts_nested_attributes_for :approvals,    :allow_destroy => true
   
-  named_scope :awards_phs_organization_id_equals,     lambda { |id| {:joins => :awards,   :conditions => ["awards.organization_id  = :id and awards.organization_type = 'PhsOrganization'",    {:id => id} ]} }
-  named_scope :awards_activity_code_id_equals,        lambda { |id| {:joins => :awards,   :conditions => ["awards.activity_code_id = :id", {:id => id} ]} }
-  named_scope :awards_non_phs_organization_id_equals, lambda { |id| {:joins => :awards,   :conditions => ["awards.organization_id  = :id and awards.organization_type = 'NonPhsOrganization'", {:id => id} ]} }
-  named_scope :service_line_equals,                   lambda { |id| {:joins => :services, :conditions => ["services.service_line_id = :id", {:id => id} ]} }
-  named_scope :organizational_unit_equals,            lambda { |id| {:joins => "INNER JOIN organizational_units_people ON organizational_units_people.person_id = people.id", :conditions => ["organizational_units_people.organizational_unit_id = ?", id]} }
+  scope :awards_phs_organization_id_equals,     lambda { |id| joins(:awards).where("awards.organization_id = ? and awards.organization_type = 'PhsOrganization'", id) }
+  scope :awards_activity_code_id_equals,        lambda { |id| joins(:awards).where("awards.activity_code_id = ?", id) }
+  scope :awards_non_phs_organization_id_equals, lambda { |id| joins(:awards).where("awards.organization_id = ? and awards.organization_type = 'NonPhsOrganization'", id) }
+  scope :service_line_equals,                   lambda { |id| joins(:services).where("services.service_line_id = ?", id) }
+  scope :organizational_unit_equals,            lambda { |id| joins("INNER JOIN organizational_units_people ON organizational_units_people.person_id = people.id").where("organizational_units_people.organizational_unit_id = ?", id) }
   
-  named_scope :all_investigators, :conditions => "((training_type IS NULL) AND (trainee_status IS NULL))"
-  named_scope :all_trainees,      :conditions => "((training_type IS NOT NULL OR training_type = '') AND (trainee_status IS NOT NULL OR trainee_status = ''))"
+  scope :all_investigators, :conditions => "((training_type IS NULL) AND (trainee_status IS NULL))"
+  scope :all_trainees,      :conditions => "((training_type IS NOT NULL OR training_type = '') AND (trainee_status IS NOT NULL OR trainee_status = ''))"
   
-  named_scope :for_reporting_year, lambda { |yr| {:conditions => "people.ctsa_reporting_years_mask & #{2**Person::REPORTING_YEARS.index(yr.to_i)} > 0"} }
+  scope :for_reporting_year, lambda { |yr| where("people.ctsa_reporting_years_mask & #{2**Person::REPORTING_YEARS.index(yr.to_i)} > 0") }
   
-  named_scope :scholars,      :conditions => { :training_type => SCHOLAR, :trainee_status => APPOINTED }
-  named_scope :other_careers, :conditions => { :training_type => OTHER_CAREER, :trainee_status => APPOINTED }
-  named_scope :trainees,      :conditions => { :training_type => TRAINEE, :trainee_status => APPOINTED }
+  scope :scholars,      where(:training_type => SCHOLAR, :trainee_status => APPOINTED)
+  scope :other_careers, where(:training_type => OTHER_CAREER, :trainee_status => APPOINTED)
+  scope :trainees,      where(:training_type => TRAINEE, :trainee_status => APPOINTED)
   
-  named_scope :invalid_for_ctsa_reporting, :conditions => "(people.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(SYSTEM_CONFIG['current_ctsa_reporting_year'].to_i)} > 0) AND (era_commons_username IS NULL OR specialty_id IS NULL)"
+  scope :invalid_for_ctsa_reporting, where("(people.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(SYSTEM_CONFIG['current_ctsa_reporting_year'].to_i)} > 0) AND (era_commons_username IS NULL OR specialty_id IS NULL)")
+  
+  search_methods :awards_phs_organization_id_equals
+  search_methods :awards_activity_code_id_equals
+  search_methods :awards_non_phs_organization_id_equals
+  search_methods :service_line_equals
+  search_methods :organizational_unit_equals
+  
+  search_methods :for_reporting_year, :splat_param => true, :type => [:integer]
+  search_methods :invalid_for_ctsa_reporting
   
   
   # attributes from faculty_web_service that are not persisted
@@ -373,7 +382,7 @@ class Person < ActiveRecord::Base
 
 
   def self.find_all_like_term(term)
-    Person.netid_or_email_like(term)
+    Person.search(:netid_or_email_like => term).all
   end
 
   ###

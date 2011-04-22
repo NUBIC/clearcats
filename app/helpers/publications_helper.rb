@@ -14,15 +14,33 @@ module PublicationsHelper
 
   def publications_sort_by_url_map(search, options = {})
     {
-      'ascend_by_pmcid'            => order_by_url(search, :by => :pmcid, :as => "PMCID", :direction  => :ascend, :params => params_for_search.merge(options)),
-      'descend_by_pmcid'           => order_by_url(search, :by => :pmcid, :as => "PMCID", :direction => :descend, :params => params_for_search.merge(options)),
-      'ascend_by_pmid'             => order_by_url(search, :by => :pmid, :as => "PMID", :direction  => :ascend, :params => params_for_search.merge(options)),
-      'descend_by_pmid'            => order_by_url(search, :by => :pmid, :as => "PMID", :direction => :descend, :params => params_for_search.merge(options)),
-      'ascend_by_publication_date' => order_by_url(search, :by => :publication_date, :as => "Publication Date", :direction => :ascend, :params => params_for_search.merge(options)),
-      'ascend_by_publication_date' => order_by_url(search, :by => :publication_date, :as => "Publication Date", :direction => :descend, :params => params_for_search.merge(options)),
-      'ascend_by_title'            => order_by_url(search, :by => :title, :as => "Title", :direction => :ascend, :params => params_for_search.merge(options)),
-      'ascend_by_title'            => order_by_url(search, :by => :title, :as => "Title", :direction => :descend, :params => params_for_search.merge(options)),
+      'ascend_by_pmcid'            => url_for_sort(search, :pmcid, "PMCID", :params => params_for_search.merge(options)),
+      'descend_by_pmcid'           => url_for_sort(search, :pmcid, "PMCID", :params => params_for_search.merge(options)),
+      'ascend_by_pmid'             => url_for_sort(search, :pmid, "PMID", :params => params_for_search.merge(options)),
+      'descend_by_pmid'            => url_for_sort(search, :pmid, "PMID", :params => params_for_search.merge(options)),
+      'ascend_by_publication_date' => url_for_sort(search, :publication_date, "Publication Date", :params => params_for_search.merge(options)),
+      'decend_by_publication_date' => url_for_sort(search, :publication_date, "Publication Date", :params => params_for_search.merge(options)),
+      'ascend_by_title'            => url_for_sort(search, :title, "Title", :params => params_for_search.merge(options)),
+      'decend_by_title'            => url_for_sort(search, :title, "Title", :params => params_for_search.merge(options)),
     }
+  end
+  
+  def url_for_sort(builder, attribute, *args)
+    raise ArgumentError, "Need a MetaSearch::Builder search object as first param!" unless builder.is_a?(MetaSearch::Builder)
+    attr_name = attribute.to_s
+    name = (args.size > 0 && !args.first.is_a?(Hash)) ? args.shift.to_s : builder.base.human_attribute_name(attr_name)
+    prev_attr, prev_order = builder.search_attributes['meta_sort'].to_s.split('.')
+    current_order = prev_attr == attr_name ? prev_order : nil
+    new_order = current_order == 'asc' ? 'desc' : 'asc'
+    options = args.first.is_a?(Hash) ? args.shift : {}
+    options.merge!(
+      builder.search_key => builder.search_attributes.merge(
+        'meta_sort' => [attr_name, new_order].join('.')
+      )
+    )
+
+    url_for(options)
+
   end
   
   def order_by_url(search, options = {}, html_options = {})
@@ -40,7 +58,7 @@ module PublicationsHelper
     end
 
     url_options = {
-      options[:params_scope] => search.conditions.merge( { :order => new_scope } )
+      options[:params_scope] => search.conditions.merge( { :meta_sort => new_scope } )
     }.deep_merge(options[:params] || {})
 
     options[:as] = raw(options[:as]) if defined?(RailsXss)

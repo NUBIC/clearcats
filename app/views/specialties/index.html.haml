@@ -1,0 +1,13 @@
+- title "Specialties"
+- if @specialties.blank?
+  %p.no_records
+    No specialties were found.
+- else
+  %table.records
+    %tr
+      %th Code
+      %th Name
+    - @specialties.each do |specialty|
+      %tr
+        %td= h specialty.code
+        %td= h specialty.name

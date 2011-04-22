@@ -19,14 +19,6 @@ describe ParticipatingOrganizationsController do
       end
     end
 
-    describe "GET show" do
-      it "assigns the requested participating_organization as @participating_organization" do
-        ParticipatingOrganization.stub(:find).with("37").and_return(mock_participating_organization)
-        get :show, :id => "37"
-        assigns[:participating_organization].should equal(mock_participating_organization)
-      end
-    end
-
     describe "GET new" do
       it "assigns a new participating_organization as @participating_organization" do
         ParticipatingOrganization.stub(:new).and_return(mock_participating_organization)
@@ -55,7 +47,7 @@ describe ParticipatingOrganizationsController do
         it "redirects to the created participating_organization" do
           ParticipatingOrganization.stub(:new).and_return(mock_participating_organization(:save => true))
           post :create, :participating_organization => {}
-          response.should redirect_to(edit_participating_organization_url(mock_participating_organization))
+          response.should redirect_to(participating_organizations_url)
         end
       end
 
@@ -93,7 +85,7 @@ describe ParticipatingOrganizationsController do
         it "redirects to the participating_organization" do
           ParticipatingOrganization.stub(:find).and_return(mock_participating_organization(:update_attributes => true))
           put :update, :id => "1"
-          response.should redirect_to(edit_participating_organization_url(mock_participating_organization))
+          response.should redirect_to(participating_organizations_url)
         end
       end
 

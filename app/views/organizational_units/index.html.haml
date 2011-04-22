@@ -10,8 +10,8 @@
 - else
   %table.records
     %tr
-      %th= order @search, :by => :name, :as => "Name"
-      %th= order @search, :by => :abbreviation, :as => "Abbreviation"
+      %th= sort_link @search, :name, "Name"
+      %th= sort_link @search, :abbreviation, "Abbreviation"
       %th Parent
       %th Number of Service Lines
       %th{:colspan => "2"}

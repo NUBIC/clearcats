@@ -1,3 +1,4 @@
+# encoding: utf-8
 module CollectiveIdea #:nodoc:
   module Acts #:nodoc:
     module NestedSet #:nodoc:
@@ -32,9 +33,8 @@ module CollectiveIdea #:nodoc:
             end.compact
           end
           result
-        end  
-        
+        end
       end
-    end  
+    end
   end
 end

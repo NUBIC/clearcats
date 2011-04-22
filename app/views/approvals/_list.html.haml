@@ -8,9 +8,9 @@
     - approval_association = { :person_id => @person.id }
 
   .approvals_body
-    - form_for @person, :url => { :controller => "approvals", :action => "update_approvals" } do |f|
+    = form_for @person, :url => { :controller => "approvals", :action => "update_approvals" } do |f|
       .page_section
-        = f.error_messages
+        = render "shared/error_messages", :object => f.object
 
         = hidden_field_tag "person_id", @person.id
 
@@ -32,7 +32,7 @@
                 = ctsa_wording
               %th
           %tbody{ :class => "nested_records" }
-            - f.fields_for :approvals do |approval_form|
+            = f.fields_for :approvals do |approval_form|
               = render '/approvals/approval_fields', :f => approval_form
           %tfoot
             %tr

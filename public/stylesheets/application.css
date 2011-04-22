@@ -28,9 +28,6 @@
   padding: 0.75em 0.25em 0.5em 0.75em;
   background-color: whitesmoke;
   border-radius: .5em;
-  -o-border-radius: .5em;
-  -icab-border-radius: .5em;
-  -khtml-border-radius: .5em;
   -moz-border-radius: .5em;
   -webkit-border-radius: .5em;
 }
@@ -51,9 +48,6 @@ a.no_link {
   text-align: center;
   margin: .125em auto;
   border-radius: .5em;
-  -o-border-radius: .5em;
-  -icab-border-radius: .5em;
-  -khtml-border-radius: .5em;
   -moz-border-radius: .5em;
   -webkit-border-radius: .5em;
 }
@@ -461,9 +455,6 @@ table.nested {
   font-weight: bold;
   border: 3px solid black;
   border-radius: 1em;
-  -o-border-radius: 1em;
-  -icab-border-radius: 1em;
-  -khtml-border-radius: 1em;
   -moz-border-radius: 1em;
   -webkit-border-radius: 1em;
 }

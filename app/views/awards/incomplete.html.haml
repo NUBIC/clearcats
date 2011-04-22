@@ -12,19 +12,19 @@
 
 .records_header
   .page_entries_info
-    = page_entries_info @awards, :entry_name => "record"
+    = raw page_entries_info @awards, :entry_name => "record"
 
 %table.records
   %tr
     %th Edit
     %th 
-      = order @search, :by => :person_last_name, :as => "Person", :params => { :controller => "awards", :action => "incomplete" }
+      = sort_link @search, :person_last_name, "Person", :params => { :controller => "awards", :action => "incomplete" }
     %th
-      = order @search, :by => :grant_title, :as => "Grant Title", :params => { :controller => "awards", :action => "incomplete" }
+      = sort_link @search, :grant_title, "Grant Title", :params => { :controller => "awards", :action => "incomplete" }
     %th
-      = order @search, :by => :budget_identifier, :as => "Budget Number", :params => { :controller => "awards", :action => "incomplete" }
+      = sort_link @search, :budget_identifier, "Budget Number", :params => { :controller => "awards", :action => "incomplete" }
     %th
-      = order @search, :by => :project_period_start_date, :as => "Project Start Date", :params => { :controller => "awards", :action => "incomplete" }
+      = sort_link @search, :project_period_start_date, "Project Start Date", :params => { :controller => "awards", :action => "incomplete" }
     %th Missing
   - @awards.each do |award|
     %tr{ :class => cycle('even_record', 'odd_record') }

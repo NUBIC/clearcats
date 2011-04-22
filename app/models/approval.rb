@@ -29,7 +29,9 @@ class Approval < ActiveRecord::Base
 
   belongs_to :person
 
-  named_scope :all_for_reporting_year, lambda { |yr| {:conditions => "approvals.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(yr.to_i)} > 0 "} }
+  scope :all_for_reporting_year, lambda { |yr| {:conditions => "approvals.ctsa_reporting_years_mask & #{2**REPORTING_YEARS.index(yr.to_i)} > 0 "} }
+
+  search_methods :all_for_reporting_year
 
   attr_accessor :project_role
   

@@ -22,7 +22,7 @@
       - if version.object
         - attrs = YAML::load version.object
         %tr{ :class => cycle('even_record', 'odd_record') }
-          %td= link_to 'Revert', revert_person_path(@person, :version_id => version.id), :class => "edit_link icon_link", :method => :post
+          %td= button_to 'Revert', revert_person_path(@person, :version_id => version.id), :method => :post
           %td= link_to 'View', version_person_path(@person, :version_id => version.id), :class => "show_link icon_link"
           %td= version.created_at.to_s(:db)
           %td= version.whodunnit

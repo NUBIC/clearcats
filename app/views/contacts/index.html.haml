@@ -3,7 +3,7 @@
 
 - if @user_organizational_units.size > 1
   .page_section
-    - form_for @search, :url => {:controller => "contacts", :action => "index", :method => :get}, :html => {:class => "contact_list_search_form"} do |f|
+    = form_for @search, :url => {:controller => "contacts", :action => "index", :method => :get}, :html => {:class => "contact_list_search_form"} do |f|
       %p
         = f.label "organizational_units_id_equals", "Organizational Unit"
         %br
@@ -17,10 +17,10 @@
 - else
   %table.records
     %tr
-      %th= order @search, :by => :email, :as => "Email"
-      %th= order @search, :by => :last_name, :as => "Last Name"
-      %th= order @search, :by => :first_name, :as => "First Name"
-      %th= order @search, :by => :company_name, :as => "Company Name"
+      %th= sort_link @search, :email, "Email"
+      %th= sort_link @search, :last_name, "Last Name"
+      %th= sort_link @search, :first_name, "First Name"
+      %th= sort_link @search, :company_name, "Company Name"
       %th{:colspan => "4"}
     - @contacts.each do |contact|
       %tr{:class => cycle('even_record', 'odd_record')}

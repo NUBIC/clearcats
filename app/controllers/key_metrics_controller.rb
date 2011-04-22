@@ -21,17 +21,6 @@ class KeyMetricsController < ApplicationController
     end
   end
 
-  # GET /key_metrics/1
-  # GET /key_metrics/1.xml
-  def show
-    @key_metric = KeyMetric.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @key_metric }
-    end
-  end
-
   # GET /key_metrics/new
   # GET /key_metrics/new.xml
   def new
