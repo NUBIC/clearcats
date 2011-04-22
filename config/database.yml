@@ -4,7 +4,7 @@
 %>
 
 <%= bcdb.development :local_postgresql, :clearcats_development %>
-#< % = bcdb.ci :pdev, :clearcats_hudson % >
+<%= bcdb.ci :pdev, :clearcats_hudson %>
 <%= bcdb.staging :pstage, :clearcats_staging %>
 <%= bcdb.production :pprod, :clearcats_production %>
 
@@ -18,14 +18,14 @@
 
 # Use this when testing ci locally:
 #
-turbo_ctsa_ci:
-  adapter: postgresql
-  database: turbo_ctsa_development
-  username: turbo_ctsa
-  password: pwd
-  encoding: unicode
-  pool: 5
-  host: localhost
+# turbo_ctsa_ci:
+#   adapter: postgresql
+#   database: turbo_ctsa_development
+#   username: turbo_ctsa
+#   password: pwd
+#   encoding: unicode
+#   pool: 5
+#   host: localhost
 
 turbo_ctsa_development:
   adapter: postgresql
@@ -64,7 +64,4 @@ test: &test
   password: pwd
 
 cucumber:
-  <<: *test
-  
-ci: 
   <<: *test
