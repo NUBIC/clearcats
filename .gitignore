@@ -27,7 +27,7 @@ doc/ctsa/ctsa_report5.xml
 doc/ctsa/ctsa_report2.xml
 doc/ctsa/ctsa_report.xml
 tmp/methodshark_junk.rb
-public/system/data/1/original/*.*
+public/system/data/*/original/*.*
 *.rails2
 **/*.rails2
 **/**/*.rails2
