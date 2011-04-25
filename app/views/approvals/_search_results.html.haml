@@ -25,7 +25,7 @@
     - @approvals.each do |approval|
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td
-          = link_to "Select", person_approvals_path(approval.person), { :class => "edit_link icon_link" }
+          = link_to "Select", {:controller => "people", :action => "approvals", :person_id => approval.person.id}, { :class => "edit_link icon_link" }
         %td= h approval.approval_type
         %td= h approval.ctsa_reporting_years.blank? ? "n/a" : approval.ctsa_reporting_years.join(",")
         %td= h approval.person

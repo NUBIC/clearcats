@@ -70,6 +70,11 @@ module NavigationHelpers
 
     when /the person search page/
       people_path
+    
+    ### APPROVALS ###
+      
+    when /the approvals search page/
+      search_approvals_path
       
     ### SERVICE LINES ###
 
