@@ -30,9 +30,3 @@
             Sort By
           = select_tag :sort_awards_by,  options_for_awards_sort_by_select(params[:search][:order])
         = render '/awards/awards_records', { :ordering_params => ordering_params, :award_association => award_association }
-      
-:javascript
-  $(function () {
-    var sortByUrlMap = #{awards_sort_by_url_map(@search).to_json},
-        awardsUI = new Clearcats.AwardsUI({ sortByUrlMap: sortByUrlMap });
-  });

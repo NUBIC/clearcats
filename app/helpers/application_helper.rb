@@ -104,21 +104,15 @@ module ApplicationHelper
   
   ### META SORT ###
   
-  def url_for_sort(builder, attribute, *args)
+  def url_for_sort(builder, attribute, order, *args)
     raise ArgumentError, "Need a MetaSearch::Builder search object as first param!" unless builder.is_a?(MetaSearch::Builder)
     attr_name = attribute.to_s
     name = (args.size > 0 && !args.first.is_a?(Hash)) ? args.shift.to_s : builder.base.human_attribute_name(attr_name)
-    prev_attr, prev_order = builder.search_attributes['meta_sort'].to_s.split('.')
-    current_order = prev_attr == attr_name ? prev_order : nil
-    new_order = current_order == 'asc' ? 'desc' : 'asc'
-    
-    Rails.logger.error("~~~~ #{builder.search_attributes}")
-    Rails.logger.error("~~~~ #{attr_name} & #{prev_attr} & #{prev_order} & #{current_order} & #{new_order}")
     
     options = args.first.is_a?(Hash) ? args.shift : {}
     options.merge!(
       builder.search_key => builder.search_attributes.merge(
-        'meta_sort' => [attr_name, new_order].join('.')
+        'meta_sort' => [attr_name, order].join('.')
       )
     )
     url_for(options)

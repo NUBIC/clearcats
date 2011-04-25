@@ -14,14 +14,14 @@ module PublicationsHelper
 
   def publications_sort_by_url_map(search, options = {})
     {
-      'ascend_by_pmcid'            => url_for_sort(search, :pmcid, "PMCID", :params => params_for_search.merge(options)),
-      'descend_by_pmcid'           => url_for_sort(search, :pmcid, "PMCID", :params => params_for_search.merge(options)),
-      'ascend_by_pmid'             => url_for_sort(search, :pmid, "PMID", :params => params_for_search.merge(options)),
-      'descend_by_pmid'            => url_for_sort(search, :pmid, "PMID", :params => params_for_search.merge(options)),
-      'ascend_by_publication_date' => url_for_sort(search, :publication_date, "Publication Date", :params => params_for_search.merge(options)),
-      'decend_by_publication_date' => url_for_sort(search, :publication_date, "Publication Date", :params => params_for_search.merge(options)),
-      'ascend_by_title'            => url_for_sort(search, :title, "Title", :params => params_for_search.merge(options)),
-      'decend_by_title'            => url_for_sort(search, :title, "Title", :params => params_for_search.merge(options)),
+      'ascend_by_pmcid'            => url_for_sort(search, :pmcid, "asc", "PMCID", :params => params_for_search.merge(options)),
+      'descend_by_pmcid'           => url_for_sort(search, :pmcid, "desc", "PMCID", :params => params_for_search.merge(options)),
+      'ascend_by_pmid'             => url_for_sort(search, :pmid, "asc", "PMID", :params => params_for_search.merge(options)),
+      'descend_by_pmid'            => url_for_sort(search, :pmid, "desc", "PMID", :params => params_for_search.merge(options)),
+      'ascend_by_publication_date' => url_for_sort(search, :publication_date, "asc", "Publication Date", :params => params_for_search.merge(options)),
+      'decend_by_publication_date' => url_for_sort(search, :publication_date, "desc", "Publication Date", :params => params_for_search.merge(options)),
+      'ascend_by_title'            => url_for_sort(search, :title, "Title", "asc", :params => params_for_search.merge(options)),
+      'decend_by_title'            => url_for_sort(search, :title, "Title", "desc", :params => params_for_search.merge(options)),
     }
   end
 

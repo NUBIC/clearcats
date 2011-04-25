@@ -7,3 +7,9 @@
 
 .page_section
   = render '/awards/list', :awards => @awards, :person => @person, :search => @search_params, :service => nil
+  
+:javascript
+  $(function () {
+    var sortByUrlMap = #{awards_sort_by_url_map(@search).to_json},
+        awardsUI = new Clearcats.AwardsUI({ sortByUrlMap: sortByUrlMap });
+  });
