@@ -8,7 +8,6 @@
 <%= bcdb.staging :pstage, :clearcats_staging %>
 <%= bcdb.production :pprod, :clearcats_production %>
 
-<%= bcdb.turbo_ctsa_ci :pstage, :turbo_ctsa %>
 <%= bcdb.turbo_ctsa_staging :pstage, :turbo_ctsa %>
 <%= bcdb.turbo_ctsa_production :pprod, :turbo_ctsa %>
 
@@ -26,6 +25,7 @@
 #   encoding: unicode
 #   pool: 5
 #   host: localhost
+# <#%#= bcdb.turbo_ctsa_ci :pstage, :turbo_ctsa %#>
 
 turbo_ctsa_development:
   adapter: postgresql
