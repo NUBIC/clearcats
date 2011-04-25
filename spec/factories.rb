@@ -192,6 +192,7 @@ Factory.define :approval do |a|
   a.approval_date           Time.now
   a.nucats_assisted         false
   a.principal_investigator  "principal_investigator"
+  a.person                  { |a| a.association(:person) }
 end
 
 Factory.define :ctsa_report do |r|
