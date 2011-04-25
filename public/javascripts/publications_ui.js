@@ -15,11 +15,11 @@ Clearcats.PublicationsUI = function (config) {
     
 
   var onsuccess = function(data) {
-    $('tr#publication_' + data.id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+    $('div#publication_' + data.id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
     var publication_id = data.id
     var url = "/publications/row/" + publication_id + "?person_id=" + data.person_id;
     $.get(url, null, function (response) {
-      $('tr#publication_' + publication_id).html(response);
+      $('div#publication_' + publication_id).replaceWith(response);
     });
     $('#dialog').remove();
   }

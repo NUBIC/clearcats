@@ -1,0 +1,72 @@
+- edit_link_params = { :controller => "/awards", :action => "edit", :id => award, :search => params[:search] }.merge(award_association)
+%div{ :id => "award_#{award.id}", :class => "award_record" }
+  - unless @service
+    %div
+      = check_box_tag "award_ids[]", award.id, award.ctsa_reporting_years.include?(current_year)
+      %b
+        = ctsa_wording
+  %div
+    = link_to "Edit", edit_link_params, { :title => "Edit Award", :class => "edit_modal_form_link edit_link icon_link", :remote => true } 
+    = link_to "Details", details_award_path(award), { :class => "details_view_link list_link icon_link" } if sysadmin
+    = link_to 'View Version History', versions_award_path(award), :class => "show_link icon_link" if sysadmin
+  .organization
+    %div
+      %b
+        Organization
+      %br
+      = h award.organization
+    %div
+      %b
+        Activity Code
+      %br
+      = h award.activity_code
+  .ctsa_reportable
+    %div
+      %b
+        CTSA Reporting Years
+      %br
+      = h award.ctsa_reporting_years.blank? ? "n/a" : award.ctsa_reporting_years.join(",")
+    %div
+      %b
+        NUCATS Assisted
+      %br
+      = h award.nucats_assisted ? "True" : "False"
+    %div
+      %b
+        Award Number
+      %br
+      = h award.ctsa_award_type_award_number
+  .sponsor_info
+    %div
+      %b
+        Sponsor
+      %br
+      = h award.sponsor
+    %div
+      %b
+        Sponsor Award Number
+      %br
+      = h award.sponsor_award_number
+    %div
+      %b
+        Grant Title
+      %br
+      = h award.grant_title
+    %div
+      %b
+        Budget Number
+      %br
+      = h award.budget_identifier.blank? ? 'n/a' : award.budget_identifier
+  .project_info
+    %div
+      %b
+        Project Period
+      %br
+      = h award.project_period_start_date
+    %div
+      = h award.project_period_end_date
+    %div
+      %b
+        Project Cost
+      %br
+      = h number_to_currency(award.total_project_cost)

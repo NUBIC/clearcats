@@ -6,20 +6,5 @@
   - award_association = { :service_id => @service.id }
 - else 
   - award_association = { :person_id => @person.id }
-
-
-- unless @service
-  %td
-    = check_box_tag "award_ids[]", @award.id, @award.ctsa_reporting_years.include?(current_year)
-%td
-  = link_to "Select", { :controller => "/awards", :action => "edit", :id => @award, :search => params[:search] }.merge(award_association), { :title => "Edit Award", :class => "edit_modal_form_link edit_link icon_link", :remote => true } 
-  %br
-  = link_to "Details", details_award_path(@award), { :class => "details_view_link list_link icon_link" } if sysadmin
-%td= h @award.ctsa_reporting_years.blank? ? "n/a" : @award.ctsa_reporting_years.join(",")
-%td= h @award.sponsor
-%td= h @award.sponsor_award_number
-%td= h truncate(@award.grant_title)
-%td= h @award.budget_identifier.blank? ? 'n/a' : @award.budget_identifier.gsub('NORTHWESTU00000', '').gsub('turbocats_import_', '')
-%td= h @award.project_period_start_date
-%td= h @award.project_period_end_date
-%td= link_to 'View', versions_award_path(@award), :class => "show_link icon_link" if sysadmin
+  
+= render 'row', :award => @award, :sysadmin => sysadmin, :award_association => award_association, :current_year => current_year

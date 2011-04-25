@@ -1,0 +1,66 @@
+%div{ :id => "publication_#{pub.id}", :class => "publication_record" }
+  - unless @service
+    %div
+      = check_box_tag "publication_ids[]", pub.id, pub.ctsa_reporting_years.include?(current_year), { :disabled => pub.previously_reported?(current_year) }
+      %b
+        = ctsa_wording
+  %div
+    = link_to "Edit", { :controller => "/publications", :action => "edit", :id => pub, :search => params[:search] }.merge(pub_association), { :title => "Edit Publication", :class => "edit_modal_form_link edit_link icon_link" }
+    = link_to 'View Version History', versions_publication_path(pub), :class => "show_link icon_link" if sysadmin
+  .ctsa_reportable
+    %div
+      %b
+        CTSA Reporting Years
+      %br
+      = pub.ctsa_reporting_years.blank? ? "n/a" : pub.ctsa_reporting_years.join(",")
+    %div
+      %b
+        = "Cited #{SYSTEM_CONFIG['grant_name']} (#{SYSTEM_CONFIG['grant_number']})"
+      %br
+      = pub.cited ? "True" : "False"
+    %div
+      %b
+        Citation Count
+      = pub.citation_cnt
+  .identification
+    %div
+      %b
+        PMCID
+      %br
+      = pub.pmcid
+    %div
+      %b
+        PMID
+      %br
+      = pub.pmid
+    %div
+      %b
+        PMID
+      %br
+      = pub.pmid
+    %div
+      %b
+        NIHMS Number
+      %br
+      = pub.nihms_number
+    %div
+      %b
+        Missing PMCID Reason
+      %br
+      = pub.missing_pmcid_reason
+  .publication
+    %div
+      %b
+        Journal
+      %br
+      = pub.journal
+    %div
+      %b
+        Title
+      %br
+      = pub.title
+    %div
+      %b
+        Abstract
+      %br
+      = pub.abstract

@@ -1,23 +1,26 @@
 class AwardsController < ApplicationController
   before_filter :permit_user,  :only => [:versions]
   before_filter :permit_admin, :only => [:revert]
+  before_filter :scope_to_person, :only => [:index]
   layout proc { |controller| controller.request.xhr? ? nil : 'application'  } 
 
   def index
     if params[:person_id]
       @show_header = true
-      params[:search] ||= Hash.new
-      params[:search][:person_id_equals] = params[:person_id]
       
       params[:view_all] = true if faculty_member?
       
       params[:search][:project_period_end_date_greater_than] = Date.new(SYSTEM_CONFIG["ctsa_base_line_year"].to_i,1,1) if params[:view_all].blank?
+      params[:search][:meta_sort] ||= "project_period_start_date.desc"
       
       populate_service_and_person
       FacultyWebService.awards_for_employee({:employeeid => @person.employeeid}) unless @person.employeeid.blank?
+      
       @search = Award.search(@search_params)
-      @search.meta_sort ||= "descend_by_project_period_start_date"
       @awards = @search.all
+      respond_to do |format|
+        format.html { request.xhr? ?  (render :partial => 'awards/list', :locals => {:awards => @awards, :person => @person, :search => @search_params, :service => nil}) : (render 'index') }
+      end
     else
       flash[:notice] = "Awards can be viewed only in the context of a person."
       redirect_to people_path
@@ -164,8 +167,14 @@ class AwardsController < ApplicationController
         @service = Service.find(params[:service_id])
         @person  = @service.person
       elsif params[:person_id]
-        determine_person(:person_id)
+        determine_person(:person_id, false)
       end
+    end
+    
+    def scope_to_person
+      params[:search] ||= Hash.new
+      params[:search][:person_id_equals] = params[:person_id] if !params[:person_id].blank? and params[:search][:person_id_equals].blank?
+      params[:person_id] = params[:search][:person_id_equals] if !params[:search][:person_id_equals].blank? and params[:person_id].blank?
     end
   
 end

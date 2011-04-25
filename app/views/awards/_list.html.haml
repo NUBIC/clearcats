@@ -19,9 +19,20 @@
           = link_to 'View All Awards', person_awards_path(@person, :view_all => true), :class => "list_link icon_link" 
         - else
           = link_to "View Awards since #{SYSTEM_CONFIG['ctsa_base_line_year']}", person_awards_path(@person), :class => "list_link icon_link"
+          
     - if @awards.blank?
       .no-records
         No awards found for #{@person}
     - else
-      = render '/awards/awards_table', { :ordering_params => ordering_params, :award_association => award_association }
+      .award_records
+        .awards_sort_by
+          %strong
+            Sort By
+          = select_tag :sort_awards_by,  options_for_awards_sort_by_select(params[:search][:order])
+        = render '/awards/awards_records', { :ordering_params => ordering_params, :award_association => award_association }
       
+:javascript
+  $(function () {
+    var sortByUrlMap = #{awards_sort_by_url_map(@search).to_json},
+        awardsUI = new Clearcats.AwardsUI({ sortByUrlMap: sortByUrlMap });
+  });

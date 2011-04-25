@@ -7,16 +7,4 @@
 - else 
   - pub_association = { :person_id => @person.id }
 
-
-- unless @service
-  %td
-    = check_box_tag "publication_ids[]", @publication.id, @publication.ctsa_reporting_years.include?(current_year), { :disabled => @publication.previously_reported?(current_year) }
-%td
-  = link_to "Select", { :controller => "/publications", :action => "edit", :id => @publication, :search => params[:search] }.merge(pub_association), { :title => "Edit Publication", :class => "edit_modal_form_link edit_link icon_link" }
-%td= h @publication.ctsa_reporting_years.blank? ? "n/a" : @publication.ctsa_reporting_years.join(",")
-%td= h @publication.pmcid
-%td= h @publication.pmid
-%td= h @publication.nihms_number
-%td= h @publication.publication_date
-%td= h @publication.title
-%td= link_to 'View', versions_publication_path(@publication), :class => "show_link icon_link" if sysadmin
+= render 'row', :pub => @publication, :sysadmin => sysadmin, :current_year => current_year, :pub_association => pub_association

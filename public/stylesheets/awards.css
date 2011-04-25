@@ -35,3 +35,29 @@
 #award_non_phs_organization_id {
   width: 25em;
 }
+
+.award_record {
+  border: 1px solid #ccc;
+  padding: 5px;
+  height: 25em;
+  margin-bottom: 5px;
+  background-color: white;
+  border-radius: .5em;
+  -moz-border-radius: .5em;
+  -webkit-border-radius: .5em;
+}
+
+.organization,
+.ctsa_reportable,
+.sponsor_info,
+.project_info {
+  width: 49%;
+  float:left;
+  min-height: 8.5em;
+}
+
+.sponsor_info,
+.project_info {
+  border-top: 1px dashed #dcdcdc;
+  padding-top: 5px;
+}
