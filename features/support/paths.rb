@@ -42,6 +42,12 @@ module NavigationHelpers
       
     when /the service choose publications page/
       choose_publications_service_path(Service.last)
+      
+    when /the service choose approvals page/
+      choose_approvals_service_path(Service.last)
+    
+    when /the my services page/
+      "/services/my_services"
 
     ### PUBLICATIONS ###
 

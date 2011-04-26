@@ -15,20 +15,22 @@ class ServicesController < ApplicationController
   def my_services
     @user_organizational_units = determine_org_units_for_user
     params[:search] ||= Hash.new
+    params[:search][:meta_sort] ||= "updated_at.desc"
     if @user_organizational_units.blank?
       params[:search][:created_by_equals] ||= current_user.username
     else
-      params[:search][:service_line_organizational_unit_id_eq_any] = @user_organizational_units.collect(&:id) 
+      params[:search][:service_line_organizational_unit_id_in] = @user_organizational_units.collect(&:id) 
     end
 
-    if params[:completed]
-      params[:search][:state_equals] ||= "completed"
-    else
-      params[:search][:state_does_not_equal] ||= "completed"
+    if params[:search][:state_equals].blank?
+      if params[:completed]
+        params[:search][:state_equals] ||= "completed"
+      else
+        params[:search][:state_does_not_equal] ||= "completed"
+      end
     end
     
     @search = Service.search(params[:search])
-    @search.meta_sort ||= "descend_by_updated_at"
     @services = @search.paginate(:page => params[:page], :per_page => 20)
     
     respond_to do |format|

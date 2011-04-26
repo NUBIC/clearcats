@@ -3,7 +3,7 @@ Feature: Creating a new service
   A user is expected to login
   And enter the required data for that service    
 
-  @javascript
+  @wip @javascript
   Scenario: Creating a new service and choosing both the person and service line up to being identified
     Given an authenticated user
     And a person having these attributes:
@@ -35,7 +35,8 @@ Feature: Creating a new service
     And I press "Save"
     Then I should be on the service choose awards page
     And I should see "asdf"
-    When I go to the service choose publications page
+    When I press "Continue"
+    Then I should be on the service choose publications page
     # This next assertion is dependent on external data - if this line fails then remove it or update properly
     Then I should see "The Saccharomyces and Drosophila heat shock transcription factors are identical in size and DNA binding properties"
     And I follow "Edit" 
@@ -50,5 +51,7 @@ Feature: Creating a new service
     Then I should be on the service choose publications page
     And I should see "asdf"
     ## TODO: complete the service
-    # When I press "Continue"
-    # Then I should be on the service choose approvals page
+    When I press "Continue"
+    Then I should be on the service choose approvals page
+    When I press "Finish"
+    Then I should be on the my services page
