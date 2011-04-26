@@ -1,5 +1,5 @@
-- stylesheet "services"
-- javascript "modal_form"
+- stylesheet "people", "publications", "services"
+- javascript "publications_ui"
 - title "New Service - Choose Publications"
 
 = render "menu"
@@ -15,4 +15,8 @@
     .buttons
       = f.submit "Continue"
     
-#modal_window
+:javascript
+  $(function () {
+    var sortByUrlMap = #{publications_sort_by_url_map(@search).to_json},
+        publicationsUI = new Clearcats.PublicationsUI({ sortByUrlMap: sortByUrlMap });
+  });

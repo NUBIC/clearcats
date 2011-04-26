@@ -59,6 +59,60 @@ describe ActivitiesController do
 
     end
     
+    describe "GET edit" do
+      it "assigns the requested activity as @activity" do
+        Activity.stub(:find).with("37").and_return(mock_activity(:contacts => []))
+        get :edit, :id => "37"
+        assigns[:activity].should equal(mock_activity)
+      end
+    end
+    
+    describe "PUT update" do
+    
+      describe "with valid params" do
+        it "updates the requested activity" do
+          Activity.should_receive(:find).with("37").and_return(mock_activity(:contacts => []))
+          mock_activity.should_receive(:update_attributes).with({'these' => 'params'})
+          put :update, :id => "37", :activity => {:these => 'params'}
+        end
+    
+        it "assigns the requested activity as @activity" do
+          Activity.stub(:find).and_return(mock_activity(:update_attributes => true, :contacts => []))
+          put :update, :id => "1"
+          assigns[:activity].should equal(mock_activity)
+        end
+    
+        it "redirects to the activity" do
+          Activity.stub(:find).and_return(mock_activity(:update_attributes => true, :contacts => []))
+          put :update, :id => "1"
+          response.should redirect_to(activities_url)
+        end
+      end
+    
+      describe "with invalid params" do
+        it "updates the requested activity" do
+          Activity.should_receive(:find).with("37").and_return(mock_activity(:contacts => []))
+          mock_activity.should_receive(:update_attributes).with({'these' => 'params'})
+          put :update, :id => "37", :activity => {:these => 'params'}
+        end
+    
+        it "assigns the activity as @activity" do
+          Activity.stub(:find).and_return(mock_activity(:update_attributes => false, :contacts => []))
+          put :update, :id => "1"
+          assigns[:activity].should equal(mock_activity)
+        end
+    
+        it "re-renders the 'edit' template" do
+          Activity.stub(:find).and_return(mock_activity(:update_attributes => false, :contacts => []))
+          put :update, :id => "1"
+          response.should render_template('edit')
+        end
+      end
+    
+    end
+    
+    
+    
   end
   
 end

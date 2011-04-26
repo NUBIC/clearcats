@@ -17,7 +17,7 @@ development:
 
 test:
   :lattice_grid:
-    :host: http://fsm-publications.local
+    :host: http://rails-dev.bioinformatics.northwestern.edu/fsmpubs/
     :path:
       :mesh_json: mesh.json
       :mesh: mesh
@@ -34,7 +34,7 @@ test:
 
 cucumber:
   :lattice_grid:
-    :host: http://fsm-publications.local
+    :host: http://rails-dev.bioinformatics.northwestern.edu/fsmpubs/
     :path:
       :mesh_json: mesh.json
       :mesh: mesh

@@ -10,6 +10,12 @@ Given /^an organizational_unit "(.*)" with the service_line "(.*)"$/ do |org_uni
   svc_line = ServiceLine.create!(:name => service_line_name, :organizational_unit => org_unit)
 end
 
+Given /^a person having these attributes:$/ do |table|
+  table.hashes.each do |p|
+    Factory(:person, :first_name => p[:name].split[0], :last_name => p[:name].split[1], :netid => p[:netid], :employeeid => p[:employeeid])
+  end
+end
+
 Given /^a person having the name "([^"]*)" and the username "([^"]*)"$/ do |name, netid|
   Factory(:person, :first_name => name.split[0], :last_name => name.split[1], :netid => netid)
 end

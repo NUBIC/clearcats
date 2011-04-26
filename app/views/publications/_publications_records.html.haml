@@ -10,7 +10,7 @@
     = hidden_field_tag "person_id", @person.id    
     - @publications.each do |pub|
       
-      = render 'row', :pub => pub, :sysadmin => sysadmin, :current_year => current_year, :pub_association => pub_association
+      = render '/publications/row', :pub => pub, :sysadmin => sysadmin, :current_year => current_year, :pub_association => pub_association
         
     - unless @service
       .buttons
