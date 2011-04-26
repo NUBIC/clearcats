@@ -16,9 +16,8 @@ $('.edit_modal_form_link').live('click', function() {
           data: data,
           dataType: 'json',
           success: function(data) {
-            alert(data.id)
-            console.log(data);
-            
+            // alert(data.id)
+            // console.log(data);
             dlg.dialog('close');
           }
         });
