@@ -4,14 +4,17 @@ require 'uri'
 class FacultyWebService
 
   DEFAULT_HOST_URL = "https://clinical-rails-stg.nubic.northwestern.edu/ws-faculty/"
-  # url to faculty_ws on staging: https://clinical-rails-stg.nubic.northwestern.edu/ws-faculty/
+
+  # Calls configured web service (cf. config/services.yml) to retrieve information about the faculty member
+  # found either by their last name or netid.
   #
+  # Web Service expected to return attributes that are either in the people table or are read/write attributes in the Person model.
+  # 
+  # Known URLs
+  # ----------
   # /faculty/:netid
-  #
   # /faculty/
-  #
   # /faculty/?last_name=:lname
-  #
   def self.locate(params, importing = false)
     @importing = importing
     results = []

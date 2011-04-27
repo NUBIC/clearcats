@@ -1,6 +1,4 @@
-:javascript
-  $(function () { $(".datepicker").live('mouseover', function() { $(this).datepicker(); }); });
-  
+
 - action = @person.new_record? ? :create : :update
 = form_for @person, :url => {:controller => :people, :action => action} do |f|
   = render "shared/error_messages", :object => f.object
@@ -10,3 +8,6 @@
   .buttons
     - lbl = faculty_member? ? "Save and Continue" : "Save"
     = submit_tag lbl
+    
+:javascript
+  $(function () { $(".datepicker").live('mouseover', function() { $(this).datepicker(); }); });

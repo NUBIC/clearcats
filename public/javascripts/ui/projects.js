@@ -1,4 +1,4 @@
-Clearcats.ProjectsUI = function (config) {
+Clearcats.Projects = function (config) {
 
   $("#project_organizational_unit_id").live("change", function() {
     org_unit_id = $("#project_organizational_unit_id").val();

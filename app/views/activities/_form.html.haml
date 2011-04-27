@@ -54,9 +54,9 @@
     var activityActorsTemplate = '#{@activityActorsTemplate}';
     var notesTemplate = '#{@notesTemplate}';
 
-    activitiesUI = new Clearcats.ActivitiesUI({ activityTypesUrl: '#{activity_types_path(:format => :json)}',
-                                                selectPeopleUrl: '#{select_people_path(:format => :json)}',
-                                                activityActorsTemplate: activityActorsTemplate,
-                                                notesTemplate: notesTemplate });
+    activitiesUI = new Clearcats.UI.Activities({ activityTypesUrl: '#{activity_types_path(:format => :json)}',
+                                                 selectPeopleUrl: '#{select_people_path(:format => :json)}',
+                                                 activityActorsTemplate: activityActorsTemplate,
+                                                 notesTemplate: notesTemplate });
                                            
   });

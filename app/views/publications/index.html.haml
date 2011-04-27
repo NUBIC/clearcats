@@ -1,5 +1,5 @@
 - stylesheet "people", "publications", "services"
-- javascript "publications_ui"
+- javascript "ui/publications"
 - title_text = params[:view_all].blank? ? "Publications since #{SYSTEM_CONFIG['ctsa_base_line_year']} for #{@person}" : "All Publications for #{@person}"
 - title title_text
 
@@ -11,5 +11,5 @@
 :javascript
   $(function () {
     var sortByUrlMap = #{publications_sort_by_url_map(@search).to_json},
-        publicationsUI = new Clearcats.PublicationsUI({ sortByUrlMap: sortByUrlMap });
+        publicationsUI = new Clearcats.UI.Publications({ sortByUrlMap: sortByUrlMap });
   });

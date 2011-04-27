@@ -1,4 +1,4 @@
-Clearcats.ActivitiesUI = function (config) {
+Clearcats.UI.Activities = function (config) {
 
   var ui = {
     setupActivityTypeAutocompleter: function () {

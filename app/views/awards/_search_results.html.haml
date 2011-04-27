@@ -12,7 +12,7 @@
   - current_year = current_ctsa_reporting_year
   %table.records
     %tr
-      %th Select
+      %th Edit
       %th Reporting Years
       %th
         = sort_link @search, :person_last_name, "Person"
@@ -27,11 +27,12 @@
     - @awards.each do |award|
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td
-          = link_to "Select", { :controller => "awards", :action => "edit", :id => award }, { :class => "edit_link icon_link" } 
-        %td= h award.ctsa_reporting_years.blank? ? "n/a" : award.ctsa_reporting_years.join(",")
-        %td= h award.person
-        %td= h award.sponsor
-        %td= h award.sponsor_award_number
-        %td= h truncate(award.grant_title)
-        %td= h award.budget_identifier.blank? ? 'n/a' : award.budget_identifier.gsub('NORTHWESTU00000', '').gsub('turbocats_import_', '')
+          = link_to "Edit", { :controller => "awards", :action => "edit", :id => award }, { :class => "edit_link icon_link" } 
+        %td= award.ctsa_reporting_years.blank? ? "n/a" : award.ctsa_reporting_years.join(",")
+        %td
+          = link_to award.person, person_awards_path(award.person, :view_all => true), { :class => "show_link icon_link" } 
+        %td= award.sponsor
+        %td= award.sponsor_award_number
+        %td= truncate(award.grant_title)
+        %td= award.budget_identifier.blank? ? 'n/a' : award.budget_identifier.gsub('NORTHWESTU00000', '').gsub('turbocats_import_', '')
   = will_paginate @awards

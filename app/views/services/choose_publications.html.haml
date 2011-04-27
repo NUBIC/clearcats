@@ -1,5 +1,5 @@
 - stylesheet "people", "publications", "services"
-- javascript "publications_ui"
+- javascript "ui/publications"
 - title "New Service - Choose Publications"
 
 = render "menu"
@@ -18,5 +18,5 @@
 :javascript
   $(function () {
     var sortByUrlMap = #{publications_sort_by_url_map(@search).to_json},
-        publicationsUI = new Clearcats.PublicationsUI({ sortByUrlMap: sortByUrlMap });
+        publicationsUI = new Clearcats.UI.Publications({ sortByUrlMap: sortByUrlMap });
   });

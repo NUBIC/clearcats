@@ -1,17 +1,6 @@
 - stylesheet "people"
-- javascript 'people_ui'
+- javascript 'ui/people'
 - title "Edit Profile"
-
-:javascript
-  $(function () {
-    peopleUI = new Clearcats.PeopleUI({ specialtiesUrl: '#{specialties_path(:format => :json)}', departmentsUrl: '#{departments_path(:format => :json)}', schoolsUrl: '#{schools_path(:format => :json)}'});
-  });
-  $(document).ready(function() {  
-    $(".help_icon").tooltip();    
-  });
-  $(function () { $("form").dirty_form(); });
-  $(function () { $("a.menu_nav").dirty_stopper(); });
-  
 
 - unless @person.organizational_units.blank?
   .organizational_units
@@ -28,3 +17,13 @@
       = link_to 'List All Records', people_path, :class => "list_link icon_link menu_nav" if current_user.permit?(:Admin, :User)
 
   = render 'form'
+
+:javascript
+  $(function () {
+    peopleUI = new Clearcats.UI.People({ specialtiesUrl: '#{specialties_path(:format => :json)}', departmentsUrl: '#{departments_path(:format => :json)}', schoolsUrl: '#{schools_path(:format => :json)}'});
+  });
+  $(document).ready(function() {  
+    $(".help_icon").tooltip();    
+  });
+  $(function () { $("form").dirty_form(); });
+  $(function () { $("a.menu_nav").dirty_stopper(); });

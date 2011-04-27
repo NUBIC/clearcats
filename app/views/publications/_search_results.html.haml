@@ -26,21 +26,20 @@
       %th
         = sort_link @search, :pmcid, "PMCID", :params => { :controller => "publications", :action => "search" }
       %th
-        = sort_link @search, :nihms_number, "NIHMS Number", :params => { :controller => "publications", :action => "search" }
-      %th
         = sort_link @search, :cited, "Cited", :params => { :controller => "publications", :action => "search" }
       %th
         Reporting Year
     - @publications.each do |pub|
       %tr{ :class => cycle('even_record', 'odd_record') }
-        %td= link_to "Edit", { :controller => "publications", :action => "edit", :id => pub, :search => params[:search], :person_id => pub.person.id }, { :class => "edit_link icon_link" }
-        %td= h pub.person
-        %td= h pub.publication_date
-        %td= h truncate(pub.title, :length => 50)
-        %td= h pub.pmid
-        %td= h pub.pmcid
-        %td= h pub.nihms_number
-        %td= h pub.cited? ? "Yes" : "No"
-        %td= h pub.ctsa_reporting_years.join(",")
+        %td
+          = link_to "Edit", { :controller => "publications", :action => "edit", :id => pub, :search => params[:search], :person_id => pub.person.id }, { :class => "edit_link icon_link" }
+        %td
+          = link_to pub.person, person_publications_path(pub.person, :view_all => true), { :class => "show_link icon_link" }
+        %td= pub.publication_date
+        %td= truncate(pub.title, :length => 50)
+        %td= pub.pmid
+        %td= pub.pmcid
+        %td= pub.cited? ? "Yes" : "No"
+        %td= pub.ctsa_reporting_years.join(",")
 
   = will_paginate @publications

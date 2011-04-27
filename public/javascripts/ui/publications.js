@@ -1,6 +1,17 @@
-Clearcats.PublicationsUI = function (config) {
+Clearcats.UI.Publications = function (config) {
 
   var sortByUrlMap = config.sortByUrlMap;
+
+  $('.truncated_publication_abstract_toggle').live("click", function() {
+    $(this).parent().siblings('.publication_abstract').show();
+    $(this).closest('.truncated_publication_abstract').hide();
+  });
+
+  $('.publication_abstract_toggle').live("click", function() {
+    $(this).parent().siblings('.truncated_publication_abstract').show();
+    $(this).closest('.publication_abstract').hide();
+  });
+
 
   $('#sort_publications_by').live("change", function() {
     var that = this,
@@ -12,6 +23,7 @@ Clearcats.PublicationsUI = function (config) {
       $('#sort_publications_by').val(value);
     });
   });
+
     
 
   var onsuccess = function(data) {

@@ -1,4 +1,4 @@
-Clearcats.PeopleUI = function (config) {
+Clearcats.UI.People = function (config) {
 
   var ui = {
     setupSpecialtyAutocompleter: function () {

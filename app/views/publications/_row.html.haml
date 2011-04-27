@@ -62,5 +62,13 @@
     %div
       %b
         Abstract
-      %br
-      = pub.abstract
+      - if pub.abstract.blank?
+        %br
+        n/a
+      - else
+        .truncated_publication_abstract
+          = truncate(pub.abstract, :length => 150, :separator => ' ')
+          = link_to "More ...", "javascript:void(0);", { :class => "truncated_publication_abstract_toggle" }
+        .publication_abstract.hide
+          = pub.abstract
+          = link_to "Less ...", "javascript:void(0);", { :class => "publication_abstract_toggle" }

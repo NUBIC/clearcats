@@ -1,4 +1,4 @@
-Clearcats.AwardsUI = function (config) {
+Clearcats.UI.Awards = function (config) {
 
   var sortByUrlMap = config.sortByUrlMap;
 
