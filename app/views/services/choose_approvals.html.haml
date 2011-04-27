@@ -1,13 +1,7 @@
 
 - stylesheet "services"
+- javascript "nested_attributes", "ui/services"
 - title "New Service - Choose Approvals"
-
-:javascript
-  $(function () { 
-    $(".datepicker").live('mouseover', function() { 
-      $(this).datepicker({ maxDate: "0D" }); 
-    }); 
-  });
 
 = render "menu"
 
@@ -34,14 +28,14 @@
           %th
             CTSA Reportable
           %th
-      %tbody{ :class => "nested_records" }
+      %tbody{ :class => "nested_records nested_records_approvals" }
         = f.fields_for :approvals do |approval_form|
           = render '/approvals/approval_fields', :f => approval_form
       %tfoot
         %tr
           %td{ :colspan => '2' }
-            = link_to_add_fields "Add", f, :approvals, '/approvals/approval'
-
+            = link_to_add_nested_attribute_fields "Add", :approvals
+      - @approvalsTemplate = generate_nested_attributes_template(f, :approvals, 'approval')
   .page_section
     .human_subjects_protection_training
       %h4 Human Subjects Protection Training
@@ -56,3 +50,9 @@
 
     .buttons
       = f.submit "Finish"
+
+:javascript
+  $(function () {
+    var approvalsTemplate = '#{@approvalsTemplate}';
+    serviceLinesUI = new Clearcats.UI.Services({ approvalsTemplate: approvalsTemplate });
+  });

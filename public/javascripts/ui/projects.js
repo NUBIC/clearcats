@@ -1,4 +1,4 @@
-Clearcats.Projects = function (config) {
+Clearcats.UI.Projects = function (config) {
 
   $("#project_organizational_unit_id").live("change", function() {
     org_unit_id = $("#project_organizational_unit_id").val();
@@ -15,5 +15,16 @@ Clearcats.Projects = function (config) {
       }
     });
   });
-
+  
+  var keyMetricsNestedAttributesForm = new NestedAttributes({ container: $('.key_metrics'), 
+                                                              association: 'key_metrics', 
+                                                              content: config.keyMetricsTemplate, 
+                                                              addHandler: null,
+                                                              caller: this });
+                                                                 
+  var notesNestedAttributesForm = new NestedAttributes({ container: $('.notes'), 
+                                                         association: 'notes', 
+                                                         content: config.notesTemplate, 
+                                                         addHandler: null,
+                                                         caller: this });
 };

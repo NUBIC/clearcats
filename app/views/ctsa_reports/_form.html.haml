@@ -1,4 +1,5 @@
 - stylesheet "ctsa_reports"
+- javascript "nested_attributes", "ui/ctsa_reports"
 
 = form_for @ctsa_report, :html => { :multipart => true, :class => "ctsa_report_form" } do |f|
   
@@ -35,13 +36,20 @@
         %th
           File Upload
         %th
-    %tbody{ :class => "nested_records" }
+    %tbody{ :class => "nested_records nested_records_attachments" }
       = f.fields_for :attachments do |attachment_form|
         = render 'attachment_fields', :f => attachment_form
     %tfoot
       %tr
         %td{ :colspan => '3' }
-          = link_to_add_fields "Add", f, :attachments
+          = link_to_add_nested_attribute_fields "Add", :attachments
+    - @attachmentsTemplate = generate_nested_attributes_template(f, :attachments, 'attachment')
   
   .buttons
     = submit_tag "Generate Report"
+        
+:javascript
+  $(function () {
+    var attachmentsTemplate = '#{@attachmentsTemplate}';
+    var ctsaReportsUI = new Clearcats.UI.CTSAReports({ attachmentsTemplate: attachmentsTemplate });
+  });

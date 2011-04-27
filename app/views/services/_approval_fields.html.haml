@@ -1,0 +1,15 @@
+%tr.approval.fields
+  %td
+    = f.select(:approval_type, Approval::TYPES, { :include_blank => "-- Select Type --"})
+  %td
+    = f.text_field :tracking_number
+  %td
+    = f.text_field :institution
+  %td
+    = f.text_field :project_title
+  %td
+    = f.text_field :formatted_approval_date, :class => "datepicker"
+  %td
+    = f.check_box "ctsa_reportable"
+  %td
+    = link_to_remove_fields 'Remove', f

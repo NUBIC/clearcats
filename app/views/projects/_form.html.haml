@@ -29,14 +29,14 @@
             %th
               Metric
             %th
-        %tbody{ :class => "nested_records" }
+        %tbody{ :class => "nested_records nested_records_key_metrics" }
           = f.fields_for :key_metrics do |key_metric_form|
             = render 'key_metric_fields', :f => key_metric_form
         %tfoot
           %tr
             %td{ :colspan => '2' }
-              = link_to_add_fields "Add Key Metric", f, :key_metrics
-
+              = link_to_add_nested_attribute_fields "Add Key Metric", :key_metrics
+        - @keyMetricsTemplate = generate_nested_attributes_template(f, :key_metrics, 'key_metric')
 
   .page_section
     #notes
@@ -46,13 +46,22 @@
             %th
               Notes
             %th{ :colspan => '2' }
-        %tbody{ :class => "nested_records" }
+        %tbody{ :class => "nested_records nested_records_notes" }
           = f.fields_for :notes do |note_form|
             = render 'note_fields', :f => note_form
         %tfoot
           %tr
             %td{ :colspan => '3' }
-              = link_to_add_fields "Add Note", f, :notes
+              = link_to_add_nested_attribute_fields "Add Note", :notes
+        - @notesTemplate = generate_nested_attributes_template(f, :notes, 'note')
 
   %p
     = f.submit "Save", :disable_with => 'Saving...'
+    
+:javascript
+  $(function () {
+    var keyMetricsTemplate = '#{@keyMetricsTemplate}';
+    var notesTemplate = '#{@notesTemplate}';
+    projectsUI = new Clearcats.UI.Projects({ keyMetricsTemplate: keyMetricsTemplate, 
+                                             notesTemplate: notesTemplate });
+  });

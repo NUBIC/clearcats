@@ -31,13 +31,14 @@
               %th
                 = ctsa_wording
               %th
-          %tbody{ :class => "nested_records" }
+          %tbody{ :class => "nested_records nested_records_approvals" }
             = f.fields_for :approvals do |approval_form|
               = render '/approvals/approval_fields', :f => approval_form
           %tfoot
             %tr
               %td{ :colspan => '2' }
-                = link_to_add_fields "Add", f, :approvals
+                = link_to_add_nested_attribute_fields "Add", :approvals
+          - @approvalsTemplate = generate_nested_attributes_template(f, :approvals, 'approval')
                 
       .page_section
         .human_subjects_protection_training
@@ -54,3 +55,10 @@
         - lbl = faculty_member? ? "Save and Finish" : "Save"
         = submit_tag lbl
     .links
+    
+
+:javascript
+  $(function () {
+    var approvalsTemplate = '#{@approvalsTemplate}';
+    approvalsUI = new Clearcats.UI.Approvals({ approvalsTemplate: approvalsTemplate });
+  });

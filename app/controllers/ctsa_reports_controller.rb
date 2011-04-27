@@ -37,7 +37,7 @@ class CtsaReportsController < ApplicationController
 
     respond_to do |format|
       if @ctsa_report.save
-        format.html { redirect_to(ctsa_reports_url, :notice => 'CtsaReport was successfully created.') }
+        format.html { redirect_to(ctsa_reports_url, :notice => 'CTSA Report was successfully created.') }
         format.xml  { render :xml => @ctsa_report, :status => :created, :location => @ctsa_report }
       else
         format.html { render :action => "new" }
@@ -53,7 +53,7 @@ class CtsaReportsController < ApplicationController
 
     respond_to do |format|
       if @ctsa_report.update_attributes(params[:ctsa_report])
-        format.html { redirect_to(ctsa_reports_url, :notice => 'CtsaReport was successfully updated.') }
+        format.html { redirect_to(ctsa_reports_url, :notice => 'CTSA Report was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
