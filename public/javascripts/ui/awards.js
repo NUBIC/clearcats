@@ -13,16 +13,27 @@ Clearcats.UI.Awards = function (config) {
     });
   });
 
+
   var onsuccess = function(data) {
-    $('div#award_' + data.id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
     var award_id = data.id
     var url = "/awards/row/" + award_id + "?person_id=" + data.person_id;
-    $.get(url, null, function (response) {
-      $('div#award_' + award_id).replaceWith(response);
-    });
+    
+    // if updating existing record
+    if($('div#award_' + award_id).exists()) {
+      $('div#award_' + award_id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $.get(url, null, function (response) {
+        $('div#award_' + award_id).replaceWith(response);
+      });
+    // otherwise creating new record
+    } else {
+      $('div#new_award').html('<p>Creating new record . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $.get(url, null, function (response) {
+        $('form.dirtyform').prepend(response);
+        $('div#new_award').html('');
+      });
+    }
     $('#dialog').remove();
   }
-
 
   $('.edit_modal_form_link').live('click', function() {
   	$('<div id="dialog"/>').appendTo('body').load($(this).attr('href') + ' form').dialog({

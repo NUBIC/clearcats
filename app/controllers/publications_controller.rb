@@ -69,12 +69,9 @@ class PublicationsController < ApplicationController
           redirect_to edit_publication_url(@publication)
           return
         end
-        format.js do
-          @search = Publication.search(params[:search])
-          @publications = @search.all
-          render :update do |page|
-            page.replace "publications", :partial => "/publications/list", :locals => { :search => params[:search], :service => @service, :person => @person, :publications => @publications }
-          end
+        format.json do
+          person_id = @person.nil? ? @publication.person_id : @person.id
+          render :json => { :id => @publication.id, :person_id => person_id, :search_params => params[:search], :errors => [] }, :status => :ok
         end
       else
         format.html { render :action => "new" }
@@ -112,7 +109,6 @@ class PublicationsController < ApplicationController
           redirect_to edit_publication_path(@publication)
         end
         format.json do
-          Rails.logger.error("~~~ PublicationsController#update for #{@publication.id}")
           person_id = @person.nil? ? @publication.person_id : @person.id
           render :json => { :id => @publication.id, :person_id => person_id, :search_params => params[:search], :errors => [] }, :status => :ok
         end

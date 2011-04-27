@@ -65,17 +65,14 @@ class AwardsController < ApplicationController
 
     respond_to do |format|
       if @award.save
-        format.js do
-          @search = Award.search(params[:search])
-          @awards = @search.all
-          render :update do |page|
-            page.replace "awards", :partial => "/awards/list", :locals => { :search => params[:search] }
-          end
-        end
         format.html do 
           flash[:notice] = "Award was successfully created."
           redirect_to edit_award_url(@award)
           return
+        end
+        format.json do
+          person_id = @person.nil? ? @award.person_id : @person.id
+          render :json => { :id => @award.id, :person_id => person_id, :search_params => params[:search], :errors => [] }, :status => :ok
         end
       else
         format.html { render :action => "new" }
@@ -95,7 +92,6 @@ class AwardsController < ApplicationController
           return
         end
         format.json do          
-          Rails.logger.error("~~~ AwardsController#update for #{@award.id}")
           person_id = @person.nil? ? @award.person_id : @person.id
           render :json => { :id => @award.id, :person_id => person_id, :search_params => params[:search], :errors => [] }, :status => :ok
         end

@@ -24,15 +24,24 @@ Clearcats.UI.Publications = function (config) {
     });
   });
 
-    
-
   var onsuccess = function(data) {
-    $('div#publication_' + data.id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
     var publication_id = data.id
     var url = "/publications/row/" + publication_id + "?person_id=" + data.person_id;
-    $.get(url, null, function (response) {
-      $('div#publication_' + publication_id).replaceWith(response);
-    });
+    
+    // if updating existing record
+    if($('div#publication_' + publication_id).exists()) {
+      $('div#publication_' + publication_id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $.get(url, null, function (response) {
+        $('div#publication_' + publication_id).replaceWith(response);
+      });
+    // otherwise creating new record
+    } else {
+      $('div#new_publication').html('<p>Creating new record . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $.get(url, null, function (response) {
+        $('form.dirtyform').prepend(response);
+        $('div#new_publication').html('');
+      });
+    }
     $('#dialog').remove();
   }
 

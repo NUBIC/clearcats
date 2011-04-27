@@ -31,3 +31,5 @@ function add_fields(link, association, content) {
   // jQuery(link).parent().before(content.replace(regexp, new_id));
   jQuery(link).closest("." + association).find('.nested_records').append(content.replace(regexp, new_id));
 }
+
+jQuery.fn.exists = function(){return jQuery(this).length>0;}

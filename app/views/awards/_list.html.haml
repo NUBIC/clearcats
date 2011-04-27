@@ -13,7 +13,7 @@
 
   .awards_body
     .records_header
-      = link_to "Add New Award", { :controller => "/awards", :action => "new", :search => @search_params }.merge(award_association), { :class => "edit_modal_form_link add_link icon_link" }
+      = link_to "Add New Award", { :controller => "/awards", :action => "new", :search => @search_params }.merge(award_association), { :class => "edit_modal_form_link add_link icon_link", :title => "New Award" }
       - if @service.blank? and !faculty_member?
         - if params[:view_all].blank?
           = link_to 'View All Awards', person_awards_path(@person, :view_all => true), :class => "list_link icon_link" 
@@ -29,4 +29,5 @@
           %strong
             Sort By
           = select_tag :sort_awards_by,  options_for_awards_sort_by_select(params[:search][:order])
+        #new_award
         = render '/awards/awards_records', { :ordering_params => ordering_params, :award_association => award_association }

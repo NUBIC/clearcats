@@ -6,7 +6,7 @@
       %b
         = ctsa_wording
   %div
-    = link_to "Edit", edit_link_params, { :title => "Edit Award", :class => "edit_modal_form_link edit_link icon_link", :remote => true } 
+    = link_to "Edit", edit_link_params, { :title => "Edit Award", :class => "edit_modal_form_link edit_link icon_link" }
     = link_to "Details", details_award_path(award), { :class => "details_view_link list_link icon_link" } if sysadmin
     = link_to 'View Version History', versions_award_path(award), :class => "show_link icon_link" if sysadmin
   .organization
