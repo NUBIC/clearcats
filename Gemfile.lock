@@ -226,7 +226,7 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.5.0)
     ruby-oci8 (2.0.4)
-    ruby-prof (0.10.2)
+    ruby-prof (0.10.5)
     ruby-progressbar (0.0.9)
     ruby2ruby (1.2.5)
       ruby_parser (~> 2.0)
@@ -309,7 +309,7 @@ DEPENDENCIES
   roodi
   rspec-rails (~> 2.4)
   ruby-oci8
-  ruby-prof
+  ruby-prof (~> 0.10.5)
   shoulda
   state_machine
   surveyor

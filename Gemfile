@@ -35,7 +35,7 @@ group :development do
   gem "metric_fu", "~> 2.1.1"
   gem "reek"
   gem "roodi"
-  gem "ruby-prof"
+  gem "ruby-prof", "~> 0.10.5"
   gem 'turbulence'
 end
 
