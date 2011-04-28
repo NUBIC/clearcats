@@ -13,3 +13,7 @@ Given /^the following (.+) records:$/ do |factory, table|
     Factory(factory.to_sym, hash)
   end
 end
+
+Then /"(.*)" should appear before "(.*)"/ do |first_item, second_item|
+  page.body.should =~ /#{first_item}.*#{second_item}/m
+end
