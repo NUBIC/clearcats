@@ -69,6 +69,9 @@ module NavigationHelpers
     when /the award versions page for "(.*)"/
       versions_award_path(Award.find_by_budget_identifier($1))
     
+    when /the awards search page/
+      search_awards_path
+    
     ### PEOPLE ###
     
     when /the person versions page for "(.*)"/

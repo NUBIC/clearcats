@@ -18,3 +18,13 @@ Given /^an authenticated user$/ do
     And I press "Log in" 
   }
 end
+
+Given /^an authenticated client user$/ do
+  @current_user = Client.find_or_create_by_netid("pgreenld")
+  steps %Q{
+    Given I am on login
+    And I fill in "username" with "pgreenld"
+    And I fill in "password" with "pgreenld"
+    And I press "Log in" 
+  }
+end
