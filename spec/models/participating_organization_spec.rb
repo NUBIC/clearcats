@@ -23,4 +23,9 @@ describe ParticipatingOrganization do
   
   it { should belong_to(:country) }
   it { should belong_to(:us_state) }
+  
+  it "should output in a csv format" do
+    p = Factory(:participating_organization)
+    p.to_comma.should == ["name", "Chicago", "st", "country name", "2000"]
+  end
 end

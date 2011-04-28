@@ -111,8 +111,6 @@ describe ActivitiesController do
     
     end
     
-    
-    
   end
   
 end
