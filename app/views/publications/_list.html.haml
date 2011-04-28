@@ -23,9 +23,10 @@
     - if publications
       .publication_records
         .publications_sort_by
-          %strong
-            Sort By
           = select_tag :sort_publications_by,  options_for_publications_sort_by_select(params[:search][:order])
+          %span{ :id => "sorting_indicator", :class => "hide" }
+            = image_tag "indicator.gif", :title => "Sorting"
+            Sorting...
         #new_publication
         = render 'publications/publications_records', { :ordering_params => ordering_params, :pub_association => pub_association }
         

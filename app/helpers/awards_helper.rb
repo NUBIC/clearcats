@@ -1,6 +1,7 @@
 module AwardsHelper
   def options_for_awards_sort_by_select(selected = nil)
     options = []
+    options << ['-- Sort By --', '']
     options << ['Sponsor (ascending)', 'ascend_by_sponsor_name']
     options << ['Sponsor (descending)','descend_by_sponsor_name']
     options << ['Sponsor Award Number (ascending)', 'ascend_by_sponsor_award_number']
@@ -18,18 +19,18 @@ module AwardsHelper
 
   def awards_sort_by_url_map(search, options = {})
     {
-      'ascend_by_sponsor_name'          => url_for_sort(search, :sponsor_name, "asc", "Sponsor", :params => params_for_search.merge(options)),
-      'descend_by_sponsor_name'         => url_for_sort(search, :sponsor_name, "desc", "Sponsor", :params => params_for_search.merge(options)),
-      'ascend_by_sponsor_award_number'  => url_for_sort(search, :sponsor_award_number, "asc", "Sponsor Award Number", :params => params_for_search.merge(options)),
-      'descend_by_sponsor_award_number' => url_for_sort(search, :sponsor_award_number, "desc", "Sponsor Award Number", :params => params_for_search.merge(options)),
-      'ascend_by_grant_title'           => url_for_sort(search, :grant_title, "asc", "Grant Title", :params => params_for_search.merge(options)),
-      'decend_by_grant_title'           => url_for_sort(search, :grant_title, "desc", "Grant Title", :params => params_for_search.merge(options)),
-      'ascend_by_budget_number'         => url_for_sort(search, :budget_number, "asc", "Budget Number", :params => params_for_search.merge(options)),
-      'decend_by_budget_number'         => url_for_sort(search, :budget_number, "desc", "Budget Number", :params => params_for_search.merge(options)),
-      'ascend_by_project_period_start_date' => url_for_sort(search, :project_period_start_date, "asc", "Project Start Date", :params => params_for_search.merge(options)),
-      'decend_by_project_period_start_date' => url_for_sort(search, :project_period_start_date, "desc", "Project Start Date", :params => params_for_search.merge(options)),
-      'ascend_by_project_period_end_date' => url_for_sort(search, :project_period_end_date, "asc", "Project End Date", :params => params_for_search.merge(options)),
-      'decend_by_project_period_end_date' => url_for_sort(search, :project_period_end_date, "desc", "Project End Date", :params => params_for_search.merge(options)),
+      'ascend_by_sponsor_name'          => url_for_sort(search, :sponsor_name, "asc", params_for_search.merge(options)),
+      'descend_by_sponsor_name'         => url_for_sort(search, :sponsor_name, "desc", params_for_search.merge(options)),
+      'ascend_by_sponsor_award_number'  => url_for_sort(search, :sponsor_award_number, "asc", params_for_search.merge(options)),
+      'descend_by_sponsor_award_number' => url_for_sort(search, :sponsor_award_number, "desc", params_for_search.merge(options)),
+      'ascend_by_grant_title'           => url_for_sort(search, :grant_title, "asc", params_for_search.merge(options)),
+      'decend_by_grant_title'           => url_for_sort(search, :grant_title, "desc", params_for_search.merge(options)),
+      'ascend_by_budget_number'         => url_for_sort(search, :budget_number, "asc", params_for_search.merge(options)),
+      'decend_by_budget_number'         => url_for_sort(search, :budget_number, "desc", params_for_search.merge(options)),
+      'ascend_by_project_period_start_date' => url_for_sort(search, :project_period_start_date, "asc", params_for_search.merge(options)),
+      'decend_by_project_period_start_date' => url_for_sort(search, :project_period_start_date, "desc", params_for_search.merge(options)),
+      'ascend_by_project_period_end_date' => url_for_sort(search, :project_period_end_date, "asc", params_for_search.merge(options)),
+      'decend_by_project_period_end_date' => url_for_sort(search, :project_period_end_date, "desc", params_for_search.merge(options)),
     }
   end
 

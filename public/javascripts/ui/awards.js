@@ -6,10 +6,13 @@ Clearcats.UI.Awards = function (config) {
     var that = this,
       value = $(this).val(),
       url = sortByUrlMap[value];
+      
+    $('#sorting_indicator').show();
 
     $.get(url, function (data) {
       $(that).closest('#awards').replaceWith(data);
       $('#sort_awards_by').val(value);
+      $('#sorting_indicator').hide();
     });
   });
 

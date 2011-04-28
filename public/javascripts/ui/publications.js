@@ -18,9 +18,12 @@ Clearcats.UI.Publications = function (config) {
       value = $(this).val(),
       url = sortByUrlMap[value];
 
+    $('#sorting_indicator').show();
+
     $.get(url, function (data) {
       $(that).closest('#publications').replaceWith(data);
       $('#sort_publications_by').val(value);
+      $('#sorting_indicator').hide();
     });
   });
 

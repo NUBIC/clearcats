@@ -27,7 +27,9 @@
       .award_records
         .awards_sort_by
           %strong
-            Sort By
           = select_tag :sort_awards_by,  options_for_awards_sort_by_select(params[:search][:order])
+          %span{ :id => "sorting_indicator", :class => "hide" }
+            = image_tag "indicator.gif", :title => "Sorting"
+            Sorting...
         #new_award
         = render '/awards/awards_records', { :ordering_params => ordering_params, :award_association => award_association }
