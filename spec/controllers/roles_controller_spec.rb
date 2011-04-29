@@ -44,10 +44,10 @@ describe RolesController do
           assigns[:role].should equal(mock_role)
         end
 
-        it "redirects to the created role" do
+        it "redirects to the roles index" do
           Role.stub(:new).and_return(mock_role(:save => true))
           post :create, :role => {}
-          response.should redirect_to(role_url(mock_role))
+          response.should redirect_to(roles_url)
         end
       end
 
@@ -82,10 +82,10 @@ describe RolesController do
           assigns[:role].should equal(mock_role)
         end
 
-        it "redirects to the role" do
+        it "redirects to the roles index" do
           Role.stub(:find).and_return(mock_role(:update_attributes => true))
           put :update, :id => "1"
-          response.should redirect_to(role_url(mock_role))
+          response.should redirect_to(roles_url)
         end
       end
 

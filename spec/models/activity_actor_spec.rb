@@ -19,7 +19,6 @@ describe ActivityActor do
     a = Factory(:activity_actor)
   end
   
-  it { should validate_presence_of(:activity) }
   it { should belong_to(:activity) }
 
   it { should validate_presence_of(:role) }

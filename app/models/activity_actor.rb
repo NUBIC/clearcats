@@ -19,10 +19,14 @@ class ActivityActor < ActiveRecord::Base
   belongs_to :role
   belongs_to :person
 
-  validates_presence_of :activity
+  # validates_presence_of :activity
   validates_presence_of :role
   validates_presence_of :person
 
-  attr_accessor :person_select
+  attr_writer :person_select
+  
+  def person_select
+    "#{person.to_s} #{person.netid}" if person
+  end
 
 end

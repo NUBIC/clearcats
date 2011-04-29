@@ -80,7 +80,7 @@ end
 
 Factory.define :person do |p|
   p.first_name             "first_name"
-  p.middle_name            "middle_name"
+  p.middle_name            "X"
   p.last_name              "last_name"
   p.phone                  "phone"
   p.sequence(:email)       { |n| "email#{n}@dev.null" }
@@ -277,6 +277,7 @@ end
 Factory.define :key_metric do |km|
   km.name "Grants"
   km.datatype "Amount"
+  km.organizational_unit { |a| a.association(:organizational_unit) }
 end
 
 Factory.define :target_metric do |tm|

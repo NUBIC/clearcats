@@ -6,12 +6,10 @@
   %table.records
     %tr
       %th Name
-      %th Service line
       %th{:colspan => "2"}
     - @roles.each do |role|
       %tr
         %td= h role.name
-        %td= h role.service_line
         %td= link_to 'Edit', edit_role_path(role), :class => "edit_link icon_link"
         %td= link_to 'Delete', role, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
 .links
