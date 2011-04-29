@@ -36,6 +36,11 @@ describe Publication do
     pub.pubmed.should == pub.pmid
   end
   
+  it "should output itself in csv" do
+    pub = Factory(:publication)
+    pub.to_comma.should == ["first_name X last_name", "pmcid", "pmid", "nihms_number", "#{Date.today}", "", "title", "boogadeehoo", "", "true", "", "2000"]
+  end
+  
   it { should belong_to(:person) }
   
   context "ctsa reporting" do

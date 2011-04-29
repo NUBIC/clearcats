@@ -83,4 +83,41 @@ describe Activity do
     
   end
   
+  describe "associating an existing activity type with due dates and reminders" do
+    
+    it "should set those dates on the activity" do
+      at = Factory(:activity_type, :due_in_days_after => 7, :client_reminder => 3, :client_followup_reminder => 1, :staff_reminder => 3, :staff_followup_reminder => 1)
+    
+      act = Factory(:activity, :activity_type => at)
+      act.due_date.should == 7.days.from_now.to_date
+      act.staff_reminder_date.should == 4.days.from_now.to_date
+      act.staff_followup_reminder_date.should == 6.days.from_now.to_date
+      act.client_reminder_date.should == 4.days.from_now.to_date
+      act.client_followup_reminder_date.should == 6.days.from_now.to_date
+    end
+    
+    it "should set not update the dates upon subsequent saves" do
+      at = Factory(:activity_type, :due_in_days_after => 7, :client_reminder => 3, :client_followup_reminder => 1, :staff_reminder => 3, :staff_followup_reminder => 1)
+    
+      act = Factory(:activity, :activity_type => at)
+      one_week = 7.days.from_now.to_date
+      act.due_date.should == one_week
+      act.staff_reminder_date.should == 4.days.from_now.to_date
+      act.staff_followup_reminder_date.should == 6.days.from_now.to_date
+      act.client_reminder_date.should == 4.days.from_now.to_date
+      act.client_followup_reminder_date.should == 6.days.from_now.to_date
+      
+      Timecop.travel(Time.now + 1.days) do
+        act.save!
+        six_days = 6.days.from_now.to_date
+        six_days.should == one_week
+        act.due_date.should == six_days
+        act.staff_reminder_date.should == 3.days.from_now.to_date
+        act.staff_followup_reminder_date.should == 5.days.from_now.to_date
+        act.client_reminder_date.should == 3.days.from_now.to_date
+        act.client_followup_reminder_date.should == 5.days.from_now.to_date
+      end
+    end
+  end
+  
 end

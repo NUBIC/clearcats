@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(:version => 20110429141805) do
     t.text     "deliverable"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "due_date"
+    t.date     "client_reminder_date"
+    t.date     "client_followup_reminder_date"
+    t.date     "staff_reminder_date"
+    t.date     "staff_followup_reminder_date"
   end
 
   create_table "activities_people", :force => true do |t|

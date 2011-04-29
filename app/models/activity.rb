@@ -39,6 +39,8 @@ class Activity < ActiveRecord::Base
 
   search_methods :for_organizational_units
 
+  before_save :set_dates_and_reminders
+
   def to_s
     name
   end
@@ -54,5 +56,28 @@ class Activity < ActiveRecord::Base
   def activity_type_name
     activity_type.nil? ? "" : activity_type.to_s
   end
+  
+  private
+  
+    def set_dates_and_reminders
+      if !activity_type.blank?
+        at = Factory(:activity_type, :due_in_days_after => 7, :client_reminder => 3, :client_followup_reminder => 1, :staff_reminder => 3, :staff_followup_reminder => 1)
+        
+        if activity_type.has_due_date? && self.due_date.blank?
+          self.due_date = Date.today + activity_type.due_in_days_after
+        end
+        
+        if activity_type.has_reminder?
+          ActivityType::REMINDERS.each do |reminder|
+            reminder_value = activity_type.send(reminder)
+
+            if !reminder_value.blank? && self.send("#{reminder}_date").blank?
+              self.send("#{reminder}_date=", self.due_date - reminder_value)
+            end
+          end
+        end
+        
+      end
+    end
 
 end
