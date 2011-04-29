@@ -71,6 +71,14 @@ end
 Factory.define :activity_type do |t|
   t.name         "activity type name"
   t.service_line { |a| a.association(:service_line) }
+  
+  t.due_in_days_after         14
+  t.client_reminder           4
+  t.client_followup_reminder  1
+  t.staff_reminder            4
+  t.staff_followup_reminder   1
+  t.position                  1
+  t.dependent_on_previous     false
 end
 
 
