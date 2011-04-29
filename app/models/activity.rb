@@ -3,15 +3,20 @@
 #
 # Table name: activities
 #
-#  id               :integer         not null, primary key
-#  name             :string(255)
-#  description      :text
-#  project_id       :integer
-#  activity_type_id :integer
-#  event_date       :datetime
-#  deliverable      :text
-#  created_at       :datetime
-#  updated_at       :datetime
+#  id                            :integer         not null, primary key
+#  name                          :string(255)
+#  description                   :text
+#  project_id                    :integer
+#  activity_type_id              :integer
+#  event_date                    :datetime
+#  deliverable                   :text
+#  created_at                    :datetime
+#  updated_at                    :datetime
+#  due_date                      :date
+#  client_reminder_date          :date
+#  client_followup_reminder_date :date
+#  staff_reminder_date           :date
+#  staff_followup_reminder_date  :date
 #
 
 class Activity < ActiveRecord::Base
