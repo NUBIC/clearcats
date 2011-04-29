@@ -66,6 +66,29 @@ describe ActivityType do
         at.should_not be_valid
       end
     end
+    
+    describe "having dates and reminders" do
+      it "should know if it has a due date" do
+        at = Factory.build(:activity_type, :due_in_days_after => 7)
+        at.has_due_date?.should be_true
+        at = Factory.build(:activity_type, :due_in_days_after => nil)
+        at.has_due_date?.should be_false
+      end
+      
+      it "should know if it has reminders" do
+        at = Factory.build(:activity_type, :due_in_days_after => 7, :staff_reminder => 1)
+        at.has_reminder?.should be_true
+        at = Factory.build(:activity_type, :due_in_days_after => 7, :staff_followup_reminder => 1)
+        at.has_reminder?.should be_true
+        at = Factory.build(:activity_type, :due_in_days_after => 7, :client_reminder => 1)
+        at.has_reminder?.should be_true
+        at = Factory.build(:activity_type, :due_in_days_after => 7, :client_followup_reminder => 1)
+        at.has_reminder?.should be_true
+        
+        at = Factory.build(:activity_type, :due_in_days_after => 7, :client_reminder => nil, :client_followup_reminder => nil, :staff_reminder => nil, :staff_followup_reminder => nil)
+        at.has_reminder?.should be_false
+      end
+    end
   
     describe "activating a reminder" do
       

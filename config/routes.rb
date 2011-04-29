@@ -4,7 +4,11 @@ Clearcats::Application.routes.draw do
   match '/people/departments' => 'people#departments', :as => :departments
   match '/people/schools' => 'people#schools', :as => :schools
 
-  resources :activity_types
+  resources :activity_types do
+    collection do
+      post :sort
+    end
+  end
   resources :activities
   resources :projects
   resources :key_metrics

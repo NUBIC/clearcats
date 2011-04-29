@@ -20,6 +20,9 @@
 #
 
 class ActivityType < ActiveRecord::Base
+  
+  acts_as_list
+  
   belongs_to :service_line
   
   validates_presence_of :service_line, :on => :update
@@ -31,10 +34,10 @@ class ActivityType < ActiveRecord::Base
   end
   
   def due_to_send_reminder?
-    return false if due_in_days_after.blank?
+    return false unless has_due_date?
     due_date = created_at.to_date + due_in_days_after
     ["client_reminder", "client_followup_reminder", "staff_reminder", "staff_followup_reminder"].each do |reminder|
-      reminder_value = self.send(reminder)      
+      reminder_value = self.send(reminder)
       reminder_date = due_date - reminder_value
       return true if reminder_date == Date.today
     end
@@ -42,8 +45,19 @@ class ActivityType < ActiveRecord::Base
   end
   
   def due?
-    return false if due_in_days_after.blank?
+    return false unless has_due_date?
     return (created_at.to_date + due_in_days_after) == Date.today
+  end
+
+  def has_due_date?
+    !due_in_days_after.blank?
+  end
+  
+  def has_reminder?
+    ["client_reminder", "client_followup_reminder", "staff_reminder", "staff_followup_reminder"].each do |reminder|
+      return true if !self.send(reminder).blank?
+    end
+    return false
   end
 
   private

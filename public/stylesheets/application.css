@@ -41,6 +41,10 @@ a.no_link {
   margin: 0 -0.25em 0 0;
 }
 
+.handle:hover{
+  cursor: move;
+}
+
 /* Flash Messages */
 
 .message {

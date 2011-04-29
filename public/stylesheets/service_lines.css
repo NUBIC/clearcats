@@ -21,6 +21,24 @@ table.records tr.odd_record {
   background-color: white;
 }
 
-table.activity_types {
-  margin-top: 1em;
+.activity_types {
+  margin-top: 0.5em;
+}
+
+.activity_types ul {
+  list-style-type: none;
+}
+
+.activity_types ul li {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 0.5em;
+  background-color: gainsboro;
+  border-radius: .5em;
+  -moz-border-radius: .5em;
+  -webkit-border-radius: .5em;
+}
+
+.integer_input {
+  width: 3em;
 }

@@ -46,21 +46,17 @@
           = f.label :organizational_unit_id, "Organizational Unit"
           %br 
           = f.select :organizational_unit_id, options_for_select(nested_set_options(OrganizationalUnit) {|i| "#{'-' * i.level} #{i.name} (#{i.abbreviation})" },  @service_line.organizational_unit_id)
-  
-      %table{ :class => "records activity_types" }
-        %thead
-          %tr
-            %th
-              Activity Types (optional)
-            %th
-        %tbody{ :class => "nested_records nested_records_activity_types" }
+
+      %b
+        Activity Types (optional)
+      %div{ :class => "records activity_types" }
+        %ul{ :class => "nested_records nested_records_activity_types" }
           = f.fields_for :activity_types do |activity_type_form|
             = render 'activity_type_fields', :f => activity_type_form
-        %tfoot
-          %tr
-            %td{ :colspan => '2' }
-              = link_to_add_nested_attribute_fields "Add Activity Type", :activity_types
-              - @activityTypesTemplate = generate_nested_attributes_template(f, :activity_types, 'activity_type')
+      
+        #add_activity_types
+          = link_to_add_nested_attribute_fields "Add Activity Type", :activity_types
+          - @activityTypesTemplate = generate_nested_attributes_template(f, :activity_types, 'activity_type')
       %p
         = f.submit "Save", :disable_with => 'Saving...'
     
@@ -69,8 +65,8 @@
     
 :javascript
   $(function () {
-    var activityTypesTemplate = '#{@activityTypesTemplate}';
+    var activityTypesTemplate = '#{@activityTypesTemplate}',
+        serviceLineId = '#{@service_line.id}';
 
-    serviceLinesUI = new Clearcats.UI.ServiceLines({ activityTypesTemplate: activityTypesTemplate });
-
+    serviceLinesUI = new Clearcats.UI.ServiceLines({ activityTypesTemplate: activityTypesTemplate, serviceLineId: serviceLineId });
   });

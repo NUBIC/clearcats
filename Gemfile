@@ -5,6 +5,7 @@ source 'http://gems.github.com'
 gem "rails", "3.0.6"
 
 gem "activerecord-oracle_enhanced-adapter", "~> 1.3"
+gem "acts_as_list"
 gem "bcdatabase", "~> 1.0.5"
 gem "bcsec", "~> 2.1.1"
 gem "bcsec-rails", ">= 3.0"

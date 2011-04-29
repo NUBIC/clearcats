@@ -15,6 +15,16 @@ class ActivityTypesController < ApplicationController
       format.xml { render :xml => @activity_types }
     end
   end
+  
+  def sort
+    service_line = ServiceLine.find(params[:id])
+    activity_types = service_line.activity_types
+    activity_types.each do |at|
+      at.position = params['activity_type'].index(at.id.to_s) + 1
+      at.save
+    end
+    render :nothing => true
+  end
 
   # GET /activity_types/1
   # GET /activity_types/1.xml
