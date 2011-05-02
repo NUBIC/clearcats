@@ -71,9 +71,26 @@ describe Person do
   
   it "should set affiliations based on department" do
     dept = Factory(:department, :entity_name => "dept entity name", :school => "dept school")
-    p = Factory(:person, :department => dept)
+    p = Factory(:person, :department => dept, :department_affiliation => nil, :school_affiliation => nil)
     p.department_affiliation.should == "dept entity name"
     p.school_affiliation.should == "dept school"
+  end
+  
+  it "should not override affiliations with on department information" do
+    dept = Factory(:department, :entity_name => "dept entity name", :school => "dept school")
+    p = Factory(:person, :department => dept, :department_affiliation => "dept", :school_affiliation => "school")
+    p.department_affiliation.should == "dept"
+    p.school_affiliation.should == "school"
+  end
+  
+  it "should not override department and school during amplification" do
+    netid = "wakibbe"
+    pers = Factory(:person, :netid => netid, :department_affiliation => "asdf", :school_affiliation => nil)
+    pers.department_affiliation.should == "asdf"
+    pers.school_affiliation.should be_nil
+    pers = pers.amplify
+    pers.department_affiliation.should == "asdf"
+    pers.school_affiliation.should == "Feinberg School of Medicine"
   end
   
   it "should set attributes from ldap" do
@@ -278,6 +295,12 @@ describe Person do
         Person.count.should == 3
       end
       
+      it "should set the department and school information for wakibbe" do
+        wak = Person.find_by_netid("wakibbe")
+        wak.department_affiliation.should == "NU Clinical and Translational Sciences Institute"
+        wak.school_affiliation.should == "Feinberg School of Medicine"
+      end
+      
     end
     
     describe "processing an invalid document" do
@@ -338,8 +361,6 @@ describe Person do
       people.size.should == 1
       people.first.should == person
     end
-    
-    it "should find all people with a similar last name starting with that term"
     
   end
   

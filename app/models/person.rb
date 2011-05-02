@@ -220,8 +220,8 @@ class Person < ActiveRecord::Base
   
   def set_affiliations
     if self.department
-      self.department_affiliation = self.department.entity_name unless self.department.entity_name.blank?
-      self.school_affiliation     = self.department.school      unless self.department.school.blank?
+      self.department_affiliation = self.department.entity_name if self.department_affiliation.blank? && !self.department.entity_name.blank?
+      self.school_affiliation     = self.department.school      if self.school_affiliation.blank?     && !self.department.school.blank?
     end
   end
   
@@ -568,11 +568,33 @@ class Person < ActiveRecord::Base
       if ["staging", "production"].include?(Rails.env)
         update_record_via_bcsec
       end
+      set_department_and_school
     end
+    self.save!
     self
   end
   
   private
+  
+    def set_department_and_school
+      return if netid.blank?      
+
+      entry = Ldap.new.retrieve_entry_by_netid(netid)
+      ou = entry.nil? ? nil : entry["ou"]
+
+      unless ou.nil?
+        val = ou[0].split(",")
+        if val.size > 1
+          department = val.shift(val.size - 1).join(",")
+          school = val[0].strip          
+          self.department_affiliation = department if self.department_affiliation.blank?
+          self.school_affiliation = school if self.school_affiliation.blank?
+        else 
+          self.department_affiliation = val if self.department_affiliation.blank?
+        end
+      end
+      
+    end
   
     def update_record_via_bcsec
       criteria = []
