@@ -137,8 +137,16 @@ class Award < ActiveRecord::Base
     self.organization = NonPhsOrganization.find(org_id) unless org_id.blank?
   end
   
+  def is_phs_organization?
+    !organization.blank? and organization.type == "PhsOrganization"
+  end
+  
+  def is_non_phs_organization?
+    !organization.blank? and organization.type == "NonPhsOrganization"
+  end
+  
   def phs_organization
-    organization if organization and organization.type == "PhsOrganization"
+    organization if is_phs_organization?
   end
 
   def phs_organization_id
@@ -146,7 +154,7 @@ class Award < ActiveRecord::Base
   end
 
   def non_phs_organization
-    organization if organization and organization.type == "NonPhsOrganization"
+    organization if is_non_phs_organization?
   end
 
   def non_phs_organization_id
@@ -173,15 +181,15 @@ class Award < ActiveRecord::Base
   def ctsa_missing_fields
     result = []
     result << "Organization"  if organization_id.blank?
-    result << "Activity Code" if activity_code_id.blank? && (!organization.blank? and organization.type == "PhsOrganization")
-    result << "Grant Number"  if grant_number.blank? && (!organization.blank? and organization.type == "NonPhsOrganization")
+    result << "Activity Code" if activity_code_id.blank? && is_phs_organization?
+    result << "Grant Number"  if grant_number.blank? && is_non_phs_organization?
     result.join(", ")
   end
   
   def valid_for_ctsa_report?
     result = ctsa_missing_fields.blank?
-    result = ((/\d{6}/ =~ grant_number) && (grant_number.length == 6)) if result && !grant_number.blank? && (!organization.blank? and organization.type == "PhsOrganization")
-    result = false if grant_number.blank? && (!organization.blank? and organization.type == "PhsOrganization")
+    result = ((/\d{6}/ =~ grant_number) && (grant_number.length == 6)) if result && !grant_number.blank? && is_phs_organization?
+    result = false if grant_number.blank? && is_phs_organization?
     result
   end
   
