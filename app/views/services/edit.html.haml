@@ -1,27 +1,8 @@
+- javascript "nested_attributes", "ui/services"
 - stylesheet "services", "people"
 - title "New Service - Update Person"
 
-:javascript
-  $(document).ready(function() {
-    $(".help_icon").tooltip();
-  
-    $('#specialty_autocomplete').focus(function(){
-      $(this).select();
-    });
-    $('#specialty_autocomplete').autocomplete({
-      source: "#{specialties_path(:format => :json)}",
-      minLength: 2,
-      select: function(event, ui) { 
-        $('#specialty_autocomplete').val(ui.item.label);
-        $("##{@person.class.to_s.downcase}_specialty_id").val(ui.item.id);
-      }
-    });
-  });
-  $(function () { $(".datepicker").live('mouseover', function() { $(this).datepicker(); }); });
-  $(function () { $("form").dirty_form(); });
-  $(function () { $("a.menu_nav").dirty_stopper(); });
-
-- if @service.person and @service.service_line
+- if @service.person && @service.service_line
   = render "menu"
 - else
   = render "service_header"
@@ -35,3 +16,9 @@
   
     .buttons
       = f.submit "Continue"
+
+
+:javascript
+  $(function () {
+    servicesUI = new Clearcats.UI.Services({ maxDate: "+1095" });
+  });

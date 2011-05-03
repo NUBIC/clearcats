@@ -7,6 +7,7 @@ class ServicesController < ApplicationController
     params[:search] ||= Hash.new
     params[:search][:service_line_organizational_unit_id_eq_any] = @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
     params[:search][:person_id_equals] = params[:person_id] if params[:person_id]
+    params[:search][:meta_sort] ||= "created_at.desc"
     
     @search = Service.search(params[:search])
     @services = @search.paginate(:page => params[:page], :per_page => 20)
@@ -59,6 +60,7 @@ class ServicesController < ApplicationController
     get_service
   end
   
+  # Creates one service for one person and associates that with the chosen service line
   def choose_service_line
     get_service
     ids = current_user.group_memberships.collect(&:affiliate_ids).flatten.map(&:to_i)
@@ -108,6 +110,10 @@ class ServicesController < ApplicationController
   def edit
     get_service
     @person = @person.amplify if @person
+  end
+  
+  def choose_action
+    get_service
   end
   
   def update_person

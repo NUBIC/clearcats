@@ -20,7 +20,7 @@
     - @people.each do |person|
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td
-          = link_to "Add to service line", { :controller => "services", :action => "create_service_for_person", :person_id => person.id }, :method => :post, :class => "add_link icon_link"
+          = link_to "Add to service line", { :controller => "people", :action => "new_services", :id => person.id }, :method => :get, :class => "add_link icon_link menu_nav"
         %td= h person.last_name
         %td= h person.first_name
         %td= h person.middle_name

@@ -66,6 +66,7 @@ Clearcats::Application.routes.draw do
       get :choose_service_line
     end
     member do
+      get :choose_action
       post :create_service_for_person
       get :choose_person
       get :choose_awards
@@ -91,6 +92,8 @@ Clearcats::Application.routes.draw do
       post :revert
       get :merge
       post :merge
+      get :new_services
+      post :create_services
     end
     collection do
       get :upload

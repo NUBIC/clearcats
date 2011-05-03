@@ -21,6 +21,9 @@ module NavigationHelpers
       
     when /the edit service page/
       edit_service_path(Service.last)
+      
+    when /the choose action service page/
+      choose_action_service_path(Service.last)
 
     when /the edit service page for person "(.*)" and service line "(.*)"/
       edit_service_path(Service.first(:conditions => { :person => Person.find_by_netid($1), :service_line => ServiceLine.find_by_name($2) }))
@@ -79,6 +82,12 @@ module NavigationHelpers
 
     when /the person search page/
       people_path
+      
+    when /the person new services page/
+      new_services_person_path(Person.last)
+      
+    when /the person services page/
+      "/people/#{Person.last.id}/services"
     
     ### APPROVALS ###
       

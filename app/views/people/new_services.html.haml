@@ -1,0 +1,28 @@
+- stylesheet "people"
+- javascript 'ui/people'
+- title "Create Services"
+
+- unless @person.organizational_units.blank?
+  .organizational_units
+    #{@person} has worked with #{@person.organizational_units.uniq.to_sentence}.
+
+.records_header
+  - if current_user.permit?(:Admin)
+    = link_to 'View Services', person_services_path(@person), :class => "show_link icon_link menu_nav" unless @person.services.blank?
+
+.page_section
+
+  = form_tag(create_services_person_path(@person)) do
+    %h3 
+      = "Choose Service Lines for #{@person}"
+    %ul.service_lines
+      - @organizational_units.each do |ou|
+        %li
+          = ou.to_s
+          %ul{ :class => "ou_service_lines", :id => "#{ou.cc_pers_affiliate_identifier.downcase}"}
+            - ou.service_lines.all(:order => "name").each do |svc_line|
+              %li 
+                = check_box_tag "service_line_ids[#{svc_line.id}]", svc_line.id
+                = label_tag "service_line_ids[#{svc_line.id}]", svc_line.to_s 
+    .buttons
+      = submit_tag "Save"

@@ -124,6 +124,24 @@ class PeopleController < ApplicationController
     end
   end
 
+  # Helper method to easily create several service records for one person
+  def new_services
+    determine_person(:id, false)
+    ids = current_user.group_memberships.collect(&:affiliate_ids).flatten.map(&:to_i)
+    if ids.blank?
+      @organizational_units = OrganizationalUnit.all(:order => :name)
+    else
+      @organizational_units = OrganizationalUnit.find_by_cc_pers_affiliate_ids(ids).sort_by { |ou| ou.name }
+    end
+  end
+  
+  def create_services
+    determine_person(:id, false)
+    params["service_line_ids"].each do |svc_line|
+      Service.create(:service_line_id => svc_line.last, :person_id => @person.id)
+    end
+    redirect_to(person_services_path(@person))
+  end
   
   def directory
     @people = FacultyWebService.locate(params[:search]) unless params[:search].blank?
