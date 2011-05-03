@@ -5,8 +5,8 @@
 - else
   %table.records
     %tr
-      %th Name
-      %th Service line
+      %th= sort_link @search, :name, "Name"
+      %th= sort_link @search, :service_line_name, "Service Line"
       %th{:colspan => "2"}
     - @activity_types.each do |activity_type|
       %tr

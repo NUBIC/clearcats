@@ -13,7 +13,7 @@ describe ActivityTypesController do
     
     describe "GET index" do
       it "assigns all activity_types as @activity_types" do
-        ActivityType.stub(:all).and_return([mock_activity_type])
+        ActivityType.stub_chain(:search, :all).and_return([mock_activity_type])
         get :index
         assigns[:activity_types].should == [mock_activity_type]
       end

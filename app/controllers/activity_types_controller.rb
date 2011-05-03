@@ -4,7 +4,14 @@ class ActivityTypesController < ApplicationController
   # GET /activity_types
   # GET /activity_types.xml
   def index
-    @activity_types = ActivityType.all
+    @user_organizational_units = determine_org_units_for_user
+
+    params[:search] ||= {}
+    usr_org_units = @user_organizational_units.blank? ? [] : @user_organizational_units.collect(&:id)
+    params[:search][:service_line_organizational_unit_id_eq_any] ||= usr_org_units
+
+    @search = ActivityType.search(params[:search])
+    @activity_types = @search.all
 
     respond_to do |format|
       format.html # index.html.erb
