@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110429141805) do
     t.integer  "activity_type_id"
     t.datetime "event_date"
     t.text     "deliverable"
+    t.boolean  "billable"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "due_date"
@@ -488,6 +489,7 @@ ActiveRecord::Schema.define(:version => 20110429141805) do
     t.integer  "service_line_id"
     t.datetime "start_at"
     t.datetime "end_at"
+    t.boolean  "billable"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

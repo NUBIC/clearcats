@@ -7,9 +7,11 @@
 #  name                          :string(255)
 #  description                   :text
 #  project_id                    :integer
+#  service_line_id               :integer
 #  activity_type_id              :integer
 #  event_date                    :datetime
 #  deliverable                   :text
+#  billable                      :boolean
 #  created_at                    :datetime
 #  updated_at                    :datetime
 #  due_date                      :date

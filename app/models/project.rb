@@ -9,6 +9,7 @@
 #  service_line_id        :integer
 #  start_at               :datetime
 #  end_at                 :datetime
+#  billable               :boolean
 #  created_at             :datetime
 #  updated_at             :datetime
 #
