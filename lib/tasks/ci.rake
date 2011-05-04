@@ -20,6 +20,9 @@ begin
 
     desc "Run both specs and features to generate aggregated coverage"
     task :all do |t|
+      ENV['STEP']= '14'
+      Rake::Task["db:rollback"].invoke
+      ENV.delete 'STEP'
       Rake::Task["db:migrate"].invoke
       Rake::Task["rcov:clean"].invoke
       Rake::Task["ci:cucumber_run"].invoke
