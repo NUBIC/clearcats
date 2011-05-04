@@ -18,10 +18,15 @@
         %span.required *
         %br
         = f.text_field :event_date, :class => "datepicker"
-      #activity_type_select.hide
+      %div{ :id => "activity_type_select", :class => "#{@activity.activity_type_id.blank? ? 'hide' : ''}" }
         = f.label :activity_type_id, "Activity Type"
         %br
-        = f.select :activity_type_id, ["Choose Service Line First", ""], { :include_blank => "-- Select Activity Type --" }
+        - @activity.activity_type_id
+        = f.select :activity_type_id, @activity_types
+    .span-3
+      %p
+        = f.check_box :billable
+        = f.label :billable
   %p
     %b
       Add People

@@ -5,6 +5,7 @@ class CreateRoles < ActiveRecord::Migration
 
       t.timestamps
     end
+    ["Client", "Staff"].each { |name| Role.create!(:name => name) }
   end
 
   def self.down

@@ -258,6 +258,7 @@ end
 
 Factory.define :activity do |a|
   a.name "activity name"
+  a.event_date Date.today
   a.project { |a| a.association(:project) }
   a.activity_type { |a| a.association(:activity_type) }
   a.service_line { |a| a.association(:service_line) }

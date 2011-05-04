@@ -42,3 +42,9 @@ table.records tr.odd_record {
 .integer_input {
   width: 3em;
 }
+
+.nested_attributes_field label.date_reminder {
+  width: 10em;
+  display: inline-block;
+  margin-left: 2em;
+}

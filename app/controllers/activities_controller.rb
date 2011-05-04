@@ -22,8 +22,8 @@ class ActivitiesController < ApplicationController
   def new
     @user_organizational_units = determine_organizational_units_for_user
     @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
-    
-    @activity = Activity.new
+    @activity_types = [["Choose Service Line First", ""]]
+    @activity = Activity.new(:event_date => Date.today)
 
     respond_to do |format|
       format.html # new.html.haml
@@ -77,8 +77,11 @@ class ActivitiesController < ApplicationController
   end
   
   def edit
+    @user_organizational_units = determine_organizational_units_for_user
+    @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
     @activity = Activity.find(params[:id])
-
+    @activity_types = [[@activity.activity_type.to_s, @activity.activity_type_id]]
+    
     respond_to do |format|
       format.html 
       format.xml  { render :xml => @activity }

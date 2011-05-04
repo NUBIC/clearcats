@@ -16,7 +16,7 @@
     - services.each do |svc|
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td
-          - action = svc.state.to_s == "completed" ? "edit" : "continue"
+          - action = svc.state.to_s == "completed" ? "edit" : "choose_action"
           = link_to "Select", :controller => "services", :action => action, :id => svc
           %span.hide
             = svc.state.titleize
