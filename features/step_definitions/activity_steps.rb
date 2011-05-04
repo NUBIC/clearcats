@@ -1,3 +1,4 @@
+
 Given /^an activity type already exists with name: "([^"]*)"$/ do |name|
   organizational_unit = Factory(:organizational_unit)
   service_line = Factory(:service_line, :organizational_unit => organizational_unit)

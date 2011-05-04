@@ -1,4 +1,7 @@
 class ActivitiesController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :create_from_external_source
+  before_filter :verify_external_source_authenticity_token, :only => :create_from_external_source
+  
   permit :Admin, :User
 
   def index
@@ -17,6 +20,9 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    @user_organizational_units = determine_organizational_units_for_user
+    @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
+    
     @activity = Activity.new
 
     respond_to do |format|
@@ -37,6 +43,36 @@ class ActivitiesController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @activity.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+  
+  def create_from_external_source
+    project = Project.find_by_name(params[:project_title])
+    person  = Person.find_by_netid(params[:netid])
+    role    = Role.find_by_name(params[:role])
+
+    if person && project && role
+      @activity = Activity.new(:project => project, :activity_actor => ActivityActor.create(:person => person, :role => role))
+
+      respond_to do |format|
+        if @activity.save
+          flash[:notice] = 'Activity was successfully created.'
+          format.html { redirect_to(activities_path) }
+          format.xml  { render :xml => @activity, :status => :created, :location => @activity }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @activity.errors, :status => :unprocessable_entity }
+        end
+      end
+    else
+      # what to do in this case?
+    end
+  end
+  
+  def verify_external_source_authenticity_token
+    # checks whether the request comes from a trusted source
+    if params[:external_source_authenticity_token].nil?
+      handle_unverified_request() 
     end
   end
   

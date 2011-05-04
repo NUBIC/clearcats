@@ -260,6 +260,7 @@ Factory.define :activity do |a|
   a.name "activity name"
   a.project { |a| a.association(:project) }
   a.activity_type { |a| a.association(:activity_type) }
+  a.service_line { |a| a.association(:service_line) }
 end
 
 Factory.define :role do |r|

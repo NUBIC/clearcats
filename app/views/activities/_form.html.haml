@@ -1,15 +1,27 @@
 = form_for(@activity) do |f|
   = render "shared/error_messages", :object => f.object
-  %p
-    = f.label :name
-    %span.required *
-    %br
-    = f.text_field :name
-  %p
-    = f.label :activity_type_name, "Activity Type"
-    %span.required *
-    %br
-    = f.text_field :activity_type_name, :class => 'activity_type_autocompleter'
+  .container.span-24
+    .span-12
+      %p
+        = f.label :name
+        %span.required *
+        %br
+        = f.text_field :name  
+      %p
+        = f.label :service_line_id, "Service Line"
+        %span.required *
+        - arr = @service_lines.sort_by{|e| e.name}.map{|u| [u.to_s, u.id]}
+        = select_tag("activity[service_line_id]", options_for_select([["-- Select Service Line --", ""]] + arr, @activity.service_line_id))
+    .span-8
+      %p
+        = f.label :event_date, "Date"
+        %span.required *
+        %br
+        = f.text_field :event_date, :class => "datepicker"
+      #activity_type_select.hide
+        = f.label :activity_type_id, "Activity Type"
+        %br
+        = f.select :activity_type_id, ["Choose Service Line First", ""], { :include_blank => "-- Select Activity Type --" }
   %p
     %b
       Add People

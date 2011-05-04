@@ -12,7 +12,6 @@
     %p
       = f.label "service_line_id", "Service Line (optional)"
       = link_to "Manage Service Lines", service_lines_path
-      = link_to "Add Service Line", { :controller => "/service_lines", :action => "new"}, { :class => "edit_modal_form_link add_link icon_link" }
       %br
       = render "service_lines/select", :service_lines => @service_lines, :selected => @project.service_line_id
 

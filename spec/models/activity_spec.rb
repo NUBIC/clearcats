@@ -32,6 +32,9 @@ describe Activity do
   
   it { should belong_to(:project) }
   
+  it { should validate_presence_of(:service_line) }
+  it { should belong_to(:service_line) }
+  
   it { should validate_presence_of(:activity_type) }
   it { should belong_to(:activity_type) }
   

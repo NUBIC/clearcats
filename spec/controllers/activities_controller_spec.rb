@@ -58,6 +58,25 @@ describe ActivitiesController do
       end
 
     end
+
+
+    describe "POST create from external source" do
+
+      
+
+      describe "with valid params" do
+        it "assigns a newly created activity as @activity" do
+          Factory(:person, :netid => "asdf")
+          Factory(:project, :name => "pt")
+          Factory(:role, :name => "Submitter")
+          Activity.stub(:new).and_return(mock_activity(:save => true))
+          post :create_from_external_source, :project_title => "pt", :netid => "asdf", :role => "Submitter"
+          assigns[:activity].should equal(mock_activity)
+        end
+      end
+
+    end
+
     
     describe "GET edit" do
       it "assigns the requested activity as @activity" do

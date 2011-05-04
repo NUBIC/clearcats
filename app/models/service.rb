@@ -14,6 +14,8 @@
 #  updated_by      :string(255)
 #
 
+# A Service is the record of a client (person_id) having 
+# used a service line (service_line_id) provided by the CTSA
 require "state_machine"
 class Service < ActiveRecord::Base
   

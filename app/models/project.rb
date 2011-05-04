@@ -13,6 +13,8 @@
 #  updated_at             :datetime
 #
 
+# A project is an instance of a service line for the organizational unit.
+# The activities of a project should correspond with the activity types of a service line.
 class Project < ActiveRecord::Base
   belongs_to :organizational_unit
   belongs_to :service_line

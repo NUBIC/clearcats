@@ -7,9 +7,14 @@ Clearcats::Application.routes.draw do
   resources :activity_types do
     collection do
       post :sort
+      get :options
     end
   end
-  resources :activities
+  resources :activities do
+    member do
+      post :create_from_external_source
+    end
+  end
   resources :projects
   resources :key_metrics
   resources :metric_items

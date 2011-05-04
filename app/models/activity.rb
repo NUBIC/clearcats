@@ -19,13 +19,16 @@
 #  staff_followup_reminder_date  :date
 #
 
+# An activity is a record of a particular interaction between an actor or actors with the CTSA.
 class Activity < ActiveRecord::Base
 
   belongs_to :project
   belongs_to :activity_type
+  belongs_to :service_line
   
   validates_presence_of :name
   validates_presence_of :activity_type
+  validates_presence_of :service_line
 
   has_many :notes, :class_name => "Note", :as => :notable, :dependent => :destroy
   accepts_nested_attributes_for :notes, :allow_destroy => true

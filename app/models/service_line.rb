@@ -12,6 +12,9 @@
 #  updated_by             :string(255)
 #
 
+# A Service Line is something provided by the CTSA.
+# Sometimes this is just a continuing service provided or
+# is a template for a repeating project. 
 class ServiceLine < ActiveRecord::Base
   
   belongs_to :organizational_unit

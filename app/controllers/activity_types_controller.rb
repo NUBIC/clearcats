@@ -22,6 +22,12 @@ class ActivityTypesController < ApplicationController
       format.xml { render :xml => @activity_types }
     end
   end
+
+  def options
+    @search = ActivityType.search(params[:search])
+    @activity_types = @search.all
+    render :text => @activity_types.sort_by { |sl| sl.name }.map { |sl| { :id => sl[:id], :label => sl[:name], :value => sl[:id] } }.to_json
+  end
   
   def sort
     service_line = ServiceLine.find(params[:id])

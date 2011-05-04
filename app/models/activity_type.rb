@@ -19,6 +19,8 @@
 #  dependent_on_previous    :boolean
 #
 
+# An activity type is a template for activities for a service line/project. 
+# An activity type sets dates and reminders for individual activities based on the template.
 class ActivityType < ActiveRecord::Base
   
   acts_as_list

@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20110429141805) do
     t.string   "name"
     t.text     "description"
     t.integer  "project_id"
+    t.integer  "service_line_id"
     t.integer  "activity_type_id"
     t.datetime "event_date"
     t.text     "deliverable"

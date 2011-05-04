@@ -74,7 +74,6 @@ class ServicesController < ApplicationController
   # A service will be created after the user selects either the client or the service line
   # The redirect will be determined by the service
   def create
-    
     if params[:service].blank? or (params[:service][:service_line_id].blank? and params[:service][:person_id].blank?)
       if request.referrer.include?("choose_person")
         flash[:notice] = "You must take some action. Please select a person."

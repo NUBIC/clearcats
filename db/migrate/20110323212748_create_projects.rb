@@ -6,6 +6,7 @@ class CreateProjects < ActiveRecord::Migration
       t.integer :service_line_id
       t.datetime :start_at
       t.datetime :end_at
+      t.boolean :billable
 
       t.timestamps
     end
