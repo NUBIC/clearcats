@@ -37,7 +37,7 @@ describe Activity do
   it { should validate_presence_of(:service_line) }
   it { should belong_to(:service_line) }
   
-  it { should validate_presence_of(:activity_type) }
+  # it { should validate_presence_of(:activity_type) }
   it { should belong_to(:activity_type) }
   
   it { should have_many(:attachments) }
@@ -84,7 +84,7 @@ describe Activity do
     end
     
     it "should find all activities for an org unit" do
-      act = Factory(:activity, :activity_type => @activity_type)
+      act = Factory(:activity, :activity_type => @activity_type, :service_line => @service_line)
       
       Activity.for_organizational_units([@org_unit_one]).should == [act]
       Activity.for_organizational_units([@org_unit_two]).should == []

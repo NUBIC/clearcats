@@ -158,6 +158,20 @@ describe Service do
       person.organizational_units.should be_empty
     end
     
+    describe "activities" do
+      
+      it "should return an activity if the person is an activity_actor for a matching service line" do
+        person   = Factory(:person)
+        svc_line = Factory(:service_line, :name => "the service line")
+        svc      = Factory(:service, :person => person, :service_line => svc_line)
+        activity = Factory(:activity, :service_line => svc_line)
+        actor    = Factory(:activity_actor, :person => person, :activity => activity)
+        
+        svc.activities.should == [activity]
+      end
+      
+    end
+    
   end
 
 end

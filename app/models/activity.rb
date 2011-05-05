@@ -29,7 +29,7 @@ class Activity < ActiveRecord::Base
   belongs_to :service_line
   
   validates_presence_of :name
-  validates_presence_of :activity_type
+  # validates_presence_of :activity_type
   validates_presence_of :service_line
 
   has_many :notes, :class_name => "Note", :as => :notable, :dependent => :destroy
@@ -43,7 +43,7 @@ class Activity < ActiveRecord::Base
 
   scope :for_organizational_units, 
     lambda { |org_unit_ids| 
-      joins("INNER JOIN activity_types ON activity_types.id = activities.activity_type_id INNER JOIN service_lines ON service_lines.id = activity_types.service_line_id").
+      joins("INNER JOIN service_lines ON service_lines.id = activities.service_line_id").
       where("service_lines.organizational_unit_id IN (?)", org_unit_ids )
     }
 
@@ -65,6 +65,14 @@ class Activity < ActiveRecord::Base
 
   def activity_type_name
     activity_type.nil? ? "" : activity_type.to_s
+  end
+  
+  def formatted_event_date
+    Date.parse(self.event_date.to_s).strftime("%m/%d/%Y") unless self.event_date.blank?
+  end
+  
+  def formatted_event_date=(dt)
+    self.event_date = dt
   end
   
   private

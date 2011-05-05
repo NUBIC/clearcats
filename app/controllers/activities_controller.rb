@@ -6,6 +6,7 @@ class ActivitiesController < ApplicationController
 
   def index
     @user_organizational_units = determine_organizational_units_for_user
+    
     params[:page] ||= 1
     
     Rails.logger.info("~~~ @user_organizational_units = #{@user_organizational_units.map(&:id)}")
@@ -40,6 +41,9 @@ class ActivitiesController < ApplicationController
         format.html { redirect_to(activities_path) }
         format.xml  { render :xml => @activity, :status => :created, :location => @activity }
       else
+        @user_organizational_units = determine_organizational_units_for_user
+        @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
+        @activity_types = [["Choose Service Line First", ""]]
         format.html { render :action => "new" }
         format.xml  { render :xml => @activity.errors, :status => :unprocessable_entity }
       end

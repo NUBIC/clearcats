@@ -151,6 +151,13 @@ class Service < ActiveRecord::Base
     end
   end
   
+  def activities
+    search = {}
+    search[:service_line_id_eq] = service_line_id
+    search[:activity_actors_person_id_eq] = person_id
+    Activity.search(search).all
+  end
+  
   private
   
     def should_add_organizational_unit_to_person?

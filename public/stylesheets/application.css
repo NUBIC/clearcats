@@ -36,6 +36,10 @@
   opacity: 0.5 !important;
 }
 
+.datepicker {
+  width: 7em;
+}
+
 a.no_link {
   padding: 0;
   margin: 0 -0.25em 0 0;

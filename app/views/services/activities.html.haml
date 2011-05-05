@@ -1,0 +1,32 @@
+- title "Activities for #{@service.to_s} - #{@person}"
+
+.page_section
+  - if @activities.blank?
+    .no_records No activities were found.
+  - else
+    %p
+    .records_header
+      %table{ :class => "records" }
+        %tr
+          %th.select_record
+            Select
+          %th
+            Name
+          %th
+            Service Line
+          %th
+            Activity Type
+          %th
+            Date
+        - @activities.each do |a|
+          %tr{ :class => cycle('even_record', 'odd_record') }
+            %td.select_record
+              = link_to 'Edit', edit_activity_path(a), :class => "edit_link icon_link"
+            %td
+              = a.to_s
+            %td
+              = a.service_line.to_s
+            %td
+              = a.activity_type.to_s
+            %td
+              = a.event_date.strftime("%m/%d/%Y")

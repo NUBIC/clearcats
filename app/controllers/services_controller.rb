@@ -207,6 +207,11 @@ class ServicesController < ApplicationController
     end
   end
   
+  def activities
+    get_service
+    @activities = @service.activities
+  end
+  
   
   private 
   

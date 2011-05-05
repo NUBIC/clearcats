@@ -87,6 +87,7 @@ Clearcats::Application.routes.draw do
       get :choose_approvals
       post :survey
       get :choose_service_line
+      get :activities
     end
   end
 

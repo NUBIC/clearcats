@@ -10,7 +10,7 @@
     %li
       = link_to "Edit Profile for #{@service.person}", edit_person_path(@service.person), :class => "edit_link icon_link"
     %li
-      Manage Activities
+      = link_to "Manage Activities", activities_service_path(@service), :class => "list_link icon_link"
 
 
 :javascript
