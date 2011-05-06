@@ -15,7 +15,7 @@ Clearcats.UI.Services = function (config) {
     } else {
       $('div#new_activity').html('<p>Creating new record . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
       $.get(url, null, function (response) {
-        $('.activities').prepend('<div class="page_section span-24">' + response + '</div');
+        $('.activities').append('<div class="page_section span-24">' + response + '</div');
         $('div#new_activity').html('');
       });
     }
