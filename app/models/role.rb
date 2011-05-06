@@ -16,5 +16,9 @@ class Role < ActiveRecord::Base
   def to_s
     name
   end
+  
+  def self.client
+    Role.find_by_name("Client")
+  end
 
 end

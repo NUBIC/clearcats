@@ -28,10 +28,10 @@ Clearcats.UI.Activities = function (config) {
                                                               addHandler: ui.setupSelectPersonAutocompleter, 
                                                               caller: this }),
   notesNestedAttributesForm = new NestedAttributes({ container: $('.notes'), 
-                                                              association: 'notes', 
-                                                              content: config.notesTemplate, 
-                                                              addHandler: null,
-                                                              caller: this });
+                                                     association: 'notes', 
+                                                     content: config.notesTemplate, 
+                                                     addHandler: null,
+                                                     caller: this });
 
 
   ui.setupActivityTypeAutocompleter();
@@ -40,7 +40,6 @@ Clearcats.UI.Activities = function (config) {
   $(".datepicker").datepicker();
   
   $("#activity_service_line_id").live("change", function() {
-    
     $("#activity_type_select").show();
     
     svc_line_id = $("#activity_service_line_id").val();

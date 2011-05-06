@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
   permit :Admin, :User
-  layout :choose_layout
+  layout proc { |controller| controller.request.xhr? ? nil : 'application'  } 
 
   def index
     @user_organizational_units = determine_org_units_for_user
@@ -207,11 +207,62 @@ class ServicesController < ApplicationController
     end
   end
   
+  
+  
   def activities
     get_service
     @activities = @service.activities
   end
   
+  def activity
+    @activity = Activity.find(params[:activity_id])
+  end
+  
+  def edit_activity
+    get_service
+    @user_organizational_units = determine_organizational_units_for_user
+    @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
+    @activity = Activity.find(params[:activity_id])
+    @activity_types = [[@activity.activity_type.to_s, @activity.activity_type_id]]
+  end
+  
+  def update_activity
+    get_service
+    @activity = Activity.find(params[:activity_id])
+    respond_to do |format|
+      if @activity.update_attributes(params[:activity])
+        format.json do
+          render :json => { :id => @activity.id, :service_id => @service.id, :errors => [] }, :status => :ok
+        end
+      else
+        # TODO: handle exceptions
+      end
+    end
+  end
+  
+  def new_activity
+    get_service
+    @user_organizational_units = determine_organizational_units_for_user
+    @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
+    @activity_types = [["Choose Service Line First", ""]]
+    @activity = Activity.new(:event_date => Date.today, :service_line => @service.service_line)
+  end
+  
+  def create_activity
+    get_service
+    @activity = Activity.new(params[:activity])
+    @activity.activity_actors = [ActivityActor.new(:person => @person, :activity => @activity, :role => Role.client)]
+    respond_to do |format|
+      if @activity.save
+        format.json do
+          render :json => { :id => @activity.id, :service_id => @service.id, :errors => [] }, :status => :ok
+        end
+      else
+        # TODO: handle exceptions
+      end
+    end
+    
+  end
   
   private 
   
@@ -258,14 +309,6 @@ class ServicesController < ApplicationController
       else
         flash[:notice] = "#{@service.service_line} for #{@service.person} is complete" if @service.state == "completed"
         redirect_to :controller => "services", :action => @service.state, :id => @service
-      end
-    end
-  
-    def choose_layout    
-      if [ 'chart' ].include? action_name
-        'chart'
-      else
-        'application'
       end
     end
   

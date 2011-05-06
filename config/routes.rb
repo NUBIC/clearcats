@@ -88,6 +88,11 @@ Clearcats::Application.routes.draw do
       post :survey
       get :choose_service_line
       get :activities
+      get :activity
+      get :edit_activity
+      put :update_activity
+      get :new_activity
+      post :create_activity
     end
   end
 

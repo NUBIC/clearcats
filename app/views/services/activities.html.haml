@@ -1,32 +1,24 @@
+- stylesheet "services"
+- javascript "nested_attributes", "ui/services", 'ui/activities'
 - title "Activities for #{@service.to_s} - #{@person}"
 
-.page_section
-  - if @activities.blank?
-    .no_records No activities were found.
-  - else
-    %p
-    .records_header
-      %table{ :class => "records" }
-        %tr
-          %th.select_record
-            Select
-          %th
-            Name
-          %th
-            Service Line
-          %th
-            Activity Type
-          %th
-            Date
-        - @activities.each do |a|
-          %tr{ :class => cycle('even_record', 'odd_record') }
-            %td.select_record
-              = link_to 'Edit', edit_activity_path(a), :class => "edit_link icon_link"
-            %td
-              = a.to_s
-            %td
-              = a.service_line.to_s
-            %td
-              = a.activity_type.to_s
-            %td
-              = a.event_date.strftime("%m/%d/%Y")
+- if @activities.blank?
+  .no_records No activities were found.
+- else
+  .records
+    #new_activity
+    .activities
+      - @activities.each do |a|
+        .page_section.span-24
+          = render '/services/activity', :activity => a, :service => @service
+  .links
+    = link_to 'New Activity', new_activity_service_path(@service), {:title => "New Activity for #{@person.to_s}", :class => "edit_modal_form_link add_link icon_link"}
+
+:javascript
+  $(function () {
+    var notesTemplate = '<tr class=\'note fields\'>\n  <td>\n    <label for=\"activity_notes_attributes_new_notes_text\">Note<\/label>\n  <\/td>\n  <td>\n    <textarea id=\"activity_notes_attributes_new_notes_text\" name=\"activity[notes_attributes][new_notes][text]\"><\/textarea>\n  <\/td>\n  <td>\n    <input id=\"activity_notes_attributes_new_notes__destroy\" name=\"activity[notes_attributes][new_notes][_destroy]\" type=\"hidden\" value=\"false\" /><a href=\"javascript:void(0);\" class=\"delete_notes delete_link icon_link\">Remove<\/a>\n  <\/td>\n<\/tr>\n';
+    var servicesUI = new Clearcats.UI.Services({ });
+    var activitiesUI = new Clearcats.UI.Activities({ activityTypesUrl: '#{activity_types_path(:format => :json)}',
+                                                     selectPeopleUrl: '#{select_people_path(:format => :json)}',
+                                                     notesTemplate: notesTemplate });
+  });

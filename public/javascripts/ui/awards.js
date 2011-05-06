@@ -16,7 +16,6 @@ Clearcats.UI.Awards = function (config) {
     });
   });
 
-
   var onsuccess = function(data) {
     var award_id = data.id
     var url = "/awards/row/" + award_id + "?person_id=" + data.person_id;

@@ -1,0 +1,24 @@
+
+%div{ :id => "activity_#{activity.id}", :class => "award_record" }
+  .span-12
+    .select_record
+      = link_to 'Edit', edit_activity_service_path(service, :activity_id => activity), {:title => "Edit Activity for #{@person.to_s}", :class => "edit_modal_form_link edit_link icon_link"}
+    .name
+      %b Name
+      %br
+      = activity.name
+    .event_date
+      %b Date
+      %br
+      = activity.formatted_event_date
+  .span-12.last
+    %div
+      &nbsp;
+    .service_line
+      %b Service Line
+      %br
+      = activity.service_line.to_s
+    .activity_type
+      %b Activity Type
+      %br
+      = activity.activity_type.to_s
