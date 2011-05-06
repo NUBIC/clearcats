@@ -481,7 +481,6 @@ class Person < ActiveRecord::Base
   def self.create_imported_service(person, service_line)
     if Service.first(:conditions => {:person_id => person, :service_line_id => service_line}).blank? 
       svc = Service.create(:person => person, :service_line => service_line)
-      svc.update_state
     end
   end
   

@@ -273,3 +273,8 @@ textarea#award_grant_title {
 #modal_edit_form .container {
   width: 785px;
 }
+
+.new_activity_link {
+  float: left;
+  width: 100%;
+}

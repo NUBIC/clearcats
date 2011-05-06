@@ -27,101 +27,6 @@ describe Service do
     svc.to_s.should == "#{svc.organizational_unit.to_s} service line name"
   end
   
-  context "state" do
-  
-    it "should start in the new state" do
-      svc = Factory(:service, :person => nil, :service_line => nil)
-      svc.should be_new
-    end
-    
-    context "transitioning from new" do
-      
-      before(:each) do
-        @svc = Factory(:service, :person => nil, :service_line => nil) 
-        @svc.should be_new
-        @person   = Factory(:person)
-        @svc_line = Factory(:service_line)
-      end
-    
-      it "should transition into the choose_service_line state after assigned to a person" do
-        @svc.person = @person
-        @svc.save!
-        @svc.should be_choose_service_line
-      end
-    
-      it "should transition into the choose_person state after assigned to a service line" do
-        @svc.service_line = @svc_line
-        @svc.save!      
-        @svc.should be_choose_person
-      end
-      
-      it "should become 'initiatied' once a person and service line are set" do
-        @svc.service_line = @svc_line
-        @svc.save!
-        @svc.should be_choose_person
-        
-        @svc.person = @person
-        @svc.save!
-        @svc.should be_initiated
-      end
-      
-      it "should become 'initiatied' once a person and service line are set" do
-        @svc.person = @person
-        @svc.save!
-        @svc.should be_choose_service_line
-
-        @svc.person.service_rendered.should == false
-
-        @svc.service_line = @svc_line
-        @svc.save!
-        @svc.should be_initiated
-        
-        @svc.person.service_rendered.should == true
-      end
-      
-    end
-    
-    context "transitioning from a post initiated state" do
-      
-      it "should not be able to become 'uninitiated' after being initiated" do
-        svc = Factory(:service)
-        svc.should be_initiated
-        
-        svc.person = nil
-        svc.save!
-        
-        svc.should be_initiated
-        svc.person.should_not be_nil
-        
-        svc.service_line = nil
-        svc.save!
-
-        svc.should be_initiated
-        svc.service_line.should_not be_nil
-      end
-      
-    end
-    
-    it "should know all the possible states" do
-      Service.state_machine.states.length.should == 10
-      states = Service.state_machine.states.keys
-      states.include?(:new).should be_true
-      states.include?(:choose_person).should be_true
-      states.include?(:choose_service_line).should be_true
-      states.include?(:initiated).should be_true
-      states.include?(:identified).should be_true
-      states.include?(:choose_awards).should be_true
-      states.include?(:choose_publications).should be_true
-      states.include?(:choose_approvals).should be_true
-      states.include?(:completed).should be_true
-      states.include?(:surveyable).should be_true
-      
-      states.include?(:asdf).should_not be_true
-    end
-    
-    
-  end
-
   context "associations" do
     
     it "should delete all orphaned associations upon destroy" do
@@ -144,7 +49,7 @@ describe Service do
       svc_line_two = Factory(:service_line, :organizational_unit => org_unit, :name => "two")
       svc_one = Factory(:service, :person => person, :service_line => svc_line_one)
       svc_two = Factory(:service, :person => person, :service_line => svc_line_two)
-
+      
       person.services.size.should == 2
       
       svc_one.destroy
@@ -170,6 +75,69 @@ describe Service do
         svc.activities.should == [activity]
       end
       
+    end
+    
+  end
+  
+  context "from a service line with associated activity types" do
+    
+    before(:each) do
+      role = Factory(:role, :name => "Client")
+      @svc_line = Factory(:service_line, :name => "line")
+      # t.client_reminder           4
+      # t.client_followup_reminder  1
+      # t.staff_reminder            4
+      # t.staff_followup_reminder   1
+      at1 = Factory(:activity_type, :position => 1, :name => "at1", :service_line => @svc_line, :due_in_days_after => 10)
+      at2 = Factory(:activity_type, :position => 2, :name => "at2", :service_line => @svc_line, :due_in_days_after => 20)
+      at3 = Factory(:activity_type, :position => 3, :name => "at3", :service_line => @svc_line, :due_in_days_after => 30)
+      @person = Factory(:person)
+    end
+    
+    describe "on create" do
+      
+      it "should create a placeholder activity record for each activity type" do
+        @svc_line.activity_types.size.should == 3
+        
+        svc = Factory(:service, :service_line => @svc_line, :person => @person)
+        svc.activities.size.should == 3
+      end
+      
+      it "should set the deadlines for those placeholder activities" do
+        svc = Factory(:service, :service_line => @svc_line, :person => @person)
+        acts = svc.activities
+        acts.size.should == 3
+        (0..2).each do |i| 
+          pos = i + 1
+          expected_due_date = (pos * 10).days.from_now.to_date
+          acts[i].activity_type.position.should == pos
+          acts[i].due_date.should == expected_due_date
+        end
+      end
+      
+    end
+    
+    describe "on destroy" do
+      it "should delete all placeholder activity records" do
+        svc = Factory(:service, :service_line => @svc_line, :person => @person)
+        svc.activities.size.should == 3
+        
+        Activity.count.should == 3
+        svc.destroy
+        Activity.count.should == 0
+      end
+      
+      it "should not delete activity records that are not placeholders (i.e. have an event date)" do
+        svc = Factory(:service, :service_line => @svc_line, :person => @person)
+        svc.activities.size.should == 3
+        
+        Activity.count.should == 3
+        a = Activity.first
+        a.event_date = Time.now
+        a.save!
+        svc.destroy
+        Activity.count.should == 1
+      end
     end
     
   end

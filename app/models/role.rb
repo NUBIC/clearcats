@@ -18,7 +18,7 @@ class Role < ActiveRecord::Base
   end
   
   def self.client
-    Role.find_by_name("Client")
+    Role.find_or_create_by_name("Client")
   end
 
 end

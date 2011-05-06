@@ -2,7 +2,7 @@ Feature: Editing an existing service
   In order to edit an existing service
   A user is expected to login
   And have services that have been previously been created be available for editing
-    
+  
   Scenario: Continuing an existing service
     Given an authenticated user
     And a person having the name "Warren Kibbe" and the username "wakibbe"

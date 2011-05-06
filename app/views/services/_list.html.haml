@@ -19,8 +19,6 @@
           - action = svc.state.to_s == "completed" ? "edit" : "choose_action"
           = link_to "Select", :controller => "services", :action => action, :id => svc
           %span.hide
-            = svc.state.titleize
-            %br
             = svc.created_at.to_s
         %td= svc.person
         %td= svc.service_line

@@ -29,7 +29,6 @@ class Activity < ActiveRecord::Base
   belongs_to :service_line
   
   validates_presence_of :name
-  # validates_presence_of :activity_type
   validates_presence_of :service_line
 
   has_many :notes, :class_name => "Note", :as => :notable, :dependent => :destroy

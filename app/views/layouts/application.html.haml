@@ -17,9 +17,9 @@
         - flash.each do |message_type, message|
           %div{ :class => "message", :id => message_type }
             - if message_type == :link_notice or message_type == :link_warning
-              = message
+              = raw message
             - else
-              = h(message)
+              = message
       
         = yield
 

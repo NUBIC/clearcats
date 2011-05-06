@@ -18,21 +18,7 @@ describe ServicesController do
         assigns[:service].should equal(mock_service)
       end
     end
-    
-    describe "GET choose_person" do
-      it "assigns a new service as @service if no id given" do
-        Service.stub(:new).and_return(mock_service(:person => mock_model(Person)))
-        get :choose_person
-        assigns[:service].should equal(mock_service)
-      end
-      
-      it "assigns the given service as @service" do
-        Service.stub(:find).with("37").and_return(mock_service(:person => mock_model(Person)))
-        get :choose_person, :id => "37"
-        assigns[:service].should equal(mock_service)
-      end
-    end
-    
+        
     describe "POST create" do
 
       describe "with valid params" do
@@ -40,6 +26,12 @@ describe ServicesController do
           Service.stub(:new).with({'service_line_id' => '2'}).and_return(mock_service(:save! => true, :created_by= => true, :state => "new", :initiated? => true))
           post :create, :service => {:service_line_id => '2'}
           assigns[:service].should equal(mock_service)
+        end
+        
+        it "redirects to the created my services list" do
+          Service.stub(:new).with({'service_line_id' => '2'}).and_return(mock_service(:save! => true, :created_by= => true, :state => "new", :initiated? => true))
+          post :create, :service => {:service_line_id => '2'}
+          response.should redirect_to(:controller => "services", :action => "my_services")
         end
       end
 

@@ -25,116 +25,57 @@ class Service < ActiveRecord::Base
   delegate :organizational_unit, :to => :service_line
   delegate :ctsa_reporting_years, :to => :person
   
-  before_save :add_organizational_unit_to_person
-  before_destroy :remove_organizational_unit_from_person
+  before_save :create_associations
+  before_destroy :remove_associations
   
   scope :organizational_unit_id_equals, lambda { |id| joins(:service_line).where("service_lines.organizational_unit_id = ?", id) }
   
   search_methods :organizational_unit_id_equals
-  
-  state_machine :state, :initial => :new do
-    
+
+  state_machine :state, :initial => new do
     state :new
-    state :choose_person
-    state :choose_service_line
     state :initiated
-    state :identified
-    state :choose_awards
-    state :choose_publications
-    state :choose_approvals
     state :completed
     state :surveyable
     
-    event :identify do
-      transition [:new, :choose_person] => :choose_service_line
-    end
-    
-    event :set_service_line do
-      transition [:new, :choose_service_line] => :choose_person
-    end
-
-    event :start_service do
-      transition [:identified] => [:choose_service_line, :choose_person]
-    end
-
     event :initiate do
-      transition [:choose_service_line, :choose_person] => :initiated
+      transition [:new] => [:initiated]
     end
     
-    event :profiling do
-      transition :initiated => :choose_awards, :choose_awards => :choose_publications, :choose_publications => :choose_approvals
-    end
-
     event :complete do
-      transition [:choose_approvals] => :completed
+      transition [:initiated] => [:completed]
     end
     
     event :readied_for_survey do
-      transition [:completed] => :surveyable
+      transition [:completed] => [:surveyable]
     end
+    
   end
-  
+    
   def initialize(attributes = nil)
     super(attributes) # NOTE: This *must* be called, otherwise states won't get initialized
   end
-  
-  
-  def person=(person)
-    self.person_id = person.id if person
-  end
-  
-  def person_id=(person_id)
-    if person_id
-      self[:person_id] = person_id
-      update_state
-    end    
-  end
-  
-  def service_line=(service_line)
-    self.service_line_id = service_line.id if service_line
-  end
-  
-  def service_line_id=(service_line_id)
-    if service_line_id
-      self[:service_line_id] = service_line_id
-      update_state
-    end
-  end
-  
-  def update_state
-    
-    Rails.logger.info("~~~ Service#update_state - [#{self.state}]")
-    
-    case self.state
-    when "new", nil
-      self.set_service_line! unless self.service_line_id.blank?
-      self.identify!         unless self.person_id.blank?
-    when "choose_person"
-      if !self.person_id.blank?
-        self.initiate!
-        self.person.update_attribute(:service_rendered, true) if person and !person.service_rendered?
-      end
-    when "choose_service_line"
-      if !self.service_line_id.blank?
-        self.initiate!
-        self.person.update_attribute(:service_rendered, true) if person and !person.service_rendered?
-      end
-    when "choose_approvals"
-      self.project_approvals_chosen!
-    end
-  end
-  
+
   def to_s
-    if self.service_line.blank?
-      if self.person.blank?
+    if service_line.blank?
+      if person.blank?
         return "Bad Service"
       else
-        return "Service for #{self.person} does not have a service line"
+        return "Service for #{person} does not have a service line"
       end
-        
     else
-      return "#{self.service_line.organizational_unit.to_s} #{self.service_line}".strip
+      return "#{service_line.organizational_unit.to_s} #{service_line}".strip
     end
+  end
+  
+  def create_associations
+    add_organizational_unit_to_person
+    create_placeholder_activities
+  end
+  
+  def remove_associations
+    remove_organizational_unit_from_person
+    remove_placeholder_activities
   end
   
   def add_organizational_unit_to_person
@@ -151,6 +92,22 @@ class Service < ActiveRecord::Base
     end
   end
   
+  def create_placeholder_activities
+    if should_create_placeholder_activities?
+      self.service_line.activity_types.each do |at|
+        act = Activity.new(:service_line => self.service_line, :activity_type => at, :name => "#{at.name}")
+        act.activity_actors = [ActivityActor.new(:activity => act, :person => self.person, :role => Role.client)]
+        act.save!
+      end
+    end
+  end
+  
+  def remove_placeholder_activities
+    activities.each do |a|
+      a.destroy if a.event_date.blank?
+    end
+  end
+  
   def activities
     search = {}
     search[:service_line_id_eq] = service_line_id
@@ -160,12 +117,20 @@ class Service < ActiveRecord::Base
   
   private
   
+    def setup?
+      !self.service_line.blank? && !self.person.blank?
+    end
+  
+    def should_create_placeholder_activities?
+      activities.blank? && setup?
+    end
+  
     def should_add_organizational_unit_to_person?
-      self.person and self.service_line and !service_line.organizational_unit.blank? and !self.person.organizational_units.include?(self.service_line.organizational_unit)
+      setup? and !service_line.organizational_unit.blank? and !self.person.organizational_units.include?(self.service_line.organizational_unit)
     end
     
     def should_remove_organizational_unit_from_person?
-      self.person and self.service_line and only_person_association_to_organizational_unit_is_through_this_service?
+      setup? and only_person_association_to_organizational_unit_is_through_this_service?
     end
   
     def only_person_association_to_organizational_unit_is_through_this_service?

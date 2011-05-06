@@ -11,8 +11,8 @@
       - @activities.each do |a|
         .page_section.span-24
           = render '/services/activity', :activity => a, :service => @service
-  .links
-    = link_to 'New Activity', new_activity_service_path(@service), {:title => "New Activity for #{@person.to_s}", :class => "edit_modal_form_link add_link icon_link"}
+.new_activity_link
+  = link_to 'New Activity', new_activity_service_path(@service), {:title => "New Activity for #{@person.to_s}", :class => "edit_modal_form_link add_link icon_link"}
 
 :javascript
   $(function () {

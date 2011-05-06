@@ -42,32 +42,12 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
-    @search  = Service.search(:created_by_equals => current_user.username, :state_does_not_equal => "completed")
+    @search  = Service.search(:created_by_equals => current_user.username)
     @pending_services = @search.paginate(:page => params[:page], :per_page => 20)
     
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @service }
-    end
-  end
-  
-  def choose_person
-    if !params[:search].blank?
-      people  = Person.search(meta_search(params[:search])).all
-      faculty = FacultyWebService.locate(faculty_web_service_search(params[:search]))
-      @people = (faculty + people).uniq
-    end
-    get_service
-  end
-  
-  # Creates one service for one person and associates that with the chosen service line
-  def choose_service_line
-    get_service
-    ids = current_user.group_memberships.collect(&:affiliate_ids).flatten.map(&:to_i)
-    if ids.blank?
-      @organizational_units = OrganizationalUnit.all(:order => :name)
-    else
-      @organizational_units = OrganizationalUnit.find_by_cc_pers_affiliate_ids(ids).sort_by { |ou| ou.name }
     end
   end
   
@@ -86,7 +66,7 @@ class ServicesController < ApplicationController
 
       if @service.save!
         flash[:notice] = 'Service was successfully created.'
-        determine_redirect
+        redirect_to(:controller => "services", :action => "my_services")
       else
         render :action => "new"
       end
@@ -114,78 +94,9 @@ class ServicesController < ApplicationController
   def choose_action
     get_service
   end
-  
-  def update_person
-    process_update_request
-  end
-
-  def continue
-    process_update_request
-  end
-  
+    
   def update
     process_update_request
-  end
-  
-  def identified
-    get_service
-    if !request.get?
-      update_service
-      determine_redirect
-    end
-  end
-  
-  def choose_organizational_units
-    get_service
-  end
-  
-  def choose_publications
-    get_service
-    LatticeGridWebService.investigator_publications_search(@service.person.netid)
-    
-    params[:search] ||= Hash.new
-    params[:search][:person_id_equals] = @service.person.id
-    params[:search][:meta_sort] ||= "publication_date.asc"
-    @search_params = params[:search]
-    @search = Publication.search(@search_params)
-    @publications = @search.all
-  end
-  
-  def choose_awards
-    get_service
-    FacultyWebService.awards_for_employee({:employeeid => @service.person.employeeid})
-    params[:search] ||= Hash.new
-    params[:search][:person_id_equals] = @service.person.id
-    params[:search][:meta_sort] ||= "project_period_start_date.asc"
-    @search_params = params[:search]
-    @search = Award.search(@search_params)
-    @awards = @search.all
-  end
-  
-  def choose_approvals
-    get_service
-  end
-  
-  def update_approvals
-    process_update_request
-  end
-  
-  def surveyable
-    get_service
-    @survey = Survey.first(:conditions => { :common_namespace => "clearcats", :common_identifier => "satisfaction_survey" } )
-  end
-  
-  def survey
-    get_service
-    @survey = Survey.find_by_access_code(params[:survey_code])
-    @response_set = ResponseSet.create(:survey => @survey, :user_id => (@current_user.nil? ? @current_user : @current_user.id), :service => @service)
-    if (@survey && @response_set)
-      flash[:notice] = t('surveyor.survey_started_success')
-      redirect_to(edit_my_survey_path(:survey_code => @survey.access_code, :response_set_code  => @response_set.access_code))
-    else
-      flash[:notice] = t('surveyor.Unable_to_find_that_survey')
-      redirect_to :controller => :services, :action => :surveyable, :id => @service
-    end
   end
   
   def completed
@@ -206,8 +117,6 @@ class ServicesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-  
-  
   
   def activities
     get_service
@@ -270,7 +179,6 @@ class ServicesController < ApplicationController
       get_service
       update_service
       update_client
-      determine_redirect
     end
   
     def get_service
@@ -294,21 +202,6 @@ class ServicesController < ApplicationController
         @service.person = Client.new(attr_params)
       else
         @service.person.update_attributes(attr_params)
-      end
-    end
-    
-    def determine_redirect
-      Rails.logger.info("~~~ Service State [#{@service.id}] = #{@service.state}")
-
-      if @service.initiated?
-        redirect_to edit_service_path(@service)
-      elsif @service.choose_person?
-        redirect_to choose_person_service_path(@service)
-      elsif @service.choose_service_line?
-        redirect_to choose_service_line_service_path(@service)
-      else
-        flash[:notice] = "#{@service.service_line} for #{@service.person} is complete" if @service.state == "completed"
-        redirect_to :controller => "services", :action => @service.state, :id => @service
       end
     end
   
