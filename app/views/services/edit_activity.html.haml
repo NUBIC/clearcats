@@ -22,7 +22,8 @@
           = f.select :activity_type_id, activity_types
     .span-8.last
       %p
-        &nbsp;
+        = f.check_box :required
+        = f.label :required
       %p
         = f.label :formatted_event_date, "Date"
         %span.required *

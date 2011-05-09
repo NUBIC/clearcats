@@ -10,7 +10,12 @@
     .event_date
       %b Date
       %br
-      = activity.formatted_event_date
+      = activity.event_date.blank? ? "TBD" : activity.formatted_event_date
+    - unless activity.due_date.blank?
+      .due_date
+        %b Due Date
+        %br
+        = activity.formatted_due_date
   .span-12.last
     %div
       &nbsp;
@@ -22,3 +27,24 @@
       %b Activity Type
       %br
       = activity.activity_type.to_s
+    %div
+      %b Billable
+      %br
+      = activity.billable? ? "True" : "False"
+    %div
+      %b Required
+      %br
+      = activity.required? ? "True" : "False"
+  - unless activity.notes.empty?
+    .span-24
+      .notes_toggle
+        = link_to "Show Notes ...", "javascript:void(0);", { :class => "show_notes_toggle" }
+      .notes_section.hide
+        = link_to "Hide Notes ...", "javascript:void(0);", { :class => "hide_notes_toggle" }
+        %br
+        %b
+          Notes
+        .notes
+          - activity.notes.each do |n|
+            .note
+              = n.text

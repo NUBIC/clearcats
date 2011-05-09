@@ -266,6 +266,10 @@ textarea#award_grant_title {
   width: 750px;
 }
 
+#modal_edit_form #activity_name {
+  width: 20em;
+}
+
 #modal_edit_form .records .note textarea {
   height: 5em !important;
 }

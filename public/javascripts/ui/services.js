@@ -1,5 +1,15 @@
 Clearcats.UI.Services = function (config) {
 
+  $('.show_notes_toggle').live("click", function() {
+    $(this).parent().siblings('.notes_section').show();
+    $(this).closest('.notes_toggle').hide();
+  });
+
+  $('.hide_notes_toggle').live("click", function() {
+    $(this).parent().siblings('.notes_toggle').show();
+    $(this).closest('.notes_section').hide();
+  });
+
   var onsvcsuccess = function(data) {
     var activity_id = data.id
     var service_id = data.service_id

@@ -36,6 +36,7 @@ describe Activity do
   
   it { should validate_presence_of(:service_line) }
   it { should belong_to(:service_line) }
+  it { should belong_to(:service) }
   
   # it { should validate_presence_of(:activity_type) }
   it { should belong_to(:activity_type) }
@@ -106,7 +107,7 @@ describe Activity do
       act.client_followup_reminder_date.should == 6.days.from_now.to_date
     end
     
-    it "should set not update the dates upon subsequent saves" do
+    it "should not update the dates upon subsequent saves" do
       at = Factory(:activity_type, :due_in_days_after => 7, :client_reminder => 3, :client_followup_reminder => 1, :staff_reminder => 3, :staff_followup_reminder => 1)
     
       act = Factory(:activity, :activity_type => at)
@@ -128,6 +129,36 @@ describe Activity do
         act.client_followup_reminder_date.should == 5.days.from_now.to_date
       end
     end
+    
+    it "should know if it is past due" do
+      at = Factory(:activity_type, :due_in_days_after => 14)
+      act = Factory(:activity, :activity_type => at)
+      act.due_date.should == 14.days.from_now.to_date
+      act.should_not be_past_due
+      
+      Timecop.travel(15.days.from_now) do
+        act.should be_past_due
+      end
+    end
+    
+    it "should know if it is upcoming" do
+      at = Factory(:activity_type, :due_in_days_after => 14)
+      act = Factory(:activity, :activity_type => at)
+      act.due_date.should == 14.days.from_now.to_date
+      act.should_not be_upcoming
+      
+      Timecop.travel(8.days.from_now) do
+        act.should be_upcoming
+      end
+    end
+
+    it "should know if it is required" do
+      at = Factory(:activity_type, :required => true)
+      act = Factory(:activity, :activity_type => at)
+      act.should be_required
+    end
+
+    
   end
   
 end

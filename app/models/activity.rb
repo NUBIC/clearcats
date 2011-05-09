@@ -27,6 +27,7 @@ class Activity < ActiveRecord::Base
   belongs_to :project
   belongs_to :activity_type
   belongs_to :service_line
+  belongs_to :service
   
   validates_presence_of :name
   validates_presence_of :service_line
@@ -48,7 +49,7 @@ class Activity < ActiveRecord::Base
 
   search_methods :for_organizational_units
 
-  before_save :set_dates_and_reminders
+  before_save :build_from_activity_type
 
   def to_s
     name
@@ -66,18 +67,36 @@ class Activity < ActiveRecord::Base
     activity_type.nil? ? "" : activity_type.to_s
   end
   
+  def formatted_due_date
+    formatted_date(due_date)
+  end
+  
   def formatted_event_date
-    Date.parse(self.event_date.to_s).strftime("%m/%d/%Y") unless self.event_date.blank?
+    formatted_date(event_date)
   end
   
   def formatted_event_date=(dt)
     self.event_date = dt
   end
   
+  def past_due?
+    due_date < Date.today
+  end
+  
+  def upcoming?
+    !past_due? && due_date < 7.days.from_now.to_date
+  end
+  
+  def incomplete?
+    event_date.blank?
+  end
+  
   private
   
-    def set_dates_and_reminders
+    def build_from_activity_type
       if !activity_type.blank?
+        
+        self.required = activity_type.required
         
         if activity_type.has_due_date? && self.due_date.blank?
           self.due_date = Date.today + activity_type.due_in_days_after
@@ -94,6 +113,10 @@ class Activity < ActiveRecord::Base
         end
         
       end
+    end
+    
+    def formatted_date(dt)
+      Date.parse(dt.to_s).strftime("%m/%d/%Y") unless dt.blank?
     end
 
 end

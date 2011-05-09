@@ -78,6 +78,7 @@ Factory.define :activity_type do |t|
   t.staff_reminder            4
   t.staff_followup_reminder   1
   t.position                  1
+  t.required                  false
   t.dependent_on_previous     false
 end
 
@@ -259,9 +260,10 @@ end
 Factory.define :activity do |a|
   a.name "activity name"
   a.event_date Date.today
-  a.project { |a| a.association(:project) }
+  a.project       { |a| a.association(:project) }
   a.activity_type { |a| a.association(:activity_type) }
-  a.service_line { |a| a.association(:service_line) }
+  a.service_line  { |a| a.association(:service_line) }
+  a.service       { |a| a.association(:service) }
 end
 
 Factory.define :role do |r|

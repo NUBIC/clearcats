@@ -22,11 +22,12 @@ class Service < ActiveRecord::Base
   belongs_to :service_line
   belongs_to :person
   
+  has_many :activities
+  
   delegate :organizational_unit, :to => :service_line
   delegate :ctsa_reporting_years, :to => :person
   
-  before_save :create_associations
-  before_destroy :remove_associations
+  after_save :create_associations
   
   scope :organizational_unit_id_equals, lambda { |id| joins(:service_line).where("service_lines.organizational_unit_id = ?", id) }
   
@@ -95,9 +96,8 @@ class Service < ActiveRecord::Base
   def create_placeholder_activities
     if should_create_placeholder_activities?
       self.service_line.activity_types.each do |at|
-        act = Activity.new(:service_line => self.service_line, :activity_type => at, :name => "#{at.name}")
-        act.activity_actors = [ActivityActor.new(:activity => act, :person => self.person, :role => Role.client)]
-        act.save!
+        act = Activity.create(:service => self, :service_line => self.service_line, :activity_type => at, :name => "#{at.name}")
+        ActivityActor.create(:activity => act, :person => self.person, :role => Role.client)
       end
     end
   end
@@ -108,11 +108,9 @@ class Service < ActiveRecord::Base
     end
   end
   
-  def activities
-    search = {}
-    search[:service_line_id_eq] = service_line_id
-    search[:activity_actors_person_id_eq] = person_id
-    Activity.search(search).all
+  def destroy
+    remove_associations
+    super if activities.blank?
   end
   
   private
