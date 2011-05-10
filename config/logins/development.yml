@@ -23,16 +23,41 @@ users:
     portals:
       - ClearCATS:
         - Admin: [4619]
+  crc_user:
+    password: crc_user
+    portals:
+      - ClearCATS:
+        - Admin: [4620]
   cti_user:
     password: cti_user
     portals:
       - ClearCATS:
         - Admin: [4621]
+  cerc_user:
+    password: cerc_user
+    portals:
+      - ClearCATS:
+        - Admin: [4622]
+  nubic_user:
+    password: nubic_user
+    portals:
+      - ClearCATS:
+        - Admin: [4623]
   wakibbe:
     password: wakibbe
     portals:
       - ClearCATS:
         - Admin: [4623]
+  rsp_user:
+    password: rsp_user
+    portals:
+      - ClearCATS:
+        - Admin: [4624]
+  te_user:
+    password: te_user
+    portals:
+      - ClearCATS:
+        - Admin: [4626]
   pgreenld:
     password: pgreenld
   awa272:
