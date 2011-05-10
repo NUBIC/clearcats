@@ -1,11 +1,6 @@
 - stylesheet "welcome"
 - title "Welcome to clearcats!"
 
-:javascript
-  $(document).ready(function() {
-    $(".help_icon").tooltip();
-  });
-
 .welcome
 
   %p.hello
@@ -43,13 +38,17 @@
             %h3.add_event
               = link_to "Add Activity/Event", new_activity_path
         .span-8.last
-          %h4
-            Maintenance
           - if current_user.permit?(:Admin)
+            %h4
+              Maintenance          
             .front_page_section
               %h3.manage_service_lines
                 = link_to "Manage Service Lines", service_lines_path
-          - if current_user.permit?(:Admin)
             .front_page_section
               %h3.participating_organizations
                 = link_to "Participating Organizations", participating_organizations_path
+                
+:javascript
+  $(document).ready(function() {
+    $(".help_icon").tooltip();
+  });

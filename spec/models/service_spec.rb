@@ -32,6 +32,15 @@ describe Service do
   it { should belong_to(:service_line) }
   it { should belong_to(:person) }
   
+  context "state" do
+    
+    it "should state in a state of new" do
+      svc = Factory(:service)
+      svc.state.should == "new"
+    end
+    
+  end
+  
   context "associations" do
     
     it "should delete all orphaned associations upon destroy" do

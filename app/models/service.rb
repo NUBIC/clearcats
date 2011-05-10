@@ -33,7 +33,7 @@ class Service < ActiveRecord::Base
   
   search_methods :organizational_unit_id_equals
 
-  state_machine :state, :initial => new do
+  state_machine :state, :initial => :new do
     state :new
     state :initiated
     state :completed

@@ -245,7 +245,7 @@ GEM
       rubyzip
     sexp_processor (3.0.5)
     shoulda (2.11.3)
-    state_machine (0.10.3)
+    state_machine (0.10.4)
     surveyor (0.19.3)
       fastercsv
       formtastic
