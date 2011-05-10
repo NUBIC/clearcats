@@ -226,8 +226,6 @@ describe PeopleController do
         assigns[:people].map(&:id).should include(@no_era_name.id)
         # @all.map(&:id).each { |id| assigns[:people].map(&:id).include?(id).should be_true }
       end
-
-      it "should return all people that are incomplete without netids"
       
       # the following throws an error 
       # - private method `binding' called for nil:NilClass
