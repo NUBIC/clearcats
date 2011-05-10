@@ -39,18 +39,14 @@ module NavigationHelpers
 
     when /the service identified page/
       identified_service_path(Service.last)
-      
-    when /the service choose awards page/
-      choose_awards_service_path(Service.last)
-      
-    when /the service choose publications page/
-      choose_publications_service_path(Service.last)
-      
-    when /the service choose approvals page/
-      choose_approvals_service_path(Service.last)
     
     when /the my services page/
       "/services/my_services"
+
+      ### ACTIVITIES ###
+      
+    when /the service activities page/
+      activities_service_path(Service.last)
 
     ### PUBLICATIONS ###
 

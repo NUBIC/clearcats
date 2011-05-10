@@ -1,3 +1,8 @@
+require 'uri'
+require 'cgi'
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
+
 When /^I wait (\d+) seconds$/ do |wait_seconds|
   sleep(wait_seconds.to_i)
 end
@@ -16,4 +21,9 @@ end
 
 Then /"(.*)" should appear before "(.*)"/ do |first_item, second_item|
   page.body.should =~ /#{first_item}.*#{second_item}/m
+end
+
+Then /^the "(.*)" field should be set to today$/ do |field|
+  field = find_field(field)
+  field.value.should == Date.today.strftime("%m/%d/%Y")
 end

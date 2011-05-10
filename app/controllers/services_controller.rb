@@ -124,6 +124,7 @@ class ServicesController < ApplicationController
   end
   
   def activity
+    get_service
     @activity = Activity.find(params[:activity_id])
   end
   
@@ -154,7 +155,7 @@ class ServicesController < ApplicationController
     @user_organizational_units = determine_organizational_units_for_user
     @service_lines = ServiceLine.for_organizational_units(@user_organizational_units)
     @activity_types = [["Choose Service Line First", ""]]
-    @activity = Activity.new(:event_date => Date.today, :service_line => @service.service_line)
+    @activity = Activity.new(:event_date => Date.today, :service_line => @service.service_line, :service => @service)
   end
   
   def create_activity

@@ -2,15 +2,15 @@
 - javascript "nested_attributes", "ui/services", 'ui/activities'
 - title "Activities for #{@service.to_s(:short)} - #{@person}"
 
+.records
+  #new_activity
 - if @activities.blank?
   .no_records No activities were found.
 - else
-  .records
-    #new_activity
-    .activities
-      - @activities.each do |a|
-        .page_section.span-24
-          = render '/services/activity', :activity => a, :service => @service
+  .activities
+    - @activities.each do |a|
+      .page_section.span-24
+        = render '/services/activity', :activity => a, :service => @service
 .new_activity_link
   = link_to 'New Activity', new_activity_service_path(@service), {:title => "New Activity for #{@person.to_s}", :class => "edit_modal_form_link add_link icon_link"}
 
