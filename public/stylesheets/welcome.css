@@ -5,6 +5,15 @@
   font-size: 1.75em;
 }
 
+.welcome .container {
+  margin-top: 2em;
+}
+
+.welcome .container h4 {
+  text-decoration: underline;
+  text-align: center;
+}
+
 .welcome .page_section {
   min-height: 14em;
 }

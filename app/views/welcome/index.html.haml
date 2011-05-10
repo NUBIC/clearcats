@@ -18,28 +18,38 @@
 
   - if current_user
     - if current_user.permit?(:Admin, :User)
-      .front_page_section
-        %h3.add_investigator 
-          = link_to "Add Investigator", {:controller => "welcome", :action => "add_investigator"}
-      .front_page_section
-        %h3.add_event
-          = link_to "My Projects", projects_path
-      .front_page_section
-        %h3.add_event
-          = link_to "Add Activity/Event", new_activity_path
-    - if current_user.permit?(:Admin)
-      .front_page_section
-        %h3.create_service_line 
-          = link_to "Create Service Line", new_service_line_path
-    - if current_user.permit?(:Admin)
-      .front_page_section
-        %h3.create_service_line 
-          = link_to "Manage Investigators", people_path
-    - if current_user.permit?(:Admin)
-      .front_page_section
-        %h3.create_service_line 
-          = link_to "My Services", :controller => "services", :action => "my_services"
-    - if current_user.permit?(:Admin)
-      .front_page_section
-        %h3.participating_organizations
-          = link_to "Participating Organizations", participating_organizations_path
+      .container.span-24
+        .span-8
+          %h4
+            Investigators
+          .front_page_section
+            %h3.add_investigator
+              = link_to "Add Investigator", {:controller => "welcome", :action => "add_investigator"}
+          - if current_user.permit?(:Admin)
+            .front_page_section
+              %h3.create_service_line
+                = link_to "Manage Investigators", people_path
+        .span-8
+          %h4
+            Projects and Services
+          .front_page_section
+            %h3.add_event
+              = link_to "My Projects", projects_path
+          - if current_user.permit?(:Admin)
+            .front_page_section
+              %h3.create_service_line 
+                = link_to "My Services", :controller => "services", :action => "my_services"
+          .front_page_section
+            %h3.add_event
+              = link_to "Add Activity/Event", new_activity_path
+        .span-8.last
+          %h4
+            Maintenance
+          - if current_user.permit?(:Admin)
+            .front_page_section
+              %h3.manage_service_lines
+                = link_to "Manage Service Lines", service_lines_path
+          - if current_user.permit?(:Admin)
+            .front_page_section
+              %h3.participating_organizations
+                = link_to "Participating Organizations", participating_organizations_path
