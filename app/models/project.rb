@@ -29,6 +29,7 @@ class Project < ActiveRecord::Base
   attr_accessor :key_metrics_attributes
   
   validates_presence_of :organizational_unit
+  validates_presence_of :service_line
   validates_presence_of :name
 
   def to_s

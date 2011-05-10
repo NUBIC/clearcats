@@ -24,6 +24,7 @@ describe Project do
   end
   
   it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:service_line) }
   it { should validate_presence_of(:organizational_unit) }
   it { should belong_to(:organizational_unit) }
   it { should belong_to(:service_line) }

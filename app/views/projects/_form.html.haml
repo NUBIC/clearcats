@@ -7,21 +7,23 @@
     %p
       = f.label :name
       %span.required *
+      %br
       = f.text_field :name
   
     %p
-      = f.label "service_line_id", "Service Line (optional)"
-      = link_to "Manage Service Lines", service_lines_path
+      = f.label "service_line_id", "Service Line"
+      %span.required *
+      = link_to "Manage Service Lines", service_lines_path, :class => "list_link icon_link"
       %br
       = render "service_lines/select", :service_lines => @service_lines, :selected => @project.service_line_id
 
-  .page_section
+  .page_section.hide
     #key_metrics
       %p
         %b
           Key Metrics Addressed 
         %span
-          = link_to "Manage Key Metrics", key_metrics_path
+          = link_to "Manage Key Metrics", key_metrics_path, :class => "list_link icon_link"
       %table{ :class => "records key_metrics" }
         %thead
           %tr

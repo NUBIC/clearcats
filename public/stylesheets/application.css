@@ -253,6 +253,20 @@ a.no_link {
 
 /* Error Styles */
 
+.field_with_errors {
+  display: inline-block;
+}
+
+.field_with_errors label {
+  color: crimson;
+}
+
+.field_with_errors input,
+.field_with_errors select,
+.field_with_errors textarea {
+  border: 1px solid crimson;
+}
+
 #error_message {
   /*text-align: center;*/
 }

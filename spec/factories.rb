@@ -254,6 +254,7 @@ end
 
 Factory.define :project do |p|
   p.name "project name"
+  p.service_line { |a| a.association(:service_line) }
   p.organizational_unit { |a| a.association(:organizational_unit) }
 end
 

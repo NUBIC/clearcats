@@ -4,6 +4,7 @@ Feature: Creating a new project
   Background:
     Given a service line already exists with name: "My Service Line"
   
+  @javascript
   Scenario: Starting a brand new project
     Given an authenticated user
     When I am on the home page
@@ -14,8 +15,9 @@ Feature: Creating a new project
     When I follow "New Project"
     Then I should be on "the new project page"
     And I should see "Name"
-    And I should see "Service Line (optional)"
+    And I should see "Service Line"
     When I fill in "Name" with "My New Project"
+    And I select "My Service Line" from "Service Line"
     When I press "Save"
     And I wait 2 seconds
     Then 1 projects should exist with name: "My New Project"
