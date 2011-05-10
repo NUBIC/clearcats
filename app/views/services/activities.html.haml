@@ -1,6 +1,6 @@
 - stylesheet "services"
 - javascript "nested_attributes", "ui/services", 'ui/activities'
-- title "Activities for #{@service.to_s} - #{@person}"
+- title "Activities for #{@service.to_s(:short)} - #{@person}"
 
 - if @activities.blank?
   .no_records No activities were found.
