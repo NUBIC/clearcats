@@ -57,7 +57,7 @@ class Service < ActiveRecord::Base
     super(attributes) # NOTE: This *must* be called, otherwise states won't get initialized
   end
 
-  def to_s
+  def to_s(version = :full)
     if service_line.blank?
       if person.blank?
         return "Bad Service"
@@ -65,7 +65,8 @@ class Service < ActiveRecord::Base
         return "Service for #{person} does not have a service line"
       end
     else
-      return "#{service_line.organizational_unit.to_s} #{service_line}".strip
+      ou = version == :short ? "#{service_line.organizational_unit.abbreviation.to_s}"  : service_line.organizational_unit.to_s
+      return "#{ou} #{service_line}".strip
     end
   end
   
