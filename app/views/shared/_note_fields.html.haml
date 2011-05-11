@@ -1,6 +1,11 @@
 %tr.note.fields
-  %td
+  %td.label
     = f.label :text, "Note"
+    - unless f.object.new_record?
+      %br
+      = f.object.created_by
+      %br
+      = f.object.created_at.to_s(:db)
   %td
     = f.text_area :text, :rows => 2, :cols => 45
   %td

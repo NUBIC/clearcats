@@ -38,13 +38,19 @@
   - unless activity.notes.empty?
     .span-24
       .notes_toggle
-        = link_to "Show Notes ...", "javascript:void(0);", { :class => "show_notes_toggle" }
-      .notes_section.hide
-        = link_to "Hide Notes ...", "javascript:void(0);", { :class => "hide_notes_toggle" }
+        = link_to "Show Notes", "javascript:void(0);", { :class => "show_notes_toggle toggle_open_link icon_link" }
+      .notes_section.span-22.hide
+        = link_to "Hide Notes", "javascript:void(0);", { :class => "hide_notes_toggle toggle_closed_link icon_link" }
         %br
         %b
           Notes
         .notes
           - activity.notes.each do |n|
             .note
-              = n.text
+              .note_info.span-4
+                .creator
+                  = n.created_by
+                .date
+                  = n.created_at.to_s(:db)
+              .note_text.span-18.last
+                = n.text

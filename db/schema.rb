@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110509154623) do
+ActiveRecord::Schema.define(:version => 20110510212418) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110509154623) do
     t.date     "staff_followup_reminder_date"
     t.boolean  "required"
     t.integer  "service_id"
+    t.integer  "position"
   end
 
   create_table "activities_people", :force => true do |t|
@@ -362,6 +363,8 @@ ActiveRecord::Schema.define(:version => 20110509154623) do
     t.string   "notable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "created_by"
+    t.string   "updated_by"
   end
 
   create_table "organizational_units", :force => true do |t|

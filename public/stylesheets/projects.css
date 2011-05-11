@@ -3,6 +3,10 @@ table.notes tr td {
   vertical-align: top;
 }
 
+table.notes td.label {
+  width: 12em;
+}
+
 table.notes tr td textarea,
 table.key_metrics tr td textarea {
   height: 2em !important;

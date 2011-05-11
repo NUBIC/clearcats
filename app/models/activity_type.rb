@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110429141805
+# Schema version: 20110510212418
 #
 # Table name: activity_types
 #
@@ -17,6 +17,7 @@
 #  staff_followup_reminder  :integer
 #  position                 :integer
 #  dependent_on_previous    :boolean
+#  required                 :boolean
 #
 
 # An activity type is a template for activities for a service line/project. 

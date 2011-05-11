@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110429141805
+# Schema version: 20110510212418
 #
 # Table name: activities
 #
@@ -19,6 +19,9 @@
 #  client_followup_reminder_date :date
 #  staff_reminder_date           :date
 #  staff_followup_reminder_date  :date
+#  required                      :boolean
+#  service_id                    :integer
+#  position                      :integer
 #
 
 # An activity is a record of a particular interaction between an actor or actors with the CTSA.
@@ -97,6 +100,7 @@ class Activity < ActiveRecord::Base
       if !activity_type.blank?
         
         self.required = activity_type.required
+        self.position = activity_type.position
         
         if activity_type.has_due_date? && self.due_date.blank?
           self.due_date = Date.today + activity_type.due_in_days_after

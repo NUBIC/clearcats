@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110429141805
+# Schema version: 20110510212418
 #
 # Table name: services
 #
@@ -22,7 +22,7 @@ class Service < ActiveRecord::Base
   belongs_to :service_line
   belongs_to :person
   
-  has_many :activities
+  has_many :activities, :order => "position, updated_at desc"
   
   delegate :organizational_unit, :to => :service_line
   delegate :ctsa_reporting_years, :to => :person

@@ -459,6 +459,14 @@ table.nested {
   background: url(../images/arrow_left.png) 0 2px no-repeat !important;
 }
 
+.toggle_open_link {
+  background: url(../images/bullet_arrow_down.png) 0 2px no-repeat !important;
+}
+
+.toggle_closed_link {
+  background: url(../images/bullet_arrow_up.png) 0 2px no-repeat !important;
+}
+
 .help_icon, .help_icon:hover {
   padding: 2px 2px 2px 20px;
   margin-left: 5px;

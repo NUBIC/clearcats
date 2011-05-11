@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110429141805
+# Schema version: 20110510212418
 #
 # Table name: activities
 #
@@ -19,6 +19,9 @@
 #  client_followup_reminder_date :date
 #  staff_reminder_date           :date
 #  staff_followup_reminder_date  :date
+#  required                      :boolean
+#  service_id                    :integer
+#  position                      :integer
 #
 
 require 'spec_helper'

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110429141805
+# Schema version: 20110510212418
 #
 # Table name: time_entries
 #

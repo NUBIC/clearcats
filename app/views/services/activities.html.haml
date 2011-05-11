@@ -2,12 +2,12 @@
 - javascript "nested_attributes", "ui/services", 'ui/activities'
 - title "Activities for #{@service.to_s(:short)} - #{@person}"
 
-.records
+.activities
   #new_activity
 - if @activities.blank?
   .no_records No activities were found.
 - else
-  .activities
+  .records
     - @activities.each do |a|
       .page_section.span-24
         = render '/services/activity', :activity => a, :service => @service

@@ -11,10 +11,10 @@
   
   - has_date_or_reminder = f.object.has_due_date? || f.object.has_reminder?
   %div{ :class => "due_dates_and_reminder_toggle #{has_date_or_reminder ? 'hide' : ''}" }
-    = link_to "Add Dates/Reminders", "javascript:void(0);", { :class => "due_dates_and_reminder_fields_toggle" }
+    = link_to "Add Dates/Reminders", "javascript:void(0);", { :class => "due_dates_and_reminder_fields_toggle toggle_open_link icon_link" }
   
   %div{ :class => "due_dates_and_reminder_fields #{has_date_or_reminder ? '' : 'hide'}" }
-    = link_to "Hide Dates/Reminders", "javascript:void(0);", { :class => "due_dates_and_reminder_toggle" }
+    = link_to "Hide Dates/Reminders", "javascript:void(0);", { :class => "due_dates_and_reminder_toggle toggle_closed_link icon_link" }
     .nested_attributes_field
       = f.label :due_in_days_after, "Due Date", :class => "date_reminder"
       = f.text_field :due_in_days_after, {:class => "integer_input"}

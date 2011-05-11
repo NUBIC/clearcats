@@ -282,3 +282,9 @@ textarea#award_grant_title {
   float: left;
   width: 100%;
 }
+
+.note {
+  min-height: 4em;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5em;
+}

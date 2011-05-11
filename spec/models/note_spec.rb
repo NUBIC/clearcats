@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110429141805
+# Schema version: 20110510212418
 #
 # Table name: notes
 #
@@ -9,6 +9,8 @@
 #  notable_type :string(255)
 #  created_at   :datetime
 #  updated_at   :datetime
+#  created_by   :string(255)
+#  updated_by   :string(255)
 #
 
 require 'spec_helper'
