@@ -68,7 +68,9 @@
       - else
         .truncated_publication_abstract
           = truncate(pub.abstract, :length => 150, :separator => ' ')
-          = link_to "More ...", "javascript:void(0);", { :class => "truncated_publication_abstract_toggle" }
+          %br
+          = link_to "More", "javascript:void(0);", { :class => "truncated_publication_abstract_toggle toggle_open_link icon_link" }
         .publication_abstract.hide
           = pub.abstract
-          = link_to "Less ...", "javascript:void(0);", { :class => "publication_abstract_toggle" }
+          %br
+          = link_to "Less", "javascript:void(0);", { :class => "publication_abstract_toggle toggle_closed_link icon_link" }

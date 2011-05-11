@@ -22,10 +22,10 @@
       %tr
         %th= ctsa_wording
         %th Select
+        %th Services
         %th= sort_link @search, :first_name, "First Name", :params => {:criteria => params[:criteria]}
         %th= sort_link @search, :last_name, "Last Name", :params => {:criteria => params[:criteria]}
         %th= sort_link @search, :netid, "Net ID", :params => {:criteria => params[:criteria]}
-        %th= sort_link @search, :employeeid, "Employee ID", :params => {:criteria => params[:criteria]}
         %th= sort_link @search, :email, "Email", :params => {:criteria => params[:criteria]}
         %th= sort_link @search, :era_commons_username, "ERA Commons", :params => {:criteria => params[:criteria]}
         %th Specialty
@@ -38,10 +38,10 @@
           %td
             = check_box_tag "people_ids[]", person.id, person.ctsa_reporting_years.include?(current_year)
           %td= link_to 'Edit', edit_person_path(person), :class => "edit_link icon_link"
+          %td= link_to 'Services', person_services_path(person), :class => "list_link icon_link"
           %td= h person.first_name
           %td= h person.last_name
           %td= h person.netid
-          %td= h person.employeeid
           %td= h person.email
           %td= h person.era_commons_username
           %td= h person.specialty

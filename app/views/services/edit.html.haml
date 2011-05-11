@@ -1,22 +1,32 @@
 - javascript "nested_attributes", "ui/services"
 - stylesheet "services", "people"
-- title "New Service - Update Person"
+- title "Edit Service"
 
-- if @service.person && @service.service_line
-  = render "menu"
-- else
-  = render "service_header"
+= render "service_header"
 
 .page_section
-  = form_for @service.person, :url => { :controller => "services", :action => "update_person", :id => @service.id } do |f|
 
-    = hidden_field_tag "service[state]", "identified" if @service.initiated?
+  %ul
+    %li
+      = link_to "Edit Profile for #{@service.person}", edit_person_path(@service.person), :class => "edit_link icon_link"
+    %li
+      = link_to "Manage Activities", activities_service_path(@service), :class => "list_link icon_link"
 
-    = render '/people/person_fields', :f => f
+.page_section
+  = form_for @service do |f|
+
+    %p
+      = f.label :entered_on, "Service Date"
+      %br
+      = f.text_field :entered_on, :class => "datepicker"
+    
+    %p
+      = f.label :completed_on, "Completion Date"
+      %br
+      = f.text_field :completed_on, :class => "datepicker"
   
-    .buttons
-      = f.submit "Continue"
-
+    .button
+      = f.submit "Save"
 
 :javascript
   $(function () {

@@ -1,5 +1,5 @@
 = form_for @search, :url => {:controller => "services", :action => "index", :method => :get}, :html => {:class => "services_search_form"} do |f|
-  .span-10
+  .span-8
     %p
       = f.label "organizational_unit_id_equals", "Organizational Unit"
       %br
@@ -8,6 +8,10 @@
       = f.label "service_line_name_like", "Service Line"
       %br
       = f.text_field :service_line_name_like
+    %p
+      = f.label "state_equals", "State"
+      %br
+      = f.select(:state_equals, Service::STATES.map{ |u| [u.titleize, u.to_s] }, { :include_blank => "-- Select State --" })
   .span-8
     - if params[:search][:person_id].blank?
       %p
@@ -18,5 +22,21 @@
         = f.label "person_last_name_like", "Last Name"
         %br
         = f.text_field :person_last_name_like
+  .span-8.last
+    %p
+      %b Entered on
+      %br
+      From:
+      = f.text_field :entered_on_greater_than_or_equal_to, :class => "datepicker"
+      To:
+      = f.text_field :entered_on_less_than_or_equal_to, :class => "datepicker"
+    %p
+      %b Completed on
+      %br
+      From:
+      = f.text_field :completed_on_greater_than_or_equal_to, :class => "datepicker"
+      To:
+      = f.text_field :completed_on_less_than_or_equal_to, :class => "datepicker"
   .buttons
     = f.submit "Submit", :disable_with => 'Submitting...'
+    = link_to "Export All Results", { :controller => "services", :action => "index", :format => "csv", :params => params }, { :class => "export_link icon_link" }

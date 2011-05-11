@@ -17,6 +17,7 @@
 # A Service is the record of a client (person_id) having 
 # used a service line (service_line_id) provided by the CTSA
 require "state_machine"
+require "comma"
 class Service < ActiveRecord::Base
   
   belongs_to :service_line
@@ -33,6 +34,8 @@ class Service < ActiveRecord::Base
   
   search_methods :organizational_unit_id_equals
 
+  STATES = ["new", "initiated", "completed", "surveyable"]
+  
   state_machine :state, :initial => :new do
     state :new
     state :initiated
@@ -112,6 +115,20 @@ class Service < ActiveRecord::Base
   def destroy
     remove_associations
     super if activities.blank?
+  end
+  
+  ###
+  #    Support for exporting to CSV
+  ###
+  
+  comma do
+    service_line :to_s => "Service Line"
+    person :first_name => "First Name"
+    person :last_name => "Last Name"
+    person :email => "Email"
+    entered_on
+    completed_on
+    state
   end
   
   private

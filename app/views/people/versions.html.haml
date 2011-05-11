@@ -20,19 +20,22 @@
       %th SSN (last four)
     - @person.versions.each do |version|
       - if version.object
-        - attrs = YAML::load version.object
-        %tr{ :class => cycle('even_record', 'odd_record') }
-          %td= button_to 'Revert', revert_person_path(@person, :version_id => version.id), :method => :post
-          %td= link_to 'View', version_person_path(@person, :version_id => version.id), :class => "show_link icon_link"
-          %td= version.created_at.to_s(:db)
-          %td= version.whodunnit
-          %td= h attrs["first_name"]
-          %td= h attrs["last_name"]
-          %td= h attrs["netid"]
-          %td= h attrs["employeeid"]
-          %td= h attrs["email"]
-          %td= h attrs["era_commons_username"]
-          %td= h attrs["last_four_of_ssn"]
+        - begin
+          - attrs = YAML::load version.object
+          %tr{ :class => cycle('even_record', 'odd_record') }
+            %td= button_to 'Revert', revert_person_path(@person, :version_id => version.id), :method => :post
+            %td= link_to 'View', version_person_path(@person, :version_id => version.id), :class => "show_link icon_link"
+            %td= version.created_at.to_s(:db)
+            %td= version.whodunnit
+            %td= h attrs["first_name"]
+            %td= h attrs["last_name"]
+            %td= h attrs["netid"]
+            %td= h attrs["employeeid"]
+            %td= h attrs["email"]
+            %td= h attrs["era_commons_username"]
+            %td= h attrs["last_four_of_ssn"]
+        - rescue
+          - # if date format in YAML is in error - i.e. not readable by yaml
     %tr{ :class => 'current_record' }
       %td{ :colspan => '2' }
         = link_to 'Edit', edit_person_path(@person), :class => "edit_link icon_link"

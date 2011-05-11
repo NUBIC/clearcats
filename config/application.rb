@@ -53,6 +53,8 @@ module Clearcats
      :port => 25,
      :domain => "northwestern.edu"
     }
+    
+    Date::DATE_FORMATS.merge!(:default => "%m/%d/%Y")
   end
 end
 

@@ -3,6 +3,7 @@ class ServicesController < ApplicationController
   layout proc { |controller| controller.request.xhr? ? nil : 'application'  } 
 
   def index
+    @person = Person.find(params[:person_id]) if params[:person_id]
     @user_organizational_units = determine_org_units_for_user
     params[:search] ||= Hash.new
     params[:search][:service_line_organizational_unit_id_eq_any] = @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
@@ -11,6 +12,11 @@ class ServicesController < ApplicationController
     
     @search = Service.search(params[:search])
     @services = @search.paginate(:page => params[:page], :per_page => 20)
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.csv { render :csv => @search.all }
+    end
   end
   
   def my_services

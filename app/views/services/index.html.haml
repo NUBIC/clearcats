@@ -1,8 +1,19 @@
-- stylesheet "services"
-- title "Service"
+- javascript "nested_attributes", "ui/services"
+- stylesheet "services", "people"
+- title "Services"
 
 .page_section
   = render 'search_form'
 
 .page_section
   = render 'list', { :services => @services }
+
+- if @person
+  .links
+    = link_to "New Service", { :controller => "people", :action => "new_services", :id => @person.id }, :method => :get, :class => "add_link icon_link"
+    
+    
+:javascript
+  $(function () {
+    servicesUI = new Clearcats.UI.Services({ maxDate: "+1095" });
+  });

@@ -15,16 +15,19 @@
       %th Project Start Date
     - @award.versions.each do |version|
       - if version.object
-        - attrs = YAML::load version.object
-        %tr{ :class => cycle('even_record', 'odd_record') }
-          %td= button_to 'Revert', revert_award_path(@award, :version_id => version.id), :method => :post
-          %td= version.created_at.to_s(:db)
-          %td= version.whodunnit
-          %td= Sponsor.find_by_id(attrs["sponsor_id"]).to_s
-          %td= attrs["sponsor_award_number"]
-          %td= attrs["grant_title"]
-          %td= attrs["budget_identifier"]
-          %td= attrs["project_period_start_date"]
+        - begin
+          - attrs = YAML::load version.object
+          %tr{ :class => cycle('even_record', 'odd_record') }
+            %td= button_to 'Revert', revert_award_path(@award, :version_id => version.id), :method => :post
+            %td= version.created_at.to_s(:db)
+            %td= version.whodunnit
+            %td= Sponsor.find_by_id(attrs["sponsor_id"]).to_s
+            %td= attrs["sponsor_award_number"]
+            %td= attrs["grant_title"]
+            %td= attrs["budget_identifier"]
+            %td= attrs["project_period_start_date"]
+        - rescue
+          - # if date format in YAML is in error - i.e. not readable by yaml
     %tr{ :class => 'current_record' }
       %td
       %td Current Version
@@ -37,38 +40,3 @@
 .links
   = link_to 'List', person_awards_path(@award.person), :class => "list_link icon_link"
   = link_to 'Export CSV', versions_award_path(@award, :export => "true"), :class => "export_link icon_link"
-  
-  / #  grant_number                           :string(255)
-  / #  years_of_award                         :string(255)
-  / #  grant_title                            :string(2500)
-  / #  grant_amount                           :float
-  / #  person_id                              :integer
-  / #  investigator_id                        :integer
-  / #  role                                   :string(255)
-  / #  parent_institution_number              :string(255)
-  / #  institution_number                     :string(255)
-  / #  subproject_number                      :string(255)
-  / #  ctsa_award_type_award_number           :string(255)
-  / #  budget_period                          :string(255)
-  / #  budget_period_start_date               :date
-  / #  budget_period_end_date                 :date
-  / #  budget_period_direct_cost              :float
-  / #  budget_period_direct_and_indirect_cost :float
-  / #  project_period_start_date              :date
-  / #  project_period_end_date                :date
-  / #  project_period_total_cost              :float
-  / #  total_project_cost                     :float
-  / #  ctsa_award_type_id                     :integer
-  / #  ctsa_award_type_type                   :string(255)
-  / #  proposal_status                        :string(255)
-  / #  award_status                           :string(255)
-  / #  sponsor_award_number                   :string(255)
-  / #  budget_number                          :string(255)
-  / #  direct_amount                          :float
-  / #  indirect_amount                        :float
-  / #  total_amount                           :float
-  / #  nucats_assisted                        :boolean
-  / #  created_at                             :datetime
-  / #  updated_at                             :datetime
-  / #  sponsor_id                             :integer
-  / #  originating_sponsor_id                 :integer
