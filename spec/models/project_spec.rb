@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110510212418
+# Schema version: 20110511175546
 #
 # Table name: projects
 #
@@ -31,4 +31,39 @@ describe Project do
   it { should have_many(:activities) }
   
   # it { should have_many(:notes) }
+  
+  context "completed" do
+    
+    it "should know if it is completed" do
+      proj = Factory(:project)
+      proj.should_not be_completed
+
+      proj.update_attribute(:completed, true)
+      proj.should be_completed
+    end
+    
+    it "should return only active" do
+      active = Factory(:project, :completed => false)
+      completed = Factory(:project, :completed => true)
+      projs = Project.active
+      projs.should == [active]
+    end
+    
+    it "should return only active for a particular service line" do
+      a_svc_line = Factory(:service_line, :name => "a")
+      b_svc_line = Factory(:service_line, :name => "b")
+      
+      a_active = Factory(:project, :completed => false, :service_line => a_svc_line)
+      a_completed = Factory(:project, :completed => true, :service_line => a_svc_line)
+      b_active = Factory(:project, :completed => false, :service_line => b_svc_line)
+      b_completed = Factory(:project, :completed => true, :service_line => b_svc_line)
+      
+      projs = Project.active
+      projs.should == [a_active, b_active]
+      
+      projs = Project.active.for_service_line(a_svc_line)
+      projs.should == [a_active]
+    end
+    
+  end
 end

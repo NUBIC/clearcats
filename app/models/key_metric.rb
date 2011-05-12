@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110510212418
+# Schema version: 20110511175546
 #
 # Table name: key_metrics
 #

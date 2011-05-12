@@ -72,7 +72,6 @@ Clearcats::Application.routes.draw do
     end
     member do
       get :choose_action
-      post :create_service_for_person
       get :choose_person
       get :choose_awards
       put :update_approvals

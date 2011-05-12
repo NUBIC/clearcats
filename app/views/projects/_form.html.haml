@@ -16,6 +16,10 @@
       = link_to "Manage Service Lines", service_lines_path, :class => "list_link icon_link"
       %br
       = render "service_lines/select", :service_lines => @service_lines, :selected => @project.service_line_id
+      
+    %p
+      = f.check_box :completed
+      = f.label :completed, "Completed"
 
   .page_section.hide
     #key_metrics

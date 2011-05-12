@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110511175546) do
+ActiveRecord::Schema.define(:version => 20110512155158) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -498,6 +498,7 @@ ActiveRecord::Schema.define(:version => 20110511175546) do
     t.boolean  "billable"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "completed",              :default => false
   end
 
   create_table "publications", :force => true do |t|
@@ -648,6 +649,7 @@ ActiveRecord::Schema.define(:version => 20110511175546) do
     t.string   "created_by"
     t.string   "updated_by"
     t.date     "completed_on"
+    t.integer  "project_id"
   end
 
   # unrecognized index "index_services_on_person_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110510212418
+# Schema version: 20110511175546
 #
 # Table name: services
 #
@@ -12,6 +12,7 @@
 #  updated_at      :datetime
 #  created_by      :string(255)
 #  updated_by      :string(255)
+#  completed_on    :date
 #
 
 # A Service is the record of a client (person_id) having 
@@ -21,6 +22,7 @@ require "comma"
 class Service < ActiveRecord::Base
   
   belongs_to :service_line
+  belongs_to :project
   belongs_to :person
   
   has_many :activities, :order => "position, updated_at desc"

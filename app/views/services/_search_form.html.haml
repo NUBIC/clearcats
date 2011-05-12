@@ -10,6 +10,14 @@
       = f.label "service_line_name_like", "Service Line"
       %br
       = f.text_field :service_line_name_like
+    - if @user_organizational_units.size > 1
+      - projects = Project.active
+    - else
+      - projects = Project.active.for_organizational_unit(@user_organizational_units.first)
+    %p
+      = f.label "project_id_equals", "Project"
+      %br
+      = f.select(:project_id_equals, projects.sort_by{ |p| p.name }.map{ |u| [u.to_s, u.id] }, { :include_blank => "-- Select Project --" })
     %p
       = f.label "state_equals", "Status"
       %br

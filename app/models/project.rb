@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110510212418
+# Schema version: 20110511175546
 #
 # Table name: projects
 #
@@ -31,6 +31,10 @@ class Project < ActiveRecord::Base
   validates_presence_of :organizational_unit
   validates_presence_of :service_line
   validates_presence_of :name
+  
+  scope :active, where("completed = 'false' OR completed IS NULL")
+  scope :for_service_line, lambda {|svc_line| where(:service_line_id => svc_line.id) }
+  scope :for_organizational_unit, lambda {|org_unit| where(:organizational_unit_id => org_unit.id) }
 
   def to_s
     name

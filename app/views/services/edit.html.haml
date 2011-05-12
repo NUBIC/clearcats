@@ -14,19 +14,29 @@
 
 .page_section
   = form_for @service do |f|
-
-    %p
-      = f.label :entered_on, "Service Date"
-      %br
-      = f.text_field :entered_on, :class => "datepicker"
+    .container
+      .span-4
+        %p
+          = f.label :entered_on, "Service Date"
+          %br
+          = f.text_field :entered_on, :class => "datepicker"
     
-    %p
-      = f.label :completed_on, "Completion Date"
-      %br
-      = f.text_field :completed_on, :class => "datepicker"
+        %p
+          = f.label :completed_on, "Completion Date"
+          %br
+          = f.text_field :completed_on, :class => "datepicker"
   
-    .button
-      = f.submit "Save"
+        .button
+          = f.submit "Save"
+      
+      - projects = Project.active.for_service_line(@service.service_line)
+      - unless projects.empty?
+        .span.20.last
+          %p
+            = f.label :project_id, "Project (if applicable)"
+            %br
+            = f.select :project_id,  projects.sort_by{ |p| p.name }.map{ |u| [u.to_s, u.id] }, { :include_blank => "-- Select Project --" }
+
 
 :javascript
   $(function () {

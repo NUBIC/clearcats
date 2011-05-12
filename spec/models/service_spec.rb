@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110510212418
+# Schema version: 20110511175546
 #
 # Table name: services
 #
@@ -12,6 +12,7 @@
 #  updated_at      :datetime
 #  created_by      :string(255)
 #  updated_by      :string(255)
+#  completed_on    :date
 #
 
 require 'spec_helper'
@@ -30,6 +31,7 @@ describe Service do
   
   it { should have_many(:activities) }
   it { should belong_to(:service_line) }
+  it { should belong_to(:project) }
   it { should belong_to(:person) }
   
   context "state" do

@@ -86,19 +86,6 @@ class ServicesController < ApplicationController
     end
   end
   
-  def create_service_for_person
-    person   = Person.find(params[:person_id])
-    @service = Service.new(:person => person)
-
-    if @service.save!
-      flash[:notice] = 'Service was successfully created.'
-      determine_redirect
-    else
-      flash[:warning] = "Could not create service for #{person}"
-      redirect_to :back
-    end
-  end
-  
   def edit
     get_service
     @person = @person.amplify if @person
@@ -106,6 +93,8 @@ class ServicesController < ApplicationController
     
   def update
     process_update_request
+    flash[:notice] = 'Service was successfully updated.'
+    redirect_to(services_path)
   end
   
   def completed
