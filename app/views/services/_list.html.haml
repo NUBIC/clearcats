@@ -17,7 +17,7 @@
     - services.each do |svc|
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td 
-          = link_to "Select", :controller => "services", :action => "choose_action", :id => svc
+          = link_to "Select", edit_service_path(svc), :class => "edit_link icon_link"
           %span.hide
             = svc.created_at.to_s
         %td= svc.person

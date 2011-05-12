@@ -1,6 +1,7 @@
 - javascript "nested_attributes", "ui/services"
 - stylesheet "services", "people"
-- title "Services"
+- title_text = @person.nil? ? "Services" : "Services for #{@person}"
+- title title_text
 
 .page_section
   = render 'search_form'

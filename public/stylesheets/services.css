@@ -106,11 +106,6 @@ h4 {
   padding: 0;
 }
 
-.buttons {
-  text-align: right;
-  margin: 0 2em 1em 0;;
-}
-
 .awards select {
   width: 25em;
 }
@@ -250,7 +245,12 @@ h4 {
 }
 
 .buttons {
-  margin-top: 0.75em;
+  text-align: right;
+  margin: 0.75em 2em 1em 0;;
+}
+
+#service_search .buttons {
+  text-align: left;
 }
 
 ul.ou_service_lines li {

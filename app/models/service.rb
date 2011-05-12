@@ -29,6 +29,7 @@ class Service < ActiveRecord::Base
   delegate :ctsa_reporting_years, :to => :person
   
   after_save :create_associations
+  before_save :set_dates
   
   scope :organizational_unit_id_equals, lambda { |id| joins(:service_line).where("service_lines.organizational_unit_id = ?", id) }
   
@@ -71,6 +72,10 @@ class Service < ActiveRecord::Base
       ou = version == :short ? "#{service_line.organizational_unit.abbreviation.to_s}"  : service_line.organizational_unit.to_s
       return "#{ou} #{service_line}".strip
     end
+  end
+  
+  def set_dates
+    self.entered_on = Date.today if self.entered_on.blank?
   end
   
   def create_associations

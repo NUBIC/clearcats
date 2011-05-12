@@ -1,27 +1,28 @@
 = form_for @search, :url => {:controller => "services", :action => "index", :method => :get}, :html => {:class => "services_search_form"} do |f|
+  = hidden_field_tag "person_id", @person.id if @person
   .span-8
-    %p
-      = f.label "organizational_unit_id_equals", "Organizational Unit"
-      %br
-      = f.select(:organizational_unit_id_equals, @user_organizational_units.sort_by{|e| e.name}.map{|u| [u.to_s, u.id.to_s]}, { :include_blank => "-- Select Organizational Unit --" })
+    - if @user_organizational_units.size > 1
+      %p
+        = f.label "organizational_unit_id_equals", "Organizational Unit"
+        %br
+        = f.select(:organizational_unit_id_equals, @user_organizational_units.sort_by{|e| e.name}.map{|u| [u.to_s, u.id.to_s]}, { :include_blank => "-- Select Organizational Unit --" })
     %p
       = f.label "service_line_name_like", "Service Line"
       %br
       = f.text_field :service_line_name_like
     %p
-      = f.label "state_equals", "State"
+      = f.label "state_equals", "Status"
       %br
-      = f.select(:state_equals, Service::STATES.map{ |u| [u.titleize, u.to_s] }, { :include_blank => "-- Select State --" })
+      = f.select(:state_equals, Service::STATES.map{ |u| [u.titleize, u.to_s] }, { :include_blank => "-- Select Status --" })
   .span-8
-    - if params[:search][:person_id].blank?
-      %p
-        = f.label "person_first_name_like", "First Name"
-        %br
-        = f.text_field :person_first_name_like
-      %p
-        = f.label "person_last_name_like", "Last Name"
-        %br
-        = f.text_field :person_last_name_like
+    %p
+      = f.label "person_first_name_like", "First Name"
+      %br
+      = f.text_field :person_first_name_like
+    %p
+      = f.label "person_last_name_like", "Last Name"
+      %br
+      = f.text_field :person_last_name_like
   .span-8.last
     %p
       %b Entered on

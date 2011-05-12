@@ -11,7 +11,7 @@ Feature: Editing an existing service
     And a service "CRC Basic Training" for person "wakibbe" having been initiated by the logged in user
     And I am on the new service page
     When I follow "Select"
-    Then I should be on the choose action service page
+    Then I should be on the edit service page
     
     # Then I should be on the edit service page for person "wakibbe" and service line "CRC Basic Training"
     # And the "person_last_name" field should contain "Kibbe"

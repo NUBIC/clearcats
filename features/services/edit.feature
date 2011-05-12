@@ -9,7 +9,7 @@ Feature: Entering information on an existing service
     And a person having the name "Warren Kibbe" and the username "wakibbe"
     And an organizational_unit "CECD" with the service_line "CRC Basic Training"
     And a service "CRC Basic Training" for person "wakibbe" having been initiated by the logged in user
-    When I am on the choose action service page
+    When I am on the edit service page
     Then I should see "Edit Service"
     And I should see "(CECD)"
     And I should see "CRC Basic Training Service for Warren X Kibbe"

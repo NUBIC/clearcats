@@ -3,11 +3,18 @@ class ServicesController < ApplicationController
   layout proc { |controller| controller.request.xhr? ? nil : 'application'  } 
 
   def index
-    @person = Person.find(params[:person_id]) if params[:person_id]
+    
     @user_organizational_units = determine_org_units_for_user
     params[:search] ||= Hash.new
-    params[:search][:service_line_organizational_unit_id_eq_any] = @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
-    params[:search][:person_id_equals] = params[:person_id] if params[:person_id]
+    params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
+    
+    if params[:person_id]
+      @person = Person.find(params[:person_id])
+      params[:search][:person_id_equals] = params[:person_id] 
+      params[:search][:person_first_name_like] = @person.first_name
+      params[:search][:person_last_name_like] = @person.last_name
+    end
+    
     params[:search][:meta_sort] ||= "created_at.desc"
     
     @search = Service.search(params[:search])
@@ -95,10 +102,6 @@ class ServicesController < ApplicationController
   def edit
     get_service
     @person = @person.amplify if @person
-  end
-  
-  def choose_action
-    get_service
   end
     
   def update
