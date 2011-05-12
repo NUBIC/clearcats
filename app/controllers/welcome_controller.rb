@@ -5,7 +5,11 @@ class WelcomeController < ApplicationController
   def index
     if current_user
       populate_person
-      redirect_to :controller => "welcome", :action => "client_index" if faculty_member?
+      if faculty_member?
+        redirect_to :controller => "welcome", :action => "client_index" 
+      else
+        @user_organizational_units = determine_organizational_units_for_user
+      end
     end
   end
   

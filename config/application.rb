@@ -55,6 +55,7 @@ module Clearcats
     }
     
     Date::DATE_FORMATS.merge!(:default => "%m/%d/%Y")
+    Time::DATE_FORMATS.merge!(:default => "%m/%d/%Y %H:%M:%S")
   end
 end
 

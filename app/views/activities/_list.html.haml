@@ -1,0 +1,34 @@
+.records_header
+  .page_entries_info
+    = raw page_entries_info @activities
+  = will_paginate @activities
+
+%table{ :class => "records" }
+  %tr
+    %th.select_record
+      Select
+    %th
+      = sort_link @search, :name, "Name", :params => {:page => params[:page]}
+    %th
+      = sort_link @search, :service_line_name, "Service Line", :params => {:page => params[:page]}
+    %th
+      People
+    %th
+      = sort_link @search, :activity_type_name, "Activity Type", :params => {:page => params[:page]}
+    %th
+      = sort_link @search, :event_date, "Date", :params => {:page => params[:page]}
+  - @activities.each do |a|
+    %tr{ :class => cycle('even_record', 'odd_record') }
+      %td.select_record
+        = link_to 'Edit', edit_activity_path(a), :class => "edit_link icon_link"
+      %td
+        = a.to_s
+      %td
+        = a.service_line.to_s
+      %td
+        = a.activity_actors.map(&:person).to_sentence
+      %td
+        = a.activity_type.to_s
+      %td
+        = a.event_date.to_s
+= will_paginate @activities

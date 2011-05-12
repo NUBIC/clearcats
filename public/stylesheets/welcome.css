@@ -7,6 +7,12 @@
 
 .welcome .container {
   margin-top: 2em;
+  padding-top: 1em;
+  border-top: 2px solid #bbb;
+}
+
+.welcome .container .column {
+  margin-left: 2em;
 }
 
 .welcome .container h4 {
@@ -20,7 +26,6 @@
 
 .welcome .front_page_section {
   min-height: 2em;
-  margin: 2em;
 }
 
 .hello {
@@ -36,8 +41,7 @@
 
 .front_page_section {
   border: 1px solid #ccc;
-  width: 20em;
-  margin: 0.25em;
+  margin: 2em 0.25em;
   padding: 0.75em 0.25em 0.5em 0.75em;
   background-color: whitesmoke;
   border-radius: .5em;

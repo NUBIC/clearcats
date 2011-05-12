@@ -44,13 +44,19 @@ class Activity < ActiveRecord::Base
   has_many :activity_actors
   accepts_nested_attributes_for :activity_actors, :allow_destroy => true
 
+  scope :past_due, where("event_date IS NULL AND due_date < '#{Date.today.to_s(:db)}'")
+  scope :upcoming, where("event_date IS NULL AND due_date BETWEEN '#{Date.today.to_s(:db)}' AND '#{8.days.from_now.to_date.to_s(:db)}'")
+
   scope :for_organizational_units, 
     lambda { |org_unit_ids| 
       joins("INNER JOIN service_lines ON service_lines.id = activities.service_line_id").
       where("service_lines.organizational_unit_id IN (?)", org_unit_ids )
     }
 
+  search_methods :past_due
+  search_methods :upcoming
   search_methods :for_organizational_units
+  
 
   before_save :build_from_activity_type
 

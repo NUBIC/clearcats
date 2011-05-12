@@ -266,6 +266,7 @@ Factory.define :activity do |a|
   a.activity_type { |a| a.association(:activity_type) }
   a.service_line  { |a| a.association(:service_line) }
   a.service       { |a| a.association(:service) }
+  a.due_date      2.days.from_now
 end
 
 Factory.define :role do |r|

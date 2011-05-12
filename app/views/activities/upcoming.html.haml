@@ -1,0 +1,7 @@
+- title "Upcoming Activities"
+
+.page_section
+  - if @activities.blank?
+    .no_records No activities were found.
+  - else
+    = render 'list', :activities => @activities

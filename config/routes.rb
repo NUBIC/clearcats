@@ -11,6 +11,10 @@ Clearcats::Application.routes.draw do
     end
   end
   resources :activities do
+    collection do
+      get :past_due
+      get :upcoming
+    end
     member do
       post :create_from_external_source
     end

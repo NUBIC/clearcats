@@ -102,7 +102,7 @@ describe Activity do
     it "should set those dates on the activity" do
       at = Factory(:activity_type, :due_in_days_after => 7, :client_reminder => 3, :client_followup_reminder => 1, :staff_reminder => 3, :staff_followup_reminder => 1)
     
-      act = Factory(:activity, :activity_type => at)
+      act = Factory(:activity, :activity_type => at, :due_date => nil)
       act.due_date.should == 7.days.from_now.to_date
       act.staff_reminder_date.should == 4.days.from_now.to_date
       act.staff_followup_reminder_date.should == 6.days.from_now.to_date
@@ -113,7 +113,7 @@ describe Activity do
     it "should not update the dates upon subsequent saves" do
       at = Factory(:activity_type, :due_in_days_after => 7, :client_reminder => 3, :client_followup_reminder => 1, :staff_reminder => 3, :staff_followup_reminder => 1)
     
-      act = Factory(:activity, :activity_type => at)
+      act = Factory(:activity, :activity_type => at, :due_date => nil)
       one_week = 7.days.from_now.to_date
       act.due_date.should == one_week
       act.staff_reminder_date.should == 4.days.from_now.to_date
@@ -135,7 +135,7 @@ describe Activity do
     
     it "should know if it is past due" do
       at = Factory(:activity_type, :due_in_days_after => 14)
-      act = Factory(:activity, :activity_type => at)
+      act = Factory(:activity, :activity_type => at, :due_date => nil)
       act.due_date.should == 14.days.from_now.to_date
       act.should_not be_past_due
       
@@ -144,15 +144,33 @@ describe Activity do
       end
     end
     
+    it "should return all past due and upcoming" do
+      past_due = Factory(:activity, :due_date => 3.days.ago, :event_date => nil)
+      upcoming = Factory(:activity, :due_date => 3.days.from_now, :event_date => nil)
+      future   = Factory(:activity, :due_date => 14.days.from_now, :event_date => nil)
+
+      Activity.past_due.should == [past_due]
+      Activity.upcoming.should == [upcoming]
+      
+      past_due.update_attribute(:event_date, Date.today)
+      Activity.past_due.should be_empty
+      
+      upcoming.update_attribute(:event_date, Date.today)
+      Activity.upcoming.should be_empty
+    end
+    
     it "should know if it is upcoming" do
       at = Factory(:activity_type, :due_in_days_after => 14)
-      act = Factory(:activity, :activity_type => at)
+      act = Factory(:activity, :activity_type => at, :due_date => nil)
       act.due_date.should == 14.days.from_now.to_date
       act.should_not be_upcoming
       
       Timecop.travel(8.days.from_now) do
         act.should be_upcoming
       end
+    end
+    
+    it "should return all upcoming" do
     end
 
     it "should know if it is required" do

@@ -8,16 +8,40 @@ class ActivitiesController < ApplicationController
     @user_organizational_units = determine_organizational_units_for_user
     
     params[:page] ||= 1
+    params[:search] ||= Hash.new
+    params[:search][:for_organizational_units] ||= @user_organizational_units.map(&:id)
     
-    Rails.logger.info("~~~ @user_organizational_units = #{@user_organizational_units.map(&:id)}")
-    
-    @search = Activity.search(:for_organizational_units => @user_organizational_units.map(&:id))
+    @search = Activity.search(params[:search])
     @activities = @search.paginate(:select => "DISTINCT activities.*", :page => params[:page], :per_page => 20)
     
     respond_to do |format|
       format.html # index.html.haml
       format.xml { render :xml => @activities }
     end
+  end
+  
+  def past_due
+    @user_organizational_units = determine_organizational_units_for_user
+    
+    params[:page] ||= 1
+    params[:search] ||= Hash.new
+    params[:search][:for_organizational_units] ||= @user_organizational_units.map(&:id)
+    params[:search][:past_due] = true
+    
+    @search = Activity.search(params[:search])
+    @activities = @search.paginate(:select => "DISTINCT activities.*", :page => params[:page], :per_page => 20)
+  end
+  
+  def upcoming
+    @user_organizational_units = determine_organizational_units_for_user
+    
+    params[:page] ||= 1
+    params[:search] ||= Hash.new
+    params[:search][:for_organizational_units] ||= @user_organizational_units.map(&:id)
+    params[:search][:upcoming] = true
+    
+    @search = Activity.search(params[:search])
+    @activities = @search.paginate(:select => "DISTINCT activities.*", :page => params[:page], :per_page => 20)
   end
 
   def new
