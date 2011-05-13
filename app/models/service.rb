@@ -33,6 +33,11 @@ class Service < ActiveRecord::Base
   after_save :create_associations
   before_save :set_dates
   
+  scope :shared_with_other_organizational_unit, (lambda do |id| 
+    joins("inner join services s2 on s2.person_id = services.person_id inner join service_lines sl1 on sl1.id = services.service_line_id inner join service_lines sl2 on sl2.id = s2.service_line_id") \
+    .where("sl1.organizational_unit_id = ? AND sl2.organizational_unit_id <> ?", id, id)
+  end)
+  scope :for_year, lambda { |yr| where("entered_on BETWEEN '01-01-#{yr}' AND '01-01-#{yr + 1}'")}
   scope :organizational_unit_id_equals, lambda { |id| joins(:service_line).where("service_lines.organizational_unit_id = ?", id) }
   
   search_methods :organizational_unit_id_equals

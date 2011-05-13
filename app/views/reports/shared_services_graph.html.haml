@@ -1,0 +1,48 @@
+- javascript "highcharts", "graphs/services"
+
+%div{ :id => "chart-container", :style => "width: 100%; height: 400px" }
+
+%p
+  = @series_data
+  
+%p
+  = @categories
+
+:javascript
+  var seriesData = '#{@series_data}';
+  var categories = '#{@categories}';
+  var servicesChart;
+  $(document).ready(function() {
+    servicesChart = new Highcharts.Chart({
+      chart: {
+        renderTo: 'chart-container',
+        defaultSeriesType: 'bar'
+      },
+      title: {
+        text: 'Investigator Service Use and Integration'
+      },
+      xAxis: {
+        categories: eval(categories)
+      },
+      yAxis: {
+        title: {
+          text: 'Number of Services'
+        }
+      },
+      legend: {
+        backgroundColor: '#FFFFFF',
+        reversed: true
+      },
+      tooltip: {
+        formatter: function() {
+          return '' + this.series.name + ': ' + this.y + ' Services';
+        }
+      },
+      plotOptions: {
+        series: {
+          stacking: 'normal'
+        }
+      },
+      series: eval(seriesData)
+    });
+  });

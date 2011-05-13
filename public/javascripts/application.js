@@ -3,6 +3,7 @@
 
 Clearcats = {};
 Clearcats.UI = {};
+Clearcats.Graphs = {};
 
 function checkAll(name) {
   boxes = document.getElementsByName(name)
