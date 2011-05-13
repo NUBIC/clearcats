@@ -18,6 +18,7 @@ class PublicationsController < ApplicationController
 
       @search = Publication.search(@search_params)
       @publications = @search.all
+      
       respond_to do |format|
         format.html { request.xhr? ?  (render :partial => 'publications/list', :locals => {:publications => @publications, :person => @person, :search => @search_params, :service => nil}) : (render 'index') }
       end
@@ -36,7 +37,13 @@ class PublicationsController < ApplicationController
     @search = Publication.search(params[:search])
     @search.meta_sort ||= "publication_date.desc"
     @publications = @search.paginate(:page => params[:page], :per_page => 20)
-        
+      
+    series_data = []
+    [2008, 2009, 2010, 2011].each do |yr|
+      series_data << { "name" => yr, "data" => Publication.all_for_reporting_year(yr).count, "url" => "/publications/search?search[all_for_reporting_year]=#{yr}" }
+    end
+    @series_data = series_data.to_json
+    
     respond_to do |format|
       format.html 
       format.csv { render :csv => @search.all }

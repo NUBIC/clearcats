@@ -1,6 +1,37 @@
 - title "Reports"
 
-%p
-  %ul
-    %li= link_to "CTSA", ctsa_reports_path
-    %li= link_to "Investigators who received services", :controller => "reports", :action => "client_list"
+.page_section
+  %p
+    %h4 
+      CTSA
+    %ul
+      %li= link_to "CTSA", ctsa_reports_path
+
+  %p
+    %h4 
+      Investigators
+    %ul
+      %li= link_to "Investigators who received services", :controller => "reports", :action => "client_list"
+    
+.page_section
+  %h3
+    Graphs
+  %p
+    %h4
+      Services
+    %ul
+      %li= link_to "All Services", :controller => "reports", :action => "services_graph"
+      %li= link_to "Shared Services", :controller => "reports", :action => "shared_services_graph"
+      %li= link_to "Services by Year", :controller => "reports", :action => "services_by_year_graph"
+    
+  %p
+    %h4
+      Awards
+    %ul
+      %li= link_to "Awards by Year", :controller => "reports", :action => "awards_by_year_graph"
+
+  %p
+    %h4
+      Publications
+    %ul
+      %li= link_to "Publications by Year", :controller => "reports", :action => "publications_by_year_graph"

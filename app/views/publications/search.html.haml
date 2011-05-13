@@ -1,4 +1,5 @@
 - stylesheet "publications", "people"
+- javascript "highcharts"
 - title "Publications Search"
 
 :javascript
@@ -8,6 +9,9 @@
 
 .page_section 
   = render 'search_form'
+
+.page_section
+  = render '/reports/publications_graph', :width => '100%', :height => '200px'
 
 .page_section
   = render 'search_results'
