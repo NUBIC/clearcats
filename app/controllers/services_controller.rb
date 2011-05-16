@@ -8,12 +8,7 @@ class ServicesController < ApplicationController
     params[:search] ||= Hash.new
     params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
     
-    if params[:person_id]
-      @person = Person.find(params[:person_id])
-      params[:search][:person_id_equals] = params[:person_id] 
-      params[:search][:person_first_name_like] = @person.first_name
-      params[:search][:person_last_name_like] = @person.last_name
-    end
+    set_person_search_parameters if params[:person_id]
     
     params[:search][:meta_sort] ||= "created_at.desc"
     
@@ -30,6 +25,7 @@ class ServicesController < ApplicationController
     @user_organizational_units = determine_org_units_for_user
     params[:search] ||= Hash.new
     params[:search][:meta_sort] ||= "updated_at.desc"
+    
     if @user_organizational_units.blank?
       params[:search][:created_by_equals] ||= current_user.username
     else
@@ -216,6 +212,13 @@ class ServicesController < ApplicationController
       search[:netid]     = params[:netid_like]     unless params[:netid_like].blank?
       search[:last_name] = params[:last_name_like] unless params[:last_name_like].blank?
       search
+    end
+    
+    def set_person_search_parameters
+      @person = Person.find(params[:person_id])
+      params[:search][:person_id_equals] = params[:person_id] 
+      params[:search][:person_first_name_like] = @person.first_name
+      params[:search][:person_last_name_like] = @person.last_name
     end
   
 end

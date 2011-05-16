@@ -1,4 +1,6 @@
 class AwardsController < ApplicationController
+  include AwardsReporter
+  
   before_filter :permit_user,  :only => [:versions]
   before_filter :permit_admin, :only => [:revert]
   before_filter :scope_to_person, :only => [:index]
@@ -33,6 +35,8 @@ class AwardsController < ApplicationController
     params[:search].delete(:invalid_for_ctsa) unless params[:search][:invalid_for_ctsa].to_i == 1
     purge_search_params
     populate_common
+
+    @series_data = awards_summary_by_year
     
     @search = Award.search(@search_params)
     @awards = @search.paginate(:page => params[:page], :per_page => 20)

@@ -39,6 +39,7 @@ class Service < ActiveRecord::Base
   end)
   scope :for_year, lambda { |yr| where("entered_on BETWEEN '01-01-#{yr}' AND '01-01-#{yr + 1}'")}
   scope :organizational_unit_id_equals, lambda { |id| joins(:service_line).where("service_lines.organizational_unit_id = ?", id) }
+  scope :service_line_id_equals, lambda { |id| where("service_line_id = ?", id) }
   
   search_methods :organizational_unit_id_equals
 

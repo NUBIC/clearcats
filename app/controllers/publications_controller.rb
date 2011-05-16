@@ -1,4 +1,5 @@
 class PublicationsController < ApplicationController
+  include PublicationsReporter
   before_filter :permit_user,  :only => [:versions]
   before_filter :permit_admin, :only => [:revert]
   layout proc { |controller| controller.request.xhr? ? nil : 'application'  } 
@@ -38,11 +39,7 @@ class PublicationsController < ApplicationController
     @search.meta_sort ||= "publication_date.desc"
     @publications = @search.paginate(:page => params[:page], :per_page => 20)
       
-    series_data = []
-    [2008, 2009, 2010, 2011].each do |yr|
-      series_data << { "name" => yr, "data" => Publication.all_for_reporting_year(yr).count, "url" => "/publications/search?search[all_for_reporting_year]=#{yr}" }
-    end
-    @series_data = series_data.to_json
+    @series_data = publications_summary_by_year
     
     respond_to do |format|
       format.html 

@@ -1,4 +1,7 @@
 class ReportsController < ApplicationController
+  include AwardsReporter
+  include PublicationsReporter
+  include ServicesReporter
   permit :Admin
   
   def index
@@ -18,44 +21,23 @@ class ReportsController < ApplicationController
   # services
   
   def services_graph
-    series_data = []
-    OrganizationalUnit.all.each do |ou|
-      series_data << { "name" => ou.abbreviation, "data" => Service.organizational_unit_id_equals(ou.id).count, "url" => "/services?search[service_line_organizational_unit_id_eq_any][]=#{ou.id}" }
-    end
-    @series_data = series_data.to_json
+    @series_data = services_summary_by_organizational_unit
+  end
+  
+  def services_pie_chart
+    @series_data = services_percentage_by_organizational_unit
+  end
+  
+  def service_lines_for_organizational_unit
+    @series_data = service_lines_percentage_by_organizational_unit(OrganizationalUnit.find_by_abbreviation(params[:ou]))
   end
 
   def services_by_year_graph
-    series_data = []
-    categories = []
-    yrs = [2010, 2011]
-    yrs.each { |yr| series_data << { "name" => yr, "data" => [] } }
-    
-    OrganizationalUnit.all.each do |ou|
-      yrs.each do |yr|
-        series_data[yrs.index(yr)]["data"] << Service.organizational_unit_id_equals(ou.id).for_year(yr).count
-      end
-      categories << ou.abbreviation
-    end
-    @series_data = series_data.to_json
-    @categories = categories.to_json
+    @series_data, @categories = services_summary_by_year
   end
   
   def shared_services_graph
-    series_data = []
-    categories = []
-    series = ['Individual', 'Shared']
-    series.each { |s| series_data << { "name" => s, "data" => [] } }
-    
-    OrganizationalUnit.all.each do |ou|
-      shared_count = Service.shared_with_other_organizational_unit(ou.id).uniq.count
-      total_count  = Service.organizational_unit_id_equals(ou.id).uniq.count
-      series_data[0]["data"] << (total_count - shared_count)
-      series_data[1]["data"] << shared_count
-      categories << ou.abbreviation
-    end
-    @series_data = series_data.to_json
-    @categories = categories.to_json
+    @series_data, @categories = shared_services_summary
   end
   
   # TODO: by quarter
@@ -63,21 +45,13 @@ class ReportsController < ApplicationController
   # publications
   
   def publications_by_year_graph
-    series_data = []
-    [2008, 2009, 2010, 2011].each do |yr|
-      series_data << { "name" => yr, "data" => Publication.all_for_reporting_year(yr).count, "url" => "/publications/search?search[all_for_reporting_year]=#{yr}" }
-    end
-    @series_data = series_data.to_json
+    @series_data = publications_summary_by_year
   end
   
   # awards 
   
   def awards_by_year_graph
-    series_data = []
-    [2008, 2009, 2010, 2011].each do |yr|
-      series_data << { "name" => yr, "data" => Award.all_for_reporting_year(yr).count, "url" => "/awards/search?search[all_for_reporting_year]=#{yr}" }
-    end
-    @series_data = series_data.to_json
+    @series_data = awards_summary_by_year
   end
 
 end
