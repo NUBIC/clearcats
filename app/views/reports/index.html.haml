@@ -21,6 +21,7 @@
       Services
     %ul
       %li= link_to "All Services", :controller => "reports", :action => "services_graph"
+      %li= link_to "All Services (percentages)", :controller => "reports", :action => "services_pie_chart"
       %li= link_to "Shared Services", :controller => "reports", :action => "shared_services_graph"
       %li= link_to "Services by Year", :controller => "reports", :action => "services_by_year_graph"
     
@@ -35,3 +36,4 @@
       Publications
     %ul
       %li= link_to "Publications by Year", :controller => "reports", :action => "publications_by_year_graph"
+      

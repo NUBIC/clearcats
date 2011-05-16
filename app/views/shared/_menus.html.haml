@@ -9,30 +9,30 @@
           Administrative Actions
         %ul
           %li
-            = link_to "Manage Investigators", people_path, :class => "menu_nav"
+            = link_to "Manage Investigators", people_path, {:class => "menu_nav"}
             %ul
-              %li= link_to "Add Investigators", :controller => "welcome", :action => "add_investigator", :class => "menu_nav"
-              %li= link_to "Search FSM Faculty Database", search_people_path, :class => "menu_nav"
-              %li= link_to "Manage Contact Lists", contacts_path, :class => "menu_nav"
+              %li= link_to "Add Investigators", {:controller => "welcome", :action => "add_investigator"}, {:class => "menu_nav"}
+              %li= link_to "Search FSM Faculty Database", search_people_path, {:class => "menu_nav"}
+              %li= link_to "Manage Contact Lists", contacts_path, {:class => "menu_nav"}
               %li
                 %a{ :href => "#" }
                   Incomplete Records
                 %ul
-                  %li= link_to "Missing Employee ID",      :controller => "people", :action => "incomplete", :criteria => "employeeid", :class => "menu_nav"
-                  %li= link_to "Missing Net ID",           :controller => "people", :action => "incomplete", :criteria => "netid", :class => "menu_nav"
-                  %li= link_to "Missing ERA Commons Name", :controller => "people", :action => "incomplete", :criteria => "era_commons_username", :class => "menu_nav"
-                  %li= link_to "Missing Specialty",        :controller => "people", :action => "incomplete", :criteria => "specialty", :class => "menu_nav"
+                  %li= link_to "Missing Employee ID",      {:controller => "people", :action => "incomplete", :criteria => "employeeid"}, {:class => "menu_nav"}
+                  %li= link_to "Missing Net ID",           {:controller => "people", :action => "incomplete", :criteria => "netid"}, {:class => "menu_nav"}
+                  %li= link_to "Missing ERA Commons Name", {:controller => "people", :action => "incomplete", :criteria => "era_commons_username"}, {:class => "menu_nav"}
+                  %li= link_to "Missing Specialty",        {:controller => "people", :action => "incomplete", :criteria => "specialty"}, {:class => "menu_nav"}
     
-          %li= link_to "Manage Users",                        :controller => "users",                       :action => "index", :class => "menu_nav" if sysadmin
-          %li= link_to "Manage Organizational Units",         :controller => "organizational_units",        :action => "index", :class => "menu_nav"
-          %li= link_to "Manage Service Lines",                :controller => "service_lines",               :action => "index", :class => "menu_nav"
-          %li= link_to "Manage Participating Organizations",  :controller => "participating_organizations", :action => "index", :class => "menu_nav"
-          %li= link_to "Manage CTSA Data",                    :controller => "admin",                       :action => "view_ctsa_data", :class => "menu_nav" if sysadmin
+          %li= link_to "Manage Users",                        {:controller => "users",                       :action => "index"}, {:class => "menu_nav"} if sysadmin
+          %li= link_to "Manage Organizational Units",         {:controller => "organizational_units",        :action => "index"}, {:class => "menu_nav"}
+          %li= link_to "Manage Service Lines",                {:controller => "service_lines",               :action => "index"}, {:class => "menu_nav"}
+          %li= link_to "Manage Participating Organizations",  {:controller => "participating_organizations", :action => "index"}, {:class => "menu_nav"}
+          %li= link_to "Manage CTSA Data",                    {:controller => "admin",                       :action => "view_ctsa_data"}, {:class => "menu_nav"} if sysadmin
           %li
-            = link_to "Reports", :controller => "reports", :action => "index", :class => "menu_nav"
+            = link_to "Reports", {:controller => "reports", :action => "index"}, {:class => "menu_nav"}
             %ul
-              %li= link_to "CTSA Report", ctsa_reports_path, :class => "menu_nav" if sysadmin
+              %li= link_to "CTSA Report", ctsa_reports_path, {:class => "menu_nav"} if sysadmin
               %li= link_to "Awards Search", {:controller => "awards", :action => "search", :search => { :invalid_for_ctsa => "1" }}, {:class => "menu_nav"}
               %li= link_to "Publications Search", {:controller => "publications", :action => "search", :search => { :invalid_for_ctsa => "1" }}, {:class => "menu_nav"}
               %li= link_to "Approvals Search", {:controller => "approvals", :action => "search"}, {:class => "menu_nav"}
-    %li= link_to "FAQ", :controller => "welcome", :action => "faq", :class => "menu_nav"
+    %li= link_to "FAQ", {:controller => "welcome", :action => "faq"}, {:class => "menu_nav"}
