@@ -46,6 +46,7 @@ describe Activity do
   
   it { should have_many(:attachments) }
   it { should have_many(:activity_actors) }
+  it { should have_many(:people).through(:activity_actors) }
   
   # it { should have_many(:notes) }
   # it { should have_many(:time_entries) }

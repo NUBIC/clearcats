@@ -10,8 +10,7 @@
   .container
     .span-8
       %p
-        = f.check_box :billable
-        = f.label :billable
+        &nbsp;
       %p
         = f.label :name
         %span.required *
@@ -25,8 +24,8 @@
           = f.select :activity_type_id, activity_types
     .span-8.last
       %p
-        = f.check_box :required
-        = f.label :required
+        = f.check_box :billable
+        = f.label :billable
       %p
         = f.label :formatted_event_date, "Date"
         %span.required *

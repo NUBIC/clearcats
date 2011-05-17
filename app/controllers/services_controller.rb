@@ -168,6 +168,15 @@ class ServicesController < ApplicationController
     
   end
   
+  def destroy_activity
+    get_service
+    @activity = Activity.find(params[:activity_id])
+    @activity.destroy
+
+    flash[:notice] = "Activity has been deleted."
+    redirect_to(:controller => "services", :action => "activities", :id => @service.id)
+  end
+  
   private 
   
     def process_update_request

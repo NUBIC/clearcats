@@ -288,3 +288,8 @@ textarea#award_grant_title {
   border-top: 1px solid #ddd;
   padding-top: 0.5em;
 }
+
+.activity_record .field {
+  font-size: 1.25em;
+  padding-left: 1em;
+}

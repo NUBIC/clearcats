@@ -8,8 +8,8 @@
   .container.span-16
     .span-8
       %p
-        = f.check_box :billable
-        = f.label :billable
+        %b #
+        = @activity.position.to_s
       %p
         = f.label :name
         %span.required *
@@ -20,11 +20,11 @@
         %div{ :id => "activity_type_select" }
           = f.label :activity_type_id, "Activity Type"
           %br
-          = f.select :activity_type_id, activity_types
+          = f.select :activity_type_id, activity_types.map {|u| [u.to_s, u.id]}
     .span-8.last
       %p
-        = f.check_box :required
-        = f.label :required
+        = f.check_box :billable
+        = f.label :billable
       %p
         = f.label :formatted_event_date, "Date"
         %span.required *

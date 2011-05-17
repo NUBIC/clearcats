@@ -96,7 +96,9 @@ Clearcats::Application.routes.draw do
       put :update_activity
       get :new_activity
       post :create_activity
+      delete :destroy_activity
     end
+    # resources :activities
   end
 
   resources :people do

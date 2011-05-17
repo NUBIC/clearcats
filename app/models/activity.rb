@@ -43,6 +43,8 @@ class Activity < ActiveRecord::Base
 
   has_many :activity_actors
   accepts_nested_attributes_for :activity_actors, :allow_destroy => true
+  
+  has_many :people, :through => :activity_actors
 
   scope :past_due, where("event_date IS NULL AND due_date < '#{Date.today.to_s(:db)}'")
   scope :upcoming, where("event_date IS NULL AND due_date BETWEEN '#{Date.today.to_s(:db)}' AND '#{8.days.from_now.to_date.to_s(:db)}'")

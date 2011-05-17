@@ -56,7 +56,7 @@ Clearcats.UI.Services = function (config) {
           });
         },
         Cancel: function() {
-          $(this).dialog('close')
+          $(this).dialog('close');
         }
       },
       close: function() {

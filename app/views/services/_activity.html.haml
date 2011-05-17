@@ -1,40 +1,39 @@
 
-%div{ :id => "activity_#{activity.id}", :class => "award_record" }
+%div{ :id => "activity_#{activity.id}", :class => "activity_record" }
   .span-12
     .select_record
       = link_to 'Edit', edit_activity_service_path(service, :activity_id => activity), {:title => "Edit Activity for #{@person.to_s}", :class => "edit_modal_form_link edit_link icon_link"}
+      %b #
+      = activity.position.to_s
+      = link_to 'Delete', {:action => "destroy_activity", :controller => "services", :id => @service.id, :activity_id => activity.id}, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
     .name
-      %b Name
-      %br
-      = activity.name
+      %b Activity Name
+      .field
+        = activity.name
     .event_date
-      %b Date
-      %br
-      = activity.event_date.blank? ? "TBD" : activity.formatted_event_date
+      %b Date of Activity
+      .field
+        = activity.event_date.blank? ? "TBD" : activity.formatted_event_date
     - unless activity.due_date.blank?
       .due_date
         %b Due Date
-        %br
-        = activity.formatted_due_date
+        .field
+          = activity.formatted_due_date
   .span-12.last
     %div
       &nbsp;
     .service_line
       %b Service Line
-      %br
-      = activity.service_line.to_s
+      .field
+        = activity.service_line.to_s
     .activity_type
       %b Activity Type
-      %br
-      = activity.activity_type.to_s
+      .field
+        = activity.activity_type.to_s
     %div
       %b Billable
-      %br
-      = activity.billable? ? "True" : "False"
-    %div
-      %b Required
-      %br
-      = activity.required? ? "True" : "False"
+      .field
+        = activity.billable? ? "Yes" : "No"
   - unless activity.notes.empty?
     .span-24
       .notes_toggle

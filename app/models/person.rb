@@ -125,6 +125,9 @@ class Person < ActiveRecord::Base
   has_and_belongs_to_many :organizational_units
   
   has_and_belongs_to_many :time_entries
+  
+  has_many :activity_actors
+  has_many :activities, :through => :activity_actors 
     
   belongs_to :country
   belongs_to :degree_type_one

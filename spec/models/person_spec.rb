@@ -197,6 +197,8 @@ describe Person do
   it { should have_many(:publications) }
   it { should have_many(:approvals) }
   it { should have_many(:services) }
+  it { should have_many(:activity_actors)}
+  it { should have_many(:activities).through(:activity_actors) }
   
   it { should validate_presence_of(:last_name) }
   it { should validate_presence_of(:first_name) }
