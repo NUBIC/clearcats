@@ -23,7 +23,7 @@ class Service < ActiveRecord::Base
   
   belongs_to :service_line
   belongs_to :project
-  belongs_to :person
+  belongs_to :person, :counter_cache => true
   
   has_many :activities, :order => "position, updated_at desc"
   

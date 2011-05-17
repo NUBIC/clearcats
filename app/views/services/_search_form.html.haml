@@ -26,11 +26,15 @@
     %p
       = f.label "person_first_name_like", "First Name"
       %br
-      = f.text_field :person_first_name_like
+      = f.text_field :person_first_name_like, {:disabled => !@person.nil?}
     %p
       = f.label "person_last_name_like", "Last Name"
       %br
-      = f.text_field :person_last_name_like
+      = f.text_field :person_last_name_like, {:disabled => !@person.nil?}
+    %p
+      = f.label :person_services_count_greater_than, "Services Count >"
+      %br
+      = f.text_field :person_services_count_greater_than
   .span-8.last
     %p
       %b Entered on

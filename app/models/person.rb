@@ -180,7 +180,6 @@ class Person < ActiveRecord::Base
   search_methods :for_reporting_year, :splat_param => true, :type => [:integer]
   search_methods :invalid_for_ctsa_reporting
   
-  
   # attributes from faculty_web_service that are not persisted
   attr_accessor :interests, :campus, :descriptions, :dv_abbr
   attr_accessor :basis, :category, :dept_id, :career_track, :degree, :division

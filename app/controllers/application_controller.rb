@@ -108,10 +108,14 @@ class ApplicationController < ActionController::Base
       params[:search].keys.each do |k| 
         if params[:search][k].blank?
           params[:search].delete(k)
-        elsif ((/\d/ =~ params[:search][k]) == 0)
+        elsif ((/\d/ =~ params[:search][k]) == 0) && !key_value_considers_zero(k)
           params[:search].delete(k) unless params[:search][k].to_i > 0
         end
-      end      
+      end
+    end
+    
+    def key_value_considers_zero(key)
+      key.include?("greater_than") or key.include?("less_than")
     end
 
   

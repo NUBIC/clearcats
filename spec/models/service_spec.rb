@@ -51,6 +51,7 @@ describe Service do
       person = svc.person
       organizational_unit = svc.service_line.organizational_unit
       person.organizational_units.should == [organizational_unit]
+      person.services.reload
       person.services.size.should == 1
       svc.destroy
       
@@ -66,6 +67,7 @@ describe Service do
       svc_one = Factory(:service, :person => person, :service_line => svc_line_one)
       svc_two = Factory(:service, :person => person, :service_line => svc_line_two)
       
+      person.services.reload
       person.services.size.should == 2
       
       svc_one.destroy

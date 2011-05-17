@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110512155158) do
+ActiveRecord::Schema.define(:version => 20110517154407) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -471,6 +471,7 @@ ActiveRecord::Schema.define(:version => 20110512155158) do
     t.string   "mentor_era_commons_username"
     t.date     "appointment_date"
     t.date     "end_date"
+    t.integer  "services_count",                                :default => 0
   end
 
   # unrecognized index "index_people_on_country_id" with type ActiveRecord::ConnectionAdapters::IndexDefinition
