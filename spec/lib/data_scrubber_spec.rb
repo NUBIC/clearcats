@@ -54,5 +54,19 @@ describe DataScrubber do
     end
     
   end
+  
+  context "updating ctsa reporting years" do
+    it "should replace the earlier reporting year with the new one" do
+      p = Factory.build(:person)
+      p.ctsa_reporting_years = [2010]
+      p.save!
+      
+      p.ctsa_reporting_years.should == [2010]
+      
+      DataScrubber.update_ctsa_reporting_years(2010, 2020)
+      p = Person.find(p.id)
+      p.ctsa_reporting_years.should == [2020]
+    end
+  end
 
 end
