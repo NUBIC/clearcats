@@ -26,10 +26,11 @@
       %b Service Line
       .field
         = activity.service_line.to_s
-    .activity_type
-      %b Activity Type
-      .field
-        = activity.activity_type.to_s
+    - unless activity.created_from_service?
+      .activity_type
+        %b Activity Type
+        .field
+          = activity.activity_type.to_s
     %div
       %b Billable
       .field

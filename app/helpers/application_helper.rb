@@ -85,6 +85,10 @@ module ApplicationHelper
     encoded.join("")
   end
   
+  def boolean_view(val)
+    val ? "Yes" : "No"
+  end
+  
   ### META SORT ###
   
   def url_for_sort(builder, attribute, order, *args)

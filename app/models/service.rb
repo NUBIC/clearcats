@@ -113,7 +113,7 @@ class Service < ActiveRecord::Base
   def create_placeholder_activities
     if should_create_placeholder_activities?
       self.service_line.activity_types.each do |at|
-        act = Activity.create(:service => self, :service_line => self.service_line, :activity_type => at, :name => "#{at.name}")
+        act = Activity.create(:service => self, :service_line => self.service_line, :activity_type => at, :name => "#{at.name}", :created_from_service => true)
         ActivityActor.create(:activity => act, :person => self.person, :role => Role.client)
       end
     end

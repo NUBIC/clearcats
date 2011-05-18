@@ -80,22 +80,6 @@
       %br
       = f.text_field :grant_amount
     %p
-      = f.label :institution_number, "Institution Number"
-      %br
-      = f.text_field :institution_number
-    %p
-      = f.label :parent_institution_number, "Parent Institution Number"
-      %br
-      = f.text_field :parent_institution_number
-    %p
-      = f.label :subproject_number, "Subproject Number"
-      %br
-      = f.text_field :subproject_number
-    %p
-      = f.label :proposal_status, "Proposal Status"
-      %br
-      = f.text_field :proposal_status
-    %p
       = f.label :award_status, "Award Status"
       %br
-      = f.text_field :award_status
+      = f.object.award_status

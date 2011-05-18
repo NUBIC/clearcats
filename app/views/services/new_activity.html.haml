@@ -7,21 +7,22 @@
     = @activity.service_line.to_s
     = f.hidden_field :service_line_id
     = f.hidden_field :service_id
-  .container
+  .container.span-16
     .span-8
       %p
         &nbsp;
+
       %p
         = f.label :name
         %span.required *
         %br
-        = f.text_field :name  
+        = f.text_field :name
       - activity_types = @activity.service_line.activity_types
       - unless activity_types.blank?
         %div{ :id => "activity_type_select" }
           = f.label :activity_type_id, "Activity Type"
           %br
-          = f.select :activity_type_id, activity_types
+          = f.select :activity_type_id, activity_types.map {|u| [u.to_s, u.id]}, :include_blank => "-- Choose Activity Type --"
     .span-8.last
       %p
         = f.check_box :billable

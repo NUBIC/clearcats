@@ -54,8 +54,8 @@ module Clearcats
      :domain => "northwestern.edu"
     }
     
-    Date::DATE_FORMATS.merge!(:default => "%m/%d/%Y")
-    Time::DATE_FORMATS.merge!(:default => "%m/%d/%Y %H:%M:%S")
+    # Date::DATE_FORMATS.merge!(:default => "%m/%d/%Y")
+    # Time::DATE_FORMATS.merge!(:default => "%m/%d/%Y %H:%M:%S")
   end
 end
 

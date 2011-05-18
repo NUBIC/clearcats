@@ -22,8 +22,6 @@
         = sort_link @search, :sponsor_award_number, "Sponsor Award Number"
       %th
         = sort_link @search, :grant_title, "Grant Title"
-      %th
-        = sort_link @search, :budget_identifier, "Budget Number"
     - @awards.each do |award|
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td
@@ -34,5 +32,4 @@
         %td= award.sponsor
         %td= award.sponsor_award_number
         %td= truncate(award.grant_title)
-        %td= award.budget_identifier.blank? ? 'n/a' : award.budget_identifier.gsub('NORTHWESTU00000', '').gsub('turbocats_import_', '')
   = will_paginate @awards
