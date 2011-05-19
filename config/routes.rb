@@ -131,6 +131,7 @@ Clearcats::Application.routes.draw do
     resources :publications
     resources :approvals
     resources :services
+    resources :activities
   end
 
   resources :clients, :controller => "people"

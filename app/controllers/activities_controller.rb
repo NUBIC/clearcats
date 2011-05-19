@@ -11,8 +11,10 @@ class ActivitiesController < ApplicationController
     params[:search] ||= Hash.new
     params[:search][:for_organizational_units] ||= @user_organizational_units.map(&:id)
     
+    set_person_context
+    
     @search = Activity.search(params[:search])
-    @activities = @search.paginate(:select => "DISTINCT activities.*", :page => params[:page], :per_page => 20)
+    @activities = @search.paginate(:select => select_statement, :page => params[:page], :per_page => 20)
     
     respond_to do |format|
       format.html # index.html.haml
@@ -130,5 +132,31 @@ class ActivitiesController < ApplicationController
       end
     end
   end
+  
+  private
+  
+    def select_statement
+      select = "DISTINCT activities.*"
+      if params[:search][:meta_sort]
+        if params[:search][:meta_sort].include?("service_line_name")
+          select += ", service_lines.name as service_line_name"
+        end
+        if params[:search][:meta_sort].include?("activity_type_name")
+          select += ", activity_types.name as activity_type_name"
+        end
+      end
+      select
+    end
+    
+    def set_person_context
+      unless params[:search][:activity_actors_person_id_equals].blank?
+        params[:person_id] = params[:search][:activity_actors_person_id_equals]
+      end
+
+      if params[:person_id]
+        @person = Person.find(params[:person_id]) 
+        params[:search][:activity_actors_person_id_equals] = params[:person_id]
+      end
+    end
 
 end
