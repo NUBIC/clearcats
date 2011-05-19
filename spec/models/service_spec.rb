@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110511175546
+# Schema version: 20110519160226
 #
 # Table name: services
 #
@@ -13,6 +13,7 @@
 #  created_by      :string(255)
 #  updated_by      :string(255)
 #  completed_on    :date
+#  project_id      :integer
 #
 
 require 'spec_helper'

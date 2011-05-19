@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110511175546
+# Schema version: 20110519160226
 #
 # Table name: awards
 #

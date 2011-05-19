@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110511175546
+# Schema version: 20110519160226
 #
 # Table name: activities
 #
@@ -22,6 +22,9 @@
 #  required                      :boolean
 #  service_id                    :integer
 #  position                      :integer
+#  created_from_service          :boolean
+#  effort                        :integer         default(0)
+#  cost                          :float           default(0.0)
 #
 
 require 'spec_helper'

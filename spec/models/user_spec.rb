@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110511175546
+# Schema version: 20110519160226
 #
 # Table name: people
 #
@@ -50,6 +50,7 @@
 #  mentor_era_commons_username                   :string(255)
 #  appointment_date                              :date
 #  end_date                                      :date
+#  services_count                                :integer         default(0)
 #
 
 require 'spec_helper'

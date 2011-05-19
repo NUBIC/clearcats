@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110511175546
+# Schema version: 20110519160226
 #
 # Table name: projects
 #
@@ -12,6 +12,7 @@
 #  billable               :boolean
 #  created_at             :datetime
 #  updated_at             :datetime
+#  completed              :boolean
 #
 
 require 'spec_helper'
