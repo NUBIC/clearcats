@@ -56,6 +56,10 @@
   text-align: center;
 }
 
+.front_page_section h3 {
+  margin: 0;
+}
+
 .front_page_section h3 a {
   text-decoration: none;
 }

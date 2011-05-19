@@ -1,12 +1,12 @@
 class ServicesController < ApplicationController
   permit :Admin, :User
+  before_filter :set_user_organizational_units
   layout proc { |controller| controller.request.xhr? ? nil : 'application'  } 
 
   def index
     
-    @user_organizational_units = determine_org_units_for_user
     params[:search] ||= Hash.new
-    params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
+    # params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
     
     set_person_search_parameters if params[:person_id]
     
@@ -22,7 +22,7 @@ class ServicesController < ApplicationController
   end
   
   def my_services
-    @user_organizational_units = determine_org_units_for_user
+
     params[:search] ||= Hash.new
     params[:search][:meta_sort] ||= "updated_at.desc"
     
@@ -50,6 +50,7 @@ class ServicesController < ApplicationController
   end
 
   def new
+
     @service = Service.new
     @search  = Service.search(:created_by_equals => current_user.username)
     @pending_services = @search.paginate(:page => params[:page], :per_page => 20)
@@ -192,6 +193,10 @@ class ServicesController < ApplicationController
         @service = Service.new
       end
       @person = @service.person
+    end
+    
+    def set_user_organizational_units
+      @user_organizational_units = determine_org_units_for_user
     end
     
     def update_service

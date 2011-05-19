@@ -23,8 +23,8 @@
           %td= link_to 'Download', download_ctsa_report_path(rpt, :format => "zip")
           %td= rpt.reporting_year
           %td= rpt.created_by.to_s
-          %td= rpt.finalized? ? "True" : "False"
-          %td= rpt.has_errors? ? "True" : "False"
+          %td= boolean_view(rpt.finalized?)
+          %td= boolean_view(rpt.has_errors?)
           %td= link_to 'Edit', edit_ctsa_report_path(rpt), :class => "edit_link icon_link"
           %td= link_to 'Delete', rpt, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
 

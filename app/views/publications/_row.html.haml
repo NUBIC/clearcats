@@ -12,12 +12,12 @@
       %b
         CTSA Reporting Years
       %br
-      = pub.ctsa_reporting_years.blank? ? "n/a" : pub.ctsa_reporting_years.join(",")
+      = null_safe_collection(pub.ctsa_reporting_years)
     %div
       %b
         = "Cited #{SYSTEM_CONFIG['grant_name']} (#{SYSTEM_CONFIG['grant_number']})"
       %br
-      = pub.cited ? "True" : "False"
+      = boolean_view(pub.cited)
     %div
       %b
         Citation Count

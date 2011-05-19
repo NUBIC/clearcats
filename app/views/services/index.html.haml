@@ -3,8 +3,9 @@
 - title_text = @person.nil? ? "Services" : "Services for #{@person}"
 - title title_text
 
-.page_section
-  = render 'search_form'
+- if @person.blank?
+  .page_section
+    = render 'search_form'
 
 .page_section
   = render 'list', { :services => @services }

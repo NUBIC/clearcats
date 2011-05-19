@@ -68,7 +68,11 @@ module ApplicationHelper
   #### VIEW HELPERS ####
   
   def null_safe(val, default = "n/a")
-    val.blank? ? default : h(val.to_s)
+    val.blank? ? default : val.to_s
+  end
+  
+  def null_safe_collection(val, default = "n/a")
+    val.blank? ? default : val.join(',')
   end
   
   def has_sub_uri?
@@ -87,6 +91,12 @@ module ApplicationHelper
   
   def boolean_view(val)
     val ? "Yes" : "No"
+  end
+  
+  def formatted_date(obj)
+    return "" if obj.blank?
+    return obj.to_s(:justdate) if obj.class.to_s =~ /date|time/i
+    return obj.to_s
   end
   
   ### META SORT ###

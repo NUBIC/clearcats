@@ -43,13 +43,13 @@
             - txt = "#{cnt}&nbsp;Service"
             - lbl = cnt == 1 ? raw(txt) : raw("#{txt}s")
             = link_to lbl, person_services_path(person), :class => "list_link icon_link"
-          %td= h person.first_name
-          %td= h person.last_name
-          %td= h person.netid
-          %td= h person.email
-          %td= h person.era_commons_username
-          %td= h person.specialty
-          %td= h person.ctsa_reporting_years.blank? ? "n/a" : person.ctsa_reporting_years.join(",")
+          %td= person.first_name
+          %td= person.last_name
+          %td= person.netid
+          %td= person.email
+          %td= person.era_commons_username
+          %td= person.specialty
+          %td= null_safe_collection(person.ctsa_reporting_years)
           %td= link_to 'View', versions_person_path(person), :class => "show_link icon_link" if sysadmin
 
     .buttons

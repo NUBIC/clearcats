@@ -14,7 +14,7 @@
       - if current_user.permit?(:Admin)
         = link_to 'View Services', person_services_path(@person), :class => "show_link icon_link menu_nav" unless @person.services.blank?
         = link_to "Add to service line", { :controller => "people", :action => "new_services", :id => @person.id }, :method => :get, :class => "add_link icon_link menu_nav"
-      = link_to 'List All Records', people_path, :class => "list_link icon_link menu_nav" if current_user.permit?(:Admin, :User)
+      = link_to 'List All People', people_path, :class => "list_link icon_link menu_nav" if current_user.permit?(:Admin, :User)
 
   = render 'form'
 

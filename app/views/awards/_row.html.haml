@@ -14,59 +14,59 @@
       %b
         Organization
       %br
-      = h award.organization
+      = award.organization
     %div
       %b
         Activity Code
       %br
-      = h award.activity_code
+      = award.activity_code
   .ctsa_reportable
     %div
       %b
         CTSA Reporting Years
       %br
-      = h award.ctsa_reporting_years.blank? ? "n/a" : award.ctsa_reporting_years.join(",")
+      = null_safe_collection(award.ctsa_reporting_years)
     %div
       %b
         NUCATS Assisted
       %br
-      = h award.nucats_assisted ? "True" : "False"
+      = boolean_view award.nucats_assisted
     %div
       %b
         Award Number
       %br
-      = h award.ctsa_award_type_award_number
+      = award.ctsa_award_type_award_number
   .sponsor_info
     %div
       %b
         Sponsor
       %br
-      = h award.sponsor
+      = award.sponsor
     %div
       %b
         Sponsor Award Number
       %br
-      = h award.sponsor_award_number
+      = award.sponsor_award_number
     %div
       %b
         Grant Title
       %br
-      = h award.grant_title
+      = award.grant_title
     %div
       %b
         Budget Number
       %br
-      = h award.budget_identifier.blank? ? 'n/a' : award.budget_identifier
+      = null_safe(award.budget_identifier)
   .project_info
     %div
       %b
         Project Period
       %br
-      = h award.project_period_start_date
+      = formatted_date(award.project_period_start_date)
     %div
-      = h award.project_period_end_date
+      = formatted_date(award.project_period_end_date)
     %div
       %b
         Project Cost
       %br
-      = h number_to_currency(award.total_project_cost)
+      = number_to_currency(award.total_project_cost, :precision => 0)
