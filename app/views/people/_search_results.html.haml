@@ -6,6 +6,7 @@
 - else
   #search_results
     Results
+  = query params[:search]
   .records_header
     .page_entries_info
       = raw page_entries_info @people, :entry_name => "record"

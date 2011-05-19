@@ -34,7 +34,16 @@
     %div
       %b Billable
       .field
-        = activity.billable? ? "Yes" : "No"
+        = boolean_view(activity.billable?)
+    %div
+      %b Cost
+      .field
+        = null_safe_currency(activity.cost)
+    %div
+      %b Effort
+      .field
+        = pluralize(activity.hours, "Hour")
+        = pluralize(activity.minutes, "Minute")
   - unless activity.notes.empty?
     .span-24
       .notes_toggle

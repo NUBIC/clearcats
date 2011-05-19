@@ -75,6 +75,10 @@ module ApplicationHelper
     val.blank? ? default : val.join(',')
   end
   
+  def null_safe_currency(val)
+    val.blank? ? "n/a" : number_to_currency(val)
+  end
+  
   def has_sub_uri?
     return Rails.env == "staging"
   end
@@ -97,6 +101,16 @@ module ApplicationHelper
     return "" if obj.blank?
     return obj.to_s(:justdate) if obj.class.to_s =~ /date|time/i
     return obj.to_s
+  end
+  
+  def query(search)
+    q = []
+    search.keys.each {|k| q << "#{k.humanize}: #{search[k]}" unless k == "meta_sort"}
+    if q.empty?
+      ""
+    else
+      content_tag( :div, q.to_sentence, :id => "query")
+    end
   end
   
   ### META SORT ###

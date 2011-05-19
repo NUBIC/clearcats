@@ -1,4 +1,5 @@
-- title "My Activities"
+- title_text = @person.nil? ? "My Activities" : "Activities for #{@person}"
+- title title_text 
 
 .page_section
   - if @activities.blank?

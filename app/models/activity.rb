@@ -57,12 +57,14 @@ class Activity < ActiveRecord::Base
       joins("INNER JOIN service_lines ON service_lines.id = activities.service_line_id").
       where("service_lines.organizational_unit_id IN (?)", org_unit_ids )
     }
+  scope :sort_by_service_line_name_asc, order('"service_lines"."name" ASC')
+  scope :sort_by_service_line_name_desc, order('"service_lines"."name" DESC')
+
 
   search_methods :past_due
   search_methods :upcoming
   search_methods :for_organizational_units
   
-
   before_save :build_from_activity_type
 
   def to_s

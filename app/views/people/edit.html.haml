@@ -22,8 +22,5 @@
   $(function () {
     peopleUI = new Clearcats.UI.People({ specialtiesUrl: '#{specialties_path(:format => :json)}', departmentsUrl: '#{departments_path(:format => :json)}', schoolsUrl: '#{schools_path(:format => :json)}'});
   });
-  $(document).ready(function() {  
-    $(".help_icon").tooltip();    
-  });
   $(function () { $("form").dirty_form(); });
   $(function () { $("a.menu_nav").dirty_stopper(); });

@@ -402,6 +402,7 @@ table.nested {
 /* Link styles */
 
 .icon_link {
+  font-size: 1.1em;
   padding: 2px 2px 2px 20px;
   text-decoration: none;
 }
@@ -460,11 +461,11 @@ table.nested {
 }
 
 .toggle_open_link {
-  background: url(../images/bullet_arrow_down.png) 0 2px no-repeat !important;
+  background: url(../images/bullet_arrow_up.png) 0 2px no-repeat !important;
 }
 
 .toggle_closed_link {
-  background: url(../images/bullet_arrow_up.png) 0 2px no-repeat !important;
+  background: url(../images/bullet_arrow_down.png) 0 2px no-repeat !important;
 }
 
 .help_icon, .help_icon:hover {

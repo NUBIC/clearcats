@@ -1,10 +1,6 @@
 - stylesheet "people"
+- javascript "ui/people"
 - title "Investigators"
-
-:javascript
-  $(document).ready(function() {
-    $(".help_icon").tooltip();
-  });
 
 - error_log_path = Person.import_error_log(current_user.username)
 - if File.exists?(error_log_path) && (File.size?(error_log_path) > 80)
@@ -17,3 +13,8 @@
 
 .page_section
   = render 'search_results'
+  
+:javascript
+  $(function () {
+    peopleUI = new Clearcats.UI.People({ });
+  });
