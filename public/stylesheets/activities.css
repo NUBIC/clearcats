@@ -7,3 +7,7 @@ table.notes tr td textarea {
   height: 4em !important;
   width: 90%;
 }
+
+#activity_cost {
+  width: 5em;
+}

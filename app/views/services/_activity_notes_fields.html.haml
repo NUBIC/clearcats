@@ -1,0 +1,14 @@
+.container.span-16
+  %table{ :class => "records notes" }
+    %thead
+      %tr
+        %th
+          Notes
+        %th{ :colspan => '2' }
+    %tbody{ :class => "nested_records nested_records_notes" }
+      = f.fields_for :notes do |note_form|
+        = render 'note_fields', :f => note_form
+    %tfoot
+      %tr
+        %td{ :colspan => '3' }
+          = link_to_add_nested_attribute_fields "Add Note", :notes

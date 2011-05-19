@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110518153225) do
+ActiveRecord::Schema.define(:version => 20110519160226) do
 
   create_table "activities", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20110518153225) do
     t.integer  "service_id"
     t.integer  "position"
     t.boolean  "created_from_service",          :default => false
+    t.integer  "effort",                        :default => 0
+    t.float    "cost",                          :default => 0.0
   end
 
   create_table "activities_people", :force => true do |t|

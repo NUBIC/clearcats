@@ -183,4 +183,42 @@ describe Activity do
     
   end
   
+  context "calculating effort" do
+    
+    it "should convert hours into minutes" do
+      act = Factory(:activity)
+      act.hours = 1
+      act.effort.should == 60
+    end
+    
+    it "should handle minutes as input" do
+      act = Factory(:activity)
+      act.minutes = 15
+      act.effort.should == 15
+    end
+    
+    it "should consider both hours and minutes" do
+      act = Factory(:activity)
+      act.hours = 1
+      act.minutes = 15
+      act.effort.should == 75
+    end
+    
+    it "should return effort as hours and minutes" do
+      act = Factory(:activity)
+      act.effort = 75
+      act.hours.should == 1
+      act.minutes.should == 15
+      
+      act.effort = 45
+      act.hours.should == 0
+      act.minutes.should == 45
+      
+      act.effort = 120
+      act.hours.should == 2
+      act.minutes.should == 0
+    end
+    
+  end
+  
 end

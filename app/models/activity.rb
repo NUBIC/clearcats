@@ -102,6 +102,26 @@ class Activity < ActiveRecord::Base
     event_date.blank?
   end
   
+  def hours=(hrs)
+    self.effort ||= 0
+    self.effort += (hrs.to_i * 60)
+  end
+  
+  def minutes=(mins)
+    self.effort ||= 0
+    self.effort += mins.to_i
+  end
+  
+  def hours
+    self.effort ||= 0
+    self.effort.divmod(60)[0]
+  end
+  
+  def minutes
+    self.effort ||= 0
+    self.effort.divmod(60)[1]
+  end
+  
   private
   
     def build_from_activity_type

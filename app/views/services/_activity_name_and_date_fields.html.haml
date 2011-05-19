@@ -1,0 +1,17 @@
+%p
+  = f.label :name
+  %span.required *
+  %br
+  = f.text_field :name
+- unless f.object.created_from_service?
+  - activity_types = f.object.service_line.activity_types
+  - unless activity_types.blank?
+    %div{ :id => "activity_type_select" }
+      = f.label :activity_type_id, "Activity Type"
+      %br
+      = f.select :activity_type_id, activity_types.map {|u| [u.to_s, u.id]}, :include_blank => "-- Choose Activity Type --"
+%p
+  = f.label :formatted_event_date, "Date"
+  %span.required *
+  %br
+  = f.text_field :formatted_event_date, :class => "datepicker"
