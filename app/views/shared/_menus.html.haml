@@ -32,7 +32,7 @@
             = link_to "Reports", {:controller => "reports", :action => "index"}, {:class => "menu_nav"}
             %ul
               %li= link_to "CTSA Report", ctsa_reports_path, {:class => "menu_nav"} if sysadmin
-              %li= link_to "Awards Search", {:controller => "awards", :action => "search", :search => { :invalid_for_ctsa => "1" }}, {:class => "menu_nav"}
-              %li= link_to "Publications Search", {:controller => "publications", :action => "search", :search => { :invalid_for_ctsa => "1" }}, {:class => "menu_nav"}
+              %li= link_to "Awards Search", {:controller => "awards", :action => "search"}, {:class => "menu_nav"}
+              %li= link_to "Publications Search", {:controller => "publications", :action => "search"}, {:class => "menu_nav"}
               %li= link_to "Approvals Search", {:controller => "approvals", :action => "search"}, {:class => "menu_nav"}
     %li= link_to "FAQ", {:controller => "welcome", :action => "faq"}, {:class => "menu_nav"}
