@@ -107,6 +107,10 @@ class Activity < ActiveRecord::Base
     event_date.blank?
   end
   
+  def complete?
+    !incomplete?
+  end
+  
   def hours=(hrs)
     self.effort ||= 0
     self.effort += (hrs.to_i * 60)

@@ -5,7 +5,8 @@
       = link_to 'Edit', edit_activity_service_path(service, :activity_id => activity), {:title => "Edit Activity for #{@person.to_s}", :class => "edit_modal_form_link edit_link icon_link"}
       %b #
       = activity.position.to_s
-      = link_to 'Delete', {:action => "destroy_activity", :controller => "services", :id => @service.id, :activity_id => activity.id}, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
+      - unless activity.complete?
+        = link_to 'Delete', {:action => "destroy_activity", :controller => "services", :id => @service.id, :activity_id => activity.id}, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
     .name
       %b Activity Name
       .field
