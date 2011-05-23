@@ -20,7 +20,8 @@
 class Project < ActiveRecord::Base
   belongs_to :organizational_unit
   belongs_to :service_line
-  has_many :activities
+  has_many :services
+  has_many :activities, :through => :services
 
   has_many :notes, :class_name => "Note", :as => :notable, :dependent => :destroy
   accepts_nested_attributes_for :notes, :allow_destroy => true
@@ -39,6 +40,16 @@ class Project < ActiveRecord::Base
 
   def to_s
     name
+  end
+  
+  def people
+    peeps = []
+    activities.each do |act|
+      act.activity_actors.each do |actor|
+        peeps << actor.person unless peeps.include? actor.person
+      end
+    end
+    peeps
   end
   
 end

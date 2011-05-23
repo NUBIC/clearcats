@@ -29,7 +29,8 @@ describe Project do
   it { should validate_presence_of(:organizational_unit) }
   it { should belong_to(:organizational_unit) }
   it { should belong_to(:service_line) }
-  it { should have_many(:activities) }
+  it { should have_many(:services) }
+  it { should have_many(:activities).through(:services) }
   
   # it { should have_many(:notes) }
   
@@ -66,5 +67,32 @@ describe Project do
       projs.should == [a_active]
     end
     
+    it "should close/complete all activities that are not yet closed" 
+    
   end
+  
+  context "with activities" do
+    
+    before(:each) do
+      @proj = Factory(:project)
+      @svc = Factory(:service)
+      @svc.project = @proj
+      @svc.save!
+      @act = Factory(:activity, :service => @svc)
+      @actor = Factory(:activity_actor, :activity => @act)
+      @svc.activities.reload
+    end
+    
+    it "should have activities through services" do
+      @svc.activities.should  == [@act]
+      @proj.activities.should == [@act]
+    end
+    
+    it "should have people through the activity's actors" do
+      @act.activity_actors.size.should == 1
+      @proj.people.should == @act.activity_actors.map(&:person)
+    end
+    
+  end
+  
 end

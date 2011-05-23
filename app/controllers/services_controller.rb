@@ -9,6 +9,7 @@ class ServicesController < ApplicationController
     # params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
     
     set_person_search_parameters if params[:person_id]
+    set_project_search_parameters if params[:project_id]
     
     params[:search][:meta_sort] ||= "created_at.desc"
     
@@ -233,6 +234,11 @@ class ServicesController < ApplicationController
       params[:search][:person_id_equals] = params[:person_id] 
       params[:search][:person_first_name_like] = @person.first_name
       params[:search][:person_last_name_like] = @person.last_name
+    end
+    
+    def set_project_search_parameters
+      @project = Project.find(params[:project_id])
+      params[:search][:project_id_equals] = params[:project_id]
     end
   
 end

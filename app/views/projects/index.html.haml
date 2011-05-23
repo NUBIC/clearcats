@@ -1,3 +1,4 @@
+- stylesheet "projects"
 - title "My Projects"
 
 .page_section
@@ -9,7 +10,7 @@
         = raw page_entries_info @projects
       = will_paginate @projects
 
-      %table{ :class => "records" }
+      %table{ :class => "records projects" }
         %tr
           %th.select_record
             Select
@@ -20,6 +21,7 @@
           %tr{ :class => cycle('even_record', 'odd_record') }
             %td.select_record
               = link_to 'Edit', edit_project_path(proj), :class => "edit_link icon_link"
+              = link_to 'Services', project_services_path(proj), :class => "list_link icon_link" unless proj.services.empty?
             %td
               = h proj.to_s
             %td

@@ -19,7 +19,13 @@ Clearcats::Application.routes.draw do
       post :create_from_external_source
     end
   end
-  resources :projects
+  resources :projects do
+    member do
+      get :people
+    end
+    resources :activities
+    resources :services
+  end
   resources :key_metrics
   resources :metric_items
   

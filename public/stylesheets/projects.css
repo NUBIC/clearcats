@@ -17,3 +17,8 @@ table.key_metrics tr td textarea {
   display: none;
   font-size: 1.125em;
 }
+
+table.projects th.select_record,
+table.projects td.select_record {
+  width: 12em !important;
+}

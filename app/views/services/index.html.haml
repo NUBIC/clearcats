@@ -3,7 +3,7 @@
 - title_text = @person.nil? ? "Services" : "Services for #{@person}"
 - title title_text
 
-- if @person.blank?
+- if @person.blank? && @project.blank?
   .page_section
     = render 'search_form'
 
