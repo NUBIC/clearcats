@@ -24,10 +24,19 @@ describe Service do
     Factory(:service)
   end
   
-  it "should describe itself in human readable format" do
-    svc = Factory(:service)
-    svc.to_s.should == "#{svc.organizational_unit.to_s} service line name"
-    svc.to_s(:short).should == "#{svc.organizational_unit.abbreviation} service line name"
+  context "describing itself" do
+  
+    it "should return to_s in human readable format" do
+      svc = Factory(:service)
+      svc.to_s.should == "#{svc.organizational_unit.to_s} service line name"
+      svc.to_s(:short).should == "#{svc.organizational_unit.abbreviation} service line name"
+    end
+    
+    it "should return an instance in csv format" do
+      svc = Factory(:service)
+      svc.to_comma.should == ["#{svc.service_line}", "#{svc.person.first_name}", "#{svc.person.last_name}", "#{svc.person.email}", "#{svc.entered_on}", "#{svc.completed_on}", "#{svc.state}"]
+    end
+  
   end
   
   it { should have_many(:activities) }

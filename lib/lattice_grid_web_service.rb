@@ -62,33 +62,6 @@ class LatticeGridWebService
     return results
     
   end
-  
-  
-  def self.is_investigator?(netid)
-    
-    result = false
-    
-    url   = ClearCats::ExternalServices::Resource.new(:lattice_grid, :investigators).to_s
-    path  = "/#{netid}/show/1"
-
-    uri = URI.parse(url + path)
-    req = Net::HTTP::Get.new(uri.path)
-    
-    invalid_text = "Sorry - invalid username"
-    
-    begin
-
-      resp = make_request(uri, req)
-      result = resp.body.include?(invalid_text) ? false : true
-
-    rescue Exception => e
-      Rails.logger.error("LatticeGridWebService.investigator_publications_search - Exception [#{e.message}] occurred when calling web service.\n")
-      Rails.logger.error(e.backtrace.join("\n"))
-    end
-    
-    result
-    
-  end
 
   private
 

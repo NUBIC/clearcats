@@ -44,9 +44,38 @@ describe Award do
     Factory(:award)
   end
   
-  it "should describe itself in a human readable format" do
-    award = Factory(:award)
-    award.to_s.should == "#{award.sponsor_name} - #{award.sponsor_award_number} [#{award.grant_title}]"
+  context "describing itself" do
+  
+    it "should return to_s in human readable format" do
+      award = Factory(:award)
+      award.to_s.should == "#{award.sponsor_name} - #{award.sponsor_award_number} [#{award.grant_title}]"
+    end
+    
+    it "should return an instance in csv format" do
+      award = Factory(:award)
+      award.to_comma.should == ["#{award.person.to_s}",
+                                "#{award.grant_number}",
+                                "#{award.grant_title}",
+                                "#{award.grant_amount}",
+                                "#{award.parent_institution_number}",
+                                "#{award.institution_number}",
+                                "#{award.subproject_number}",
+                                "#{award.ctsa_award_type_award_number}",
+                                "#{award.project_period_start_date}",
+                                "#{award.project_period_end_date}",
+                                "#{award.project_period_total_cost}",
+                                "#{award.total_project_cost}",
+                                "#{award.organization}",
+                                "#{award.activity_code}",
+                                "#{award.proposal_status}",
+                                "#{award.award_status}",
+                                "#{award.sponsor_award_number}",
+                                "#{award.nucats_assisted}",
+                                "#{award.budget_identifier}",
+                                "#{award.sponsor}",
+                                "#{award.ctsa_reporting_years.to_sentence}"]
+    end
+  
   end
   
   it "should report missing fields for the ctsa report" do
