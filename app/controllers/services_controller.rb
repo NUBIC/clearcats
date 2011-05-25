@@ -4,9 +4,8 @@ class ServicesController < ApplicationController
   layout proc { |controller| controller.request.xhr? ? nil : 'application'  } 
 
   def index
-    
     params[:search] ||= Hash.new
-    # params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
+    params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
     
     set_person_search_parameters if params[:person_id]
     set_project_search_parameters if params[:project_id]
@@ -21,37 +20,8 @@ class ServicesController < ApplicationController
       format.csv { render :csv => @search.all }
     end
   end
-  
-  def my_services
-
-    params[:search] ||= Hash.new
-    params[:search][:meta_sort] ||= "updated_at.desc"
-    
-    if @user_organizational_units.blank?
-      params[:search][:created_by_equals] ||= current_user.username
-    else
-      params[:search][:service_line_organizational_unit_id_in] = @user_organizational_units.collect(&:id) 
-    end
-
-    if params[:search][:state_equals].blank?
-      if params[:completed]
-        params[:search][:state_equals] ||= "completed"
-      else
-        params[:search][:state_does_not_equal] ||= "completed"
-      end
-    end
-    
-    @search = Service.search(params[:search])
-    @services = @search.paginate(:page => params[:page], :per_page => 20)
-    
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @service }
-    end
-  end
 
   def new
-
     @service = Service.new
     @search  = Service.search(:created_by_equals => current_user.username)
     @pending_services = @search.paginate(:page => params[:page], :per_page => 20)
@@ -111,6 +81,17 @@ class ServicesController < ApplicationController
       flash[:link_notice] = "Service has been deleted. <br />Go to the <a href=#{people_path}>Client List</a> to remove the ctsa reportable field for #{person} if desired."
       format.html { redirect_to(services_url(params)) }
       format.xml  { head :ok }
+    end
+  end
+  
+  def close
+    url = services_url
+    url = "/services/my_services" if request.referrer.include?("my_services")
+    get_service
+    @service.close!
+    flash[:link_notice] = "Service has been closed."
+    respond_to do |format|
+      format.html { redirect_to(url) }
     end
   end
   

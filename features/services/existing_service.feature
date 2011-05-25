@@ -10,7 +10,7 @@ Feature: Editing an existing service
     And an organizational_unit "CECD" with the service_line "CRC Basic Training"
     And a service "CRC Basic Training" for person "wakibbe" having been initiated by the logged in user
     And I am on the new service page
-    When I follow "Select"
+    When I follow "Edit"
     Then I should be on the edit service page
     
     # Then I should be on the edit service page for person "wakibbe" and service line "CRC Basic Training"

@@ -76,26 +76,10 @@ Clearcats::Application.routes.draw do
   resources :services do
     collection do
       get :chart
-      get :choose_person
-      get :my_services
-      get :choose_service_line
     end
     member do
-      get :choose_action
-      get :choose_person
-      get :choose_awards
-      put :update_approvals
-      put :update_person
-      get :choose_organizational_units
-      get :identified
-      put :identified
-      get :continue
-      put :continue
-      get :choose_publications
       get :surveyable
-      get :choose_approvals
       post :survey
-      get :choose_service_line
       get :activities
       get :activity
       get :edit_activity
@@ -103,6 +87,7 @@ Clearcats::Application.routes.draw do
       get :new_activity
       post :create_activity
       delete :destroy_activity
+      post :close
     end
     # resources :activities
   end

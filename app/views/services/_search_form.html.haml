@@ -1,55 +1,61 @@
-= form_for @search, :url => {:controller => "services", :action => "index", :method => :get}, :html => {:class => "services_search_form"} do |f|
-  = hidden_field_tag "person_id", @person.id if @person
-  .span-8
-    - if @user_organizational_units.size > 1
+#search_form_hide.hide
+  = link_to "Show Search Form", "javascript:void(0);", { :class => "search_form_show_toggle toggle_open_link icon_link" }
+#search_form_show
+  = link_to "Hide Search Form", "javascript:void(0);", { :class => "search_form_hide_toggle toggle_closed_link icon_link" }
+  = form_for @search, :url => {:controller => "services", :action => "index", :method => :get}, :html => {:class => "services_search_form"} do |f|
+    = hidden_field_tag "person_id", @person.id if @person
+    .span-8
+      - if @user_organizational_units.size > 1
+        %p
+          = f.label "organizational_unit_id_equals", "Organizational Unit"
+          %br
+          = f.select(:organizational_unit_id_equals, @user_organizational_units.sort_by{|e| e.name}.map{|u| [u.to_s, u.id.to_s]}, { :include_blank => "-- Select Organizational Unit --" })
+      - else
+        %p
+          = f.label "organizational_unit_id_equals", "Organizational Unit"
+          %br
+          = @user_organizational_units.first
       %p
-        = f.label "organizational_unit_id_equals", "Organizational Unit"
+        = f.label "service_line_name_like", "Service Line"
         %br
-        = f.select(:organizational_unit_id_equals, @user_organizational_units.sort_by{|e| e.name}.map{|u| [u.to_s, u.id.to_s]}, { :include_blank => "-- Select Organizational Unit --" })
-    %p
-      = f.label "service_line_name_like", "Service Line"
-      %br
-      = f.text_field :service_line_name_like
-    - if @user_organizational_units.size > 1
-      - projects = Project.active
-    - else
-      - projects = Project.active.for_organizational_unit(@user_organizational_units.first)
-    %p
-      = f.label "project_id_equals", "Project"
-      %br
-      = f.select(:project_id_equals, projects.sort_by{ |p| p.name }.map{ |u| [u.to_s, u.id] }, { :include_blank => "-- Select Project --" })
-    %p
-      = f.label "state_equals", "Status"
-      %br
-      = f.select(:state_equals, Service::STATES.map{ |u| [u.titleize, u.to_s] }, { :include_blank => "-- Select Status --" })
-  .span-8
-    %p
-      = f.label "person_first_name_like", "First Name"
-      %br
-      = f.text_field :person_first_name_like, {:disabled => !@person.nil?}
-    %p
-      = f.label "person_last_name_like", "Last Name"
-      %br
-      = f.text_field :person_last_name_like, {:disabled => !@person.nil?}
-    %p
-      = f.label :person_services_count_greater_than, "Services Count >"
-      %br
-      = f.text_field :person_services_count_greater_than
-  .span-8.last
-    %p
-      %b Entered on
-      %br
-      From:
-      = f.text_field :entered_on_greater_than_or_equal_to, :class => "datepicker"
-      To:
-      = f.text_field :entered_on_less_than_or_equal_to, :class => "datepicker"
-    %p
-      %b Completed on
-      %br
-      From:
-      = f.text_field :completed_on_greater_than_or_equal_to, :class => "datepicker"
-      To:
-      = f.text_field :completed_on_less_than_or_equal_to, :class => "datepicker"
-  .buttons
-    = f.submit "Submit", :disable_with => 'Submitting...'
-    = link_to "Export All Results", { :controller => "services", :action => "index", :format => "csv", :params => params }, { :class => "export_link icon_link" }
+        = f.text_field :service_line_name_like
+      - projects = (@user_organizational_units.size > 1) ? Project.active : Project.active.for_organizational_unit(@user_organizational_units.first)
+      %p
+        = f.label "project_id_equals", "Project"
+        %br
+        = f.select(:project_id_equals, projects.sort_by{ |p| p.name }.map{ |u| [u.to_s, u.id] }, { :include_blank => "-- Select Project --" })
+      %p
+        = f.label "state_equals", "Status"
+        %br
+        = f.select(:state_equals, Service::STATES.map{ |u| [u.titleize, u.to_s] }, { :include_blank => "-- Select Status --" })
+    .span-8
+      %p
+        = f.label "person_first_name_like", "First Name"
+        %br
+        = f.text_field :person_first_name_like, {:disabled => !@person.nil?}
+      %p
+        = f.label "person_last_name_like", "Last Name"
+        %br
+        = f.text_field :person_last_name_like, {:disabled => !@person.nil?}
+      %p
+        = f.label :person_services_count_greater_than, "Services Count >"
+        %br
+        = f.text_field :person_services_count_greater_than
+    .span-8.last
+      %p
+        %b Entered on
+        %br
+        From:
+        = f.text_field :entered_on_greater_than_or_equal_to, :class => "datepicker"
+        To:
+        = f.text_field :entered_on_less_than_or_equal_to, :class => "datepicker"
+      %p
+        %b Completed on
+        %br
+        From:
+        = f.text_field :completed_on_greater_than_or_equal_to, :class => "datepicker"
+        To:
+        = f.text_field :completed_on_less_than_or_equal_to, :class => "datepicker"
+    .buttons
+      = f.submit "Submit", :disable_with => 'Submitting...'
+      = link_to "Export All Results", { :controller => "services", :action => "index", :format => "csv", :params => params }, { :class => "export_link icon_link" }

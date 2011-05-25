@@ -34,12 +34,18 @@ class Project < ActiveRecord::Base
   validates_presence_of :service_line
   validates_presence_of :name
   
+  after_save :close_activities
+  
   scope :active, where("completed = 'false' OR completed IS NULL")
   scope :for_service_line, lambda {|svc_line| where(:service_line_id => svc_line.id) }
   scope :for_organizational_unit, lambda {|org_unit| where(:organizational_unit_id => org_unit.id) }
 
   def to_s
     name
+  end
+  
+  def complete?
+    completed?
   end
   
   def people
@@ -51,5 +57,13 @@ class Project < ActiveRecord::Base
     end
     peeps
   end
+  
+  private
+  
+    def close_activities
+      if complete?
+        activities.active.each { |a| a.close! }
+      end
+    end
   
 end

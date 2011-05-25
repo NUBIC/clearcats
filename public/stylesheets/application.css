@@ -457,6 +457,10 @@ input[type="submit"] {
   background: url(../images/delete.png) 0 2px no-repeat !important;
 }
 
+.close_link, .close_link:hover {
+  background: url(../images/exclamation.png) 0 2px no-repeat !important;
+}
+
 .external_link, .external_link:hover {
   background: url(../../images/external_link_icon.png) 0 2px no-repeat;
   background-position: right top;

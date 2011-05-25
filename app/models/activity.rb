@@ -49,8 +49,10 @@ class Activity < ActiveRecord::Base
   
   has_many :people, :through => :activity_actors
 
-  scope :past_due, where("event_date IS NULL AND due_date < '#{Date.today.to_s(:db)}'")
-  scope :upcoming, where("event_date IS NULL AND due_date BETWEEN '#{Date.today.to_s(:db)}' AND '#{8.days.from_now.to_date.to_s(:db)}'")
+  scope :active, where("event_date IS NULL")
+  scope :complete, where("event_date IS NOT NULL")
+  scope :past_due, active.where("due_date < '#{Date.today.to_s(:db)}'")
+  scope :upcoming, active.where("due_date BETWEEN '#{Date.today.to_s(:db)}' AND '#{8.days.from_now.to_date.to_s(:db)}'")
 
   scope :for_organizational_units, 
     lambda { |org_unit_ids| 
@@ -59,7 +61,6 @@ class Activity < ActiveRecord::Base
     }
   scope :sort_by_service_line_name_asc, order('"service_lines"."name" ASC')
   scope :sort_by_service_line_name_desc, order('"service_lines"."name" DESC')
-
 
   search_methods :past_due
   search_methods :upcoming
@@ -109,6 +110,10 @@ class Activity < ActiveRecord::Base
   
   def complete?
     !incomplete?
+  end
+  
+  def close!
+    self.update_attribute(:event_date, Date.today)
   end
   
   def hours=(hrs)

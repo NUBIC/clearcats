@@ -67,8 +67,6 @@ describe Project do
       projs.should == [a_active]
     end
     
-    it "should close/complete all activities that are not yet closed" 
-    
   end
   
   context "with activities" do
@@ -78,7 +76,7 @@ describe Project do
       @svc = Factory(:service)
       @svc.project = @proj
       @svc.save!
-      @act = Factory(:activity, :service => @svc)
+      @act = Factory(:activity, :service => @svc, :event_date => nil)
       @actor = Factory(:activity_actor, :activity => @act)
       @svc.activities.reload
     end
@@ -86,11 +84,21 @@ describe Project do
     it "should have activities through services" do
       @svc.activities.should  == [@act]
       @proj.activities.should == [@act]
+      @proj.activities.active.should == [@act]
     end
     
     it "should have people through the activity's actors" do
       @act.activity_actors.size.should == 1
       @proj.people.should == @act.activity_actors.map(&:person)
+    end
+    
+    it "should close/complete all activities that are not yet closed" do
+      @proj.activities.should == [@act]
+      @proj.activities.first.should_not be_complete
+      @proj.update_attribute(:completed, true)
+      @proj.should be_complete
+      @proj.activities.reload
+      @proj.activities.each { |a| a.should be_complete }
     end
     
   end

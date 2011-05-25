@@ -57,7 +57,7 @@ class Service < ActiveRecord::Base
     end
     
     event :complete do
-      transition [:initiated] => [:completed]
+      transition [:initiated, :new] => [:completed]
     end
     
     event :readied_for_survey do
@@ -85,6 +85,15 @@ class Service < ActiveRecord::Base
   
   def set_dates
     self.entered_on = Date.today if self.entered_on.blank?
+  end
+  
+  def close!
+    self.complete
+    self.update_attribute(:completed_on, Date.today)
+  end
+
+  def complete?
+    !completed_on.blank?
   end
   
   def create_associations
@@ -129,6 +138,22 @@ class Service < ActiveRecord::Base
   def destroy
     remove_associations
     super if activities.blank?
+  end
+  
+  def cost
+    activities.map(&:cost).compact.inject { |sum, n| sum + n.to_f }
+  end
+  
+  def effort
+    activities.map(&:effort).compact.inject { |sum, n| sum + n.to_i }    
+  end
+  
+  def hours
+    effort.to_i.divmod(60)[0]
+  end
+  
+  def minutes
+    effort.to_i.divmod(60)[1]
   end
   
   ###

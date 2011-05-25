@@ -105,7 +105,7 @@ module ApplicationHelper
   
   def query(search)
     q = []
-    search.keys.each {|k| q << "#{k.humanize}: #{search[k]}" unless k == "meta_sort"}
+    search.keys.each {|k| q << "#{k.humanize}: #{search[k]}" if !(k == "meta_sort") && !search[k].blank? }
     if q.empty?
       ""
     else

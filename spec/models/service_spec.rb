@@ -46,9 +46,18 @@ describe Service do
   
   context "state" do
     
-    it "should state in a state of new" do
+    it "should initially be in a state of new" do
       svc = Factory(:service)
       svc.state.should == "new"
+    end
+    
+    it "should be in a state of completed after being closed" do
+      svc = Factory(:service)
+      svc.state.should == "new"
+      svc.completed_on.should be_nil
+      svc.close!
+      svc.state.should == "completed"
+      svc.completed_on.should_not be_nil
     end
     
   end
@@ -93,15 +102,51 @@ describe Service do
     
     describe "activities" do
       
+      before(:each) do
+        @person   = Factory(:person)
+        @svc_line = Factory(:service_line, :name => "the service line")
+        @svc      = Factory(:service, :person => @person, :service_line => @svc_line)
+        @act0     = Factory(:activity, :service_line => @svc_line, :service => @svc, :event_date => nil)
+        @act1     = Factory(:activity, :service_line => @svc_line, :service => @svc, :event_date => nil)
+        @act2     = Factory(:activity, :service_line => @svc_line, :service => @svc, :event_date => nil)
+        @actor    = Factory(:activity_actor, :person => @person, :activity => @activity)
+        @svc.activities.reload
+      end
+      
       it "should return all activities for that service" do
-        person   = Factory(:person)
-        svc_line = Factory(:service_line, :name => "the service line")
-        svc      = Factory(:service, :person => person, :service_line => svc_line)
-        activity = Factory(:activity, :service_line => svc_line, :service => svc)
-        actor    = Factory(:activity_actor, :person => person, :activity => activity)
+        @svc.activities.should == [@act0, @act1, @act2]
+      end
+    
+      it "should have a cumulative cost based on the number of activities" do        
+        @svc.cost.should == 0.0
         
-        svc.activities.reload
-        svc.activities.should == [activity]
+        @act1.update_attribute(:cost, 1.25)
+        @act2.update_attribute(:cost, 2.50)
+        
+        @svc.activities.reload
+        @svc.cost.should == 3.75
+      end
+      
+      it "should have a cumulative effort based on the number of activities" do
+        @svc.effort.should == 0
+        
+        @act1.update_attribute(:effort, 75)
+        @act2.update_attribute(:effort, 250)
+        
+        @svc.activities.reload
+        @svc.effort.should == 325
+        @svc.hours.should == 5
+        @svc.minutes.should == 25
+      end
+      
+      it "should know the total number of completed and active activities" do
+        @svc.activities.active.count.should == 3
+        @svc.activities.complete.count.should == 0
+        
+        @act1.close!
+        @svc.activities.reload
+        @svc.activities.active.count.should == 2
+        @svc.activities.complete.count.should == 1
       end
       
     end

@@ -374,15 +374,17 @@ class Person < ActiveRecord::Base
   def applied
     trainee_status.to_s == APPLICANT
   end
+  alias :applied? :applied
   
   def accepted
     trainee_status.to_s == APPOINTED
   end
+  alias :accepted? :accepted
   
   def interviewed
     false
   end
-
+  alias :interviewed? :interviewed
 
   def self.find_all_like_term(term)
     Person.search(:netid_or_email_like => term).all

@@ -11,20 +11,35 @@
       %th Select
       %th= sort_link @search, :person_last_name, "Investigator", :params => {:page => params[:page], :completed => params[:completed]}
       %th= sort_link @search, :service_line_name, "Service Line", :params => {:page => params[:page], :completed => params[:completed]}
-      %th= sort_link @search, :entered_on, "Entered On", :params => {:page => params[:page], :completed => params[:completed]}
+      %th= sort_link @search, :entered_on, raw("Entered&nbsp;On"), :params => {:page => params[:page], :completed => params[:completed]}
       %th= sort_link @search, :service_line_organizational_unit_name, "Organizational Unit", :params => {:page => params[:page], :completed => params[:completed]}
+      %th 
+        Cost
+      %th
+        Effort
       %th
     - services.each do |svc|
       - editable = user_can_edit_service?(svc, @user_organizational_units)
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td 
-          = link_to "Select", edit_service_path(svc), :class => "edit_link icon_link" if editable
+          = link_to "Edit", edit_service_path(svc), :class => "edit_link icon_link" if editable
+          = link_to raw("Manage&nbsp;Activities"), activities_service_path(svc), :class => "list_link icon_link" if editable
           %span.hide
             = svc.created_at.to_s
         %td= svc.person
         %td= svc.service_line
         %td= svc.entered_on
         %td= svc.service_line.organizational_unit.abbreviation if svc.service_line
-        %td= link_to 'Delete', service_path(svc), :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link" if editable
+        %td
+          = null_safe_currency(svc.cost)
+        %td
+          - if svc.effort.to_i == 0
+            n/a
+          - else
+            = pluralize(svc.hours, "Hour")
+            = pluralize(svc.minutes, "Minute")
+        %td
+          = link_to 'Close', close_service_path(svc), :method => :post, :class => "close_link icon_link" if editable && !svc.complete?
+          = link_to 'Delete', service_path(svc), :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link" if editable
 
   = will_paginate services
