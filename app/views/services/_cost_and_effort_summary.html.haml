@@ -1,0 +1,14 @@
+.container
+  %h4
+    Totals
+  .span-2
+    &nbsp;
+  .span-6
+    %b
+      Total Cost: 
+    = null_safe_currency(total_cost(services))
+
+  .span-12
+    %b
+      Total Effort: 
+    = total_effort(services)

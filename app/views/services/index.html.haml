@@ -8,6 +8,9 @@
     = render 'search_form'
 
 .page_section
+  = render 'cost_and_effort_summary', { :services => @services }
+
+.page_section
   = render 'list', { :services => @services }
 
 - if @person

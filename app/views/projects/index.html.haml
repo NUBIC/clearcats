@@ -16,6 +16,10 @@
             Select
           %th
             Name
+          %th 
+            Cost
+          %th
+            Effort
           %th
         - @projects.each do |proj|
           %tr{ :class => cycle('even_record', 'odd_record') }
@@ -23,7 +27,15 @@
               = link_to 'Edit', edit_project_path(proj), :class => "edit_link icon_link"
               = link_to 'Services', project_services_path(proj), :class => "list_link icon_link" unless proj.services.empty?
             %td
-              = h proj.to_s
+              = proj.to_s
+            %td
+              = null_safe_currency(proj.cost)
+            %td
+              - if proj.effort.to_i == 0
+                n/a
+              - else
+                = pluralize(proj.hours, "Hour")
+                = pluralize(proj.minutes, "Minute")
             %td
               = link_to 'Delete', proj, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
 

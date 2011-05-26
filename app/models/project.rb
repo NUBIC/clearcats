@@ -58,6 +58,22 @@ class Project < ActiveRecord::Base
     peeps
   end
   
+  def cost
+    Summable.total_cost(services)
+  end
+  
+  def effort
+    Summable.total_effort(services)
+  end
+  
+  def hours
+    Summable.hours(effort)
+  end
+  
+  def minutes
+    Summable.minutes(effort)
+  end
+    
   private
   
     def close_activities

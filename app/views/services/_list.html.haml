@@ -22,12 +22,16 @@
       - editable = user_can_edit_service?(svc, @user_organizational_units)
       %tr{ :class => cycle('even_record', 'odd_record') }
         %td 
-          = link_to "Edit", edit_service_path(svc), :class => "edit_link icon_link" if editable
+          = link_to "Edit", edit_service_path(svc), :class => "edit_link icon_link" if editable 
           = link_to raw("Manage&nbsp;Activities"), activities_service_path(svc), :class => "list_link icon_link" if editable
           %span.hide
             = svc.created_at.to_s
         %td= svc.person
-        %td= svc.service_line
+        %td
+          - if svc.service_line.blank?
+            = link_to "Choose", choose_service_line_service_path(svc), :class => "edit_link icon_link"
+          - else
+            = svc.service_line
         %td= svc.entered_on
         %td= svc.service_line.organizational_unit.abbreviation if svc.service_line
         %td

@@ -76,8 +76,12 @@ Clearcats::Application.routes.draw do
   resources :services do
     collection do
       get :chart
+      get :choose_person
+      get :choose_service_line
     end
     member do
+      get :choose_person
+      get :choose_service_line
       get :surveyable
       post :survey
       get :activities

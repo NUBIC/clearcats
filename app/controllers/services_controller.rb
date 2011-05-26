@@ -6,6 +6,7 @@ class ServicesController < ApplicationController
   def index
     params[:search] ||= Hash.new
     params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
+    params[:search][:created_by_equals] ||= current_user.username
     
     set_person_search_parameters if params[:person_id]
     set_project_search_parameters if params[:project_id]
@@ -23,12 +24,35 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
-    @search  = Service.search(:created_by_equals => current_user.username)
+    @search  = Service.search(:created_by_equals => current_user.username, :completed_on_is_null => true)
     @pending_services = @search.paginate(:page => params[:page], :per_page => 20)
     
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @service }
+    end
+  end
+  
+  def choose_person
+    if !params[:search].blank?
+      search = {}
+      params[:search].each do |k,v|
+        search["#{k}_like"] = v unless v.blank?
+      end
+      people = Person.search(search).all
+      faculty = FacultyWebService.locate(params[:search])
+      @people = (faculty + people).uniq
+    end
+    get_service
+  end
+  
+  def choose_service_line
+    get_service
+    ids = current_user.group_memberships.collect(&:affiliate_ids).flatten.map(&:to_i)
+    if ids.blank?
+      @organizational_units = OrganizationalUnit.all(:order => :name)
+    else
+      @organizational_units = OrganizationalUnit.find_by_cc_pers_affiliate_ids(ids).sort_by { |ou| ou.name }
     end
   end
   
@@ -47,7 +71,11 @@ class ServicesController < ApplicationController
 
       if @service.save!
         flash[:notice] = 'Service was successfully created.'
-        redirect_to(:controller => "services", :action => "my_services")
+        if @service.person.blank? || @service.service_line.blank?
+          redirect_to(new_service_path) 
+        else
+          redirect_to(services_path) 
+        end
       else
         render :action => "new"
       end

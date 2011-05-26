@@ -22,16 +22,28 @@ describe ServicesController do
     describe "POST create" do
 
       describe "with valid params" do
-        it "assigns a newly created activity_type as @activity_type" do
-          Service.stub(:new).with({'service_line_id' => '2'}).and_return(mock_service(:save! => true, :created_by= => true, :state => "new", :initiated? => true))
+        it "assigns a newly created service as @service" do
+          Service.stub(:new).with({'service_line_id' => '2'}).and_return(mock_service(:save! => true, :created_by= => true, :state => "new", :initiated? => true, :person => true, :service_line => true))
           post :create, :service => {:service_line_id => '2'}
           assigns[:service].should equal(mock_service)
         end
         
-        it "redirects to the created my services list" do
-          Service.stub(:new).with({'service_line_id' => '2'}).and_return(mock_service(:save! => true, :created_by= => true, :state => "new", :initiated? => true))
+        it "redirects to the services new page (since the person is blank)" do
+          Service.stub(:new).with({'service_line_id' => '2'}).and_return(mock_service(:save! => true, :created_by= => true, :state => "new", :initiated? => true, :person => nil))
           post :create, :service => {:service_line_id => '2'}
-          response.should redirect_to(:controller => "services", :action => "my_services")
+          response.should redirect_to(new_service_path)
+        end
+        
+        it "redirects to the services new page (since the service_line is blank)" do
+          Service.stub(:new).with({'service_line_id' => '2'}).and_return(mock_service(:save! => true, :created_by= => true, :state => "new", :initiated? => true, :person => true, :service_line => nil))
+          post :create, :service => {:service_line_id => '2'}
+          response.should redirect_to(new_service_path)
+        end
+        
+        it "redirects to the services index page" do
+          Service.stub(:new).with({'service_line_id' => '2'}).and_return(mock_service(:save! => true, :created_by= => true, :state => "new", :initiated? => true, :person => true, :service_line => true))
+          post :create, :service => {:service_line_id => '2'}
+          response.should redirect_to(services_path)
         end
       end
 

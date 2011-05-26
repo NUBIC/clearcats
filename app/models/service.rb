@@ -141,19 +141,19 @@ class Service < ActiveRecord::Base
   end
   
   def cost
-    activities.map(&:cost).compact.inject { |sum, n| sum + n.to_f }
+    Summable.total_cost(activities)
   end
   
   def effort
-    activities.map(&:effort).compact.inject { |sum, n| sum + n.to_i }    
+    Summable.total_effort(activities)
   end
   
   def hours
-    effort.to_i.divmod(60)[0]
+    Summable.hours(effort)
   end
   
   def minutes
-    effort.to_i.divmod(60)[1]
+    Summable.minutes(effort)
   end
   
   ###

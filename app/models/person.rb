@@ -574,7 +574,6 @@ class Person < ActiveRecord::Base
       end
       set_department_and_school
     end
-    self.save!
     self
   end
   
