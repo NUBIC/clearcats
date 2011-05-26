@@ -1,12 +1,11 @@
 # == Schema Information
-# Schema version: 20110519160226
+# Schema version: 20110523153829
 #
 # Table name: activities
 #
 #  id                            :integer         not null, primary key
 #  name                          :string(255)
 #  description                   :text
-#  project_id                    :integer
 #  service_line_id               :integer
 #  activity_type_id              :integer
 #  event_date                    :datetime
