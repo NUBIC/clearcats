@@ -140,6 +140,12 @@ class Service < ActiveRecord::Base
     super if activities.blank?
   end
   
+  def organizational_unit
+    service_line.organizational_unit if service_line
+  end
+  
+  # cost and effort
+  
   def cost
     Summable.total_cost(activities)
   end

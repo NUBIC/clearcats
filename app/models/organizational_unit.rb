@@ -18,9 +18,11 @@
 
 class OrganizationalUnit < ActiveRecord::Base
   # has_many :milestones
-  # has_many :projects
+  has_many :projects
 
   has_many :service_lines
+  has_many :services, :through => :service_lines
+  has_many :activities, :through => :service_lines
   has_many :contact_lists
   
   has_and_belongs_to_many :people
@@ -37,6 +39,23 @@ class OrganizationalUnit < ActiveRecord::Base
     str += " (#{abbreviation})" if abbreviation
     str.strip
   end
+
+  def cost
+    Summable.total_cost(activities)
+  end
+
+  def effort
+    Summable.total_effort(activities)
+  end
+  
+  def hours
+    Summable.hours(effort)
+  end
+  
+  def minutes
+    Summable.minutes(effort)
+  end
+
   
   def self.find_by_cc_pers_affiliate_ids(ids)
     result = []

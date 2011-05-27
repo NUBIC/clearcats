@@ -20,6 +20,7 @@ class ServiceLine < ActiveRecord::Base
   belongs_to :organizational_unit
   has_many :activity_types, :order => "position"
   has_many :services
+  has_many :activities
   
   validates_presence_of :name
   

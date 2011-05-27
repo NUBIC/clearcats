@@ -89,6 +89,7 @@ describe Service do
       person.services.reload
       person.services.size.should == 2
       
+      svc_one.organizational_unit.should == org_unit
       svc_one.destroy
       
       person = Person.find(person.id)
