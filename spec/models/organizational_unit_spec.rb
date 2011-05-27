@@ -66,9 +66,9 @@ describe OrganizationalUnit do
     
     it "should return all services and activities for that organizational unit" do
       @svc0.activities.should == [@act0]
-      @svc1.activities.should == [@act1, @act2]
-      @org_unit.services.should == [@svc0, @svc1]
-      @org_unit.activities.should == [@act0, @act1, @act2]
+      [@act1, @act2].each { |a| @svc1.activities.should include a }
+      [@svc0, @svc1].each { |a| @org_unit.services.should include a }
+      [@act0, @act1, @act2].each { |a| @org_unit.activities.should include a }
     end
   
     it "should have a cumulative cost based on the number of activities" do
