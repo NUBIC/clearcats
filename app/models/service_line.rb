@@ -33,4 +33,20 @@ class ServiceLine < ActiveRecord::Base
   def to_s
     name
   end
+  
+  def cost
+    Summable.total_cost(activities)
+  end
+
+  def effort
+    Summable.total_effort(activities)
+  end
+  
+  def hours
+    Summable.hours(effort)
+  end
+  
+  def minutes
+    Summable.minutes(effort)
+  end
 end

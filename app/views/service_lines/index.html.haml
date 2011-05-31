@@ -28,6 +28,8 @@
     %tr
       %th= sort_link @search, :name, "Name"
       %th= sort_link @search, :organizational_unit_name, "Organizational Unit"
+      %th Cost
+      %th Effort
       %th{ :colspan => '2' }
     - @service_lines.each do |service_line|
       - cls = cycle('even_record', 'odd_record')
@@ -40,6 +42,14 @@
             = image_tag("bullet_toggle_minus.png", :onclick => "$('.#{show_cls}').hide(); $('.#{hide_cls}').show();", :class => "#{show_cls}", :style => "display: none;")
           = h service_line.name
         %td= h service_line.organizational_unit
+        %td
+          = null_safe_currency(service_line.cost)
+        %td
+          - if service_line.effort.to_i == 0
+            n/a
+          - else
+            = pluralize(service_line.hours, "Hour")
+            = pluralize(service_line.minutes, "Minute")
         %td= link_to 'Edit', edit_service_line_path(service_line), :class => "edit_link icon_link"
         %td
           - if service_line.services.blank?

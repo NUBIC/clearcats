@@ -10,22 +10,33 @@
 - else
   %table.records
     %tr
+      %th{:colspan => "1"}
       %th= sort_link @search, :name, "Name"
       %th= sort_link @search, :abbreviation, "Abbreviation"
       %th Parent
       %th Number of Service Lines
-      %th{:colspan => "2"}
+      %th Cost
+      %th Effort
     - @organizational_units.each do |organizational_unit|
       %tr{:class => cycle('even_record', 'odd_record')}
-        %td= h organizational_unit.name
-        %td= h organizational_unit.abbreviation
-        %td= h organizational_unit.parent
-        %td= h organizational_unit.service_lines.size
-        %td
-          - if @user_organizational_units.blank? or @user_organizational_units.include?(organizational_unit)
-            = link_to 'Edit', edit_organizational_unit_path(organizational_unit), :class => "edit_link icon_link"
         %td
           - if (@user_organizational_units.blank? or @user_organizational_units.include?(organizational_unit)) and organizational_unit.service_lines.blank?
             = link_to 'Delete', organizational_unit, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
+        %td
+          - if @user_organizational_units.blank? or @user_organizational_units.include?(organizational_unit)
+            = link_to organizational_unit.name, edit_organizational_unit_path(organizational_unit), :class => "edit_link icon_link"
+          - else
+            = organizational_unit.name
+        %td= organizational_unit.abbreviation
+        %td= organizational_unit.parent
+        %td= organizational_unit.service_lines.size
+        %td
+          = null_safe_currency(organizational_unit.cost)
+        %td
+          - if organizational_unit.effort.to_i == 0
+            n/a
+          - else
+            = pluralize(organizational_unit.hours, "Hour")
+            = pluralize(organizational_unit.minutes, "Minute")
 .links
   = link_to 'New Organizational Unit', new_organizational_unit_path, :class => "add_link icon_link"
