@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/NUBIC/surveyor.git
+  revision: 1f0c476f951d06c3d06d1cec9ab1e358044ff2a2
+  branch: rails3
+  specs:
+    surveyor (0.16.1)
+      fastercsv
+      formtastic
+      haml
+
 GEM
   remote: http://rubygems.org/
   remote: http://download.bioinformatics.northwestern.edu/gems/
@@ -246,10 +256,6 @@ GEM
     sexp_processor (3.0.5)
     shoulda (2.11.3)
     state_machine (0.10.4)
-    surveyor (0.19.3)
-      fastercsv
-      formtastic
-      haml
     syntax (1.0.0)
     term-ansicolor (1.0.5)
     test-unit (2.2.0)
@@ -314,7 +320,7 @@ DEPENDENCIES
   ruby-prof (~> 0.10.5)
   shoulda
   state_machine
-  surveyor
+  surveyor!
   term-ansicolor
   test-unit (~> 2.2)
   test_notifier

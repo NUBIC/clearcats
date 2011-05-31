@@ -25,7 +25,7 @@ gem "pg"
 
 gem "ruby-oci8"
 gem "state_machine"
-gem "surveyor"
+gem "surveyor", :git => "git://github.com/NUBIC/surveyor.git", :branch => "rails3"
 gem "will_paginate", "~> 3.0.pre2"
 gem "zippy"
 
