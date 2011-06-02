@@ -19,22 +19,19 @@
 #investigator_upload {
   padding: 1em;
   border: 1px solid #ccc;
-}
-
-#investigator_upload #search {
-  float: right;
+  #search {
+    float: right;
+  }
 }
 
 #upload_error_log {
   text-align: right;
-}
-
-#upload_error_log a {
-  color: maroon;
-}
-
-#upload_error_log a:hover {
-  color: pink !important;
+  a {
+    color: maroon;
+  }
+  a:hover {
+    color: pink !important;
+  }
 }
 
 #people_search_form {
@@ -49,14 +46,11 @@ form.faculty_search {
   margin: 1.5em 0;  
 }
 
-.span-5 select {
-  width: 18em;
-}
-
+.span-5 select,
 .span-6 select,
 .span-7 select,
 .span-8 select {
-  width: 20em;
+  width: 310px;
 }
 
 select#search_service_rendered,
@@ -81,27 +75,35 @@ select#search_disadvantaged_background {
   border: 2px solid darkblue;
 }
 
-.trainee_toggler a,
-.trainee_fields a {
+#trainee_header {
+  margin: 0.5em 0;
+  color: crimson;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.trainee_toggler a {
   font-size: 1.25em;
   text-decoration: none;
 }
 
-.trainee_fields a.icon_link {
-  font-size: 1em !important;
-}
-
 .trainee_fields {
   display: none;
+  a.icon_link {
+    font-size: 1em !important;
+  }
+  a {
+    font-size: 1.25em;
+    text-decoration: none;
+  }
 }
 
 .trainee_section {
   margin-top: 1em;
   border-top: 1px solid #ddd;
-}
-
-.trainee_section h4 {
-  margin: 0.5em 0;
+  h4 {
+    margin: 0.5em 0;
+  }
 }
 
 h4.section_header {
@@ -115,13 +117,6 @@ h4.section_header {
   font-size: 1.125em
 }
 
-#trainee_header {
-  margin: 0.5em 0;
-  color: crimson;
-  font-weight: bold;
-  font-size: 1.25em;
-}
-
 #search_awards_activity_code_id_equals {
   width: 17em;
 }
@@ -130,71 +125,57 @@ hr {
   margin-bottom: 0.25em;
 }
 
-.client_menu {
-  padding-left: 1em;
-}
-
-.client_menu .span-24 {
-  margin-bottom: 0.5em;
-}
-
 .status_bar {
   margin-top: 10px;
   border: 3px solid gray;
 }
 
-.client_menu .index {
-  display: inline-block;
-  width: 1.25em;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  padding: 0.5em;
-  margin-top: -15px;
-  background-color: lightblue;
-  border: 1px solid gray;
-  border-radius: 2em;
-  -o-border-radius: 2em;
-  -icab-border-radius: 2em;
-  -khtml-border-radius: 2em;
-  -moz-border-radius: 2em;
-  -webkit-border-radius: 2em;
-}
-
-.client_menu a {
-  text-decoration: none;
-}
-
-.client_menu a:hover {
-  color: orange;
-}
-
-.client_menu a.index:hover {
-  background-color: darkslateblue;
-}
-
-.client_menu .active {
-  background-color: darkblue;
-}
-
-.client_menu .task {
-  display: inline-block;
-}
-
-.client_menu div {
-  text-align: center;
-}
-
-.client_task div {
-  border-bottom: 1px solid white;
-  text-align: center;
+.client_menu {
+  padding-left: 1em;
+  .span-24 {
+    margin-bottom: 0.5em;
+  }
+  .index {
+    display: inline-block;
+    width: 1.25em;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+    margin-top: -15px;
+    background-color: lightblue;
+    border: 1px solid gray;
+    @include rounded-corners(2em);
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    color: orange;
+  }
+  a.index:hover {
+    background-color: darkslateblue;
+  }
+  .active {
+    background-color: darkblue;
+  }
+  .task {
+    display: inline-block;
+  }
+  div {
+    text-align: center;
+  }
 }
 
 .client_task {
   font-size: 1.125em;
   color: darkblue;
+  div {
+    border-bottom: 1px solid white;
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+  }
 }
 
-.client_task a {
-  text-decoration: none;
-}

@@ -1,0 +1,54 @@
+/* Error Styles */
+
+.field_with_errors {
+  display: inline-block;
+  label {
+    color: crimson;
+  }
+  input,
+  select,
+  textarea {
+    border: 1px solid crimson;
+  }
+}
+
+#error_message {
+  /*text-align: center;*/
+}
+
+
+#link_warning,
+#error,
+#warning {
+  border: 1px solid maroon;
+  color: maroon;
+  background-color: lavenderblush;
+}
+
+.fieldWithErrors {
+  display: inline;
+  color: red;
+  input {
+    border: 1px solid red;
+  }
+}
+
+#errorExplanation {
+  text-align: left;
+  border: 1px solid;
+  border-color: #c00;
+  margin-bottom: 1em;
+  background-color: #fff;
+  h2 {
+    font-weight: bold;
+    padding: .5em;
+    padding-left: 1.5em;
+    font-size: 1em;
+    background-color: #c00;
+    color: #fff;
+  }
+  p {
+    padding-left: 1.5em;
+  }
+  
+}

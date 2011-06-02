@@ -1,27 +1,26 @@
 = form_for(@project) do |f|
   = render "shared/error_messages", :object => f.object
 
-  .page_section
-    .container
-      .span-12
-        = render "shared/organizational_unit_select", :f => f
-    
-        %p
-          = f.label :name
-          %span.required *
-          %br
-          = f.text_field :name
+  .page_section.span-23
+    .span-11
+      = render "shared/organizational_unit_select", :f => f
   
-        %p
-          = f.label "service_line_id", "Service Line"
-          %span.required *
-          = link_to "Manage Service Lines", service_lines_path, :class => "list_link icon_link"
-          %br
-          = render "service_lines/select", :service_lines => @service_lines, :selected => @project.service_line_id
-      .span-12.last
-        %p
-          = f.check_box :completed
-          = f.label :completed, "Completed"
+      %p
+        = f.label :name
+        %span.required *
+        %br
+        = f.text_field :name
+
+      %p
+        = f.label "service_line_id", "Service Line"
+        %span.required *
+        = link_to "Manage Service Lines", service_lines_path, :class => "list_link icon_link"
+        %br
+        = render "service_lines/select", :service_lines => @service_lines, :selected => @project.service_line_id
+    .span-12.last
+      %p
+        = f.check_box :completed
+        = f.label :completed, "Completed"
 
   .page_section.hide
     #key_metrics
@@ -45,7 +44,7 @@
               = link_to_add_nested_attribute_fields "Add Key Metric", :key_metrics
         - @keyMetricsTemplate = generate_nested_attributes_template(f, :key_metrics, 'key_metric')
 
-  .page_section
+  .page_section.span-23
     #notes
       %table{ :class => "records notes" }
         %thead

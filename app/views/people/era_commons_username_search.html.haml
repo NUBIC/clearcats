@@ -1,4 +1,3 @@
-- stylesheet "people"
 - title "Search ERA Commons Username"
 
 .page_section
@@ -18,12 +17,12 @@
   .era_commons_username_search_form
     - form_tag do
 
-      .span-5
+      .span-7
         = label_tag :first_name, "First Name and"
         %br
         = text_field_tag :first_name, params[:first_name]
   
-      .span-5
+      .span-7
         = label_tag :last_name, "Last Name"
         %br
         = text_field_tag :last_name, params[:last_name]

@@ -1,0 +1,66 @@
+/* without this, the menu expands to 100% in IE6 */
+* html .ui-autocomplete { 
+  width: 1px; 
+}
+
+.ui-autocomplete { 
+  position: absolute; cursor: default; 
+}
+
+.ui-menu {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  display: block;
+  float: left;
+  border: 1px solid #494849;
+  .ui-menu-item {
+    margin: 0;
+    padding: 0;
+    zoom: 1;
+    float: left;
+    clear: left;
+    width: 100%;
+    text-align: left;
+  }
+  a {
+    text-decoration: none;
+    display: block;
+    line-height: 1.4;
+    zoom: 1;
+    background: #fff;
+    padding: 5px;
+  }
+  a.ui-state-hover,
+  a.ui-state-active {
+    font-weight: normal;
+    background: #717171;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+}
+.contact_label {
+  display: inline-block;
+  width: 35em;
+}
+
+.data_container {
+  background-color: white;
+  @include rounded-corners(.5em);
+}
+
+.contact_details {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+#contact_email {
+  padding: 0;
+  width: 20em;
+}
+
+.ldap_schema_link {
+  float: right;
+}

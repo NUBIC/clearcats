@@ -1,0 +1,27 @@
+table.notes {
+  tr {
+    td {
+      vertical-align: top;
+      textarea {
+        height: 4em !important;
+        width: 90%;
+      }
+    }
+  }
+}
+
+.notes_section {
+  width: 100%;
+}
+
+#activity_cost {
+  width: 5em;
+}
+
+select#activity_hours {
+  width: 7em;
+}
+
+select#activity_minutes {
+  width: 7em;
+}

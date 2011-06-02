@@ -33,3 +33,4 @@ public/system/data/*/original/*.*
 **/*.orig
 **/**/*.orig
 .rvmrc.*
+.sass-cache/*

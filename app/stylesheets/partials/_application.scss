@@ -1,0 +1,92 @@
+/* GLOBAL STYLES */
+body {
+  font-family: Arial, Helvetica, Geneva, sans-serif;
+  background-color: $NU_PURPLE;
+}
+
+.clear {
+  clear: both;
+}
+
+.links {
+  margin: 1em 0;
+}
+
+.buttons {
+  clear: both;
+  padding-top: 0.5em;
+  margin: 0.5em 0;
+}
+
+.required {
+  color: red;
+}
+
+.instructions {
+  margin: 1em 0;
+}
+
+.page_section {
+  border: 1px solid #ccc;
+  margin: 0.25em;
+  padding: 0.75em 0.25em 0.5em 0.75em;
+  background-color: whitesmoke;
+  @include rounded-corners(.5em);
+}
+
+.blockOverlay {
+  opacity: 0.5 !important;
+}
+
+.datepicker {
+  width: 7em;
+}
+
+a.no_link {
+  padding: 0;
+  margin: 0 -0.25em 0 0;
+}
+
+.handle:hover{
+  cursor: move;
+}
+
+/* Flash Messages */
+
+.message {
+  padding: 0.5em;
+  text-align: center;
+  margin: .125em auto;
+  @include rounded-corners(.5em);
+}
+
+#link_notice,
+#notice,
+#success {
+  border: 1px solid green;
+  color: darkgreen;
+  background-color: #cfc;
+}
+
+.scrollable {
+  height: 40em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Blueprint css overrides */
+#container,
+.container {
+  @include container;
+  background-color: white;
+  box-shadow: 0px 0px 40px $SHADOW;
+  -webkit-box-shadow: 0px 0px 40px $SHADOW;
+  -moz-box-shadow: 0px 0px 40px $SHADOW;
+  p {
+    margin-bottom: .25em;
+  }
+}
+
+a:after {
+  content: "" !important;
+}

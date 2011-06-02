@@ -5,10 +5,13 @@ class ServicesController < ApplicationController
 
   def index
     params[:search] ||= Hash.new
-    params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) unless @user_organizational_units.blank?
-    params[:search][:created_by_equals] ||= current_user.username
+    if @user_organizational_units.blank? && params[:search][:service_line_organizational_unit_id_eq_any].blank?
+      params[:search][:created_by_equals] ||= current_user.username
+    else
+      params[:search][:service_line_organizational_unit_id_eq_any] ||= @user_organizational_units.collect(&:id) 
+    end
     
-    set_person_search_parameters if params[:person_id]
+    set_person_search_parameters  if params[:person_id]
     set_project_search_parameters if params[:project_id]
     
     params[:search][:meta_sort] ||= "created_at.desc"

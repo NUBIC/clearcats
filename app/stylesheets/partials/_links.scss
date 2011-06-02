@@ -1,0 +1,87 @@
+/* Link styles */
+
+input[type="submit"] {
+  font-size: 1.1em;
+  margin-top: 0.5em;
+}
+
+.icon_link {
+  font-size: 1.1em;
+  padding: 2px 2px 2px 20px;
+  text-decoration: none;
+}
+
+.icon_link:hover {
+  color: orange !important;
+  text-decoration: none;
+}
+
+.add_link, .add_link:hover {
+  background: url(../../images/add.png) 0 2px no-repeat !important;
+}
+
+.add_person_link, .add_person_link:hover {
+  background: url(../../images/user_add.png) 0 2px no-repeat !important;
+}
+
+.edit_link, .edit_link:hover {
+  background: url(../../images/edit.png) 0 2px no-repeat !important;
+}
+
+.export_link, .export_link:hover {
+  background: url(../../images/page_white_excel.png) 0 2px no-repeat !important;
+}
+
+.upload_link, .upload_link:hover {
+  background: url(../../images/page_white_upload.png) 0 2px no-repeat !important;
+}
+
+.download_link, .download_link:hover {
+  background: url(../../images/download.png) 0 2px no-repeat !important;
+}
+
+.search_link, .search_link:hover {
+  background: url(../../images/find.png) 0 2px no-repeat !important;
+}
+
+.show_link, .show_link:hover {
+  background: url(../../images/show.png) 0 2px no-repeat !important;
+}
+
+.list_link, .list_link:hover {
+  background: url(../../images/list.png) 0 2px no-repeat !important;
+}
+
+.delete_link, .delete_link:hover {
+  background: url(../../images/delete.png) 0 2px no-repeat !important;
+}
+
+.close_link, .close_link:hover {
+  background: url(../../images/exclamation.png) 0 2px no-repeat !important;
+}
+
+.external_link, .external_link:hover {
+  background: url(../../images/external_link_icon.png) 0 2px no-repeat;
+  background-position: right top;
+  padding: 2px 15px 2px 0px !important;
+  margin-right: 3px;
+}
+
+.back_link, .back_link:hover {
+  background: url(../../images/arrow_left.png) 0 2px no-repeat !important;
+}
+
+.toggle_open_link {
+  background: url(../../images/bullet_arrow_up.png) 0 2px no-repeat !important;
+}
+
+.toggle_closed_link {
+  background: url(../../images/bullet_arrow_down.png) 0 2px no-repeat !important;
+}
+
+.help_icon, .help_icon:hover {
+  padding: 2px 2px 2px 20px;
+  margin-left: 5px;
+  background: url(../../images/help.png) 0 2px no-repeat !important;
+}
+

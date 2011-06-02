@@ -1,0 +1,3387 @@
+/* line 4, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+html, body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 6, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+html {
+  font-size: 100.01%;
+}
+
+/* line 16, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+pre, a, abbr, acronym, address, code, del, dfn, em, img,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 18, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+blockquote, q {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  quotes: "" "";
+}
+/* line 45, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+}
+
+/* line 20, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+th, td, caption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 22, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+table {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 24, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 39, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body {
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+  font-size: 75%;
+}
+
+/* line 65, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  color: #222222;
+}
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
+  margin: 0;
+}
+
+/* line 67, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.50em;
+}
+
+/* line 68, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+
+/* line 69, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1.00em;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em;
+}
+
+/* line 71, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.50em;
+}
+
+/* line 72, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* line 73, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+p {
+  margin: 0 0 1.5em;
+}
+/* line 74, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+p img.left {
+  display: inline;
+  float: left;
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0;
+}
+/* line 75, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+p img.right {
+  display: inline;
+  float: right;
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 0;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+a {
+  text-decoration: underline;
+  color: #000099;
+}
+/* line 18, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+a:visited {
+  color: #000066;
+}
+/* line 21, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+a:focus {
+  color: black;
+}
+/* line 24, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+a:hover {
+  color: black;
+}
+/* line 27, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+a:active {
+  color: #cc0099;
+}
+
+/* line 78, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+blockquote {
+  margin: 1.5em;
+  color: #666666;
+  font-style: italic;
+}
+
+/* line 79, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+strong {
+  font-weight: bold;
+}
+
+/* line 80, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+em {
+  font-style: italic;
+}
+
+/* line 81, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+dfn {
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+sup, sub {
+  line-height: 0;
+}
+
+/* line 83, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+abbr, acronym {
+  border-bottom: 1px dotted #666666;
+}
+
+/* line 84, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+address {
+  margin: 0 0 1.5em;
+  font-style: italic;
+}
+
+/* line 85, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+del {
+  color: #666666;
+}
+
+/* line 86, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+pre {
+  margin: 1.5em 0;
+  white-space: pre;
+}
+
+/* line 87, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+pre, code, tt {
+  font: 1em "andale mono", "lucida console", monospace;
+  line-height: 1.5;
+}
+
+/* line 88, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+li ul, li ol {
+  margin: 0;
+}
+
+/* line 89, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+ul, ol {
+  margin: 0 1.5em 1.5em 0;
+  padding-left: 3.333em;
+}
+
+/* line 90, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+ul {
+  list-style-type: disc;
+}
+
+/* line 91, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+ol {
+  list-style-type: decimal;
+}
+
+/* line 92, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+dl {
+  margin: 0 0 1.5em 0;
+}
+/* line 93, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+dl dt {
+  font-weight: bold;
+}
+
+/* line 94, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+dd {
+  margin-left: 1.5em;
+}
+
+/* line 95, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+table {
+  margin-bottom: 1.4em;
+  width: 100%;
+}
+
+/* line 96, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+th {
+  font-weight: bold;
+}
+
+/* line 97, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+thead th {
+  background: #c3d9ff;
+}
+
+/* line 98, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+th, td, caption {
+  padding: 4px 10px 4px 5px;
+}
+
+/* line 99, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+tr.even td {
+  background: #e5ecf9;
+}
+
+/* line 100, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+tfoot {
+  font-style: italic;
+}
+
+/* line 101, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+caption {
+  background: #eeeeee;
+}
+
+/* line 102, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+.quiet {
+  color: #666666;
+}
+
+/* line 103, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+.loud {
+  color: #111111;
+}
+
+/* line 9, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.clear {
+  clear: both;
+}
+
+/* line 12, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* line 16, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* line 18, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.small {
+  font-size: 0.8em;
+  margin-bottom: 1.875em;
+  line-height: 1.875em;
+}
+
+/* line 22, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.large {
+  font-size: 1.2em;
+  line-height: 2.5em;
+  margin-bottom: 1.25em;
+}
+
+/* line 26, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.first {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* line 29, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.last {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+/* line 32, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.top {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* line 35, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+.bottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* line 46, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.container {
+  width: 1160px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* line 48, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.column, div.span-1, div.span-2, div.span-3, div.span-4, div.span-5, div.span-6, div.span-7, div.span-8, div.span-9, div.span-10, div.span-11, div.span-12, div.span-13, div.span-14, div.span-15, div.span-16, div.span-17, div.span-18, div.span-19, div.span-20, div.span-21, div.span-22, div.span-23, div.span-24 {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+}
+/* line 138, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+* html .column, * html div.span-1, * html div.span-2, * html div.span-3, * html div.span-4, * html div.span-5, * html div.span-6, * html div.span-7, * html div.span-8, * html div.span-9, * html div.span-10, * html div.span-11, * html div.span-12, * html div.span-13, * html div.span-14, * html div.span-15, * html div.span-16, * html div.span-17, * html div.span-18, * html div.span-19, * html div.span-20, * html div.span-21, * html div.span-22, * html div.span-23, * html div.span-24 {
+  overflow-x: hidden;
+}
+
+/* line 51, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.last, div.last {
+  margin-right: 0;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-1 {
+  width: 38.75px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-2 {
+  width: 87.5px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-3 {
+  width: 136.25px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-4 {
+  width: 185px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-5 {
+  width: 233.75px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-6 {
+  width: 282.5px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-7 {
+  width: 331.25px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-8 {
+  width: 380px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-9 {
+  width: 428.75px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-10 {
+  width: 477.5px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-11 {
+  width: 526.25px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-12 {
+  width: 575px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-13 {
+  width: 623.75px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-14 {
+  width: 672.5px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-15 {
+  width: 721.25px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-16 {
+  width: 770px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-17 {
+  width: 818.75px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-18 {
+  width: 867.5px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-19 {
+  width: 916.25px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-20 {
+  width: 965px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-21 {
+  width: 1013.75px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-22 {
+  width: 1062.5px;
+}
+
+/* line 55, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-23 {
+  width: 1111.25px;
+}
+
+/* line 57, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.span-24, div.span-24 {
+  width: 1160px;
+  margin: 0;
+}
+
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-1, textarea.span-1, select.span-1 {
+  width: 38.75px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-2, textarea.span-2, select.span-2 {
+  width: 87.5px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-3, textarea.span-3, select.span-3 {
+  width: 136.25px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-4, textarea.span-4, select.span-4 {
+  width: 185px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-5, textarea.span-5, select.span-5 {
+  width: 233.75px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-6, textarea.span-6, select.span-6 {
+  width: 282.5px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-7, textarea.span-7, select.span-7 {
+  width: 331.25px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-8, textarea.span-8, select.span-8 {
+  width: 380px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-9, textarea.span-9, select.span-9 {
+  width: 428.75px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-10, textarea.span-10, select.span-10 {
+  width: 477.5px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-11, textarea.span-11, select.span-11 {
+  width: 526.25px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-12, textarea.span-12, select.span-12 {
+  width: 575px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-13, textarea.span-13, select.span-13 {
+  width: 623.75px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-14, textarea.span-14, select.span-14 {
+  width: 672.5px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-15, textarea.span-15, select.span-15 {
+  width: 721.25px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-16, textarea.span-16, select.span-16 {
+  width: 770px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-17, textarea.span-17, select.span-17 {
+  width: 818.75px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-18, textarea.span-18, select.span-18 {
+  width: 867.5px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-19, textarea.span-19, select.span-19 {
+  width: 916.25px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-20, textarea.span-20, select.span-20 {
+  width: 965px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-21, textarea.span-21, select.span-21 {
+  width: 1013.75px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-22, textarea.span-22, select.span-22 {
+  width: 1062.5px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-23, textarea.span-23, select.span-23 {
+  width: 1111.25px !important;
+}
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+input.span-24, textarea.span-24, select.span-24 {
+  width: 1160px !important;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-1 {
+  padding-right: 48.75px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-2 {
+  padding-right: 97.5px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-3 {
+  padding-right: 146.25px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-4 {
+  padding-right: 195px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-5 {
+  padding-right: 243.75px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-6 {
+  padding-right: 292.5px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-7 {
+  padding-right: 341.25px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-8 {
+  padding-right: 390px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-9 {
+  padding-right: 438.75px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-10 {
+  padding-right: 487.5px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-11 {
+  padding-right: 536.25px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-12 {
+  padding-right: 585px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-13 {
+  padding-right: 633.75px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-14 {
+  padding-right: 682.5px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-15 {
+  padding-right: 731.25px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-16 {
+  padding-right: 780px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-17 {
+  padding-right: 828.75px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-18 {
+  padding-right: 877.5px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-19 {
+  padding-right: 926.25px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-20 {
+  padding-right: 975px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-21 {
+  padding-right: 1023.75px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-22 {
+  padding-right: 1072.5px;
+}
+
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-23 {
+  padding-right: 1121.25px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-1 {
+  padding-left: 48.75px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-2 {
+  padding-left: 97.5px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-3 {
+  padding-left: 146.25px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-4 {
+  padding-left: 195px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-5 {
+  padding-left: 243.75px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-6 {
+  padding-left: 292.5px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-7 {
+  padding-left: 341.25px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-8 {
+  padding-left: 390px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-9 {
+  padding-left: 438.75px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-10 {
+  padding-left: 487.5px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-11 {
+  padding-left: 536.25px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-12 {
+  padding-left: 585px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-13 {
+  padding-left: 633.75px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-14 {
+  padding-left: 682.5px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-15 {
+  padding-left: 731.25px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-16 {
+  padding-left: 780px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-17 {
+  padding-left: 828.75px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-18 {
+  padding-left: 877.5px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-19 {
+  padding-left: 926.25px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-20 {
+  padding-left: 975px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-21 {
+  padding-left: 1023.75px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-22 {
+  padding-left: 1072.5px;
+}
+
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-23 {
+  padding-left: 1121.25px;
+}
+
+/* line 74, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-1, .pull-2, .pull-3, .pull-4, .pull-5, .pull-6, .pull-7, .pull-8, .pull-9, .pull-10, .pull-11, .pull-12, .pull-13, .pull-14, .pull-15, .pull-16, .pull-17, .pull-18, .pull-19, .pull-20, .pull-21, .pull-22, .pull-23, .pull-24 {
+  display: inline;
+  float: left;
+  position: relative;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-1 {
+  margin-left: -48.75px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-2 {
+  margin-left: -97.5px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-3 {
+  margin-left: -146.25px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-4 {
+  margin-left: -195px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-5 {
+  margin-left: -243.75px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-6 {
+  margin-left: -292.5px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-7 {
+  margin-left: -341.25px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-8 {
+  margin-left: -390px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-9 {
+  margin-left: -438.75px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-10 {
+  margin-left: -487.5px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-11 {
+  margin-left: -536.25px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-12 {
+  margin-left: -585px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-13 {
+  margin-left: -633.75px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-14 {
+  margin-left: -682.5px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-15 {
+  margin-left: -731.25px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-16 {
+  margin-left: -780px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-17 {
+  margin-left: -828.75px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-18 {
+  margin-left: -877.5px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-19 {
+  margin-left: -926.25px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-20 {
+  margin-left: -975px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-21 {
+  margin-left: -1023.75px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-22 {
+  margin-left: -1072.5px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-23 {
+  margin-left: -1121.25px;
+}
+
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.pull-24 {
+  margin-left: -1170px;
+}
+
+/* line 79, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-1, .push-2, .push-3, .push-4, .push-5, .push-6, .push-7, .push-8, .push-9, .push-10, .push-11, .push-12, .push-13, .push-14, .push-15, .push-16, .push-17, .push-18, .push-19, .push-20, .push-21, .push-22, .push-23, .push-24 {
+  display: inline;
+  float: right;
+  position: relative;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-1 {
+  margin: 0 -48.75px 1.5em 48.75px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-2 {
+  margin: 0 -97.5px 1.5em 97.5px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-3 {
+  margin: 0 -146.25px 1.5em 146.25px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-4 {
+  margin: 0 -195px 1.5em 195px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-5 {
+  margin: 0 -243.75px 1.5em 243.75px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-6 {
+  margin: 0 -292.5px 1.5em 292.5px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-7 {
+  margin: 0 -341.25px 1.5em 341.25px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-8 {
+  margin: 0 -390px 1.5em 390px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-9 {
+  margin: 0 -438.75px 1.5em 438.75px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-10 {
+  margin: 0 -487.5px 1.5em 487.5px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-11 {
+  margin: 0 -536.25px 1.5em 536.25px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-12 {
+  margin: 0 -585px 1.5em 585px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-13 {
+  margin: 0 -633.75px 1.5em 633.75px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-14 {
+  margin: 0 -682.5px 1.5em 682.5px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-15 {
+  margin: 0 -731.25px 1.5em 731.25px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-16 {
+  margin: 0 -780px 1.5em 780px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-17 {
+  margin: 0 -828.75px 1.5em 828.75px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-18 {
+  margin: 0 -877.5px 1.5em 877.5px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-19 {
+  margin: 0 -926.25px 1.5em 926.25px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-20 {
+  margin: 0 -975px 1.5em 975px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-21 {
+  margin: 0 -1023.75px 1.5em 1023.75px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-22 {
+  margin: 0 -1072.5px 1.5em 1072.5px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-23 {
+  margin: 0 -1121.25px 1.5em 1121.25px;
+}
+
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.push-24 {
+  margin: 0 -1170px 1.5em 1170px;
+}
+
+/* line 84, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.prepend-top {
+  margin-top: 1.5em;
+}
+
+/* line 86, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_grid.scss */
+.append-bottom {
+  margin-bottom: 1.5em;
+}
+
+/* line 8, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_debug.scss */
+.showgrid {
+  background: url('/images/grid.png');
+}
+
+/* line 4, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.error {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #fbe3e4;
+  color: #8a1f11;
+  border-color: #fbc2c4;
+}
+/* line 29, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.error a {
+  color: #8a1f11;
+}
+
+/* line 6, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.notice {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #fff6bf;
+  color: #514721;
+  border-color: #ffd324;
+}
+/* line 37, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.notice a {
+  color: #514721;
+}
+
+/* line 8, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.success {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #e6efc2;
+  color: #264409;
+  border-color: #c6d880;
+}
+/* line 45, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.success a {
+  color: #264409;
+}
+
+/* line 10, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.hide {
+  display: none;
+}
+
+/* line 12, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.highlight {
+  background: yellow;
+}
+
+/* line 14, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.added {
+  background: #006600;
+  color: white;
+}
+
+/* line 16, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+.removed {
+  background: #990000;
+  color: white;
+}
+
+/* line 18, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+label {
+  font-weight: bold;
+}
+
+/* line 19, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+fieldset {
+  padding: 1.4em;
+  margin: 0 0 1.5em 0;
+}
+
+/* line 20, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+legend {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* line 26, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+input.text, input.title, input[type=email], input[type=text], input[type=password] {
+  margin: 0.5em 0;
+  background-color: white;
+  padding: 5px;
+}
+/* line 27, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+input.title {
+  font-size: 1.5em;
+}
+/* line 31, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+input[type=checkbox], input.checkbox, input[type=radio], input.radio {
+  position: relative;
+  top: 0.25em;
+}
+
+/* line 33, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+textarea {
+  margin: 0.5em 0;
+  padding: 5px;
+}
+
+/* line 34, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+select {
+  margin: 0.5em 0;
+}
+
+/* line 59, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+fieldset {
+  border: 1px solid #cccccc;
+}
+
+/* line 62, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+input.text, input.title, input[type=email], input[type=text], input[type=password],
+textarea, select {
+  border: 1px solid #bbbbbb;
+}
+/* line 64, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+input.text:focus, input.title:focus, input[type=email]:focus, input[type=text]:focus, input[type=password]:focus,
+textarea:focus, select:focus {
+  border: 1px solid #666666;
+}
+
+/* line 48, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+input.text, input.title, input[type=email], input[type=text], input[type=password] {
+  width: 300px;
+}
+
+/* line 50, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+textarea {
+  width: 390px;
+  height: 250px;
+}
+
+/* line 41, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+.box {
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  background: #e5ecf9;
+}
+
+/* line 44, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+div.border {
+  padding-right: 4px;
+  margin-right: 5px;
+  border-right: 1px solid #eeeeee;
+}
+
+/* line 47, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+div.colborder {
+  padding-right: 28px;
+  margin-right: 29px;
+  border-right: 1px solid #eeeeee;
+}
+
+/* line 49, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+hr {
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
+}
+
+/* line 51, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+hr.space {
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
+  background: white;
+  color: white;
+  visibility: hidden;
+}
+
+/* line 53, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+form.inline {
+  line-height: 3;
+}
+/* line 6, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+form.inline p {
+  margin-bottom: 0;
+}
+
+/* line 3, ../../../app/stylesheets/partials/_activities.scss */
+table.notes tr td {
+  vertical-align: top;
+}
+/* line 5, ../../../app/stylesheets/partials/_activities.scss */
+table.notes tr td textarea {
+  height: 4em !important;
+  width: 90%;
+}
+
+/* line 13, ../../../app/stylesheets/partials/_activities.scss */
+.notes_section {
+  width: 100%;
+}
+
+/* line 17, ../../../app/stylesheets/partials/_activities.scss */
+#activity_cost {
+  width: 5em;
+}
+
+/* line 21, ../../../app/stylesheets/partials/_activities.scss */
+select#activity_hours {
+  width: 7em;
+}
+
+/* line 25, ../../../app/stylesheets/partials/_activities.scss */
+select#activity_minutes {
+  width: 7em;
+}
+
+/* GLOBAL STYLES */
+/* line 2, ../../../app/stylesheets/partials/_application.scss */
+body {
+  font-family: Arial, Helvetica, Geneva, sans-serif;
+  background-color: #520063;
+}
+
+/* line 7, ../../../app/stylesheets/partials/_application.scss */
+.clear {
+  clear: both;
+}
+
+/* line 11, ../../../app/stylesheets/partials/_application.scss */
+.links {
+  margin: 1em 0;
+}
+
+/* line 15, ../../../app/stylesheets/partials/_application.scss */
+.buttons {
+  clear: both;
+  padding-top: 0.5em;
+  margin: 0.5em 0;
+}
+
+/* line 21, ../../../app/stylesheets/partials/_application.scss */
+.required {
+  color: red;
+}
+
+/* line 25, ../../../app/stylesheets/partials/_application.scss */
+.instructions {
+  margin: 1em 0;
+}
+
+/* line 29, ../../../app/stylesheets/partials/_application.scss */
+.page_section {
+  border: 1px solid #ccc;
+  margin: 0.25em;
+  padding: 0.75em 0.25em 0.5em 0.75em;
+  background-color: whitesmoke;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+
+/* line 37, ../../../app/stylesheets/partials/_application.scss */
+.blockOverlay {
+  opacity: 0.5 !important;
+}
+
+/* line 41, ../../../app/stylesheets/partials/_application.scss */
+.datepicker {
+  width: 7em;
+}
+
+/* line 45, ../../../app/stylesheets/partials/_application.scss */
+a.no_link {
+  padding: 0;
+  margin: 0 -0.25em 0 0;
+}
+
+/* line 50, ../../../app/stylesheets/partials/_application.scss */
+.handle:hover {
+  cursor: move;
+}
+
+/* Flash Messages */
+/* line 56, ../../../app/stylesheets/partials/_application.scss */
+.message {
+  padding: 0.5em;
+  text-align: center;
+  margin: .125em auto;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+
+/* line 65, ../../../app/stylesheets/partials/_application.scss */
+#link_notice,
+#notice,
+#success {
+  border: 1px solid green;
+  color: darkgreen;
+  background-color: #cfc;
+}
+
+/* line 71, ../../../app/stylesheets/partials/_application.scss */
+.scrollable {
+  height: 40em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Blueprint css overrides */
+/* line 79, ../../../app/stylesheets/partials/_application.scss */
+#container,
+.container {
+  width: 1160px;
+  margin: 0 auto;
+  overflow: hidden;
+  *zoom: 1;
+  background-color: white;
+  box-shadow: 0px 0px 40px #262626;
+  -webkit-box-shadow: 0px 0px 40px #262626;
+  -moz-box-shadow: 0px 0px 40px #262626;
+}
+/* line 85, ../../../app/stylesheets/partials/_application.scss */
+#container p,
+.container p {
+  margin-bottom: .25em;
+}
+
+/* line 90, ../../../app/stylesheets/partials/_application.scss */
+a:after {
+  content: "" !important;
+}
+
+/* line 2, ../../../app/stylesheets/partials/_approvals.scss */
+#approvals {
+  margin: 1em 0;
+}
+/* line 4, ../../../app/stylesheets/partials/_approvals.scss */
+#approvals h3 {
+  padding: 0.5em 0;
+}
+
+/* line 9, ../../../app/stylesheets/partials/_approvals.scss */
+.approval_form {
+  height: 80em;
+  padding-bottom: 1em;
+}
+
+/* line 2, ../../../app/stylesheets/partials/_awards.scss */
+#awards {
+  margin: 1em 0;
+}
+/* line 4, ../../../app/stylesheets/partials/_awards.scss */
+#awards h3 {
+  padding: 0.5em 0;
+}
+
+/* line 9, ../../../app/stylesheets/partials/_awards.scss */
+.instructions {
+  margin: 1em 0;
+}
+
+/* line 13, ../../../app/stylesheets/partials/_awards.scss */
+.award_header {
+  font-size: 1.25em;
+}
+
+/* line 17, ../../../app/stylesheets/partials/_awards.scss */
+.award_form {
+  height: 80em;
+  padding-bottom: 1em;
+}
+
+/* line 23, ../../../app/stylesheets/partials/_awards.scss */
+#award_form #modal_edit_form {
+  margin-top: 0.75em;
+}
+/* line 27, ../../../app/stylesheets/partials/_awards.scss */
+#award_form select,
+#award_form input[type="text"] {
+  width: 22em;
+}
+/* line 30, ../../../app/stylesheets/partials/_awards.scss */
+#award_form option {
+  width: 45em;
+}
+
+/* line 35, ../../../app/stylesheets/partials/_awards.scss */
+#award_details {
+  margin-top: 2em;
+}
+/* line 37, ../../../app/stylesheets/partials/_awards.scss */
+#award_details table {
+  margin-top: 1em;
+}
+
+/* line 44, ../../../app/stylesheets/partials/_awards.scss */
+#award_phs_organization_id,
+#award_activity_code_id,
+#award_non_phs_organization_id {
+  width: 24em;
+}
+
+/* line 48, ../../../app/stylesheets/partials/_awards.scss */
+textarea#award_grant_title {
+  width: 24em;
+  height: 3em !important;
+}
+
+/* line 53, ../../../app/stylesheets/partials/_awards.scss */
+.award_record {
+  border: 1px solid #ccc;
+  padding: 5px;
+  height: 25em;
+  margin-bottom: 5px;
+  background-color: white;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+
+/* line 62, ../../../app/stylesheets/partials/_awards.scss */
+.award_section {
+  border: 1px solid #ccc;
+  margin: 0.25em 0;
+  padding: 0.5em 0.25em 0 0.75em;
+  background-color: whitesmoke;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+/* line 69, ../../../app/stylesheets/partials/_awards.scss */
+.award_section p b {
+  font-size: 1.25em;
+}
+
+/* line 78, ../../../app/stylesheets/partials/_awards.scss */
+.organization,
+.ctsa_reportable,
+.sponsor_info,
+.project_info {
+  width: 49%;
+  float: left;
+  min-height: 8.5em;
+}
+
+/* line 85, ../../../app/stylesheets/partials/_awards.scss */
+.sponsor_info,
+.project_info {
+  border-top: 1px dashed #dcdcdc;
+  padding-top: 5px;
+}
+
+/* without this, the menu expands to 100% in IE6 */
+/* line 2, ../../../app/stylesheets/partials/_contacts.scss */
+* html .ui-autocomplete {
+  width: 1px;
+}
+
+/* line 6, ../../../app/stylesheets/partials/_contacts.scss */
+.ui-autocomplete {
+  position: absolute;
+  cursor: default;
+}
+
+/* line 10, ../../../app/stylesheets/partials/_contacts.scss */
+.ui-menu {
+  list-style: none;
+  padding: 0px;
+  margin: 0;
+  display: block;
+  float: left;
+  border: 1px solid #494849;
+}
+/* line 17, ../../../app/stylesheets/partials/_contacts.scss */
+.ui-menu .ui-menu-item {
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  float: left;
+  clear: left;
+  width: 100%;
+  text-align: left;
+}
+/* line 26, ../../../app/stylesheets/partials/_contacts.scss */
+.ui-menu a {
+  text-decoration: none;
+  display: block;
+  line-height: 1.4;
+  zoom: 1;
+  background: #fff;
+  padding: 5px;
+}
+/* line 35, ../../../app/stylesheets/partials/_contacts.scss */
+.ui-menu a.ui-state-hover,
+.ui-menu a.ui-state-active {
+  font-weight: normal;
+  background: #717171;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 43, ../../../app/stylesheets/partials/_contacts.scss */
+.contact_label {
+  display: inline-block;
+  width: 35em;
+}
+
+/* line 48, ../../../app/stylesheets/partials/_contacts.scss */
+.data_container {
+  background-color: white;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+
+/* line 53, ../../../app/stylesheets/partials/_contacts.scss */
+.contact_details {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* line 59, ../../../app/stylesheets/partials/_contacts.scss */
+#contact_email {
+  padding: 0;
+  width: 20em;
+}
+
+/* line 64, ../../../app/stylesheets/partials/_contacts.scss */
+.ldap_schema_link {
+  float: right;
+}
+
+/* line 1, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+div#banner_menu {
+  float: left;
+  z-index: 3;
+  margin: 0;
+  width: 400px;
+  /* background-image: url('../images/banner_menu.jpg'); */
+}
+
+/* line 9, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu {
+  font: bold 11px Verdana;
+  background: #656565;
+  /*background of menu bar (default state)*/
+  height: 29px;
+  text-align: left;
+}
+/* line 14, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul {
+  z-index: 100;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+  /*background of menu items during onmouseover (hover state)*/
+  /*1st sub level menu*/
+}
+/* line 19, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul li {
+  position: relative;
+  display: inline;
+  float: left;
+}
+/* line 24, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul a {
+  font: 13px Verdana;
+  display: block;
+  background: #656565;
+  /*background of menu items (default state)*/
+  color: white;
+  padding-top: 8px;
+  padding-left: 8px;
+  padding-bottom: 4px;
+  padding-right: 8px;
+  margin-left: 2px;
+  border-right: 1px solid #778;
+  color: #2d2b2b;
+  text-decoration: none;
+}
+/* line 39, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul a:link,
+.ddsmoothmenu ul a:visited {
+  color: white;
+}
+/* line 43, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul a.selected {
+  background: black;
+  color: white;
+}
+/* line 48, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul a:hover {
+  background: black;
+  color: white;
+}
+/* line 53, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul ul {
+  position: absolute;
+  left: 0;
+  display: none;
+  /*collapse all sub menus to begin with*/
+  visibility: hidden;
+  width: 200px !important;
+  /*Sub level menu list items (undo style from Top level List Items)*/
+  /*All subsequent sub menu levels vertical offset after 1st level sub menu */
+}
+/* line 60, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul ul li {
+  display: list-item;
+  float: none;
+}
+/* line 65, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul ul ul {
+  top: 0;
+}
+/* line 67, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul ul ul li {
+  /* Sub level menu links style */
+}
+/* line 69, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddsmoothmenu ul ul ul li a {
+  font: normal 13px Verdana;
+  width: 200px;
+  padding: 5px;
+  margin: 0;
+  border-top-width: 0;
+  border-bottom: 1px solid gray;
+}
+
+/* line 83, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+img.downarrowclass {
+  background-image: url("/clearcats/images/down.gif") !important;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+}
+
+/* line 90, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+img.rightarrowclass {
+  background-image: url("/clearcats/images/right.gif") !important;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
+}
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+/* line 99, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.downarrowclass {
+  position: absolute;
+  top: 12px;
+  right: 7px;
+}
+
+/* line 105, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.rightarrowclass {
+  position: absolute;
+  top: 6px;
+  right: 5px;
+}
+
+/* ######### CSS for shadow added to sub menus  ######### */
+/* line 113, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.ddshadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  background: silver;
+}
+
+/* line 122, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+.toplevelshadow {
+  /*shadow opacity. Doesn't work in IE*/
+  opacity: 0.8;
+}
+
+/* Holly Hack for IE \*/
+/* line 127, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+* html .ddsmoothmenu {
+  height: 1%;
+}
+
+/*Holly Hack for IE7 and below*/
+/*IE6 hack to get sub menu links to behave correctly*/
+/* line 130, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
+* html .ddsmoothmenu ul li a {
+  display: inline-block;
+}
+
+/* Error Styles */
+/* line 3, ../../../app/stylesheets/partials/_errors.scss */
+.field_with_errors {
+  display: inline-block;
+}
+/* line 5, ../../../app/stylesheets/partials/_errors.scss */
+.field_with_errors label {
+  color: crimson;
+}
+/* line 10, ../../../app/stylesheets/partials/_errors.scss */
+.field_with_errors input,
+.field_with_errors select,
+.field_with_errors textarea {
+  border: 1px solid crimson;
+}
+
+/* line 15, ../../../app/stylesheets/partials/_errors.scss */
+#error_message {
+  /*text-align: center;*/
+}
+
+/* line 22, ../../../app/stylesheets/partials/_errors.scss */
+#link_warning,
+#error,
+#warning {
+  border: 1px solid maroon;
+  color: maroon;
+  background-color: lavenderblush;
+}
+
+/* line 28, ../../../app/stylesheets/partials/_errors.scss */
+.fieldWithErrors {
+  display: inline;
+  color: red;
+}
+/* line 31, ../../../app/stylesheets/partials/_errors.scss */
+.fieldWithErrors input {
+  border: 1px solid red;
+}
+
+/* line 36, ../../../app/stylesheets/partials/_errors.scss */
+#errorExplanation {
+  text-align: left;
+  border: 1px solid;
+  border-color: #c00;
+  margin-bottom: 1em;
+  background-color: #fff;
+}
+/* line 42, ../../../app/stylesheets/partials/_errors.scss */
+#errorExplanation h2 {
+  font-weight: bold;
+  padding: .5em;
+  padding-left: 1.5em;
+  font-size: 1em;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 50, ../../../app/stylesheets/partials/_errors.scss */
+#errorExplanation p {
+  padding-left: 1.5em;
+}
+
+/* line 2, ../../../app/stylesheets/partials/_faq.scss */
+.page_section dl dt {
+  font-weight: normal;
+  font-size: 1.25em;
+}
+/* line 6, ../../../app/stylesheets/partials/_faq.scss */
+.page_section ul li {
+  list-style-type: none;
+  margin-left: 1em;
+}
+
+/* line 2, ../../../app/stylesheets/partials/_form.scss */
+textarea {
+  height: 10em !important;
+}
+
+/* line 9, ../../../app/stylesheets/partials/_form.scss */
+input[type="checkbox"],
+input[type="radio"],
+input.checkbox,
+input.radio {
+  top: 0;
+}
+
+/* line 13, ../../../app/stylesheets/partials/_form.scss */
+table.nested {
+  width: 50%;
+  margin-top: 1em;
+}
+
+/* Nested Forms */
+/* line 19, ../../../app/stylesheets/partials/_form.scss */
+.nested {
+  padding: 2em;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+/* Layout */
+/* line 3, ../../../app/stylesheets/partials/_layout.scss */
+#menu {
+  padding: 0.5em 0 0.25em 0;
+  border-bottom: 1px solid #ccc;
+}
+/* line 6, ../../../app/stylesheets/partials/_layout.scss */
+#menu ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 10, ../../../app/stylesheets/partials/_layout.scss */
+#menu ul li {
+  list-style: none;
+  display: inline;
+  padding: 0.5em 2em 0.5em 0.5em;
+  border-right: 1px solid #ccc;
+}
+/* line 16, ../../../app/stylesheets/partials/_layout.scss */
+#menu ul li:hover {
+  background: gainsboro;
+}
+
+/* line 22, ../../../app/stylesheets/partials/_layout.scss */
+#banner {
+  border-bottom: 1px solid #1c1079;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 29px;
+  vertical-align: bottom;
+  text-align: center;
+  font-size: 1.25em;
+  display: block;
+}
+/* line 33, ../../../app/stylesheets/partials/_layout.scss */
+#banner a span {
+  visibility: hidden;
+}
+/* line 37, ../../../app/stylesheets/partials/_layout.scss */
+#banner img {
+  float: left;
+}
+/* line 40, ../../../app/stylesheets/partials/_layout.scss */
+#banner #menu2 {
+  float: right;
+  z-index: 4;
+  margin-top: -21px;
+  color: #aaaaaa;
+  padding-right: 15px;
+}
+/* line 48, ../../../app/stylesheets/partials/_layout.scss */
+#banner #logout_link a {
+  color: #fff;
+  text-decoration: none;
+  padding-right: 0.5em;
+}
+/* line 53, ../../../app/stylesheets/partials/_layout.scss */
+#banner #logout_link a:hover {
+  color: orange;
+}
+/* line 57, ../../../app/stylesheets/partials/_layout.scss */
+#banner .banner_right {
+  width: 100%;
+  height: 29px;
+  z-index: 1;
+}
+/* line 62, ../../../app/stylesheets/partials/_layout.scss */
+#banner #fl {
+  float: left;
+  z-index: 2;
+  margin-top: -29px;
+}
+
+/* line 70, ../../../app/stylesheets/partials/_layout.scss */
+#header {
+  clear: both;
+}
+
+/* line 74, ../../../app/stylesheets/partials/_layout.scss */
+#home {
+  margin: 0 !important;
+  padding: 5px 20px 0px 20px;
+  font-family: Arial, Helvetica, Geneva, sans-serif;
+  background-color: white;
+}
+/* line 79, ../../../app/stylesheets/partials/_layout.scss */
+#home a {
+  font-size: 2.5em;
+  line-height: 100%;
+  color: #222266;
+  text-decoration: none;
+}
+/* line 85, ../../../app/stylesheets/partials/_layout.scss */
+#home a:hover {
+  color: darkorange;
+}
+
+/* line 90, ../../../app/stylesheets/partials/_layout.scss */
+#menu {
+  padding: 0px;
+}
+
+/* line 94, ../../../app/stylesheets/partials/_layout.scss */
+#title {
+  margin: 0px;
+  padding: 5px 20px 0 10px;
+  font-family: Arial, Helvetica, Geneva, sans-serif;
+  font-size: 1.75em;
+  color: #222266;
+  line-height: 180%;
+  background-color: white;
+}
+
+/* line 104, ../../../app/stylesheets/partials/_layout.scss */
+#niceline {
+  padding-left: 5px;
+  height: 8px;
+  margin: 0px;
+  color: white;
+  font-size: 13px;
+  background-color: #a3a3a3;
+}
+
+/* line 113, ../../../app/stylesheets/partials/_layout.scss */
+#main {
+  min-height: 45em;
+  margin: 0;
+  padding: 0 0.5em;
+}
+
+/* line 119, ../../../app/stylesheets/partials/_layout.scss */
+#footer {
+  border-top: 2px solid #a3a3a3;
+  text-align: right;
+  font-size: 0.8em;
+}
+/* line 123, ../../../app/stylesheets/partials/_layout.scss */
+#footer img {
+  float: left;
+}
+/* line 125, ../../../app/stylesheets/partials/_layout.scss */
+#footer img .banner {
+  width: 100%;
+}
+/* line 129, ../../../app/stylesheets/partials/_layout.scss */
+#footer .version {
+  border-top: 2px solid #a3a3a3;
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
+/* line 137, ../../../app/stylesheets/partials/_layout.scss */
+.branding {
+  width: 1100px;
+  margin: 0 auto;
+}
+/* line 140, ../../../app/stylesheets/partials/_layout.scss */
+.branding #northwestern img {
+  margin: 1em 5em;
+}
+/* line 143, ../../../app/stylesheets/partials/_layout.scss */
+.branding #nmh img {
+  margin: 3.5em 2em;
+}
+/* line 146, ../../../app/stylesheets/partials/_layout.scss */
+.branding #feinberg img {
+  margin: 1em 2em;
+}
+/* line 149, ../../../app/stylesheets/partials/_layout.scss */
+.branding #nucats img {
+  margin: 3em 2em;
+}
+
+/* Link styles */
+/* line 3, ../../../app/stylesheets/partials/_links.scss */
+input[type="submit"] {
+  font-size: 1.1em;
+  margin-top: 0.5em;
+}
+
+/* line 8, ../../../app/stylesheets/partials/_links.scss */
+.icon_link {
+  font-size: 1.1em;
+  padding: 2px 2px 2px 20px;
+  text-decoration: none;
+}
+
+/* line 14, ../../../app/stylesheets/partials/_links.scss */
+.icon_link:hover {
+  color: orange !important;
+  text-decoration: none;
+}
+
+/* line 19, ../../../app/stylesheets/partials/_links.scss */
+.add_link, .add_link:hover {
+  background: url(../../images/add.png) 0 2px no-repeat !important;
+}
+
+/* line 23, ../../../app/stylesheets/partials/_links.scss */
+.add_person_link, .add_person_link:hover {
+  background: url(../../images/user_add.png) 0 2px no-repeat !important;
+}
+
+/* line 27, ../../../app/stylesheets/partials/_links.scss */
+.edit_link, .edit_link:hover {
+  background: url(../../images/edit.png) 0 2px no-repeat !important;
+}
+
+/* line 31, ../../../app/stylesheets/partials/_links.scss */
+.export_link, .export_link:hover {
+  background: url(../../images/page_white_excel.png) 0 2px no-repeat !important;
+}
+
+/* line 35, ../../../app/stylesheets/partials/_links.scss */
+.upload_link, .upload_link:hover {
+  background: url(../../images/page_white_upload.png) 0 2px no-repeat !important;
+}
+
+/* line 39, ../../../app/stylesheets/partials/_links.scss */
+.download_link, .download_link:hover {
+  background: url(../../images/download.png) 0 2px no-repeat !important;
+}
+
+/* line 43, ../../../app/stylesheets/partials/_links.scss */
+.search_link, .search_link:hover {
+  background: url(../../images/find.png) 0 2px no-repeat !important;
+}
+
+/* line 47, ../../../app/stylesheets/partials/_links.scss */
+.show_link, .show_link:hover {
+  background: url(../../images/show.png) 0 2px no-repeat !important;
+}
+
+/* line 51, ../../../app/stylesheets/partials/_links.scss */
+.list_link, .list_link:hover {
+  background: url(../../images/list.png) 0 2px no-repeat !important;
+}
+
+/* line 55, ../../../app/stylesheets/partials/_links.scss */
+.delete_link, .delete_link:hover {
+  background: url(../../images/delete.png) 0 2px no-repeat !important;
+}
+
+/* line 59, ../../../app/stylesheets/partials/_links.scss */
+.close_link, .close_link:hover {
+  background: url(../../images/exclamation.png) 0 2px no-repeat !important;
+}
+
+/* line 63, ../../../app/stylesheets/partials/_links.scss */
+.external_link, .external_link:hover {
+  background: url(../../images/external_link_icon.png) 0 2px no-repeat;
+  background-position: right top;
+  padding: 2px 15px 2px 0px !important;
+  margin-right: 3px;
+}
+
+/* line 70, ../../../app/stylesheets/partials/_links.scss */
+.back_link, .back_link:hover {
+  background: url(../../images/arrow_left.png) 0 2px no-repeat !important;
+}
+
+/* line 74, ../../../app/stylesheets/partials/_links.scss */
+.toggle_open_link {
+  background: url(../../images/bullet_arrow_up.png) 0 2px no-repeat !important;
+}
+
+/* line 78, ../../../app/stylesheets/partials/_links.scss */
+.toggle_closed_link {
+  background: url(../../images/bullet_arrow_down.png) 0 2px no-repeat !important;
+}
+
+/* line 82, ../../../app/stylesheets/partials/_links.scss */
+.help_icon, .help_icon:hover {
+  padding: 2px 2px 2px 20px;
+  margin-left: 5px;
+  background: url(../../images/help.png) 0 2px no-repeat !important;
+}
+
+/* line 9, ../../../app/stylesheets/partials/_page.scss */
+body.bp {
+  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+  font-size: 75%;
+}
+/* line 65, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp h1, body.bp h2, body.bp h3, body.bp h4, body.bp h5, body.bp h6 {
+  font-weight: normal;
+  color: #222222;
+}
+/* line 66, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp h1 img, body.bp h2 img, body.bp h3 img, body.bp h4 img, body.bp h5 img, body.bp h6 img {
+  margin: 0;
+}
+/* line 67, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.50em;
+}
+/* line 68, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+/* line 69, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1.00em;
+}
+/* line 70, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em;
+}
+/* line 71, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.50em;
+}
+/* line 72, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+/* line 73, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp p {
+  margin: 0 0 1.5em;
+}
+/* line 74, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp p img.left {
+  display: inline;
+  float: left;
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0;
+}
+/* line 75, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp p img.right {
+  display: inline;
+  float: right;
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 0;
+}
+/* line 77, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp a {
+  text-decoration: underline;
+  color: #000099;
+}
+/* line 18, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+body.bp a:visited {
+  color: #000066;
+}
+/* line 21, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+body.bp a:focus {
+  color: black;
+}
+/* line 24, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+body.bp a:hover {
+  color: black;
+}
+/* line 27, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/compass/stylesheets/compass/utilities/links/_link-colors.scss */
+body.bp a:active {
+  color: #cc0099;
+}
+/* line 78, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp blockquote {
+  margin: 1.5em;
+  color: #666666;
+  font-style: italic;
+}
+/* line 79, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp strong {
+  font-weight: bold;
+}
+/* line 80, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp em {
+  font-style: italic;
+}
+/* line 81, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp dfn {
+  font-style: italic;
+  font-weight: bold;
+}
+/* line 82, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp sup, body.bp sub {
+  line-height: 0;
+}
+/* line 83, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp abbr, body.bp acronym {
+  border-bottom: 1px dotted #666666;
+}
+/* line 84, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp address {
+  margin: 0 0 1.5em;
+  font-style: italic;
+}
+/* line 85, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp del {
+  color: #666666;
+}
+/* line 86, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp pre {
+  margin: 1.5em 0;
+  white-space: pre;
+}
+/* line 87, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp pre, body.bp code, body.bp tt {
+  font: 1em "andale mono", "lucida console", monospace;
+  line-height: 1.5;
+}
+/* line 88, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp li ul, body.bp li ol {
+  margin: 0;
+}
+/* line 89, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp ul, body.bp ol {
+  margin: 0 1.5em 1.5em 0;
+  padding-left: 3.333em;
+}
+/* line 90, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp ul {
+  list-style-type: disc;
+}
+/* line 91, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp ol {
+  list-style-type: decimal;
+}
+/* line 92, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp dl {
+  margin: 0 0 1.5em 0;
+}
+/* line 93, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp dl dt {
+  font-weight: bold;
+}
+/* line 94, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp dd {
+  margin-left: 1.5em;
+}
+/* line 95, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp table {
+  margin-bottom: 1.4em;
+  width: 100%;
+}
+/* line 96, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp th {
+  font-weight: bold;
+}
+/* line 97, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp thead th {
+  background: #c3d9ff;
+}
+/* line 98, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp th, body.bp td, body.bp caption {
+  padding: 4px 10px 4px 5px;
+}
+/* line 99, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp tr.even td {
+  background: #e5ecf9;
+}
+/* line 100, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp tfoot {
+  font-style: italic;
+}
+/* line 101, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp caption {
+  background: #eeeeee;
+}
+/* line 102, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp .quiet {
+  color: #666666;
+}
+/* line 103, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_typography.scss */
+body.bp .loud {
+  color: #111111;
+}
+/* line 9, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .clear {
+  clear: both;
+}
+/* line 12, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .nowrap {
+  white-space: nowrap;
+}
+/* line 16, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .clearfix {
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 18, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .small {
+  font-size: 0.8em;
+  margin-bottom: 1.875em;
+  line-height: 1.875em;
+}
+/* line 22, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .large {
+  font-size: 1.2em;
+  line-height: 2.5em;
+  margin-bottom: 1.25em;
+}
+/* line 26, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .first {
+  margin-left: 0;
+  padding-left: 0;
+}
+/* line 29, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .last {
+  margin-right: 0;
+  padding-right: 0;
+}
+/* line 32, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .top {
+  margin-top: 0;
+  padding-top: 0;
+}
+/* line 35, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_utilities.scss */
+body.bp .bottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+/* line 8, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_debug.scss */
+body.bp .showgrid {
+  background: url('/images/grid.png');
+}
+/* line 4, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .error {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #fbe3e4;
+  color: #8a1f11;
+  border-color: #fbc2c4;
+}
+/* line 29, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .error a {
+  color: #8a1f11;
+}
+/* line 6, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .notice {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #fff6bf;
+  color: #514721;
+  border-color: #ffd324;
+}
+/* line 37, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .notice a {
+  color: #514721;
+}
+/* line 8, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .success {
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 2px solid #dddddd;
+  background: #e6efc2;
+  color: #264409;
+  border-color: #c6d880;
+}
+/* line 45, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .success a {
+  color: #264409;
+}
+/* line 10, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .hide {
+  display: none;
+}
+/* line 12, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .highlight {
+  background: yellow;
+}
+/* line 14, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .added {
+  background: #006600;
+  color: white;
+}
+/* line 16, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_interaction.scss */
+body.bp .removed {
+  background: #990000;
+  color: white;
+}
+
+/* line 41, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp .box {
+  padding: 1.5em;
+  margin-bottom: 1.5em;
+  background: #e5ecf9;
+}
+/* line 44, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp div.border {
+  padding-right: 4px;
+  margin-right: 5px;
+  border-right: 1px solid #eeeeee;
+}
+/* line 47, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp div.colborder {
+  padding-right: 28px;
+  margin-right: 29px;
+  border-right: 1px solid #eeeeee;
+}
+/* line 49, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp hr {
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
+}
+/* line 51, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp hr.space {
+  background: #dddddd;
+  color: #dddddd;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: 0.1em;
+  margin: 0 0 1.45em;
+  border: none;
+  background: white;
+  color: white;
+  visibility: hidden;
+}
+/* line 53, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_scaffolding.scss */
+body.bp form.inline {
+  line-height: 3;
+}
+/* line 6, ../../../../../.rvm/gems/ree-1.8.7-2011.03@clearcats/gems/compass-0.10.5/frameworks/blueprint/stylesheets/blueprint/_form.scss */
+body.bp form.inline p {
+  margin-bottom: 0;
+}
+
+/* pagination */
+/* line 3, ../../../app/stylesheets/partials/_pagination.scss */
+.pagination {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 0.5em;
+  margin: 3px;
+  text-align: left;
+}
+/* line 9, ../../../app/stylesheets/partials/_pagination.scss */
+.pagination a {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #aad;
+  text-decoration: none;
+  color: #009;
+}
+/* line 17, ../../../app/stylesheets/partials/_pagination.scss */
+.pagination a:hover,
+.pagination a:active {
+  border: 1px solid #009;
+  color: black;
+}
+/* line 21, ../../../app/stylesheets/partials/_pagination.scss */
+.pagination span.current {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #009;
+  font-weight: bold;
+  background-color: #009;
+  color: white;
+}
+/* line 29, ../../../app/stylesheets/partials/_pagination.scss */
+.pagination span.disabled {
+  padding: 2px 5px 2px 5px;
+  margin: 2px;
+  border: 1px solid #eee;
+  color: #ddd;
+}
+
+/* line 37, ../../../app/stylesheets/partials/_pagination.scss */
+.page_entries_info {
+  float: right;
+  padding-top: 0.25em;
+  padding-right: 0.5em;
+}
+
+/* line 3, ../../../app/stylesheets/partials/_people.scss */
+.search_form_show_toggle,
+.search_form_hide_toggle {
+  float: right;
+  padding-right: 1em;
+  margin-top: -1em;
+}
+
+/* line 10, ../../../app/stylesheets/partials/_people.scss */
+#search_by,
+#search_results {
+  color: black;
+  font-variant: small-caps;
+  text-decoration: underline;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 0.25em;
+}
+
+/* line 19, ../../../app/stylesheets/partials/_people.scss */
+#investigator_upload {
+  padding: 1em;
+  border: 1px solid #ccc;
+}
+/* line 22, ../../../app/stylesheets/partials/_people.scss */
+#investigator_upload #search {
+  float: right;
+}
+
+/* line 27, ../../../app/stylesheets/partials/_people.scss */
+#upload_error_log {
+  text-align: right;
+}
+/* line 29, ../../../app/stylesheets/partials/_people.scss */
+#upload_error_log a {
+  color: maroon;
+}
+/* line 32, ../../../app/stylesheets/partials/_people.scss */
+#upload_error_log a:hover {
+  color: pink !important;
+}
+
+/* line 37, ../../../app/stylesheets/partials/_people.scss */
+#people_search_form {
+  padding: 0.5em;
+}
+
+/* line 41, ../../../app/stylesheets/partials/_people.scss */
+form.faculty_search {
+  margin: 1.5em 0;
+}
+
+/* line 45, ../../../app/stylesheets/partials/_people.scss */
+.era_commons_username_search_form {
+  margin: 1.5em 0;
+}
+
+/* line 52, ../../../app/stylesheets/partials/_people.scss */
+.span-5 select,
+.span-6 select,
+.span-7 select,
+.span-8 select {
+  width: 310px;
+}
+
+/* line 57, ../../../app/stylesheets/partials/_people.scss */
+select#search_service_rendered,
+select#search_disadvantaged_background {
+  width: 5em;
+}
+
+/* line 61, ../../../app/stylesheets/partials/_people.scss */
+.alt {
+  font-size: 0.8em;
+}
+
+/* line 65, ../../../app/stylesheets/partials/_people.scss */
+#specialty_autocomplete {
+  width: 20em;
+}
+
+/* line 69, ../../../app/stylesheets/partials/_people.scss */
+.tooltip .instructions p {
+  margin-bottom: 1em;
+}
+
+/* line 73, ../../../app/stylesheets/partials/_people.scss */
+.ui-autocomplete {
+  background-color: white;
+  border: 2px solid darkblue;
+}
+
+/* line 78, ../../../app/stylesheets/partials/_people.scss */
+#trainee_header {
+  margin: 0.5em 0;
+  color: crimson;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+/* line 85, ../../../app/stylesheets/partials/_people.scss */
+.trainee_toggler a {
+  font-size: 1.25em;
+  text-decoration: none;
+}
+
+/* line 90, ../../../app/stylesheets/partials/_people.scss */
+.trainee_fields {
+  display: none;
+}
+/* line 92, ../../../app/stylesheets/partials/_people.scss */
+.trainee_fields a.icon_link {
+  font-size: 1em !important;
+}
+/* line 95, ../../../app/stylesheets/partials/_people.scss */
+.trainee_fields a {
+  font-size: 1.25em;
+  text-decoration: none;
+}
+
+/* line 101, ../../../app/stylesheets/partials/_people.scss */
+.trainee_section {
+  margin-top: 1em;
+  border-top: 1px solid #ddd;
+}
+/* line 104, ../../../app/stylesheets/partials/_people.scss */
+.trainee_section h4 {
+  margin: 0.5em 0;
+}
+
+/* line 109, ../../../app/stylesheets/partials/_people.scss */
+h4.section_header {
+  margin: 0.5em 0;
+}
+
+/* line 113, ../../../app/stylesheets/partials/_people.scss */
+.organizational_units {
+  padding: 0.5em 0 0.75em 0.5em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #ddd;
+  font-size: 1.125em;
+}
+
+/* line 120, ../../../app/stylesheets/partials/_people.scss */
+#search_awards_activity_code_id_equals {
+  width: 17em;
+}
+
+/* line 124, ../../../app/stylesheets/partials/_people.scss */
+hr {
+  margin-bottom: 0.25em;
+}
+
+/* line 128, ../../../app/stylesheets/partials/_people.scss */
+.status_bar {
+  margin-top: 10px;
+  border: 3px solid gray;
+}
+
+/* line 133, ../../../app/stylesheets/partials/_people.scss */
+.client_menu {
+  padding-left: 1em;
+}
+/* line 135, ../../../app/stylesheets/partials/_people.scss */
+.client_menu .span-24 {
+  margin-bottom: 0.5em;
+}
+/* line 138, ../../../app/stylesheets/partials/_people.scss */
+.client_menu .index {
+  display: inline-block;
+  width: 1.25em;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5em;
+  margin-top: -15px;
+  background-color: lightblue;
+  border: 1px solid gray;
+  border-radius: 2em;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+}
+/* line 150, ../../../app/stylesheets/partials/_people.scss */
+.client_menu a {
+  text-decoration: none;
+}
+/* line 153, ../../../app/stylesheets/partials/_people.scss */
+.client_menu a:hover {
+  color: orange;
+}
+/* line 156, ../../../app/stylesheets/partials/_people.scss */
+.client_menu a.index:hover {
+  background-color: darkslateblue;
+}
+/* line 159, ../../../app/stylesheets/partials/_people.scss */
+.client_menu .active {
+  background-color: darkblue;
+}
+/* line 162, ../../../app/stylesheets/partials/_people.scss */
+.client_menu .task {
+  display: inline-block;
+}
+/* line 165, ../../../app/stylesheets/partials/_people.scss */
+.client_menu div {
+  text-align: center;
+}
+
+/* line 170, ../../../app/stylesheets/partials/_people.scss */
+.client_task {
+  font-size: 1.125em;
+  color: darkblue;
+}
+/* line 173, ../../../app/stylesheets/partials/_people.scss */
+.client_task div {
+  border-bottom: 1px solid white;
+  text-align: center;
+}
+/* line 177, ../../../app/stylesheets/partials/_people.scss */
+.client_task a {
+  text-decoration: none;
+}
+
+/* line 4, ../../../app/stylesheets/partials/_publications.scss */
+.publication_form .page_section {
+  margin: 0.5em 0.5em 0 0;
+}
+/* line 6, ../../../app/stylesheets/partials/_publications.scss */
+.publication_form .page_section #modal_edit_form {
+  margin-top: 0;
+}
+
+/* line 12, ../../../app/stylesheets/partials/_publications.scss */
+.publication_record {
+  width: 1110px;
+  float: left;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: white;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+
+/* line 22, ../../../app/stylesheets/partials/_publications.scss */
+#publication_citation_cnt {
+  width: 2em;
+}
+
+/* line 27, ../../../app/stylesheets/partials/_publications.scss */
+.ctsa_reportable,
+.identification {
+  width: 49%;
+  float: left;
+  min-height: 10em;
+  padding-bottom: 5px;
+}
+
+/* line 34, ../../../app/stylesheets/partials/_publications.scss */
+.publication {
+  width: 1100px;
+  float: left;
+  border-top: 1px dashed #dcdcdc;
+  padding: 5px;
+}
+
+/* line 2, ../../../app/stylesheets/partials/_reports.scss */
+.ctsa_report_form .container {
+  padding: 1em 0;
+}
+/* line 5, ../../../app/stylesheets/partials/_reports.scss */
+.ctsa_report_form input[type="checkbox"] {
+  top: 0;
+}
+/* line 8, ../../../app/stylesheets/partials/_reports.scss */
+.ctsa_report_form input[type="text"] {
+  width: 4em;
+}
+/* line 11, ../../../app/stylesheets/partials/_reports.scss */
+.ctsa_report_form tfoot tr td {
+  padding-top: 0.5em;
+}
+
+/* line 16, ../../../app/stylesheets/partials/_reports.scss */
+.summary {
+  border-bottom: 1px solid #ececec;
+  margin: 1em 0;
+  padding-bottom: 1em;
+}
+
+/* Flash Messages */
+/* line 5, ../../../app/stylesheets/partials/_services.scss */
+.message {
+  padding: 0.5em;
+  text-align: center;
+  margin: .125em auto 2em auto;
+}
+
+/* line 11, ../../../app/stylesheets/partials/_services.scss */
+.cost_and_effort_summary {
+  height: 3em;
+}
+/* line 13, ../../../app/stylesheets/partials/_services.scss */
+.cost_and_effort_summary h4 {
+  margin-bottom: 0;
+}
+
+/* line 18, ../../../app/stylesheets/partials/_services.scss */
+.status_bar {
+  margin-top: 10px;
+  border: 3px solid gray;
+}
+
+/* line 23, ../../../app/stylesheets/partials/_services.scss */
+.service_header {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 28, ../../../app/stylesheets/partials/_services.scss */
+.service_header h3 {
+  line-height: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+/* line 35, ../../../app/stylesheets/partials/_services.scss */
+.service_menu .span-24 {
+  margin-bottom: 0.5em;
+}
+/* line 38, ../../../app/stylesheets/partials/_services.scss */
+.service_menu .index {
+  display: inline-block;
+  width: 1.25em;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5em;
+  margin-left: 60px;
+  margin-top: -15px;
+  background-color: lightblue;
+  border: 1px solid gray;
+  border-radius: 2em;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+}
+/* line 51, ../../../app/stylesheets/partials/_services.scss */
+.service_menu .active {
+  background-color: darkblue;
+}
+/* line 54, ../../../app/stylesheets/partials/_services.scss */
+.service_menu .task {
+  display: inline-block;
+}
+/* line 57, ../../../app/stylesheets/partials/_services.scss */
+.service_menu a {
+  text-decoration: none;
+}
+/* line 60, ../../../app/stylesheets/partials/_services.scss */
+.service_menu a:hover {
+  color: orange;
+}
+/* line 63, ../../../app/stylesheets/partials/_services.scss */
+.service_menu a.index:hover {
+  background-color: darkslateblue;
+}
+
+/* line 68, ../../../app/stylesheets/partials/_services.scss */
+.service_task {
+  font-size: 1.125em;
+  color: darkblue;
+}
+/* line 71, ../../../app/stylesheets/partials/_services.scss */
+.service_task div {
+  border-bottom: 1px solid white;
+  text-align: center;
+}
+/* line 75, ../../../app/stylesheets/partials/_services.scss */
+.service_task a {
+  text-decoration: none;
+}
+
+/* line 80, ../../../app/stylesheets/partials/_services.scss */
+.services_links {
+  font-size: 1.25em;
+}
+/* line 82, ../../../app/stylesheets/partials/_services.scss */
+.services_links span {
+  margin: 0 0.25em;
+  padding: 0 0.25em;
+  text-decoration: none;
+}
+/* line 87, ../../../app/stylesheets/partials/_services.scss */
+.services_links a {
+  margin: 0 0.25em;
+  padding: 0 0.25em;
+  text-decoration: none;
+}
+/* line 92, ../../../app/stylesheets/partials/_services.scss */
+.services_links a:hover {
+  color: orange;
+}
+/* line 95, ../../../app/stylesheets/partials/_services.scss */
+.services_links span.divider {
+  border: 1px solid #ccc;
+  padding: 0;
+}
+
+/* line 101, ../../../app/stylesheets/partials/_services.scss */
+.awards select {
+  width: 25em;
+}
+
+/* line 105, ../../../app/stylesheets/partials/_services.scss */
+.service_question {
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+/* line 110, ../../../app/stylesheets/partials/_services.scss */
+.choices {
+  font-size: 1.25em;
+}
+
+/* line 114, ../../../app/stylesheets/partials/_services.scss */
+#modal_window {
+  display: none;
+  height: 35em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-size: 1.125em;
+}
+/* line 122, ../../../app/stylesheets/partials/_services.scss */
+#modal_window textarea,
+#modal_window select,
+#modal_window input {
+  font-size: 1.125em !important;
+}
+/* line 125, ../../../app/stylesheets/partials/_services.scss */
+#modal_window .buttons {
+  width: 765px;
+}
+/* line 128, ../../../app/stylesheets/partials/_services.scss */
+#modal_window p {
+  margin: 0 0 0.5em 0;
+}
+
+/* line 133, ../../../app/stylesheets/partials/_services.scss */
+.blockMsg {
+  width: 800px !important;
+  margin-left: -400px !important;
+}
+
+/* line 138, ../../../app/stylesheets/partials/_services.scss */
+#modal_edit_form {
+  margin-top: 2em;
+}
+/* line 140, ../../../app/stylesheets/partials/_services.scss */
+#modal_edit_form .records {
+  width: 750px;
+}
+/* line 142, ../../../app/stylesheets/partials/_services.scss */
+#modal_edit_form .records .note textarea {
+  height: 5em !important;
+}
+/* line 147, ../../../app/stylesheets/partials/_services.scss */
+#modal_edit_form #activity_name {
+  width: 20em;
+}
+/* line 151, ../../../app/stylesheets/partials/_services.scss */
+#modal_edit_form .container {
+  width: 785px;
+}
+
+/* line 156, ../../../app/stylesheets/partials/_services.scss */
+.header_option {
+  top: 0;
+  right: 0;
+  background-color: white;
+  margin-top: .25em;
+  margin-right: 2em;
+  padding: 0.25em;
+  position: absolute;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+
+/* line 169, ../../../app/stylesheets/partials/_services.scss */
+.header_option:hover {
+  background-color: aliceblue;
+}
+
+/* line 174, ../../../app/stylesheets/partials/_services.scss */
+.edit_modal_form_add_link {
+  float: right;
+}
+
+/* line 178, ../../../app/stylesheets/partials/_services.scss */
+#awards h3 {
+  margin-bottom: 0.25em;
+}
+
+/* line 182, ../../../app/stylesheets/partials/_services.scss */
+.datepicker {
+  width: 7.5em !important;
+}
+
+/* line 186, ../../../app/stylesheets/partials/_services.scss */
+.trainee_section {
+  margin: 1em 0;
+}
+/* line 188, ../../../app/stylesheets/partials/_services.scss */
+.trainee_section b {
+  text-decoration: underline;
+}
+
+/* line 193, ../../../app/stylesheets/partials/_services.scss */
+.publication_header {
+  font-size: 1.25em;
+}
+
+/* line 199, ../../../app/stylesheets/partials/_services.scss */
+.approvals select {
+  width: 10em;
+}
+/* line 202, ../../../app/stylesheets/partials/_services.scss */
+.approvals input {
+  width: 14em;
+}
+
+/*
+TODO: determine where this is relevant
+.buttons {
+  text-align: right;
+  margin: 0.75em 2em 1em 0;;
+}
+*/
+/* line 215, ../../../app/stylesheets/partials/_services.scss */
+#service_search .buttons {
+  text-align: left;
+}
+
+/* line 219, ../../../app/stylesheets/partials/_services.scss */
+ul.ou_service_lines li {
+  list-style-type: none;
+}
+
+/* line 223, ../../../app/stylesheets/partials/_services.scss */
+.new_activity_link {
+  float: left;
+  width: 100%;
+}
+
+/* line 228, ../../../app/stylesheets/partials/_services.scss */
+.note {
+  min-height: 4em;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5em;
+}
+
+/* line 234, ../../../app/stylesheets/partials/_services.scss */
+.activity_record .field {
+  padding-left: 1em;
+}
+
+/* line 3, ../../../app/stylesheets/partials/_service_lines.scss */
+.sub_row_even_record td {
+  border-top: 1px solid whitesmoke;
+}
+/* line 6, ../../../app/stylesheets/partials/_service_lines.scss */
+.sub_row_even_record li {
+  list-style: none;
+}
+
+/* line 12, ../../../app/stylesheets/partials/_service_lines.scss */
+.sub_row_odd_record td {
+  border-top: 1px solid white;
+}
+/* line 15, ../../../app/stylesheets/partials/_service_lines.scss */
+.sub_row_odd_record li {
+  list-style: none;
+}
+
+/* line 20, ../../../app/stylesheets/partials/_service_lines.scss */
+.activity_types {
+  margin-top: 0.5em;
+}
+/* line 22, ../../../app/stylesheets/partials/_service_lines.scss */
+.activity_types ul {
+  list-style-type: none;
+}
+/* line 25, ../../../app/stylesheets/partials/_service_lines.scss */
+.activity_types li {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin-bottom: 0.5em;
+  background-color: gainsboro;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+
+/* line 35, ../../../app/stylesheets/partials/_service_lines.scss */
+.nested_attributes_field label.date_reminder {
+  width: 10em;
+  display: inline-block;
+  margin-left: 2em;
+}
+/* line 40, ../../../app/stylesheets/partials/_service_lines.scss */
+.nested_attributes_field .integer_input {
+  width: 3em !important;
+}
+
+/* Tabular Data */
+/* line 2, ../../../app/stylesheets/partials/_tabular_records.scss */
+.records_header {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  min-height: 2em;
+}
+
+/* line 9, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* line 12, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records td {
+  padding: 0.125em 0.25em;
+}
+/* line 15, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records td.action {
+  width: 5em;
+}
+/* line 18, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records th {
+  background-color: lightgray;
+}
+/* line 22, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records th.select_record,
+table.records td.select_record {
+  width: 5em;
+}
+/* line 25, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records tr {
+  border: 1px solid lightgray;
+}
+/* line 28, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records tr.even_record {
+  background-color: whitesmoke;
+}
+/* line 31, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records tr.odd_record {
+  background-color: white;
+}
+/* line 34, ../../../app/stylesheets/partials/_tabular_records.scss */
+table.records tr.current_record {
+  background-color: aliceblue;
+}
+
+/* tooltip styling */
+/* line 3, ../../../app/stylesheets/partials/_tooltip.scss */
+.tooltip {
+  background-color: aliceblue;
+  z-index: 999;
+  display: none;
+  padding: 10px;
+  width: 310px;
+  font-size: 11px;
+  color: black;
+  font-weight: bold;
+  border: 3px solid black;
+  border-radius: 1em;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  /* a .label element inside tooltip */
+}
+/* line 17, ../../../app/stylesheets/partials/_tooltip.scss */
+.tooltip .label {
+  color: purple;
+  width: 35px;
+}
+/* line 21, ../../../app/stylesheets/partials/_tooltip.scss */
+.tooltip a {
+  font-size: 11px;
+  font-weight: bold;
+}
+/* line 25, ../../../app/stylesheets/partials/_tooltip.scss */
+.tooltip h4 {
+  margin-bottom: 0.5em;
+  padding: 0;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* line 2, ../../../app/stylesheets/partials/_welcome.scss */
+.decision {
+  text-align: center;
+  font-size: 1.75em;
+}
+
+/* line 8, ../../../app/stylesheets/partials/_welcome.scss */
+.welcome .container {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 2px solid #bbb;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  width: 100%;
+}
+/* line 16, ../../../app/stylesheets/partials/_welcome.scss */
+.welcome .container .column {
+  margin-left: 2em;
+}
+/* line 19, ../../../app/stylesheets/partials/_welcome.scss */
+.welcome .container h4 {
+  text-decoration: underline;
+  text-align: center;
+}
+/* line 24, ../../../app/stylesheets/partials/_welcome.scss */
+.welcome .page_section {
+  min-height: 14em;
+}
+/* line 27, ../../../app/stylesheets/partials/_welcome.scss */
+.welcome .front_page_section {
+  min-height: 2em;
+}
+
+/* line 32, ../../../app/stylesheets/partials/_welcome.scss */
+.hello {
+  font-size: 1.125em;
+  padding-left: 2em;
+}
+
+/* line 37, ../../../app/stylesheets/partials/_welcome.scss */
+.front_page_decision {
+  font-size: 1.5em;
+  padding-left: 0.35em;
+  margin-top: 2em;
+}
+
+/* line 43, ../../../app/stylesheets/partials/_welcome.scss */
+.front_page_section {
+  border: 1px solid #ccc;
+  margin: 2em 0.25em;
+  padding: 0.75em 0.25em 0 0.75em;
+  background-color: whitesmoke;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
+}
+
+/* line 51, ../../../app/stylesheets/partials/_welcome.scss */
+.front_page_section {
+  text-align: center;
+}
+/* line 53, ../../../app/stylesheets/partials/_welcome.scss */
+.front_page_section h3 {
+  margin: 0;
+}
+/* line 55, ../../../app/stylesheets/partials/_welcome.scss */
+.front_page_section h3 a {
+  text-decoration: none;
+}
+/* line 58, ../../../app/stylesheets/partials/_welcome.scss */
+.front_page_section h3 a:hover {
+  color: orange;
+}
+
+/* line 64, ../../../app/stylesheets/partials/_welcome.scss */
+#investigator_upload {
+  margin: 2em 0;
+}
+
+/* line 68, ../../../app/stylesheets/partials/_welcome.scss */
+table.sample_upload {
+  margin-top: 0.5em;
+}
+/* line 71, ../../../app/stylesheets/partials/_welcome.scss */
+table.sample_upload th,
+table.sample_upload td {
+  border: 1px solid black;
+}

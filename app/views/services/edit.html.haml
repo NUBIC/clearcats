@@ -1,10 +1,9 @@
 - javascript "nested_attributes", "ui/services"
-- stylesheet "services", "people"
 - title "Edit Service"
 
 = render "service_header"
 
-.page_section
+.page_section.span-23
 
   %ul
     %li
@@ -12,30 +11,29 @@
     %li
       = link_to "Manage Activities", activities_service_path(@service), :class => "list_link icon_link"
 
-.page_section
+.page_section.span-23
   = form_for @service do |f|
-    .container
-      .span-4
+    .span-4
+      %p
+        = f.label :entered_on, "Service Date"
+        %br
+        = f.text_field :entered_on, :class => "datepicker"
+
+      %p
+        = f.label :completed_on, "Completion Date"
+        %br
+        = f.text_field :completed_on, :class => "datepicker"
+
+      .button
+        = f.submit "Save"
+
+    - projects = Project.active.for_service_line(@service.service_line)
+    - unless projects.empty?
+      .span.19.last
         %p
-          = f.label :entered_on, "Service Date"
+          = f.label :project_id, "Project (if applicable)"
           %br
-          = f.text_field :entered_on, :class => "datepicker"
-    
-        %p
-          = f.label :completed_on, "Completion Date"
-          %br
-          = f.text_field :completed_on, :class => "datepicker"
-  
-        .button
-          = f.submit "Save"
-      
-      - projects = Project.active.for_service_line(@service.service_line)
-      - unless projects.empty?
-        .span.20.last
-          %p
-            = f.label :project_id, "Project (if applicable)"
-            %br
-            = f.select :project_id,  projects.sort_by{ |p| p.name }.map{ |u| [u.to_s, u.id] }, { :include_blank => "-- Select Project --" }
+          = f.select :project_id,  projects.sort_by{ |p| p.name }.map{ |u| [u.to_s, u.id] }, { :include_blank => "-- Select Project --" }
 
 
 :javascript

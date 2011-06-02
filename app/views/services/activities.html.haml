@@ -1,4 +1,3 @@
-- stylesheet "services", "activities"
 - javascript "nested_attributes", "ui/services", 'ui/activities'
 - title "Activities for #{@service.to_s(:short)} - #{@person}"
 
@@ -9,7 +8,7 @@
 - else
   .records
     - @activities.each do |a|
-      .page_section.span-24
+      .page_section.span-23.last
         = render '/services/activity', :activity => a, :service => @service
 .new_activity_link
   = link_to 'New Activity', new_activity_service_path(@service), {:title => "New Activity for #{@person.to_s}", :class => "edit_modal_form_link add_link icon_link"}

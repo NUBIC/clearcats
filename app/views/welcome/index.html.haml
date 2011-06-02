@@ -1,4 +1,3 @@
-- stylesheet "welcome"
 - title "Welcome to clearcats!"
 
 .welcome
@@ -15,18 +14,18 @@
     - if current_user.permit?(:Admin, :User)
     
       .container
-        .span-9.column
+        .span-7.column
           .front_page_section
             %h3
               - activity_count = Activity.past_due.for_organizational_units(@user_organizational_units.map(&:id)).count
               = link_to "#{pluralize(activity_count, 'Past Due Activity')}", past_due_activities_path
-        .span-9.column
+        .span-7.column
           .front_page_section
             %h3
               - activity_count = Activity.upcoming.for_organizational_units(@user_organizational_units.map(&:id)).count
               = link_to "#{pluralize(activity_count, 'Upcoming Activity')}", upcoming_activities_path
       .container
-        .span-9.column
+        .span-7.column
           %h4
             Investigators
           .front_page_section
@@ -36,7 +35,7 @@
             .front_page_section
               %h3.create_service_line
                 = link_to "Manage Investigators", people_path
-        .span-9.column
+        .span-7.column
           %h4
             Projects and Services
           .front_page_section
@@ -49,7 +48,7 @@
           .front_page_section
             %h3.add_event
               = link_to "Add Activity/Event", new_activity_path
-        .span-9.last.column
+        .span-7.last.column
           - if current_user.permit?(:Admin)
             %h4
               Maintenance          

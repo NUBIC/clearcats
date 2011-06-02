@@ -1,0 +1,132 @@
+div#banner_menu {
+  float: left; 
+  z-index: 3; 
+  margin: 0;
+  width: 400px;
+ /* background-image: url('../images/banner_menu.jpg'); */
+}
+
+.ddsmoothmenu {
+  font: bold 11px Verdana;
+  background: #656565; /*background of menu bar (default state)*/
+  height: 29px;
+  text-align: left;
+  ul {
+    z-index:100;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li {
+      position: relative;
+      display: inline;
+      float: left;
+    }
+    a {
+      font: 13px Verdana;
+      display: block;
+      background: #656565; /*background of menu items (default state)*/
+      color: white;
+      padding-top: 8px;
+      padding-left: 8px;
+      padding-bottom: 4px;
+      padding-right:8px;
+      margin-left:2px;
+      border-right: 1px solid #778;
+      color: #2d2b2b;
+      text-decoration: none;
+    }
+    a:link,
+    a:visited{
+      color: white;
+    }
+    /*CSS class that's dynamically added to the currently active menu items' LI A element*/
+    a.selected { 
+      background: black; 
+      color: white;
+    }
+    /*background of menu items during onmouseover (hover state)*/
+    a:hover {
+      background: black; 
+      color: white;
+    }
+    /*1st sub level menu*/
+    ul {
+      position: absolute;
+      left: 0;
+      display: none; /*collapse all sub menus to begin with*/
+      visibility: hidden;
+      width: 200px !important;
+      /*Sub level menu list items (undo style from Top level List Items)*/
+      li {
+        display: list-item;
+        float: none;
+      }
+      /*All subsequent sub menu levels vertical offset after 1st level sub menu */
+      ul {
+        top: 0;
+        li {
+          /* Sub level menu links style */
+          a {
+            font: normal 13px Verdana;
+            width: 200px;
+            padding: 5px;
+            margin: 0;
+            border-top-width: 0;
+            border-bottom: 1px solid gray;
+          }
+        }
+      }
+    }
+  }
+}
+
+img.downarrowclass {
+  background-image: url('/clearcats/images/down.gif') !important;
+  background-repeat: no-repeat;  
+  width: 12px;
+  height: 12px;
+}
+
+img.rightarrowclass {
+  background-image: url('/clearcats/images/right.gif') !important;
+  background-repeat: no-repeat;  
+  width: 12px;
+  height: 12px;
+}
+
+/* ######### CSS classes applied to down and right arrow images  ######### */
+
+.downarrowclass {
+  position: absolute;
+  top: 12px;
+  right: 7px;
+}
+
+.rightarrowclass {
+  position: absolute;
+  top: 6px;
+  right: 5px;
+}
+
+/* ######### CSS for shadow added to sub menus  ######### */
+
+.ddshadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  background: silver;
+}
+
+.toplevelshadow { /*shadow opacity. Doesn't work in IE*/
+  opacity: 0.8;
+}
+
+/* Holly Hack for IE \*/
+* html .ddsmoothmenu{height: 1%;} /*Holly Hack for IE7 and below*/
+
+/*IE6 hack to get sub menu links to behave correctly*/
+* html .ddsmoothmenu ul li a { 
+  display: inline-block;
+}

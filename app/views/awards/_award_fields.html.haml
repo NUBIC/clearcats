@@ -1,5 +1,5 @@
   
-.span-9
+.span-7
   = f.hidden_field :person_id
   = hidden_field_tag :service_id, @service.id if @service
   
@@ -51,8 +51,8 @@
       - f.object.total_project_cost = f.object.total_amount if f.object.total_project_cost.blank?
       = f.text_field :total_project_cost
 
-.span-9.last
-  .award_section_last
+.span-8.last
+  .award_section
     %p
       %b Award Information
     %p

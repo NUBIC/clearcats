@@ -1,0 +1,43 @@
+
+.sub_row_even_record {
+  td {
+    border-top: 1px solid whitesmoke;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.sub_row_odd_record {
+  td {
+    border-top: 1px solid white;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.activity_types {
+  margin-top: 0.5em;
+  ul {
+    list-style-type: none;
+  }
+  li {
+    border: 1px solid #ccc;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    background-color: gainsboro;
+    @include rounded-corners(.5em);
+  }
+}
+
+.nested_attributes_field {
+  label.date_reminder {
+    width: 10em;
+    display: inline-block;
+    margin-left: 2em;
+  }
+  .integer_input {
+    width: 3em !important;
+  }
+}

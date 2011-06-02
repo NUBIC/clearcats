@@ -1,0 +1,39 @@
+
+table.notes {
+  tr {
+    td {
+      vertical-align: top;
+      textarea {
+        height: 2em !important;
+        width: 90%;
+      }
+    }
+    td.label {
+      width: 12em;
+    }
+  }
+}
+
+table.key_metrics {
+  tr {
+    td {
+      vertical-align: top;
+      textarea {
+        height: 2em !important;
+        width: 90%;
+      }
+    }
+  }
+}
+
+#modal_window {
+  display: none;
+  font-size: 1.125em;
+}
+
+table.projects {
+  th.select_record,
+  td.select_record {
+    width: 12em !important;
+  }
+}

@@ -1,0 +1,41 @@
+/* pagination */
+
+.pagination {
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  padding: 0.5em;
+  margin: 3px;
+  text-align: left;
+  a {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #aad;
+    text-decoration: none;
+    color: #009;
+  }
+  a:hover, 
+  a:active {
+    border: 1px solid #009;
+    color: black;
+  }
+  span.current {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #009;
+    font-weight: bold;
+    background-color: #009;
+    color: white;
+  }
+  span.disabled {
+    padding: 2px 5px 2px 5px;
+    margin: 2px;
+    border: 1px solid #eee;
+    color: #ddd;
+  }
+}
+
+.page_entries_info {
+  float: right;
+  padding-top: 0.25em;
+  padding-right: 0.5em;
+}

@@ -1,16 +1,12 @@
 
-.notice {
-  color: maroon;
-  font-size: 1.125em;
-  margin: 0.5em 0;
-}
 
-.publication_form .page_section {
-  margin: 0.5em 0.5em 0 0;
-}
-
-.publication_form .page_section #modal_edit_form {
-  margin-top: 0;
+.publication_form {
+  .page_section {
+    margin: 0.5em 0.5em 0 0;
+    #modal_edit_form {
+      margin-top: 0;
+    }
+  }
 }
 
 .publication_record {
@@ -20,9 +16,11 @@
   padding: 5px;
   margin-bottom: 5px;
   background-color: white;
-  border-radius: .5em;
-  -moz-border-radius: .5em;
-  -webkit-border-radius: .5em;
+  @include rounded-corners(.5em);
+}
+
+#publication_citation_cnt {
+  width: 2em;
 }
 
 .ctsa_reportable,

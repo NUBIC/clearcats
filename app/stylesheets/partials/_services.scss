@@ -1,0 +1,236 @@
+
+
+/* Flash Messages */
+
+.message {
+  padding: 0.5em;
+  text-align: center;
+  margin: .125em auto 2em auto;
+}
+
+.cost_and_effort_summary {
+  height: 3em;
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+.status_bar {
+  margin-top: 10px;
+  border: 3px solid gray;
+}
+
+.service_header {
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5em;
+  margin-bottom: 0.5em;
+  h3 {
+    line-height: 1.25em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.service_menu {
+  .span-24 {
+    margin-bottom: 0.5em;
+  }
+  .index {
+    display: inline-block;
+    width: 1.25em;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+    margin-left: 60px;
+    margin-top: -15px;
+    background-color: lightblue;
+    border: 1px solid gray;
+    @include rounded-corners(2em);
+  }
+  .active {
+    background-color: darkblue;
+  }
+  .task {
+    display: inline-block;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    color: orange;
+  }
+  a.index:hover {
+    background-color: darkslateblue;
+  }
+}
+
+.service_task {
+  font-size: 1.125em;
+  color: darkblue;
+  div {
+    border-bottom: 1px solid white;
+    text-align: center;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+
+.services_links {
+  font-size: 1.25em;
+  span {
+    margin: 0 0.25em;
+    padding: 0 0.25em;
+    text-decoration: none;
+  }
+  a {
+    margin: 0 0.25em;
+    padding: 0 0.25em;
+    text-decoration: none;
+  }
+  a:hover {
+    color: orange;
+  }
+  span.divider {
+    border: 1px solid #ccc;
+    padding: 0;
+  }
+}
+
+.awards select {
+  width: 25em;
+}
+
+.service_question {
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+.choices {
+  font-size: 1.25em;
+}
+
+#modal_window {
+  display: none;
+  height: 35em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-size: 1.125em;
+  textarea,
+  select,
+  input {
+    font-size: 1.125em !important;
+  }
+  .buttons {
+    width: 765px;
+  }
+  p {
+    margin: 0 0 0.5em 0;
+  }
+}
+
+.blockMsg {
+  width: 800px !important;
+  margin-left: -400px !important;
+}
+
+#modal_edit_form {
+  margin-top: 2em;
+  .records {
+    width: 750px;
+    .note textarea {
+      height: 5em !important;
+    }
+  }
+
+  #activity_name {
+    width: 20em;
+  }
+
+  .container {
+    width: 785px;
+  }
+}
+
+.header_option {
+  top: 0;
+  right: 0;
+  background-color: white;
+
+  margin-top: .25em;
+  margin-right: 2em;
+  padding: 0.25em;
+  position: absolute;
+  border: 1px solid #ccc;
+  @include rounded-corners(.5em);
+}
+
+.header_option:hover {
+  background-color: aliceblue;
+}
+
+
+.edit_modal_form_add_link {
+  float: right;
+}
+
+#awards h3 {
+  margin-bottom: 0.25em;
+}
+
+.datepicker {
+  width: 7.5em !important;
+}
+
+.trainee_section {
+  margin: 1em 0;
+  b {
+    text-decoration: underline;
+  }
+}
+
+.publication_header {
+  font-size: 1.25em;
+}
+
+
+.approvals {
+  select {
+    width: 10em;
+  }
+  input {
+    width: 14em;
+  }
+}
+
+/*
+TODO: determine where this is relevant
+.buttons {
+  text-align: right;
+  margin: 0.75em 2em 1em 0;;
+}
+*/
+
+#service_search .buttons {
+  text-align: left;
+}
+
+ul.ou_service_lines li {
+  list-style-type: none;
+}
+
+.new_activity_link {
+  float: left;
+  width: 100%;
+}
+
+.note {
+  min-height: 4em;
+  border-top: 1px solid #ddd;
+  padding-top: 0.5em;
+}
+
+.activity_record .field {
+  padding-left: 1em;
+}

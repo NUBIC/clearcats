@@ -1,0 +1,88 @@
+
+#awards {
+  margin: 1em 0;
+  h3 {
+    padding: 0.5em 0;
+  }
+}
+
+.instructions {
+  margin: 1em 0;
+}
+
+.award_header {
+  font-size: 1.25em;
+}
+
+.award_form {
+  height: 80em;
+  padding-bottom: 1em;
+}
+
+#award_form {
+  #modal_edit_form {
+    margin-top: 0.75em;
+  }
+  select,
+  input[type="text"] {
+    width: 22em;
+  }
+  option {
+    width: 45em;
+  }
+}
+
+#award_details {
+  margin-top: 2em;
+  table {
+    margin-top: 1em;
+  }
+}
+
+#award_phs_organization_id,
+#award_activity_code_id,
+#award_non_phs_organization_id {
+  width: 24em;
+}
+
+textarea#award_grant_title {
+  width: 24em;
+  height: 3em !important;
+}
+
+.award_record {
+  border: 1px solid #ccc;
+  padding: 5px;
+  height: 25em;
+  margin-bottom: 5px;
+  background-color: white;
+  @include rounded-corners(.5em);
+}
+
+.award_section {
+  border: 1px solid #ccc;
+  margin: 0.25em 0;
+  padding: 0.5em 0.25em 0 0.75em;
+  background-color: whitesmoke;
+  @include rounded-corners(.5em);
+  p {
+    b {
+      font-size: 1.25em;
+    }
+  }
+}
+
+.organization,
+.ctsa_reportable,
+.sponsor_info,
+.project_info {
+  width: 49%;
+  float:left;
+  min-height: 8.5em;
+}
+
+.sponsor_info,
+.project_info {
+  border-top: 1px dashed #dcdcdc;
+  padding-top: 5px;
+}

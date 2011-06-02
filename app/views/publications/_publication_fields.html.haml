@@ -1,5 +1,5 @@
-.span-18
-  .span-9
+.span-16
+  .span-7
     %p
       = f.label :ctsa_reporting_years, "CTSA Reporting Years"
       %br
@@ -35,7 +35,7 @@
       = f.label :cited, "Cited #{SYSTEM_CONFIG['grant_name']} (#{SYSTEM_CONFIG['grant_number']})"
     %p
       = f.label :citation_cnt, "Citation Count"
-      = f.text_field :citation_cnt, :size => 4
+      = f.text_field :citation_cnt
   .span-9.last
     %p
       = f.label :formatted_publication_date, "Publication Date (mm/dd/yyyy)"

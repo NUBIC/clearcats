@@ -20,7 +20,7 @@
         %b Due Date
         .field
           = activity.formatted_due_date
-  .span-12.last
+  .span-11.last
     %div
       &nbsp;
     .service_line
@@ -46,10 +46,10 @@
         = pluralize(activity.hours, "Hour")
         = pluralize(activity.minutes, "Minute")
   - unless activity.notes.empty?
-    .span-24
+    .span-23
       .notes_toggle
         = link_to "Show Notes", "javascript:void(0);", { :class => "show_notes_toggle toggle_open_link icon_link" }
-      .notes_section.span-22.hide
+      .notes_section.hide
         = link_to "Hide Notes", "javascript:void(0);", { :class => "hide_notes_toggle toggle_closed_link icon_link" }
         %br
         %b

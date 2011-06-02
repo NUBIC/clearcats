@@ -10,11 +10,9 @@ gem "bcdatabase", "~> 1.0.5"
 gem "bcsec", "~> 2.1.1"
 gem "bcsec-rails", ">= 3.0"
 gem "bundler", "~> 1.0.0"
-
 gem "chronic"
-
+gem "compass", ">= 0.10.5"
 gem 'exception_notification', :require => 'exception_notifier'
-
 gem "fastercsv"
 gem "haml", "~> 3.0.18"
 gem "meta_search"
@@ -22,7 +20,6 @@ gem "nokogiri"
 gem "paper_trail", "~> 2.0"
 gem "paperclip"
 gem "pg"
-
 gem "ruby-oci8"
 gem "state_machine"
 gem "surveyor", :git => "git://github.com/NUBIC/surveyor.git", :branch => "rails3"

@@ -1,0 +1,23 @@
+
+textarea {
+  height: 10em !important;
+}
+
+input[type="checkbox"], 
+input[type="radio"], 
+input.checkbox, 
+input.radio {
+  top: 0;
+}
+
+table.nested {
+  width: 50%;
+  margin-top: 1em;
+}
+
+/* Nested Forms */
+.nested {
+  padding: 2em;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
