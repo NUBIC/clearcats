@@ -11,7 +11,8 @@ Clearcats::Application.configure do
   # Full error reports are disabled and caching is turned on
   config.action_controller.consider_all_requests_local = false
   config.action_controller.perform_caching             = true
-  config.action_view.cache_template_loading            = true
+  # config.action_view.cache_template_loading            = true
+  #   deploy causes: undefined method `cache_template_loading=' for ActionView::Base:Class
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
