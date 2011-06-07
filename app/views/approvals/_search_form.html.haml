@@ -1,41 +1,41 @@
 #award_search_form
   = form_for @search, :url => {:controller => "approvals", :action => "search"}, :method => :get do |f|
     .span-24
-      .span-5
+      .span-4
         = f.label :person_first_name_like, "First Name"
       .span-7
         = f.text_field :person_first_name_like
-      .span-6
+      .span-5
         = f.label :person_last_name_like, "Last Name"
       .span-6.last
         = f.text_field :person_last_name_like
 
     .span-24
-      .span-5
+      .span-4
         = f.label :approval_type_equals, "Approval Type"
       .span-7
         = f.select(:approval_type_equals, Approval::TYPES, { :include_blank => "-- Select Type --"})
-      .span-6
+      .span-5
         = f.label :tracking_number_like, "Tracking Number"
       .span-6.last
         = f.text_field :tracking_number_like
         
     .span-24
-      .span-5
+      .span-4
         = f.label :institution_like, "Institution"
       .span-7
         = f.text_field :institution_like
-      .span-6
+      .span-5
         = f.label :project_title_like, "Project Title"
       .span-6.last
         = f.text_field :project_title_like
         
     .span-24
-      .span-5
+      .span-4
         = f.label :all_for_reporting_year, "CTSA Reporting Year"
       .span-7
         = f.select :all_for_reporting_year, Approval::REPORTING_YEARS.collect{ |yr| [yr.to_i, yr.to_s]}, { :include_blank => "--" }
-      .span-6
+      .span-5
         = f.label :nucats_assisted_eq, "NUCATS Assisted"
       .span-6.last
         = f.check_box :nucats_assisted_eq

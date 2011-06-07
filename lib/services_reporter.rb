@@ -1,9 +1,10 @@
 module ServicesReporter
+  include ApplicationHelper
   
   def services_summary_by_organizational_unit
     series_data = []
     OrganizationalUnit.all.each do |ou|
-      series_data << { "name" => ou.abbreviation, "data" => Service.organizational_unit_id_equals(ou.id).count, "url" => "/services?search[service_line_organizational_unit_id_eq_any][]=#{ou.id}" }
+      series_data << { "name" => ou.abbreviation, "data" => Service.organizational_unit_id_equals(ou.id).count, "url" => "#{cc_prefix_path}/services?search[service_line_organizational_unit_id_eq_any][]=#{ou.id}" }
     end
     series_data.to_json
   end
@@ -47,7 +48,7 @@ module ServicesReporter
     total = raw.values.inject {|sum, n| sum + n }
     
     series_data = []
-    raw.each { |name, value| series_data << { "name" => name, "y" => round((value.to_f/total.to_f) * 100, 2), "url" => "/reports/service_lines_for_organizational_unit?ou=#{name}" } }
+    raw.each { |name, value| series_data << { "name" => name, "y" => round((value.to_f/total.to_f) * 100, 2), "url" => "#{cc_prefix_path}/reports/service_lines_for_organizational_unit?ou=#{name}" } }
     series_data.to_json
   end
   
@@ -59,7 +60,7 @@ module ServicesReporter
     total = raw.values.inject {|sum, n| sum + n }
     
     series_data = []
-    raw.each { |name, value| series_data << { "name" => name, "y" => round((value.to_f/total.to_f) * 100, 2), "url" => "/services?search[service_line_name_like]=#{name}" } }
+    raw.each { |name, value| series_data << { "name" => name, "y" => round((value.to_f/total.to_f) * 100, 2), "url" => "#{cc_prefix_path}/services?search[service_line_name_like]=#{name}" } }
     series_data.to_json
   end
   

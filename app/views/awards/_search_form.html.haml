@@ -3,51 +3,51 @@
 #award_search_form
   = form_for @search, :url => { :controller => :awards, :action => :search }, :method => :get do |f|
     .span-24
-      .span-5
+      .span-4
         = f.label :person_first_name_like, "First Name"
       .span-7
         = f.text_field :person_first_name_like
-      .span-6
+      .span-5
         = f.label :person_last_name_like, "Last Name"
       .span-6.last
         = f.text_field :person_last_name_like
 
     .span-24
-      .span-5
+      .span-4
         = f.label :phs_organization_id_equals, "PHS Organization"
       .span-7
         = f.select(:phs_organization_id_equals, @phs_orgs.collect { |a| [ a.to_s, a.id.to_s ] }, { :include_blank => "-- Select PHS Award Organizational Code --" })
-      .span-6
+      .span-5
         = f.label :activity_code_id_equals, "Activity Code"
       .span-6.last
         = f.select(:activity_code_id_equals, @activity_codes.collect { |a| [ a.to_s, a.id ] }, { :include_blank => "-- Select PHS Award --"}) 
         
     .span-24
-      .span-5
+      .span-4
         = f.label :non_phs_organization_id_equals, "Non PHS Organization"
       .span-7
         = f.select(:non_phs_organization_id_equals, @non_phs_orgs.collect { |a| [ a.to_s, a.id.to_s ] }, { :include_blank => "-- Select Non-PHS Award --" }) 
-      .span-6
+      .span-5
         = f.label :nucats_assisted_equals, "NUCATS Assisted"
       .span-6.last
         = f.check_box :nucats_assisted_equals
         
     .span-24
-      .span-5
+      .span-4
         = f.label :sponsor_name_like, "Sponsor"
       .span-7
         = f.text_field :sponsor_name_like
-      .span-6
+      .span-5
         = f.label :grant_title_like, "Grant Title"
       .span-6.last
         = f.text_field :grant_title_like
         
     .span-24
-      .span-5
+      .span-4
         = f.label :all_for_reporting_year, "CTSA Reporting Year"
       .span-7
         = f.select :all_for_reporting_year, Award::REPORTING_YEARS.collect{ |yr| [yr.to_i, yr.to_s]}, { :include_blank => "--" }
-      .span-6
+      .span-5
         = f.label :invalid_for_ctsa, "Invalid for CTSA Reporting"
         %span{ :class => "help_icon" }
           &nbsp;

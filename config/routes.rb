@@ -4,6 +4,10 @@ Clearcats::Application.routes.draw do
   match '/people/departments' => 'people#departments', :as => :departments
   match '/people/schools' => 'people#schools', :as => :schools
 
+  match '/awards/search' => 'awards#search'
+  match '/publications/search' => 'publications#search'
+  match '/approvals/search' => 'approvals#search'
+
   resources :activity_types do
     collection do
       post :sort

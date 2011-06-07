@@ -3,40 +3,40 @@
 #publication_search_form
   = form_for @search, :url => { :controller => :publications, :action => :search }, :method => :get do |f|
     .span-24
-      .span-5
+      .span-4
         = f.label :person_first_name_like, "First Name"
       .span-7
         = f.text_field :person_first_name_like
-      .span-6
+      .span-5
         = f.label :person_last_name_like, "Last Name"
       .span-6.last
         = f.text_field :person_last_name_like
     .span-24
-      .span-5
+      .span-4
         = f.label :pmcid_like, "PMCID"
       .span-7
         = f.text_field :pmcid_like
-      .span-6
+      .span-5
         = f.label :pmid_like, "PMID"
       .span-6.last
         = f.text_field :pmid_like
 
     .span-24
-      .span-5
+      .span-4
         = f.label :title_like, "Title"
       .span-7
         = f.text_field :title_like
-      .span-6
+      .span-5
         = f.label :abstract_like, "Abstract"
       .span-6.last
         = f.text_field :abstract_like
 
     .span-24
-      .span-5
+      .span-4
         = f.label :all_for_reporting_year, "CTSA Reporting Year"
       .span-7
         = f.select :all_for_reporting_year, Publication::REPORTING_YEARS.collect{ |yr| [yr.to_i, yr.to_s]}, { :include_blank => "--" }
-      .span-6
+      .span-5
         = f.label :invalid_for_ctsa, "Invalid for CTSA Reporting"
         %span{ :class => "help_icon" }
           &nbsp;
@@ -45,15 +45,14 @@
         = f.check_box :invalid_for_ctsa
     
     .span-24
-      .span-5
+      .span-4
         &nbsp;
       .span-7
         &nbsp;
-      .span-6
+      .span-5
         = f.label :nucats_assisted_equals, "NUCATS Assisted"
       .span-6.last
         = f.check_box :nucats_assisted_equals
-        
         
     .buttons
       = f.submit "Search", :disable_with => 'Searching...'
