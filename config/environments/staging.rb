@@ -1,15 +1,12 @@
 Clearcats::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  RAILS_RELATIVE_URL_ROOT = "/clearcats"
-
-  # Settings specified here will take precedence over those in config/environment.rb
 
   # The staging environment is meant to demo finished, "live" apps.
   # Code is not reloaded between requests
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.action_controller.consider_all_requests_local = false
+  config.consider_all_requests_local                   = false
   config.action_controller.perform_caching             = true
   # config.action_view.cache_template_loading            = true
   #   deploy causes: undefined method `cache_template_loading=' for ActionView::Base:Class
