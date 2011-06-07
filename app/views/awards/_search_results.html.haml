@@ -29,7 +29,7 @@
           = link_to "Edit", { :controller => "awards", :action => "edit", :id => award }, { :class => "edit_link icon_link" } 
         %td= award.ctsa_reporting_years.blank? ? "n/a" : award.ctsa_reporting_years.join(",")
         %td
-          = link_to award.person, person_awards_path(award.person, :view_all => true), { :class => "show_link icon_link" } 
+          = link_to award.person, person_awards_path(award.person, :view_all => true), { :class => "show_link icon_link" } if award.person
         %td= award.sponsor
         %td= award.sponsor_award_number
         %td= truncate(award.grant_title)
