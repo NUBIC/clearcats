@@ -12,6 +12,7 @@
 # User xyz123
 
 require "bundler/capistrano"
+set :bundle_without,  [:development, :test, :cucumber]
 
 set :runner, nil
 set :use_sudo, false
