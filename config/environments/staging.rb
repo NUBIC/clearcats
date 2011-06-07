@@ -1,6 +1,6 @@
 Clearcats::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.action_controller.relative_url_root = "/clearcats"
+  RAILS_RELATIVE_URL_ROOT = "/clearcats"
 
   # Settings specified here will take precedence over those in config/environment.rb
 
