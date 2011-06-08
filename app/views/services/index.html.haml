@@ -19,5 +19,6 @@
     
 :javascript
   $(function () {
-    servicesUI = new Clearcats.UI.Services({ maxDate: "+1095" });
+    var prefixPath = '#{cc_prefix_path}',
+        servicesUI = new Clearcats.UI.Services({ maxDate: "+1095", prefixPath: prefixPath });
   });

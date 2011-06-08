@@ -9,6 +9,7 @@
 
 :javascript
   $(function () {
-    var sortByUrlMap = #{publications_sort_by_url_map(@search).to_json},
-        publicationsUI = new Clearcats.UI.Publications({ sortByUrlMap: sortByUrlMap });
+    var prefixPath = '#{cc_prefix_path}',
+        sortByUrlMap = #{publications_sort_by_url_map(@search).to_json},
+        publicationsUI = new Clearcats.UI.Publications({ sortByUrlMap: sortByUrlMap, prefixPath: prefixPath });
   });

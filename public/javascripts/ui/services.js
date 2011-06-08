@@ -1,4 +1,6 @@
 Clearcats.UI.Services = function (config) {
+  
+  var prefixPath = config.prefixPath;
 
   $('.show_notes_toggle').live("click", function() {
     $(this).parent().siblings('.notes_section').show();
@@ -13,19 +15,19 @@ Clearcats.UI.Services = function (config) {
   var onsvcsuccess = function(data) {
     var activity_id = data.id
     var service_id = data.service_id
-    var url = "/services/" + service_id + "/activity?activity_id=" + activity_id;
+    var url = prefixPath + "/services/" + service_id + "/activity?activity_id=" + activity_id;
     
     // if updating existing record
     if($('div#activity_' + activity_id).exists()) {
-      $('div#activity_' + activity_id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $('div#activity_' + activity_id).html('<p>Updating . . .<img src="' + prefixPath + '/images/ajax-loader.gif" alt="Loading"></img></p>');
       $.get(url, null, function (response) {
         $('div#activity_' + activity_id).replaceWith(response);
       });
     // otherwise creating new record
     } else {
-      $('div#new_activity').html('<p>Creating new record . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $('div#new_activity').html('<p>Creating new record . . .<img src="' + prefixPath + '/images/ajax-loader.gif" alt="Loading"></img></p>');
       $.get(url, null, function (response) {
-        $('.activities').append('<div class="page_section span-24">' + response + '</div');
+        $('.activities').append('<div class="page_section span-23 last">' + response + '</div');
         $('.no_records').remove();
         $('div#new_activity').html('');
       });

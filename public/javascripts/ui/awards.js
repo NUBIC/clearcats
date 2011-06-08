@@ -1,6 +1,7 @@
 Clearcats.UI.Awards = function (config) {
 
-  var sortByUrlMap = config.sortByUrlMap;
+  var sortByUrlMap   = config.sortByUrlMap;
+  var prefixPath = config.prefixPath;
 
   $('#sort_awards_by').live("change", function() {
     var that = this,
@@ -18,17 +19,17 @@ Clearcats.UI.Awards = function (config) {
 
   var onsuccess = function(data) {
     var award_id = data.id
-    var url = "/awards/row/" + award_id + "?person_id=" + data.person_id;
+    var url = prefixPath + "/awards/row/" + award_id + "?person_id=" + data.person_id;
     
     // if updating existing record
     if($('div#award_' + award_id).exists()) {
-      $('div#award_' + award_id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $('div#award_' + award_id).html('<p>Updating . . .<img src="' + prefixPath + '/images/ajax-loader.gif" alt="Loading"></img></p>');
       $.get(url, null, function (response) {
         $('div#award_' + award_id).replaceWith(response);
       });
     // otherwise creating new record
     } else {
-      $('div#new_award').html('<p>Creating new record . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $('div#new_award').html('<p>Creating new record . . .<img src="' + prefixPath + '/images/ajax-loader.gif" alt="Loading"></img></p>');
       $.get(url, null, function (response) {
         $('form.dirtyform').prepend(response);
         $('div#new_award').html('');

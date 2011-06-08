@@ -1,6 +1,7 @@
 Clearcats.UI.Publications = function (config) {
 
-  var sortByUrlMap = config.sortByUrlMap;
+  var sortByUrlMap   = config.sortByUrlMap;
+  var prefixPath = config.prefixPath;
 
   $('.truncated_publication_abstract_toggle').live("click", function() {
     $(this).parent().siblings('.publication_abstract').show();
@@ -29,17 +30,17 @@ Clearcats.UI.Publications = function (config) {
 
   var onsuccess = function(data) {
     var publication_id = data.id
-    var url = "/publications/row/" + publication_id + "?person_id=" + data.person_id;
+    var url = prefixPath + "/publications/row/" + publication_id + "?person_id=" + data.person_id;
     
     // if updating existing record
     if($('div#publication_' + publication_id).exists()) {
-      $('div#publication_' + publication_id).html('<p>Updating . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $('div#publication_' + publication_id).html('<p>Updating . . .<img src="' + prefixPath + '/images/ajax-loader.gif" alt="Loading"></img></p>');
       $.get(url, null, function (response) {
         $('div#publication_' + publication_id).replaceWith(response);
       });
     // otherwise creating new record
     } else {
-      $('div#new_publication').html('<p>Creating new record . . .<img src="/images/ajax-loader.gif" alt="Loading"></img></p>');
+      $('div#new_publication').html('<p>Creating new record . . .<img src="' + prefixPath + '/images/ajax-loader.gif" alt="Loading"></img></p>');
       $.get(url, null, function (response) {
         $('form.dirtyform').prepend(response);
         $('div#new_publication').html('');

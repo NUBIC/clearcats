@@ -15,8 +15,9 @@
 
 :javascript
   $(function () {
+    var prefixPath = '#{cc_prefix_path}';
     var notesTemplate = '<tr class="note fields"><td><label for="activity_notes_attributes_new_notes_text">Note</label></td><td><textarea id="activity_notes_attributes_new_notes_text" name="activity[notes_attributes][new_notes][text]"></textarea></td><td><input id="activity_notes_attributes_new_notes__destroy" name="activity[notes_attributes][new_notes][_destroy]" type="hidden" value="false" /><a href="javascript:void(0);" class="delete_notes delete_link icon_link">Remove</a></td></tr>';
-    var servicesUI = new Clearcats.UI.Services({ });
+    var servicesUI = new Clearcats.UI.Services({ prefixPath: prefixPath });
     var activitiesUI = new Clearcats.UI.Activities({ activityTypesUrl: '#{activity_types_path(:format => :json)}',
                                                      selectPeopleUrl: '#{select_people_path(:format => :json)}',
                                                      notesTemplate: notesTemplate });
