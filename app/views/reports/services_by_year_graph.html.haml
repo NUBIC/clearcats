@@ -1,4 +1,4 @@
-- javascript "highcharts", "graphs/services"
+- javascript "highcharts", "highcharts-exporting", "graphs/services"
 
 %div{ :id => "chart-container", :style => "width: 100%; height: 400px" }
 
@@ -27,6 +27,13 @@
         formatter: function() {
           return '' + this.series.name + ': ' + this.y + ' Services';
         }
+      },
+      exporting: {
+        enabled:  true,
+        filename: "services_by_year",
+        type:     "image/png",
+        url:      "/exporting-server/index.php",
+        width:    800
       },
       series: eval(seriesData)
     });

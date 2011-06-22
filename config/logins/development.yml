@@ -9,11 +9,11 @@ users:
     portals:
       - ClearCATS:
         - Admin
-  pfr957:
-    password: pfr957
-    portals:
-      - ClearCATS:
-        - Admin
+  # pfr957:
+  #   password: pfr957
+  #   portals:
+  #     - ClearCATS:
+  #       - Admin
   faculty:
     password: faculty
     portals:

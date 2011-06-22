@@ -5,6 +5,7 @@ describe Ldap do
   it "should retrieve an ldap entry by unique id (netid)" do
     entry = Ldap.new.retrieve_entry_by_netid("pfr957")
     entry.should_not be_nil    
+    p entry.inspect
     assert_entry(entry)
   end
   
