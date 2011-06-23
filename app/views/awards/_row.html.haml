@@ -1,9 +1,9 @@
 - edit_link_params = { :controller => "/awards", :action => "edit", :id => award, :search => params[:search] }.merge(award_association)
-%div{ :id => "award_#{award.id}", :class => "award_record" }
+%div{ :id => "award_#{award.id}", :class => "award_record span-23" }
   - unless @service
     %div
       = check_box_tag "award_ids[]", award.id, award.ctsa_reporting_years.include?(current_year)
-      %b
+      %span{ :class => "form_label" }
         = ctsa_wording
   %div
     = link_to "Edit", edit_link_params, { :title => "Edit Award", :class => "edit_modal_form_link edit_link icon_link" }
@@ -11,62 +11,73 @@
     = link_to 'View Version History', versions_award_path(award), :class => "show_link icon_link" if sysadmin
   .organization
     %div
-      %b
+      %span{ :class => "label" }
         Organization
       %br
-      = award.organization
+      %span{ :class => "value" }
+        = null_safe(award.organization)
     %div
-      %b
+      %span{ :class => "label" }
         Activity Code
       %br
-      = award.activity_code
+      %span{ :class => "value" }
+        = null_safe(award.activity_code)
   .ctsa_reportable
     %div
-      %b
+      %span{ :class => "label" }
         CTSA Reporting Years
       %br
-      = null_safe_collection(award.ctsa_reporting_years)
+      %span{ :class => "value" }
+        = null_safe_collection(award.ctsa_reporting_years)
     %div
-      %b
+      %span{ :class => "label" }
         NUCATS Assisted
       %br
-      = boolean_view award.nucats_assisted
+      %span{ :class => "value" }
+        = boolean_view(award.nucats_assisted)
     %div
-      %b
+      %span{ :class => "label" }
         Award Number
       %br
-      = award.ctsa_award_type_award_number
+      %span{ :class => "value" }
+        = null_safe(award.ctsa_award_type_award_number)
   .sponsor_info
     %div
-      %b
+      %span{ :class => "label" }
         Sponsor
       %br
-      = award.sponsor
+      %span{ :class => "value" }
+        = null_safe(award.sponsor)
     %div
-      %b
+      %span{ :class => "label" }
         Sponsor Award Number
       %br
-      = award.sponsor_award_number
+      %span{ :class => "value" }
+        = null_safe(award.sponsor_award_number)
     %div
-      %b
+      %span{ :class => "label" }
         Grant Title
       %br
-      = award.grant_title
+      %span{ :class => "value" }
+        = null_safe(award.grant_title)
     %div
-      %b
+      %span{ :class => "label" }
         Budget Number
       %br
-      = null_safe(award.budget_identifier)
+      %span{ :class => "value" }
+        = null_safe(award.budget_identifier)
   .project_info
     %div
-      %b
+      %span{ :class => "label" }
         Project Period
       %br
-      = formatted_date(award.project_period_start_date)
+      %span{ :class => "value" }
+        = formatted_date(award.project_period_start_date)
+        &ndash;
+        = formatted_date(award.project_period_end_date) 
     %div
-      = formatted_date(award.project_period_end_date)
-    %div
-      %b
+      %span{ :class => "label" }
         Project Cost
       %br
-      = number_to_currency(award.total_project_cost, :precision => 0)
+      %span{ :class => "value" }
+        = number_to_currency(award.total_project_cost, :precision => 0)

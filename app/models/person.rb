@@ -163,6 +163,7 @@ class Person < ActiveRecord::Base
   scope :awards_non_phs_organization_id_equals, lambda { |id| joins(:awards).where("awards.organization_id = ? and awards.organization_type = 'NonPhsOrganization'", id) }
   scope :service_line_equals,                   lambda { |id| joins(:services).where("services.service_line_id = ?", id) }
   scope :organizational_unit_equals,            lambda { |id| joins("INNER JOIN organizational_units_people ON organizational_units_people.person_id = people.id").where("organizational_units_people.organizational_unit_id = ?", id) }
+  scope :department_affiliation_equals,         lambda { |name| where("people.department_affiliation = ?", name) }
   
   scope :all_investigators, :conditions => "((training_type IS NULL) AND (trainee_status IS NULL))"
   scope :all_trainees,      :conditions => "((training_type IS NOT NULL OR training_type = '') AND (trainee_status IS NOT NULL OR trainee_status = ''))"
@@ -180,6 +181,7 @@ class Person < ActiveRecord::Base
   search_methods :awards_non_phs_organization_id_equals
   search_methods :service_line_equals
   search_methods :organizational_unit_equals
+  search_methods :department_affiliation_equals
   
   search_methods :for_reporting_year, :splat_param => true, :type => [:integer]
   search_methods :invalid_for_ctsa_reporting

@@ -2,75 +2,73 @@
   - unless @service
     %div
       = check_box_tag "publication_ids[]", pub.id, pub.ctsa_reporting_years.include?(current_year), { :disabled => pub.previously_reported?(current_year) }
-      %b
+      %span{ :class => "form_label" }
         = ctsa_wording
   %div
     = link_to "Edit", { :controller => "/publications", :action => "edit", :id => pub, :search => params[:search] }.merge(pub_association), { :title => "Edit Publication", :class => "edit_modal_form_link edit_link icon_link" }
     = link_to 'View Version History', versions_publication_path(pub), :class => "show_link icon_link" if sysadmin
   .ctsa_reportable
     %div
-      %b
+      %span{ :class => "label" }
         CTSA Reporting Years
       %br
-      = null_safe_collection(pub.ctsa_reporting_years)
+      %span{ :class => "value" }
+        = null_safe_collection(pub.ctsa_reporting_years)
     %div
-      %b
+      %span{ :class => "label" }
         = "Cited #{SYSTEM_CONFIG['grant_name']} (#{SYSTEM_CONFIG['grant_number']})"
       %br
-      = boolean_view(pub.cited)
+      %span{ :class => "value" }
+        = boolean_view(pub.cited)
     %div
-      %b
+      %span{ :class => "label" }
         Citation Count
-      = pub.citation_cnt
+      %br
+      %span{ :class => "value" }
+        = null_safe(pub.citation_cnt)
   .identification
     %div
-      %b
+      %span{ :class => "label" }
         PMCID
       %br
-      = pub.pmcid
+      %span{ :class => "value" }
+        = null_safe(pub.pmcid)
     %div
-      %b
+      %span{ :class => "label" }
         PMID
       %br
-      = pub.pmid
+      %span{ :class => "value" }
+        = null_safe(pub.pmid)
     %div
-      %b
-        PMID
-      %br
-      = pub.pmid
-    %div
-      %b
+      %span{ :class => "label" }
         NIHMS Number
       %br
-      = pub.nihms_number
+      %span{ :class => "value" }
+        = null_safe(pub.nihms_number)
     %div
-      %b
+      %span{ :class => "label" }
         Missing PMCID Reason
       %br
-      = pub.missing_pmcid_reason
+      %span{ :class => "value" }
+        = null_safe(pub.missing_pmcid_reason)
   .publication
     %div
-      %b
+      %span{ :class => "label" }
         Journal
       %br
-      = pub.journal
+      %span{ :class => "value" }
+        = null_safe(pub.journal)
     %div
-      %b
+      %span{ :class => "label" }
         Title
       %br
-      = pub.title
+      %span{ :class => "value" }
+        = null_safe(pub.title)
     %div
-      %b
-        Abstract
-      - if pub.abstract.blank?
-        %br
-        n/a
-      - else
+      - unless pub.abstract.blank?
         .truncated_publication_abstract
-          = truncate(pub.abstract, :length => 150, :separator => ' ')
-          %br
-          = link_to "More", "javascript:void(0);", { :class => "truncated_publication_abstract_toggle toggle_open_link icon_link" }
+          = link_to "View Abstract", "javascript:void(0);", { :class => "truncated_publication_abstract_toggle toggle_open_link icon_link" }
         .publication_abstract.hide
           = pub.abstract
           %br
-          = link_to "Less", "javascript:void(0);", { :class => "publication_abstract_toggle toggle_closed_link icon_link" }
+          = link_to "Hide Abstract", "javascript:void(0);", { :class => "publication_abstract_toggle toggle_closed_link icon_link" }

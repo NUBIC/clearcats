@@ -36,3 +36,20 @@ table.records {
   }
 }
 
+div.records {
+  
+  span.form_label {
+    font-weight: bold;
+  }
+  
+  span.label { 
+    font-style: italic;
+    text-decoration: underline;
+  }
+
+  span.value {
+    padding-left: 1em;
+    font-size: 1.2em;
+  }
+}
+

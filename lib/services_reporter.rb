@@ -1,5 +1,6 @@
 module ServicesReporter
   include ApplicationHelper
+  include ERB::Util
   
   def services_summary_by_organizational_unit
     series_data = []
@@ -45,7 +46,7 @@ module ServicesReporter
     OrganizationalUnit.all.each do |ou|
       raw[ou.abbreviation] = Service.organizational_unit_id_equals(ou.id).count
     end
-    total = raw.values.inject {|sum, n| sum + n }
+    total = raw.values.inject { |sum, n| sum + n }
     
     series_data = []
     raw.each { |name, value| series_data << { "name" => name, "y" => round((value.to_f/total.to_f) * 100, 2), "url" => "#{cc_prefix_path}/reports/service_lines_for_organizational_unit?ou=#{name}" } }
@@ -57,10 +58,22 @@ module ServicesReporter
     ou.service_lines.each do |sl|
       raw[sl.name] = Service.service_line_id_equals(sl.id).count
     end
-    total = raw.values.inject {|sum, n| sum + n }
+    total = raw.values.inject { |sum, n| sum + n }
     
     series_data = []
     raw.each { |name, value| series_data << { "name" => name, "y" => round((value.to_f/total.to_f) * 100, 2), "url" => "#{cc_prefix_path}/services?search[service_line_name_like]=#{name}" } }
+    series_data.to_json
+  end
+  
+  def department_percentage_by_organizational_unit(ou)
+    raw = {}
+    ou.departments_worked_with.each do |name|
+      raw[name] = Service.organizational_unit_id_equals(ou.id).department_equals(name).count
+    end
+    total = raw.values.inject {|sum, n| sum + n }
+    
+    series_data = []
+    raw.each { |name, value| series_data << { "name" => name.gsub("'", ""), "y" => round((value.to_f/total.to_f) * 100, 2), "url" => "/clients?search[organizational_unit_equals]=#{ou.id}&search[department_affiliation_equals]=#{name.gsub("'", "")}" } }
     series_data.to_json
   end
   

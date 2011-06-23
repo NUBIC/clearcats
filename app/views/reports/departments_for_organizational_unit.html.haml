@@ -1,0 +1,56 @@
+- javascript "highcharts", "highcharts-exporting", "graphs/services"
+
+%div{ :id => "chart-container", :style => "width: 100%; height: 400px" }
+
+:javascript
+  var seriesData = '#{@series_data}';
+  var servicesChart;
+  $(document).ready(function() {
+    servicesChart = new Highcharts.Chart({
+      chart: {
+        renderTo: 'chart-container',
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false
+      },
+      title: {
+        text: 'Services by Department'
+      },
+      tooltip: {
+        formatter: function() {
+          return '' + this.point.name + ': ' + this.y + ' %';
+        }
+      },
+      plotOptions: {
+        pie: {
+          allowPointerSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            formatter: function() {
+              return '' + this.point.name + ': ' + this.y + ' %';
+            }
+          },
+          point: {
+            events: {
+              click: function() {
+                location.href = this.url;
+              }
+            }
+          }
+        }
+      },
+      exporting: {
+        enabled:  true,
+        filename: "departments",
+        type:     "image/png",
+        url:      "/exporting-server/index.php",
+        width:    800
+      },
+      series: [{
+        type: 'pie',
+        name: 'Department Percentage',
+        data: eval(seriesData)
+      }]
+    });
+  });

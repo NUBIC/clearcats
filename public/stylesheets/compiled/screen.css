@@ -1334,6 +1334,11 @@ select#activity_minutes {
   width: 7em;
 }
 
+/* line 29, ../../../app/stylesheets/partials/_activities.scss */
+select#activity_activity_type_id {
+  width: 20em;
+}
+
 /* GLOBAL STYLES */
 /* line 2, ../../../app/stylesheets/partials/_application.scss */
 body {
@@ -1531,7 +1536,6 @@ textarea#award_grant_title {
 .award_record {
   border: 1px solid #ccc;
   padding: 5px;
-  height: 25em;
   margin-bottom: 5px;
   background-color: white;
   border-radius: 0.5em;
@@ -1539,7 +1543,7 @@ textarea#award_grant_title {
   -webkit-border-radius: 0.5em;
 }
 
-/* line 62, ../../../app/stylesheets/partials/_awards.scss */
+/* line 61, ../../../app/stylesheets/partials/_awards.scss */
 .award_section {
   border: 1px solid #ccc;
   margin: 0.25em 0;
@@ -1549,22 +1553,21 @@ textarea#award_grant_title {
   -moz-border-radius: 0.5em;
   -webkit-border-radius: 0.5em;
 }
-/* line 69, ../../../app/stylesheets/partials/_awards.scss */
+/* line 68, ../../../app/stylesheets/partials/_awards.scss */
 .award_section p b {
   font-size: 1.25em;
 }
 
-/* line 78, ../../../app/stylesheets/partials/_awards.scss */
+/* line 77, ../../../app/stylesheets/partials/_awards.scss */
 .organization,
 .ctsa_reportable,
 .sponsor_info,
 .project_info {
   width: 49%;
   float: left;
-  min-height: 8.5em;
 }
 
-/* line 85, ../../../app/stylesheets/partials/_awards.scss */
+/* line 83, ../../../app/stylesheets/partials/_awards.scss */
 .sponsor_info,
 .project_info {
   border-top: 1px dashed #dcdcdc;
@@ -1752,7 +1755,7 @@ div#banner_menu {
 
 /* line 83, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
 img.downarrowclass {
-  background-image: url("/clearcats/images/down.gif") !important;
+  background-image: url("/images/down.gif") !important;
   background-repeat: no-repeat;
   width: 12px;
   height: 12px;
@@ -1760,7 +1763,7 @@ img.downarrowclass {
 
 /* line 90, ../../../app/stylesheets/partials/_ddsmoothmenu.scss */
 img.rightarrowclass {
-  background-image: url("/clearcats/images/right.gif") !important;
+  background-image: url("/images/right.gif") !important;
   background-repeat: no-repeat;
   width: 12px;
   height: 12px;
@@ -2852,16 +2855,20 @@ hr {
 .identification {
   width: 49%;
   float: left;
-  min-height: 10em;
   padding-bottom: 5px;
 }
 
-/* line 34, ../../../app/stylesheets/partials/_publications.scss */
+/* line 33, ../../../app/stylesheets/partials/_publications.scss */
 .publication {
   width: 1100px;
   float: left;
   border-top: 1px dashed #dcdcdc;
   padding: 5px;
+}
+/* line 38, ../../../app/stylesheets/partials/_publications.scss */
+.publication .publication_abstract {
+  padding: 1em;
+  line-height: 1.5em;
 }
 
 /* line 2, ../../../app/stylesheets/partials/_reports.scss */
@@ -3259,6 +3266,21 @@ table.records tr.odd_record {
 /* line 34, ../../../app/stylesheets/partials/_tabular_records.scss */
 table.records tr.current_record {
   background-color: aliceblue;
+}
+
+/* line 41, ../../../app/stylesheets/partials/_tabular_records.scss */
+div.records span.form_label {
+  font-weight: bold;
+}
+/* line 45, ../../../app/stylesheets/partials/_tabular_records.scss */
+div.records span.label {
+  font-style: italic;
+  text-decoration: underline;
+}
+/* line 50, ../../../app/stylesheets/partials/_tabular_records.scss */
+div.records span.value {
+  padding-left: 1em;
+  font-size: 1.2em;
 }
 
 /* tooltip styling */

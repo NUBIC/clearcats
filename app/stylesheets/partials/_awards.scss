@@ -53,7 +53,6 @@ textarea#award_grant_title {
 .award_record {
   border: 1px solid #ccc;
   padding: 5px;
-  height: 25em;
   margin-bottom: 5px;
   background-color: white;
   @include rounded-corners(.5em);
@@ -77,8 +76,7 @@ textarea#award_grant_title {
 .sponsor_info,
 .project_info {
   width: 49%;
-  float:left;
-  min-height: 8.5em;
+  float: left;
 }
 
 .sponsor_info,

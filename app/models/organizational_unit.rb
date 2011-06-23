@@ -56,6 +56,10 @@ class OrganizationalUnit < ActiveRecord::Base
     Summable.minutes(effort)
   end
 
+  def departments_worked_with
+    services.map{ |s| s.person.department_affiliation.to_s.strip if s.person }.uniq.compact.sort
+  end
+
   
   def self.find_by_cc_pers_affiliate_ids(ids)
     result = []

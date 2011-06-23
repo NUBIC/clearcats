@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
     params[:page] ||= 1
     params[:search] ||= Hash.new
     params[:search][:for_organizational_units] ||= @user_organizational_units.map(&:id)
+    params[:search][:meta_sort] ||= "updated_at.desc"
     
     set_person_context
     

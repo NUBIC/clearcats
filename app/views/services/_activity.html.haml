@@ -2,49 +2,66 @@
 %div{ :id => "activity_#{activity.id}", :class => "activity_record" }
   .span-12
     .select_record
+      - unless activity.position.blank?
+        %span{ :class => "form_label" } #
+        = null_safe(activity.position)
       = link_to 'Edit', edit_activity_service_path(service, :activity_id => activity), {:title => "Edit Activity for #{@person.to_s}", :class => "edit_modal_form_link edit_link icon_link"}
-      %b #
-      = activity.position.to_s
       - unless activity.complete?
         = link_to 'Delete', {:action => "destroy_activity", :controller => "services", :id => @service.id, :activity_id => activity.id}, :confirm => 'Are you sure?', :method => :delete, :class => "delete_link icon_link"
+    .service_line
+      %span{ :class => "label" }
+        Service Line
+      .field
+        %span{ :class => "value" }
+          = null_safe(activity.service_line)
     .name
-      %b Activity Name
+      %span{ :class => "label" }
+        Activity Name
       .field
-        = activity.name
+        %span{ :class => "value" }
+          = null_safe(activity.name)
     .event_date
-      %b Date of Activity
+      %span{ :class => "label" }
+        Date of Activity
       .field
-        = activity.event_date.blank? ? "TBD" : activity.formatted_event_date
+        %span{ :class => "value" }
+          = activity.event_date.blank? ? "TBD" : activity.formatted_event_date
     - unless activity.due_date.blank?
       .due_date
-        %b Due Date
+        %span{ :class => "label" }
+          Due Date
         .field
-          = activity.formatted_due_date
+          %span{ :class => "value" }
+            = null_safe(activity.formatted_due_date)
   .span-11.last
     %div
       &nbsp;
-    .service_line
-      %b Service Line
-      .field
-        = activity.service_line.to_s
     - unless activity.created_from_service?
       .activity_type
-        %b Activity Type
+        %span{ :class => "label" }
+          Activity Type
         .field
-          = activity.activity_type.to_s
+          %span{ :class => "value" }
+            = null_safe(activity.activity_type)
     %div
-      %b Billable
+      %span{ :class => "label" }
+        Billable
       .field
-        = boolean_view(activity.billable?)
+        %span{ :class => "value" }
+          = boolean_view(activity.billable?)
     %div
-      %b Cost
+      %span{ :class => "label" }
+        Cost
       .field
-        = null_safe_currency(activity.cost)
+        %span{ :class => "value" }
+          = null_safe_currency(activity.cost)
     %div
-      %b Effort
+      %span{ :class => "label" }
+        Effort
       .field
-        = pluralize(activity.hours, "Hour")
-        = pluralize(activity.minutes, "Minute")
+        %span{ :class => "value" }
+          = pluralize(activity.hours, "Hour")
+          = pluralize(activity.minutes, "Minute")
   - unless activity.notes.empty?
     .span-23
       .notes_toggle
@@ -52,15 +69,18 @@
       .notes_section.hide
         = link_to "Hide Notes", "javascript:void(0);", { :class => "hide_notes_toggle toggle_closed_link icon_link" }
         %br
-        %b
+        %span{ :class => "label" }
           Notes
         .notes
           - activity.notes.each do |n|
             .note
               .note_info.span-4
                 .creator
-                  = n.created_by
+                  %span{ :class => "value" }
+                    = n.created_by
                 .date
-                  = n.created_at.to_s(:db)
+                  %span{ :class => "value" }
+                    = n.created_at.to_s(:db)
               .note_text.span-18.last
-                = n.text
+                %span{ :class => "value" }
+                  = n.text

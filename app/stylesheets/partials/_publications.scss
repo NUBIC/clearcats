@@ -27,8 +27,7 @@
 .identification {
   width: 49%;
   float: left;
-  min-height: 10em;
-  padding-bottom: 5px
+  padding-bottom: 5px;
 }
 
 .publication {
@@ -36,4 +35,8 @@
   float: left;
   border-top: 1px dashed #dcdcdc;
   padding: 5px;
+  .publication_abstract {
+    padding: 1em;
+    line-height: 1.5em;
+  }
 }

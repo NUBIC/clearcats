@@ -11,7 +11,7 @@
     - ordering_params = { :controller => "publications", :action => "index", :person_id => person.id, :view_all => params[:view_all] }
     - pub_association = { :person_id => person.id }
 
-  .publications_body
+  .publications_body.records
     .records_header
       = link_to "Add New Publication", { :controller => "/publications", :action => "new", :search => @search_params, :person_id => person.id }.merge(pub_association), { :class => "edit_modal_form_link add_link icon_link", :title => "New Publication" }
       - if service.nil? and !faculty_member?

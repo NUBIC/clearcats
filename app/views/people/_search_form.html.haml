@@ -67,9 +67,16 @@
       .span-24
         .span-4
           = f.label :organizational_unit_equals, "Organizational Unit"
-        .span-17.last
+        .span-7
           - org_units = [["-- Select Organizational Unit --",  ""]] + OrganizationalUnit.all.collect { |a| [ a.to_s, a.id ] }.sort!
           = f.select(:organizational_unit_equals, options_for_select(org_units, params[:search][:organizational_unit_equals].to_i))
+        .span-5
+          = f.label :department_affiliation_equals, "Department"
+        .span-6.last
+          - depts = [["-- Select Department Affiliation --",  ""]] + @departments
+          = f.select(:department_affiliation_equals, options_for_select(depts, params[:search][:department_affiliation_equals]))
+        
+      .span-24
         .span-4
           = f.label :services_count_greater_than, "Services Count >"
         .span-17.last

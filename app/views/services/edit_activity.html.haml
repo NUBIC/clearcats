@@ -9,9 +9,10 @@
     = f.hidden_field :service_id
   .span-16
     .span-8
-      %p
-        %b #
-        = @activity.position.to_s
+      - unless @activity.position.blank?
+        %p
+          %b #
+          = @activity.position.to_s
       = render 'activity_name_and_date_fields', :f => f
 
     = render 'activity_effort_fields', :f => f

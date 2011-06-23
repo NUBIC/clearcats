@@ -40,6 +40,10 @@ class ReportsController < ApplicationController
     @series_data, @categories = shared_services_summary
   end
   
+  def departments_for_organizational_unit
+    @series_data = department_percentage_by_organizational_unit(OrganizationalUnit.find_by_abbreviation(params[:ou]))
+  end
+  
   # TODO: by quarter
 
   # publications
